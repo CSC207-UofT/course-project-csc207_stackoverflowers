@@ -1,18 +1,25 @@
 This is the specification for our group project: 
 
-As an HR manager, you get a few candidates.
-You can interview, and choose which interns you want on your team. 
-After each interview, the player must decide right after each interview if they will hire the intern. 
-Therefore, the ‘hired’ list in the HRsystem must be updated to reflect the player’s choices. 
-HR can work with more than just interns, (employees that already are in the company or more) 
-Interview interaction tree (of responses and results) - similar to a dating simulator where your responses determine a ‘good’ ending vs ‘bad ending’ (good ending being you hire the right intern, bad ending being you lose a potential intern etc) 
-You can view the strengths, the resumes, cover letters and other info of the intern.
-Then you are assigned a few projects by the company,which you have to assign appropriate interns to finish.
-Project report: The result of the interns assigned to the projects will result in diff aspects of the project: the success/fail, the money this project brought to the company,, and others
-Covid:
-Intern vaccination status(for the player to check)
-Outbreak
-Ucheck type of thing? For HRmanager to check each day? == relates to the probability of outbreak incident that might happen
-Six month Final report.
+- Running the project will start a shell that prompts the user to enter their name. Every time the game is first started, new interns are randomly generated and new projects are generated for the player. 
+	- the player will see the new interns that they must interview 
+	- the player will be able to check the intern information such as their skills and age 
 
-----> needs editing
+While running the game, we have some game prompts: 
+	- quit - quit the game 
+	- restart - restarts the whole game with new interns and new projects 
+	- all the game prompts will be stored in the GamePrompts class 
+	
+
+- The game will be comprised of levels. In the Interview level, the player will be able to interview the interns, 	- the interns will have automated responses to the interview question and the player will also be able to 	pick their own responses which will determine how the interview level progresses. 
+	- the player will be able to choose if they will hire the intern after each interview 
+	- the hired interns will be put in the company HR system 
+	- Therefore, the ‘hired’ list in the HRSystem must be updated to reflect the player’s choices. 
+
+- In the project level, the player will be able to assign interns to projects 
+	- based on the description and requirements of the project, the player will be able to check the intern 	skills and assign interns to projects 
+
+- the monthly report will show how each project is progressing 
+	- monthly report will show each project and the interns assigned to it and their progress
+	- will show any irregularities that occur during the months ( intern on sick leave, intern failed task etc) 
+	- month is referred to as a stage in the game, not a specific date 
+	- the course of the game runs for 6 months, therefore each ‘month’ is just consider a period of the time 	for the game to progress
