@@ -13,8 +13,6 @@ Responsibilities:
 
 Collaborators:
 * GameMaker
-* Presenter
-* Level
 * InterviewLevel
 * MonthLevel
 * ReportLevel

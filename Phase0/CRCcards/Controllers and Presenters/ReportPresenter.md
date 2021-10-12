@@ -5,7 +5,7 @@ Parent class: Presenter
 Subclasses: InterviewPresenter, MonthPresenter, ReportPresenter
 
 Responsibilities:
-* An abstract class that takes in something and outputs it as a string.
+* An class that takes in info about the report and returns it so that it can be displayed as a string.
 
 Collaborators:
-* 
+* ReportLevel
