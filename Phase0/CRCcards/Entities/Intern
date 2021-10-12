@@ -1,0 +1,15 @@
+Class name: Intern
+
+Parent class:
+
+Subclasses:
+
+Responsibilities:
+* getName
+* getAge
+* getSkills
+* getGender
+* getResponse
+
+Collaborators:
+* Project

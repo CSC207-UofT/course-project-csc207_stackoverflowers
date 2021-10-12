@@ -10,9 +10,14 @@ Subclasses:
 
 Responsibilities:
 * getHiredList
-* removeIntern
-* addIntern
-* clearIntern
-* increaseSize
+* getIntervieweeList
+* updateHiredList (remove and add intern)
+* updateIntervieweeList (remove and add intern)
+* increaseTeamSizeofProject
+* getProjectCrew
+* addCrew
+* checkName
 Collaborators:
 * Intern
+* Project
+

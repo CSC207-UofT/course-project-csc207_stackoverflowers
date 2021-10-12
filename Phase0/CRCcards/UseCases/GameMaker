@@ -1,0 +1,13 @@
+Class name: GameMaker
+
+Parent class:
+
+Subclasses:
+
+Responsibilities:
+* startGame
+* rdmProjListSize
+* rdmInternAmount
+
+Collaborators:
+*

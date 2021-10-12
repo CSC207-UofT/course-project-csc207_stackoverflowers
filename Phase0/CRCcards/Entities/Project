@@ -1,0 +1,15 @@
+Class name: Project
+
+Parent class:
+
+Subclasses:
+
+Responsibilities:
+* Project
+* getProjectName
+* getProjectType
+* getProjectStatus
+
+Collaborators:
+* Intern
+* HRSystem
