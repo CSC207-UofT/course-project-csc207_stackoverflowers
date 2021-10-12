@@ -11,4 +11,5 @@ Subclasses:
 Responsibilities:
 * makeMonths
 Collaborators:
-*
+* HRSystem
+* GamePrompts
