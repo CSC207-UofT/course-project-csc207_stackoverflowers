@@ -1,10 +1,11 @@
-Class name:
+Class name: InterviewPresenter
 
-Parent class:
+Parent class: Presenter
 
 Subclasses:
 
 Responsibilities:
-*
+* To get things that are needed to present from InterviewLevel and return a string
+
 Collaborators:
-* 
+* InterviewLevel 

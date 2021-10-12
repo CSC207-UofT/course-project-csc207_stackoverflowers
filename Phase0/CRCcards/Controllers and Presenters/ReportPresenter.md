@@ -1,10 +1,11 @@
-Class name:
+Class name: ReportPresenter
 
-Parent class:
+Parent class: Presenter
 
-Subclasses:
+Subclasses: InterviewPresenter, MonthPresenter, ReportPresenter
 
 Responsibilities:
-*
+* An abstract class that takes in something and outputs it as a string.
+
 Collaborators:
 * 
