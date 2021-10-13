@@ -4,23 +4,8 @@ import java.util.HashMap;
 import java.util.ArrayList;
 public class GameMaker {
     private HRSystem sys;
+    private GamePrompts prompts;
 
-
-
-    /*
-
-
-        //TODO:
-        - write a method called update_intern
-        just call the HRSystem method to update the interns in this class
-        //TODO:
-        - method return list of interns
-        //TODO:
-        - method return {Farzana Rahman, new manager at X company} -> return the prompt with the 'filled in' name of player
-        (use GamePrompts for the prompt itself)
-        //TODO:
-        - makes a HR system - inside GameMaker constructor
-         */
 
     /**
      * Construct a game maker.
@@ -51,9 +36,17 @@ public class GameMaker {
         return this.sys.getInternList();
     }
 
-    public String FirstPrompt(String playerInput){
-
-
+    /**
+     * Return the first display prompt after the player enters their name.
+     *
+     *  @param playerInput the input the player enters (their name)
+     */
+    public String firstPrompt(String playerInput){
+        String re = "";
+        re += this.prompts.FIRST_PROMPT_BEFORE_NAME;
+        re += playerInput;
+        re += this.prompts.FIRST_PROMPT_AFTER_NAME;
+        return re;
     }
 
 }
