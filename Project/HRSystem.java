@@ -1,6 +1,6 @@
 /* add the new interns to a list of new employees that the player can access with their skills
 HRSystem would extend Intern class?
-method update_intern_list
+method update_intern_list which takes in an ArrayList and puts it as the intern_list
 intern_list is a private instance
 
  */
