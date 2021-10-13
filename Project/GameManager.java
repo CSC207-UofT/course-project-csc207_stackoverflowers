@@ -8,7 +8,15 @@ public class GameManager {
     an instance
     // TODO:
     - method that takes in the player's input and returns the output
-
-
      */
+    private GameMaker currentGameMaker;
+    public GameManager(){
+        this.currentGameMaker = new GameMaker();
+
+    }
+    public String startingLine(String input){
+        String output = currentGameMaker.return_first_prompt(input);
+        return output;
+    }
+
 }
