@@ -13,7 +13,7 @@ public class GameMaker {
     //TODO:
     - method return list of interns
     //TODO:
-    - method return {Farzana Rahman, new manager at X company} -> return the prompt with the 'filled in' name of player
+    - method takes in the player's input and returns the long prompt(in game prompt) -> return the prompt with the 'filled in' name of player
     (use GamePrompts for the prompt itself)
     //TODO:
     - makes a HR system - inside GameMaker constructor
