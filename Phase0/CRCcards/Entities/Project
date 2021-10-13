@@ -1,0 +1,12 @@
+Class name: Project
+
+Parent class:
+
+Subclasses:
+
+Responsibilities:
+* getProjectName
+* getProjectType
+* getProjectStatus
+
+Collaborators:

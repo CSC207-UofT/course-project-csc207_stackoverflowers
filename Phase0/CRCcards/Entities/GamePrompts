@@ -1,0 +1,16 @@
+Class name: gamePrompts
+
+Parent class:
+
+Subclasses:
+
+Responsibilities:
+* greetingLine
+* reportIntro
+* reportOutro
+* confirmationLine
+* Start of each month line
+
+
+Collaborators:
+*

@@ -1,0 +1,16 @@
+Class name: GameMaker
+
+Parent class:
+
+Subclasses:
+
+Responsibilities:
+* startGame
+* rdmProjListSize
+* rdmInternAmount
+
+Collaborators:
+* GamePrompts
+* Intern
+* Project
+* HRSystem

@@ -1,0 +1,14 @@
+Class name: interviewMaker
+
+Parent class:
+
+Subclasses:
+
+Responsibilities:
+* Update interviewees_list
+* get_interviewees_list
+* storeResponse
+Collaborators:
+* Intern
+* GamePrompts
+* HRSystem
