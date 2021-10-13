@@ -1,1 +1,24 @@
-This is the progress report for Phase 0 so far 
+Progress report for group stackoverflowers: 
+
+- once the project phase 0 started, Mary and Farzana worked together to develop a visual overview of what the whole project would look like 
+including possible interfaces and abstract classes to present to the group. 
+
+- the project group then had a meeting where Mary presented the overview and the group members were able to decide which classes were important 
+and which classes we could merge instead. 
+
+- After the group had finalised the overview and the CRC card structure, Mary and Jacob wrote out the CRC cards and pushed it to the repository. 
+Farzana, Camille, Maggie and Enam started on the scenario walkthrough and the skeleton program. 
+
+- Maggie, Enam, Camille and Farzana decided on what classes and methods we would need to implement for the skeleton program with the help of Mary.
+
+- Farzana wrote a draft specification and scenario walkthrough and pushed it to the repository. 
+
+- Mary, Farzana and Maggie then met and wrote method signatures, TODOs and descriptions for the whole team to implement. 
+
+- Mary, Maggie and Farzana implemented classes SPhase, GameMaker, GameManager
+
+- Camille will implement class Intern and GamePrompts 
+
+- Enam will implement class HRSystem 
+
+- Jacob will finalise the specification. 
