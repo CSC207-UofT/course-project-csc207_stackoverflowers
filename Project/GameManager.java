@@ -14,7 +14,6 @@ public class GameManager {
         this.currentGameMaker = new GameMaker();
 
     }
-
     public String firstPrompt(String playerInput) {
         return this.currentGameMaker.firstPrompt(playerInput);
     }

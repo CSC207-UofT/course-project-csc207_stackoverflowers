@@ -23,7 +23,6 @@ public class GameMaker {
         newInterns.add(Mary);
         this.addInternToList(newInterns);
     }
-
     /**
      * Add the list of interns to
      */
@@ -48,6 +47,7 @@ public class GameMaker {
         re += this.prompts.FIRST_PROMPT_BEFORE_NAME;
         re += playerInput;
         re += this.prompts.FIRST_PROMPT_AFTER_NAME;
+        re += this.sys.makeInternsToPrompt();
         return re;
     }
 

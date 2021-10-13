@@ -25,4 +25,5 @@ we need to store the new interns to input into the HRSystem -> method generatein
             this.internSkills = skills;
         }
         //TODO: Add get method for intern name, age and skills.
+        //TODO:  Add a method internToString that returns the intern information as a string.
     }
