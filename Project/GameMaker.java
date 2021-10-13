@@ -12,9 +12,11 @@ public class GameMaker {
      */
     public GameMaker() {
         this.sys = new HRSystem();
-        Intern Farzana = new Intern("Farzana Rahman", 20, HashMap < "Teamwork", 92 >);
-        Intern Maggie = new Intern("Maggie Huang", 20, HashMap < "Leadership", 82 >);
-        Intern Mary = new Intern("Mary Yijia Li", 19, HashMap < "Efficiency", 99 >);
+        this.prompts = new GamePrompts();
+
+        Intern Farzana = helperMakeInternOneSkill("Farzana Rahman", 20, "Teamwork", 98 );
+        Intern Maggie = helperMakeInternOneSkill("Maggie Huang", 20, "Leadership", 82);
+        Intern Mary = helperMakeInternOneSkill("Mary Yijia Li", 19, "Efficiency", 99 );
         List<Intern> newInterns = new ArrayList<Intern>();
         newInterns.add(Farzana);
         newInterns.add(Maggie);
@@ -25,7 +27,7 @@ public class GameMaker {
     /**
      * Add the list of interns to
      */
-    public List<Intern> addInternToList(List<Intern> newInterns){
+    public void addInternToList(List<Intern> newInterns){
         this.sys.updateInternList(newInterns);
     }
 
@@ -47,6 +49,15 @@ public class GameMaker {
         re += playerInput;
         re += this.prompts.FIRST_PROMPT_AFTER_NAME;
         return re;
+    }
+
+    /**
+     * A helper method for creating an intern.
+     */
+    private Intern helperMakeInternOneSkill(String name, int age, String skillName, int skillLevel){
+        HashMap<String, Integer> skills = new HashMap<String, Integer>();
+        skills.put(skillName, skillLevel);
+        return new Intern(name, age, skills);
     }
 
 }

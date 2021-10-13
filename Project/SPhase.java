@@ -14,8 +14,7 @@ public class SPhase {
         Scanner in = new Scanner(System.in);
         System.out.println(""); // enter parameter from game prompt
         String playerInput = in.nextLine();
-        // TODO: use the method from GameManager described above where you output the BIG prompt to the player
-
-
+        String output = currentGame.firstPrompt(playerInput);
+        System.out.println(output);
     }
 }
