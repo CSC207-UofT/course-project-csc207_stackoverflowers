@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
 import java.util.ArrayList;
+
+
 public class GameMaker {
     private HRSystem sys;
     private GamePrompts prompts;
@@ -24,7 +26,9 @@ public class GameMaker {
         this.addInternToList(newInterns);
     }
     /**
-     * Add the list of interns to
+     * Add the list of interns to HRSystem.
+     *
+     * @param newInterns A list of interns constructed in the GameMaker constructor
      */
     public void addInternToList(List<Intern> newInterns){
         this.sys.updateInternList(newInterns);
