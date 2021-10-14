@@ -45,6 +45,19 @@ public class Intern {
      * Return a String of the Intern's given information.
      */
     public String internToString() {
+        String info = "Name: " + this.internName + "; age: " + this.internAge + "; skills: ";
+        StringBuilder skills =  new StringBuilder();
+
+        for (String skill : this.internSkills.keySet()) {
+            int percentage = this.internSkills.get(skill);
+            skills.append(skill).append(" (").append(percentage).append(")");
+        }
+
+        return info + skills + "\n";
+
+
+
+        /*
         StringBuilder information = new StringBuilder("Name: " + this.internName + "\n");
         information.append("Age: ").append(this.internAge).append("\n");
         information.append("Skills:\n");
@@ -56,5 +69,6 @@ public class Intern {
         }
 
         return information.toString();
+         */
     }
 }
