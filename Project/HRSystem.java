@@ -1,3 +1,5 @@
+import java.util.*;
+
 /* add the new interns to a list of new employees that the player can access with their skills
 HRSystem would extend Intern class?
 method updateInternList which takes in an ArrayList and puts it as the intern_list
@@ -8,10 +10,39 @@ which formats each single intern into a string)
  */
 // the attribute: internList, a list of interns.
 public class HRSystem {
-    //TODO: initialize the private intern_list
-    //TODO: write method getInternList
-    //TODO: write the constructor (should take in nothing)
-    //TODO: write method updateInternList
-    //TODO: write method makeInternsToPrompt
+
+    //initialize the private intern_list
+
+    private ArrayList<Intern> internList;
+
+    //write method getInternList
+
+    public ArrayList<Intern> getInternList() {
+        return internList;
+    }
+
+    //write the constructor (should take in nothing)
+
+    public HRSystem() {
+        this.internList = new ArrayList<>();
+    }
+
+    //write method updateInternList
+
+    public void updateInternList(ArrayList<Intern> interns) {
+        this.internList.addAll(interns);
+    }
+
+    //write method makeInternsToPrompt
+
+    // for each intern in internList, convert intern to a string and print
+    public String makeInternsToPrompt() {
+        StringBuilder res = new StringBuilder();
+        for (Intern i : this.internList) {
+            res.append(i.internToString()).append(' ');
+        }
+        return res.toString();
+    }
+
 
 }
