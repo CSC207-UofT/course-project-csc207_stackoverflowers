@@ -12,7 +12,7 @@ public class SPhase {
     public static void main(String[] args) {
         GameManager currentGame = new GameManager();
         Scanner in = new Scanner(System.in);
-        System.out.println(""); // enter parameter from game prompt
+        System.out.println("Please enter your name: \n");
         String playerInput = in.nextLine();
         String output = currentGame.firstPrompt(playerInput);
         System.out.println(output);
