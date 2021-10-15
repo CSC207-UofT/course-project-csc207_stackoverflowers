@@ -3,7 +3,6 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.ArrayList;
 
-// All I want is sleep. Ahhhhhh
 public class GameMaker {
     private HRSystem sys;
     private GamePrompts prompts;
