@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class SPhase {
     /* This is the user interface (similar to the Jshell from week 2)
     //TODO:
@@ -10,9 +9,10 @@ public class SPhase {
 
      */
     public static void main(String[] args) {
+        GamePrompts prompts = new GamePrompts();
         GameManager currentGame = new GameManager();
         Scanner in = new Scanner(System.in);
-        System.out.println("Please enter your name: \n");
+        System.out.println(prompts.ASK_FOR_NAME);
         String playerInput = in.nextLine();
         String output = currentGame.firstPrompt(playerInput);
         System.out.println(output);

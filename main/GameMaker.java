@@ -49,7 +49,6 @@ public class GameMaker {
         String re = "";
         re += this.prompts.FIRST_PROMPT_BEFORE_NAME;
         re += playerInput;
-        re += "\n";
         re += this.prompts.FIRST_PROMPT_AFTER_NAME;
         re += this.sys.makeInternsToPrompt();
         return re;

@@ -11,7 +11,7 @@ public class GamePrompts {
      */
     public final String ASK_FOR_NAME = "Please enter your name:\n";
 
-    public final String FIRST_PROMPT_BEFORE_NAME = "Welcome! My friend, you have just been hired as a new manager.\n";
+    public final String FIRST_PROMPT_BEFORE_NAME = "Welcome! My friend ";
 
-    public final String FIRST_PROMPT_AFTER_NAME = "Here are your potential interns. Choose wisely ...\n";
+    public final String FIRST_PROMPT_AFTER_NAME = ", you have just been hired as a new manager. Here are your potential interns. Choose wisely ...\n";
 }
