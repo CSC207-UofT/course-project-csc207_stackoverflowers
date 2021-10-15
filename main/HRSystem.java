@@ -39,7 +39,7 @@ public class HRSystem {
     public String makeInternsToPrompt() {
         StringBuilder res = new StringBuilder();
         for (Intern i : this.internList) {
-            res.append(i.internToString()).append(' ');
+            res.append(i.internToString());
         }
         return res.toString();
     }
