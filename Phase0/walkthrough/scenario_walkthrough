@@ -4,8 +4,6 @@ Try to choose a scenario that will really demonstrate to your TA that your model
 This will also help you better visualize how your program might look like once you start coding.
 
 walkthrough: 
-- the walkthrough must be an example of the skeleton program we choose to do -> 
-if we say the scenario walkthrough is the interview entering their name and returning their new ID (Farzana Rahman, 57 years old, HR manager at X firm) 
-then our code should reflect the scenario.
-
-When the game is first started, 10 random interns are generated that have... 
+in this scenario, the user first starts the game (when SPhase is run) and is asked to enter their name. Once they enter their name, they are now a player in our 
+HR simulator. The next prompt returned welcomes them to the game along with some candidates and their information such as their skills, these candidates 
+the player will interview in their first level of the game. 
