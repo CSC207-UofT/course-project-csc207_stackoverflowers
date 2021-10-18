@@ -12,8 +12,10 @@ which formats each single intern into a string)
 public class HRSystem {
 
     //initialize the private intern_list
+    //initialize the private player_name
 
     private ArrayList<Intern> internList;
+    private String player_name;
 
     //write method getInternList
 
@@ -43,6 +45,8 @@ public class HRSystem {
         }
         return res.toString();
     }
-
+    public void update_player_name(String name){
+        this.player_name = name;
+    }
 
 }

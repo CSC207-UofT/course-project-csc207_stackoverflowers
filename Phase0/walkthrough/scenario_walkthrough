@@ -5,7 +5,9 @@ specification!
 This will also help you better visualize how your program might look like once you start coding.
 
 Walkthrough:
-In this scenario, the user first starts the game (when SPhase is running) and SPhase initializes a GameManger, which then initializes a GameMaker. Then SPhase presents the first game prompt, which
+In this scenario, the user first starts the game (when SPhase is running) and SPhase initializes a GameManger.
+When GameMaker
+Then SPhase presents the first game prompt, which
 asks them to enter their name. Then, SPhase The next prompt returned welcomes them to the game along with some candidates and their
 information such as their skills, these candidates
 the player will interview in their first level of the game. 
