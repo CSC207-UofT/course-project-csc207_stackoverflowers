@@ -1,4 +1,4 @@
-
+HR MANAGER SIMULATOR GAME 
 - Structure/layer:
     - Entities: GamePromts, HRSystem, Intern, Project
     - Use cases: GameMaker, InterviewMaker, MonthMaker, ReportMaker

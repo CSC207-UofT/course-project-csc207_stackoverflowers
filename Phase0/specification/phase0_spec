@@ -1,4 +1,5 @@
 This is the specification for our group project:
+Name of game: HR manager simulator 
 
 - Structure/layer:
     - Entities: GamePrompts, HRSystem, Intern, Project
