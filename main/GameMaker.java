@@ -46,6 +46,7 @@ public class GameMaker {
      *  @param playerInput the input the player enters (their name)
      */
     public String firstPrompt(String playerInput){
+        this.sys.update_player_name(playerInput);
         String re = "";
         re += this.prompts.FIRST_PROMPT_BEFORE_NAME;
         re += playerInput;
