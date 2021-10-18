@@ -1,7 +1,7 @@
 This is the specification for our group project:
 
 - Structure/layer:
-    - Entities: GamePromts, HRSystem, Intern, Project
+    - Entities: GamePrompts, HRSystem, Intern, Project
     - Use cases: GameMaker, InterviewMaker, MonthMaker, ReportMaker
     - Controllers and Presenters: GameManager, InterviewLevel, InterviewPresenter, Level, MonthLevel, MonthPresenter,
       Presenter, ReportLevel, ReportPresenter

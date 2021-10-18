@@ -1,9 +1,11 @@
 This is the scenario_walkthrough: 
 Provide a written explanation (no more than 1-2 paragraphs) of a typical scenario walk-through for your CRC model. 
-Try to choose a scenario that will really demonstrate to your TA that your model is doing a good job satisfying your specification! 
+Try to choose a scenario that will really demonstrate to your TA that your model is doing a good job satisfying your
+specification!
 This will also help you better visualize how your program might look like once you start coding.
 
-walkthrough: 
-in this scenario, the user first starts the game (when SPhase is run) and is asked to enter their name. Once they enter their name, they are now a player in our 
-HR simulator. The next prompt returned welcomes them to the game along with some candidates and their information such as their skills, these candidates 
+Walkthrough:
+In this scenario, the user first starts the game (when SPhase is running) and SPhase initializes a GameManger, which then initializes a GameMaker. Then SPhase presents the first game prompt, which
+asks them to enter their name. Then, SPhase The next prompt returned welcomes them to the game along with some candidates and their
+information such as their skills, these candidates
 the player will interview in their first level of the game. 
