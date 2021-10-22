@@ -1,0 +1,12 @@
+Here we have the todos for the abstract employee class, the hiredintern class, the random intern generator,
+write 8 different interview response trees -> assign the generated interns a response tree
+
+random intern generator:
+- generates name
+- generates age
+- generates a set of skills
+
+interview response tree:
+- initial response
+- choice after each response
+- method will be in interviewmaker
