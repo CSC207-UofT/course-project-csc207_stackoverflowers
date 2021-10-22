@@ -12,6 +12,8 @@ public class GameManager {
     private GameMaker currentGameMaker;
     public GameManager(){
         this.currentGameMaker = new GameMaker();
+        //TODO: instantiate and store the MonthLevel, InterviewLevel and ReportLevel.
+        //TODO: ask GameMaker to generate the Interns and Project needed for the current game.
 
     }
     public String firstPrompt(String playerInput) {

@@ -63,5 +63,6 @@ public class GameMaker {
         skills.put(skillName, skillLevel);
         return new Intern(name, age, skills);
     }
-
+    //TODO: method generateInterns() (Generates and stored the interns in HRSystem)
+    //TODO: method generateProjects() (Generates ans stores the projects in HRSystem)
 }

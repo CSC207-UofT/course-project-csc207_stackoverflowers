@@ -9,6 +9,9 @@ Responsibilities:
 * To show that a month ended
 * To ask MonthMaker to make a month and give prompts
 * To ask MonthMaker to present the prompts
+* getStartOfMonthPrompt()
+* checkProjectInfo()
+* checkInternInfo()
 
 Collaborators:
 * MonthMaker
