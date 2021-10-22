@@ -5,9 +5,18 @@ specification!
 This will also help you better visualize how your program might look like once you start coding.
 
 Walkthrough:
-In this scenario, the user first starts the game (when SPhase is running) and SPhase initializes a GameManger.
-When GameMaker
-Then SPhase presents the first game prompt, which
-asks them to enter their name. Then, SPhase The next prompt returned welcomes them to the game along with some candidates and their
-information such as their skills, these candidates
-the player will interview in their first level of the game. 
+Scenario walkthrough:
+In this scenario, the player first starts the game (when SPhase is running) and SPhase creates a GameManager.
+When GameManager is initialized, it creates a new GameMaker.
+When GameMaker is initialized, it creates an HRsystem and GamePrompts needed for the game.(the actual prompts of the game
+ are stored in it as instances.) It also generates the three sample candidates (for the skeleton program) and stores them
+ as a list. GameMaker then asks HRSystem to store this list of interns. SPhase then asks GamePrompts for the ask-for-name prompt and presents it to the player. 
+ The player’s name is then stored in HRSystem. Then, SPhase takes the User’s input and asks GameManager for the first prompt.
+ GameManager will then ask GameMaker to construct the first prompt with the player’s input.
+
+GameMaker will use prompts in GamePrompts to construct the greeting part of the prompt, and then it will ask HRSystem to
+ make the list of interns into a prompt. HRSystem will do so by asking the Intern Class to make each intern into a string,
+ and format that. Then, GameMaker collects and returns the prompt to GameManager, which then returns it to SPhase for it
+ to output to the player.The output welcomes the player to the game along with the interns and their age and skills(from HRsystem).
+These are candidates the player will interview in their first level of the game in class InterviewPhase (not implemented yet).
+
