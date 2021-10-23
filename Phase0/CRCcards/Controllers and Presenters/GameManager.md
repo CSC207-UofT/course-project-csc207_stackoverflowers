@@ -5,11 +5,13 @@ Parent class:
 Subclasses:
 
 Responsibilities:
-* To receive output for game-level commands:(start game, quit game, restart game)
+* to receive output for game-level commands:(start game, quit game, restart game)
 * start game
 * quit game
 * restart game
-* To make game progress by changing levels
+* to give first prompt
+* to know update state of the game we are in(as private variable?)
+* To progress the game by feeding input and receiving output from the wanted levels
 
 Collaborators:
 * GameMaker

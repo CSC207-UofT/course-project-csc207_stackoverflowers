@@ -6,8 +6,10 @@ Subclasses:
 
 Responsibilities:
 * startGame
-* rdmProjListSize
-* rdmInternAmount
+* Has methods related to starting the game:
+  * generateProjects
+  * generateInterns
+  * firstPrompt
 
 Collaborators:
 * GamePrompts

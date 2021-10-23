@@ -1,7 +1,3 @@
-#CRC card template
-This is a template for our crc cards.
-To make all of them match, pls duplicate/copy and paste this code and add to it!
-
 Class name: monthMaker
 
 Parent class:
@@ -9,7 +5,10 @@ Parent class:
 Subclasses:
 
 Responsibilities:
-* makeMonths
-Collaborators:
+* To construct the start of month prompts, and construct the Project info and InternInfo if asked for:
+  * StartOfMonthPrompt()
+  * checkProjectInfo()
+  * checkInternInfo()
+  Collaborators:
 * HRSystem
 * GamePrompts

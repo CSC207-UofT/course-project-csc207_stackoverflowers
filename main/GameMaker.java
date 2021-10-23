@@ -15,6 +15,7 @@ public class GameMaker {
     public GameMaker() {
         this.sys = new HRSystem();
         this.prompts = new GamePrompts();
+        //TODO: also stores the three levels of the game
 
         Intern Farzana = helperMakeInternOneSkill("Farzana Rahman", 20, "Teamwork", 98 );
         Intern Maggie = helperMakeInternOneSkill("Maggie Huang", 20, "Leadership", 82);

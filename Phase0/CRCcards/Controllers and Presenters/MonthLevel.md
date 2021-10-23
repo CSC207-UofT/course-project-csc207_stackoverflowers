@@ -7,11 +7,14 @@ Subclasses:
 Responsibilities:
 * To start a month
 * To show that a month ended
-* To ask MonthMaker to make a month and give prompts
-* To ask MonthMaker to present the prompts
-* getStartOfMonthPrompt()
-* checkProjectInfo()
-* checkInternInfo()
+* To know the status of the current month (start, during, end)
+* To know the commands accepted in this month.
+* To ask MonthMaker to make a month and know which command leads to which method in MonthMaker.
+  * getStartOfMonthPrompt()
+  * checkProjectInfo()
+  * checkInternInfo()
+* To ask MonthPresenter to format the prompts into strings, then return that to GameManager.
+
 
 Collaborators:
 * MonthMaker

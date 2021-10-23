@@ -2,7 +2,7 @@ package Report;
 
 public class MonthReportMaker extends ReportMaker {
     //TODO: instantiate
-    //TODO: implement classes in ReportMaker
+    //TODO: implement methods in ReportMaker
     //makeReportHeader()
     //makeReportIntro()
     //makeReportBody()

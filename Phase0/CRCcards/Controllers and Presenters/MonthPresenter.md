@@ -5,7 +5,10 @@ Parent class: Presenter
 Subclasses: 
 
 Responsibilities:
-* To take in the needed infos from MonthLevel and return a string which is the needed prompt
+* To take in the needed infos from MonthLevel and return a string which is the needed prompt.
+  * StartOfMonthPrompt()
+  * getProjectInfo()
+  * getInternInfo()
 
 Collaborators:
 * MonthLevel
