@@ -11,6 +11,7 @@ Responsibilities:
   * generateProjects
   * generateInterns
   * firstPrompt
+  * generating the responses of intern 
 
 Collaborators:
 * GamePrompts
