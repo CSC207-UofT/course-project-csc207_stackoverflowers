@@ -14,8 +14,6 @@ Responsibilities:
   * checkProjectInfo()
   * checkInternInfo()
 * To ask MonthPresenter to format the prompts into strings, then return that to GameManager.
-
-
 Collaborators:
 * MonthMaker
 * MonthPresenter

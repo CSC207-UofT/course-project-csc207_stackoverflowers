@@ -5,11 +5,16 @@ Parent class:
 Subclasses:
 
 Responsibilities:
-* greetingLine
-* reportIntro
-* reportOutro
-* confirmationLine
-* Start of each month line
+* stores all the prompts used in the game.
+* ASK_FOR_NAME
+* FIRST_PROMPT_BEFORE_NAME
+* FIRST_PROMPT_AFTER_NAME
+* START_OF_EACH_MONTH
+* START_OF_INTERVIEW_PHASE
+* START_OF_EACH_INTERVIEW
+* REPORT_HEADER
+* REPORT_INTRO
+* REPORT_OUTRO
 
 
 Collaborators:

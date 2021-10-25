@@ -6,7 +6,9 @@ Subclasses:
 
 Responsibilities:
 * getProjectName
-* getProjectType
-* getProjectStatus
+* getDescription
+* getSkillsNeeded
+* getTimeRequired = 2
+* getTeamSize
 
 Collaborators:
