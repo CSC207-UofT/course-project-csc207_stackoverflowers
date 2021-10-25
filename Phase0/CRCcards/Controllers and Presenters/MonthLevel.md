@@ -13,7 +13,12 @@ Responsibilities:
   * getStartOfMonthPrompt()
   * checkProjectInfo()
   * checkInternInfo()
+* To ask MonthMaker to perform the certain commands the player has asked for:
+  * assignInternTo()
+  * removeInternFrom()
+  * confirmFinalDecision()
 * To ask MonthPresenter to format the prompts into strings, then return that to GameManager.
+
 Collaborators:
 * MonthMaker
 * MonthPresenter

@@ -8,10 +8,12 @@ Responsibilities:
 * sets up the game
 * startGame
 * Has methods related to starting the game:
-  * generateProjects
-  * generateInterns
-  * firstPrompt
-
+  * generateProjects()
+  * generateInterns()
+  * firstPrompt()
+* Maybe has methods related to saving and loaded the game:
+  * saveGame()
+  * loadGame()
 Collaborators:
 * GamePrompts
 * Intern

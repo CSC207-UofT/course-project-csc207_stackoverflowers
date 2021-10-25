@@ -7,8 +7,12 @@ Subclasses:
 Responsibilities:
 * To construct the start of month prompts, and construct the Project info and InternInfo if asked for:
   * StartOfMonthPrompt()
-  * checkProjectInfo()
-  * checkInternInfo()
-  Collaborators:
+  * getProjectInfo()
+  * getInternInfo()
+* To do all other commands that the player asks for related to month:
+  * assignInternToProject()
+  * removeInternFromProject()
+
+Collaborators:
 * HRSystem
 * GamePrompts

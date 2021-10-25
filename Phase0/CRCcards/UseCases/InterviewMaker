@@ -7,9 +7,7 @@ Subclasses:
 Responsibilities:
 * taking the intern required from HRSystem and returning the intern's first choices the player can choose
 * taking in player's choice and returning the intern's corresponding response (from the response tree), and also the new set of choices the player can choose again
-* Get player's choice of hiring or not, and update hired list
-* Update interviewees_list
-* get_interviewees_list
+* Get player's choice of hiring or not, and make HiredIntern to store in HRSystem.
 * storePlayerResponse
 Collaborators:
 * Intern

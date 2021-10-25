@@ -6,9 +6,9 @@ Subclasses:
 
 Responsibilities:
 * To take in the needed infos from MonthLevel and return a string which is the needed prompt.
-  * StartOfMonthPrompt()
-  * getProjectInfo()
-  * getInternInfo()
+  * startOfMonthPrompt()
+  * showProjectInfo()
+  * showInternInfo()
 
 Collaborators:
 * MonthLevel
