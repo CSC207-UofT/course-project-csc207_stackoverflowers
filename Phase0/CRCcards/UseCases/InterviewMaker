@@ -7,7 +7,7 @@ Subclasses:
 Responsibilities:
 * Update interviewees_list
 * get_interviewees_list
-* storeResponse
+* storePlayerResponse
 Collaborators:
 * Intern
 * GamePrompts

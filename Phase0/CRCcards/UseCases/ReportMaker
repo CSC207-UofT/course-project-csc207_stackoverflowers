@@ -1,11 +1,11 @@
-Class name: reportMaker
+Class name: ReportMaker
 
 Parent class:
 
 Subclasses: MonthReportMaker, ProjectReportMaker
 
 Responsibilities:
-* an abstract class that shows all common methods used to make reports:
+* an interface class that shows all common methods used to make reports:
   * makeReportHeader()
   * makeReportIntro()
   * makeReportBody()
