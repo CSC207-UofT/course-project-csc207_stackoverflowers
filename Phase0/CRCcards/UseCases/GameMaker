@@ -5,6 +5,7 @@ Parent class:
 Subclasses:
 
 Responsibilities:
+* sets up the game
 * startGame
 * Has methods related to starting the game:
   * generateProjects

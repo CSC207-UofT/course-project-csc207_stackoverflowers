@@ -5,6 +5,9 @@ Parent class:
 Subclasses:
 
 Responsibilities:
+* taking the intern required from HRSystem
+* record player choice
+* return response from intern
 * Update interviewees_list
 * get_interviewees_list
 * storePlayerResponse
