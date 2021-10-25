@@ -10,5 +10,5 @@ Responsibilities:
 * getSkills
 * getGender
 * getResponse
-
+- the intern will have a private instance called history that will store the history of its skills (before project and after project).
 Collaborators:

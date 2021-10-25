@@ -11,6 +11,7 @@ Responsibilities:
   * generateProjects()
   * generateInterns()
   * firstPrompt()
+  * generateInternResponse : generating the responses of intern (what the player can respond is based on the intern's response)
 * Maybe has methods related to saving and loaded the game:
   * saveGame()
   * loadGame()
