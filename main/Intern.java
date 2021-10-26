@@ -30,6 +30,7 @@ abstract public class Intern{
      * Return the name of this Intern
      */
     public String getInternName() {
+
         return this.internName;
     }
 
@@ -37,6 +38,7 @@ abstract public class Intern{
      * Return the age of this Intern
      */
     public int getInternAge() {
+
         return this.internAge;
     }
 
@@ -44,6 +46,7 @@ abstract public class Intern{
      * Return the skills of this Intern
      */
     public HashMap<String, Integer> getInternSkills() {
+
         return this.internSkills;
     }
 
@@ -61,20 +64,6 @@ abstract public class Intern{
 
         return info + skills + "\n";
 
-
-
-        /*
-        StringBuilder information = new StringBuilder("Name: " + this.internName + "\n");
-        information.append("Age: ").append(this.internAge).append("\n");
-        information.append("Skills:\n");
-
-
-        for (String skill : this.internSkills.keySet()) {
-            int percentage = this.internSkills.get(skill);
-            information.append("-").append(skill).append(": ").append(percentage).append("\n");
-        }
-
-        return information.toString();
-         */
     }
+
 }

@@ -22,18 +22,21 @@ public class HRSystem {
     //write method getInternList
 
     public ArrayList<Intern> getInternList() {
+
         return internList;
     }
 
     //write the constructor (should take in nothing)
 
     public HRSystem() {
+
         this.internList = new ArrayList<>();
     }
 
     //write method updateInternList
 
     public void updateInternList(ArrayList<Intern> interns) {
+
         this.internList.addAll(interns);
     }
 
@@ -48,10 +51,11 @@ public class HRSystem {
         return res.toString();
     }
     public void update_player_name(String name){
+
         this.player_name = name;
     }
 
-    public void fireIntern(){
-
+    public void fireIntern(HiredIntern intern){
+        this.internList.remove(intern);
     }
 }

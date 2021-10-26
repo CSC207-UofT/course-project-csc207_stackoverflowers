@@ -1,13 +1,9 @@
 import java.util.HashMap;
 
-public abstract class InterviewIntern extends Intern{
-    /*
-    this class will have everything intern has
-    - regular interns are part of the interviewee list
-    - hired intern will be able to take part in projects, have update_skill method and can get fired
+public class InterviewIntern extends Intern{
+    // this is an intern class for new Interns to the company, partaking in Interviews
+    // these are the type of Intern in IntervieweeList
 
-
-     */
     private String interviewInternName;
     private int interviewInternAge;
     private HashMap<String, Integer> interviewInternSkills;
