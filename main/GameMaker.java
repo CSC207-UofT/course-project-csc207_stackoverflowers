@@ -8,6 +8,12 @@ public class GameMaker {
     private HRSystem sys;
     private GamePrompts prompts;
 
+    /*
+    - random intern generator - interns in HR
+    - method for tree is also implement
+    - in charge of anything starting the game (before the user can do anything)
+     */
+
 
     /**
      * Construct a game maker.
@@ -17,6 +23,7 @@ public class GameMaker {
         this.prompts = new GamePrompts();
         //TODO: also stores the three levels of the game
 
+        /*
         Intern Farzana = helperMakeInternOneSkill("Farzana Rahman", 20, "Teamwork", 98 );
         Intern Maggie = helperMakeInternOneSkill("Maggie Huang", 20, "Leadership", 82);
         Intern Mary = helperMakeInternOneSkill("Mary Yijia Li", 19, "Efficiency", 99 );
@@ -25,6 +32,8 @@ public class GameMaker {
         newInterns.add(Maggie);
         newInterns.add(Mary);
         this.addInternToList(newInterns);
+
+         */
     }
     /**
      * Add the list of interns to HRSystem.
@@ -67,4 +76,11 @@ public class GameMaker {
     }
     //TODO: method generateInterns() (Generates and stored the interns in HRSystem)
     //TODO: method generateProjects() (Generates ans stores the projects in HRSystem)
+
+    /**
+     * This method will assign one of the reponses from our response trees to an intern
+     */
+    public void assignResponseToIntern(){
+
+    }
 }

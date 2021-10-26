@@ -2,6 +2,9 @@ public class GameManager {
     /* this class is the controller class so it starts the game , waits for input etc
     for reference check JShell and JShellState in week 2 resources on quercus
      */
+    /*
+    try - catch?
+     */
     private GameMaker currentGameMaker;
     public GameManager(){
         this.currentGameMaker = new GameMaker();
