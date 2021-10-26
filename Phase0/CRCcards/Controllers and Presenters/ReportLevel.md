@@ -1,6 +1,6 @@
 Class name: ReportLevel
 
-Parent class: Level
+Parent class: 
 
 Subclasses:
 
