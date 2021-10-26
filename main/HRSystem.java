@@ -7,6 +7,8 @@ intern_list is a private instance
 method makeInternToPrompt which returns the interns in the intern_list as a formatted string (Can use method in intern
 which formats each single intern into a string)
 
+    - method fireIntern
+
  */
 // the attribute: internList, a list of interns.
 public class HRSystem {
@@ -49,4 +51,7 @@ public class HRSystem {
         this.player_name = name;
     }
 
+    public void fireIntern(){
+
+    }
 }
