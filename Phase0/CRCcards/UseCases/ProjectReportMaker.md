@@ -11,6 +11,5 @@ Responsibilities:
     * makeReportIntro()
     * makeReportBody()
     * endReport()
-
 Collaborators:
 * 
