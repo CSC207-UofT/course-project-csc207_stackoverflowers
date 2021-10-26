@@ -2,7 +2,7 @@ Class name: ReportMaker
 
 Parent class:
 
-Subclasses: MonthReportMaker, ProjectReportMaker, FinalReportMaker 
+Subclasses: 
 
 Responsibilities:
 * an interface class that shows all common methods used to make reports:

@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Intern {
+abstract public class Intern{
     /* the constructor method get skills (private) -> returns the skills of the interns from a text file -> (create text file)
     we need to store the new interns to input into the HRSystem -> method generateInternFile
     - method getInternInfo
@@ -29,17 +29,26 @@ public class Intern {
     /**
      * Return the name of this Intern
      */
-    public String getInternName() { return this.internName; }
+    public String getInternName() {
+
+        return this.internName;
+    }
 
     /**
      * Return the age of this Intern
      */
-    public int getInternAge() { return this.internAge; }
+    public int getInternAge() {
+
+        return this.internAge;
+    }
 
     /**
      * Return the skills of this Intern
      */
-    public HashMap<String, Integer> getInternSkills() { return this.internSkills; }
+    public HashMap<String, Integer> getInternSkills() {
+
+        return this.internSkills;
+    }
 
     /**
      * Return a String of the Intern's given information.
@@ -55,20 +64,6 @@ public class Intern {
 
         return info + skills + "\n";
 
-
-
-        /*
-        StringBuilder information = new StringBuilder("Name: " + this.internName + "\n");
-        information.append("Age: ").append(this.internAge).append("\n");
-        information.append("Skills:\n");
-
-
-        for (String skill : this.internSkills.keySet()) {
-            int percentage = this.internSkills.get(skill);
-            information.append("-").append(skill).append(": ").append(percentage).append("\n");
-        }
-
-        return information.toString();
-         */
     }
+
 }
