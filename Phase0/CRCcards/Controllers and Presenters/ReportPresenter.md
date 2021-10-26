@@ -1,6 +1,6 @@
 Class name: ReportPresenter
 
-Parent class: Presenter
+Parent class: ControllersPresenters.Presenter
 
 Subclasses: InterviewPresenter, MonthPresenter, ReportPresenter
 
@@ -9,4 +9,4 @@ Responsibilities:
 
 Collaborators:
 * ReportLevel
-* GamePrompts
+* Entities.GamePrompts

@@ -1,4 +1,4 @@
-Class name: GameManager
+Class name: ControllersPresenters.GameManager
 
 Parent class:
 
@@ -15,7 +15,7 @@ Responsibilities:
 * To progress the game by feeding input and receiving output from the wanted levels
 
 Collaborators:
-* GameMaker
+* UseCases.GameMaker
 * InterviewLevel
 * MonthLevel
 * ReportLevel

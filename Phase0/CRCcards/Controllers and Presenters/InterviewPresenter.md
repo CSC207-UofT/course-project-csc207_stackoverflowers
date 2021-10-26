@@ -1,6 +1,6 @@
 Class name: InterviewPresenter
 
-Parent class: Presenter
+Parent class: ControllersPresenters.Presenter
 
 Subclasses:
 
@@ -9,4 +9,4 @@ Responsibilities:
 
 Collaborators:
 * InterviewLevel 
-* GamePrompts
+* Entities.GamePrompts

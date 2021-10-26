@@ -1,4 +1,4 @@
-package Report;
+package UseCases;
 
 public class FinalReportMaker extends MonthReportMaker {
 }

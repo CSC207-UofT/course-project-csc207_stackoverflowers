@@ -1,3 +1,5 @@
+package Entities;
+
 abstract class Employee {
     /*
     this class will have everything intern has

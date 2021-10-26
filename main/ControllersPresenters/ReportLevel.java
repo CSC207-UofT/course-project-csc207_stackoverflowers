@@ -1,12 +1,14 @@
-package Report;
+package ControllersPresenters;
+
+import UseCases.ReportMaker;
 
 //This class is a controller class that is in charge of the order
-class ReportLevel {
+public class ReportLevel {
     //has a ReportMaker made and stored inside private variable
-    priavte reportMaker() reportMaker;
+    private ReportMaker reportMaker;
 
     //TODO: instantiate and make new ReportMaker (the one needed for this current phase)
-    ReportLevel(){
+    public ReportLevel(){
         reportMaker = new ReportMaker();
     }
 

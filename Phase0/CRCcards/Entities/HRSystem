@@ -1,4 +1,4 @@
-Class name: HRSystem
+Class name: Entities.HRSystem
 
 Parent class:
 
@@ -14,6 +14,6 @@ Responsibilities:
 * addCrew
 
 Collaborators:
-* Intern
-* Project
+* Entities.Intern
+* Entities.Project
 

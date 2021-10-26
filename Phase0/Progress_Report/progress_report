@@ -15,13 +15,13 @@ Farzana, Camille, Maggie and Enam started on the scenario walkthrough and the sk
 
 - Mary and Farzana then met and wrote method signatures, TODOs and descriptions of classes for the whole team to implement for the skeleton program. 
 
-- Mary, Maggie and Farzana then implemented classes SPhase, GameMaker, GameManager
+- Mary, Maggie and Farzana then implemented classes SPhase, UseCases.GameMaker, ControllersPresenters.GameManager
 
 - Maggie also wrote up the unit test for the skeleton program and edited some of the specification. 
 
-- Camille implemented class Intern and GamePrompts 
+- Camille implemented class Entities.Intern and Entities.GamePrompts
 
-- Enam implemented class HRSystem 
+- Enam implemented class Entities.HRSystem
 
 - Jacob added more required information onto the specification as well as finalised the specification by doing the final edit
 

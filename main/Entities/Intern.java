@@ -1,10 +1,12 @@
+package Entities;
+
 import java.util.HashMap;
 import java.util.Map;
 
 
 abstract public class Intern{
     /* the constructor method get skills (private) -> returns the skills of the interns from a text file -> (create text file)
-    we need to store the new interns to input into the HRSystem -> method generateInternFile
+    we need to store the new interns to input into the Entities.HRSystem -> method generateInternFile
     - method getInternInfo
 
     */
@@ -13,11 +15,11 @@ abstract public class Intern{
     private HashMap<String, Integer> internSkills;
 
     /**
-     * Construct an Intern, giving them the given internName,
+     * Construct an Entities.Intern, giving them the given internName,
      * internAge, and internMoney.
      *
-     * @param internName The name of this Intern
-     * @param internAge The age of this Intern
+     * @param internName The name of this Entities.Intern
+     * @param internAge The age of this Entities.Intern
      * @param internSkills A map of skills where the key is the name of the skill and the value is the percentage.
      */
     public Intern(String internName, int internAge, HashMap<String, Integer> internSkills) {
@@ -27,7 +29,7 @@ abstract public class Intern{
     }
 
     /**
-     * Return the name of this Intern
+     * Return the name of this Entities.Intern
      */
     public String getInternName() {
 
@@ -35,7 +37,7 @@ abstract public class Intern{
     }
 
     /**
-     * Return the age of this Intern
+     * Return the age of this Entities.Intern
      */
     public int getInternAge() {
 
@@ -43,7 +45,7 @@ abstract public class Intern{
     }
 
     /**
-     * Return the skills of this Intern
+     * Return the skills of this Entities.Intern
      */
     public HashMap<String, Integer> getInternSkills() {
 
@@ -51,7 +53,7 @@ abstract public class Intern{
     }
 
     /**
-     * Return a String of the Intern's given information.
+     * Return a String of the Entities.Intern's given information.
      */
     public String internToString() {
         String info = "Name: " + this.internName + "; age: " + this.internAge + "; skills: ";

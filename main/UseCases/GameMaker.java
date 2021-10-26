@@ -1,3 +1,9 @@
+package UseCases;
+
+import Entities.GamePrompts;
+import Entities.HRSystem;
+import Entities.Intern;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
@@ -26,10 +32,10 @@ public class GameMaker {
         //TODO: also stores the three levels of the game
 
         /*
-        Intern Farzana = helperMakeInternOneSkill("Farzana Rahman", 20, "Teamwork", 98 );
-        Intern Maggie = helperMakeInternOneSkill("Maggie Huang", 20, "Leadership", 82);
-        Intern Mary = helperMakeInternOneSkill("Mary Yijia Li", 19, "Efficiency", 99 );
-        ArrayList<Intern> newInterns = new ArrayList<>();
+        Entities.Intern Farzana = helperMakeInternOneSkill("Farzana Rahman", 20, "Teamwork", 98 );
+        Entities.Intern Maggie = helperMakeInternOneSkill("Maggie Huang", 20, "Leadership", 82);
+        Entities.Intern Mary = helperMakeInternOneSkill("Mary Yijia Li", 19, "Efficiency", 99 );
+        ArrayList<Entities.Intern> newInterns = new ArrayList<>();
         newInterns.add(Farzana);
         newInterns.add(Maggie);
         newInterns.add(Mary);
@@ -38,9 +44,9 @@ public class GameMaker {
          */
     }
     /**
-     * Add the list of interns to HRSystem.
+     * Add the list of interns to Entities.HRSystem.
      *
-     * @param newInterns A list of interns constructed in the GameMaker constructor
+     * @param newInterns A list of interns constructed in the UseCases.GameMaker constructor
      */
     public void addInternToList(ArrayList<Intern> newInterns){
         this.sys.updateInternList(newInterns);
@@ -77,7 +83,7 @@ public class GameMaker {
         return new Intern(name, age, skills);
     }
 
-    //TODO: method generateInterns() (Generates and stored the interns in HRSystem)
+    //TODO: method generateInterns() (Generates and stored the interns in Entities.HRSystem)
 
     /**
      * Generates an ArrayList of new random interns/interviewees.
@@ -85,8 +91,8 @@ public class GameMaker {
      * @return an ArrayList of randomly generated Interns.
      */
     public ArrayList<Intern> generateInterns(int numInterns) throws FileNotFoundException {
-        ArrayList<String> nameList = generateInternsHelper("names.txt");
-        ArrayList<String> skillList = generateInternsHelper("skills.txt");
+        ArrayList<String> nameList = generateInternsHelper("UseCases/names.txt");
+        ArrayList<String> skillList = generateInternsHelper("UseCases/skills.txt");
         Random random = new Random();
         ArrayList<Intern> internList = new ArrayList<>();
         for (int i = 1; i <= numInterns; i++) {
@@ -104,7 +110,7 @@ public class GameMaker {
      * Helper function for generateInterns.
      * Converts a text file into an ArrayList, line by line.
      * @param fileName the name of the file that is going to be converted
-     * @return an ArrayList of Intern names or Intern skills
+     * @return an ArrayList of Entities.Intern names or Entities.Intern skills
      */
     private ArrayList<String> generateInternsHelper(String fileName) throws FileNotFoundException {
         Scanner s = new Scanner(new File(fileName));
@@ -134,7 +140,7 @@ public class GameMaker {
         return skillMap;
     }
 
-    // TODO: method generateProjects() (Generates and stores the projects in HRSystem) (change return type)
+    // TODO: method generateProjects() (Generates and stores the projects in Entities.HRSystem) (change return type)
     public void generateProjects() {
 
     }

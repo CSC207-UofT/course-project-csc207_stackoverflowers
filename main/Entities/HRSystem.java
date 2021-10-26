@@ -1,7 +1,9 @@
+package Entities;
+
 import java.util.*;
 
 /* add the new interns to a list of new employees that the player can access with their skills
-HRSystem would extend Intern class?
+Entities.HRSystem would extend Entities.Intern class?
 method updateInternList which takes in an ArrayList and puts it as the intern_list
 intern_list is a private instance
 method makeInternToPrompt which returns the interns in the intern_list as a formatted string (Can use method in intern

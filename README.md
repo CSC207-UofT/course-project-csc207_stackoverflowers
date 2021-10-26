@@ -1,9 +1,9 @@
 HR MANAGER SIMULATOR GAME 
 - Structure/layer:
-    - Entities: GamePromts, HRSystem, Intern, Project
-    - Use cases: GameMaker, InterviewMaker, MonthMaker, ReportMaker
-    - Controllers and Presenters: GameManager, InterviewLevel, InterviewPresenter, Level, MonthLevel, MonthPresenter,
-      Presenter, ReportLevel, ReportPresenter
+    - Entities: GamePromts, Entities.HRSystem, Entities.Intern, Entities.Project
+    - Use cases: UseCases.GameMaker, UseCases.InterviewMaker, MonthMaker, ReportMaker
+    - Controllers and Presenters: ControllersPresenters.GameManager, InterviewLevel, InterviewPresenter, Level, MonthLevel, MonthPresenter,
+      ControllersPresenters.Presenter, ReportLevel, ReportPresenter
     - UI: Iphase, Mphase, RPhase, SPhase
 
 - Running the project will start a shell that prompts the user to enter their name.
@@ -14,7 +14,7 @@ HR MANAGER SIMULATOR GAME
 - While running the game, we have some game prompts:
     - quit - quit the game
     - restart - restarts the whole game with new interns and new projects
-    - all the game prompts will be stored in the GamePrompts class
+    - all the game prompts will be stored in the Entities.GamePrompts class
 
 
 - The game will be comprised of 3 levels.
@@ -24,7 +24,7 @@ HR MANAGER SIMULATOR GAME
       pick their own responses which will determine how the interview level progresses.
     - the player will be able to choose if they will hire the intern after each interview
     - the hired interns will be put in the company HR system
-    - Therefore, the ‘hired’ list in the HRSystem must be updated to reflect the player’s choices.
+    - Therefore, the ‘hired’ list in the Entities.HRSystem must be updated to reflect the player’s choices.
 
 - In the project level, the player will be able to assign interns to projects
     - based on the description and requirements of the project, the player will be able to check the intern skills and

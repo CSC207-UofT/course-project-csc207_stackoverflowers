@@ -1,4 +1,4 @@
-Class name: Presenter
+Class name: ControllersPresenters.Presenter
 
 Parent class:
 

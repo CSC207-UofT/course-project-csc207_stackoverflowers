@@ -1,4 +1,4 @@
-Class name: GameMaker
+Class name: UseCases.GameMaker
 
 Parent class:
 
@@ -16,7 +16,7 @@ Responsibilities:
   * saveGame()
   * loadGame()
 Collaborators:
-* GamePrompts
-* Intern
-* Project
-* HRSystem
+* Entities.GamePrompts
+* Entities.Intern
+* Entities.Project
+* Entities.HRSystem

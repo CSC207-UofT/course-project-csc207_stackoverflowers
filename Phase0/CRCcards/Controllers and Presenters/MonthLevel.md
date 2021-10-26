@@ -17,7 +17,7 @@ Responsibilities:
   * assignInternTo()
   * removeInternFrom()
   * confirmFinalDecision()
-* To ask MonthPresenter to format the prompts into strings, then return that to GameManager.
+* To ask MonthPresenter to format the prompts into strings, then return that to ControllersPresenters.GameManager.
 Collaborators:
 * MonthMaker
 * MonthPresenter

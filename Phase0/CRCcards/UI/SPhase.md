@@ -13,4 +13,4 @@ Responsibilities:
 
 
 Collaborators:
-* GameManager
+* ControllersPresenters.GameManager

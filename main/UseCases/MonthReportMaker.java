@@ -1,6 +1,6 @@
-package Report;
+package UseCases;
 
-public class MonthReportMaker extends ReportMaker {
+public class MonthReportMaker implements ReportMaker {
     //TODO: instantiate
     //TODO: implement methods in ReportMaker
     //makeReportHeader()

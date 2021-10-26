@@ -1,6 +1,6 @@
-package Report;
+package ControllersPresenters;
 
-import java.util.List;
+import UseCases.ReportMaker;
 
 //an abstract class
 public class ReportPresenter implements ReportMaker {
@@ -14,7 +14,7 @@ public class ReportPresenter implements ReportMaker {
         String body = makeReportBody();
         String end = endReport();
         System.out.println(header + "\n" +
-                "Project Intro:" + intro + "\n" +
+                "Entities.Project Intro:" + intro + "\n" +
                 body + "\n" +
                 end);
     }

@@ -1,6 +1,6 @@
 Class name: MonthPresenter
 
-Parent class: Presenter
+Parent class: ControllersPresenters.Presenter
 
 Subclasses: 
 
@@ -12,4 +12,4 @@ Responsibilities:
 
 Collaborators:
 * MonthLevel
-* GamePrompts
+* Entities.GamePrompts

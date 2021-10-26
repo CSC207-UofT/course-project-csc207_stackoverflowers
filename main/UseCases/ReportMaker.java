@@ -1,6 +1,6 @@
-package Report;
+package UseCases;
 
-public class ReportMaker {
+public interface ReportMaker {
     // An abstract class, that have all the essentials needed to make a report.
     //TODO: instantiate
     //TODO: * an interface class that shows all common methods used to make reports:
@@ -8,15 +8,15 @@ public class ReportMaker {
     //TODO:  * makeReportIntro()
     //TODO:  * makeReportBody()
     //TODO:  * endReport()
-    private String makeReportHeader (String timeName){
+    String makeReportHeader (String timeName){
         return "Here is your report for the end of " + timeName + ": ";
     }
 
-    private String makeReportIntro (){
+    String makeReportIntro (){
         return "";
     }
 
-    private String makeReportBody (){
+    String makeReportBody (){
         return "";
     }
 

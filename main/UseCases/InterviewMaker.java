@@ -1,3 +1,5 @@
+package UseCases;
+
 public class InterviewMaker {
     //
     /*
