@@ -19,32 +19,28 @@ public class HRSystem {
     //initialize the private player_name
 
     private ArrayList<Intern> internList;
-    private String player_name;
-
-    //write method getInternList
-
-    public ArrayList<Intern> getInternList() {
-
-        return internList;
-    }
-
-    //write the constructor (should take in nothing)
+    private ArrayList<Project> projectList;
+    private String playerName;
 
     public HRSystem() {
-
         this.internList = new ArrayList<>();
     }
 
-    //write method updateInternList
+    public ArrayList<Intern> getInternList() {
+        return internList;
+    }
+
+
 
     public void updateInternList(ArrayList<Intern> interns) {
 
         this.internList.addAll(interns);
     }
 
-    //write method makeInternsToPrompt
+    public void updateProjectList(){
+        //TODO: finish this method(parameters)
+    }
 
-    // for each intern in internList, convert intern to a string and print
     public String makeInternsToPrompt() {
         StringBuilder res = new StringBuilder();
         for (Intern i : this.internList) {
@@ -52,9 +48,9 @@ public class HRSystem {
         }
         return res.toString();
     }
-    public void update_player_name(String name){
 
-        this.player_name = name;
+    public void updatePlayerName(String name){
+        this.playerName = name;
     }
 
     public void fireIntern(HiredIntern intern){

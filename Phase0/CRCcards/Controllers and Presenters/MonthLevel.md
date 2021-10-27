@@ -5,8 +5,6 @@ Parent class: Level
 Subclasses:
 
 Responsibilities:
-* To start a month
-* To show that a month ended
 * To know the status of the current month (start, during, end)
 * To know the commands accepted in this month.
 * To ask MonthMaker to make a month and know which command leads to which method in MonthMaker.
