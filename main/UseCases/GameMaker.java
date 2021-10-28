@@ -75,7 +75,7 @@ public class GameMaker {
     }
 
     /**
-     * A helper method for creating an intern.
+     * A helper method for creating an intern. (ONLY FOR DEMO)
      */
     private Intern helperMakeInternOneSkill(String name, int age, String skillName, int skillLevel){
         HashMap<String, Integer> skills = new HashMap<>();
@@ -84,7 +84,6 @@ public class GameMaker {
     }
 
     //TODO: method generateInterns() (Generates and stored the interns in Entities.HRSystem)
-
     /**
      * Generates an ArrayList of new random interns/interviewees.
      * @param numInterns the number of interns that will be generated.
@@ -145,10 +144,24 @@ public class GameMaker {
 
     }
 
+    // TODO: method assignResponseToIntern() (Generates and assigns response trees for each intern)
     /**
-     * This method will assign one of the reponses from our response trees to an intern
+     * This method will assign one of the responses from our response trees to an intern
      */
     public void assignResponseToIntern(){
+
+    }
+
+    // TODO: method saveGame() ()
+    public void saveGame() {
+
+    }
+    /**
+     * a
+     */
+
+    // TODO: method loadGame() ()
+    public void loadGame() {
 
     }
 }
