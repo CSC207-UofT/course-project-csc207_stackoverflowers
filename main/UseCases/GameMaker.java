@@ -160,7 +160,6 @@ public class GameMaker {
 
     }
 
-
     // TODO: method assignResponseToIntern() (Assigns response trees for each intern)
     /**
      * This method will assign one of the responses from our response trees to an intern
