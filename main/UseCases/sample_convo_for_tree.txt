@@ -1,0 +1,17 @@
+Hello! My name is [intern_name] 
+	A: let's get started with the interview, why should we hire you?
+	I'm a fast worker and a great cook! ;) 
+		A: you're hired!
+		B: next candidate!
+	B: Nice to meet you, tell me a little about yourself. 
+	I'm [intern_age] years old. I graduated from UofT 2 years ago and then travelled the 
+	world to find inner peace. 
+		A: ...did you find it?
+		No. 
+			A: next candidate!
+			B: That's unfortunate, I hope you can find inner peace in this company 
+			instead. You're hired!
+		B: What skills did you gain from your travels? 
+		I learned creativity, flexibility and confidence. 
+			A: Not good enough, next candidate!
+			B: you're hired! 
