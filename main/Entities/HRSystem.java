@@ -9,7 +9,11 @@ intern_list is a private instance
 method makeInternToPrompt which returns the interns in the intern_list as a formatted string (Can use method in intern
 which formats each single intern into a string)
 
-    - method fireIntern
+//TODO: Finish method fireIntern
+
+//TODO: Implement method updateProjectList
+
+//TODO: Specify and implement update and get InternList for each type of intern (HiredIntern and InterviewIntern)
 
  */
 // the attribute: internList, a list of interns.
