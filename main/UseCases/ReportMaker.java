@@ -8,7 +8,7 @@ public interface ReportMaker {
     //TODO:  * makeReportIntro()
     //TODO:  * makeReportBody()
     //TODO:  * endReport()
-    String makeReportHeader (String timeName);
+    String makeReportHeader (String month);
         //return "Here is your report for the end of " + timeName + ": ";
 
 

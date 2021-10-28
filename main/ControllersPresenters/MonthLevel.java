@@ -5,7 +5,7 @@ import UseCases.MonthMaker;
 
 import java.util.Objects;
 
-public class MonthLevel {
+public class MonthLevel extends Level {
     /* This class is the controller that manages all things that happen within a month.
     It is responsible for getting the first prompt of the month, and also displaying the choices available to the reader.
     * @param currentMonthMaker the current MonthMaker that corresponds to this MonthLevel that will be asked to do the specific stuff
@@ -13,14 +13,12 @@ public class MonthLevel {
      */
     private final MonthMaker currentMonthMaker;
     private final MonthPresenter currentMonthPresenter;
-    private String currentPlayerInput;
     private int currentMonth = 1;
 
     //constructor of this class
-    public MonthLevel(String playerInput){
+    public MonthLevel(){
         currentMonthMaker = new MonthMaker();
         currentMonthPresenter = new MonthPresenter();
-        currentPlayerInput = playerInput;
     }
 
     public String getStartOfMonthPrompt(){
