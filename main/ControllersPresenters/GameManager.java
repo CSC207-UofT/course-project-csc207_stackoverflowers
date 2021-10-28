@@ -19,5 +19,7 @@ public class GameManager {
     public String firstPrompt(String playerInput) {
         return this.currentGameMaker.firstPrompt(playerInput);
     }
-    // TODO: method that takes in the player's input and returns the output in the right phase
+    // TODO: method getOutput that takes in the player's input and returns the output from the right Level.
+
+    // TODO: method check and change current Level that we are in
 }

@@ -14,7 +14,9 @@ public class MonthLevel {
     private final MonthMaker currentMonthMaker;
     private final MonthPresenter currentMonthPresenter;
     private String currentPlayerInput;
+    private int currentMonth = 1;
 
+    //constructor of this class
     public MonthLevel(String playerInput){
         currentMonthMaker = new MonthMaker();
         currentMonthPresenter = new MonthPresenter();
@@ -25,7 +27,7 @@ public class MonthLevel {
         return currentMonthMaker.startOfMonthPrompt();
     }
 
-    public String getOutput(String input){
+    public String getOutputString(String input){
         // takes in the player's input and then uses the needed method to be used for the output, then asks MonthPresenter to use those stuff for a formatted output
         //TODO: finish implementing this body
         currentPlayerInput = input;
@@ -41,13 +43,15 @@ public class MonthLevel {
     }
 
     private String checkInternInfo() {
-        return "";
+        return currentMonthMaker.getInternInfo();
     }
 
     private String formatOutput(String sth) {
     //TODO: method formatOutput() takes in a input passes it to MonthMaker, then passes that result to MonthPresenter for formatted output
         return currentMonthPresenter.formatOutput(sth);
     }
+
+
 
 
 
