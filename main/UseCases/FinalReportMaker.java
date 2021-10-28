@@ -2,7 +2,7 @@ package UseCases;
 
 public class FinalReportMaker implements ReportMaker {
     @Override
-    public String makeReportHeader(String timeName) {
+    public String makeReportHeader(int month) {
         return null;
     }
 
@@ -13,6 +13,11 @@ public class FinalReportMaker implements ReportMaker {
 
     @Override
     public String makeReportBody() {
+        return null;
+    }
+
+    @Override
+    public String endReport() {
         return null;
     }
 }

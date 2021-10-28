@@ -28,9 +28,8 @@ public class MonthLevel extends Level {
     public String getOutputString(String input){
         // takes in the player's input and then uses the needed method to be used for the output, then asks MonthPresenter to use those stuff for a formatted output
         //TODO: finish implementing this body
-        currentPlayerInput = input;
         String wanted = "";
-        if (Objects.equals(currentPlayerInput, "check project info")){
+        if (Objects.equals(input, "check project info")){
             wanted = checkProjectInfo(); //the same should happen for checkInternInfo, assignInternToProject(), removeInternFromProject and other commands!! (If too many if statements, USE DESIGN PATTERN TO REFACTOR!!)
         }
         return formatOutput(wanted);
@@ -45,12 +44,13 @@ public class MonthLevel extends Level {
     }
 
     private String formatOutput(String sth) {
-    //TODO: method formatOutput() takes in a input passes it to MonthMaker, then passes that result to MonthPresenter for formatted output
+        //TODO: method formatOutput() takes in a input passes it to MonthMaker, then passes that result to MonthPresenter for formatted output
         return currentMonthPresenter.formatOutput(sth);
     }
 
-
-
+    public boolean monthEnded(){
+        return levelEnded();
+    }
 
 
 

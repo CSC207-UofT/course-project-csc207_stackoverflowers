@@ -23,10 +23,8 @@ public class GameManager {
         this.currentStatus = statusOfGame.Start;
         this.currentInterviewLevel = new InterviewLevel();
         this.currentMonthLevel = new MonthLevel();
-        this.currentReportLevel = new ReportLevel();
-
-        //TODO: instantiate and store the MonthLevel, InterviewLevel and ReportLevel.
-        //TODO: ask UseCases.GameMaker to generate the Interns and Entities.Project needed for the current game.
+        this.currentReportLevel = new ReportLevel(currentMonth);
+        //TODO: ask UseCases.GameMaker to generate the Interns and Projects needed for the current game.
 
     }
     public String firstPrompt(String playerInput) {
@@ -35,15 +33,28 @@ public class GameManager {
     public String getOutput(String playerInput){
         //TODO: finish implementing this method.
         // checks the currentStatus of the game, and ask corresponding GameMaker/Levels for the output.
-        //TODO: this megthod should also know which month we are in.
+        //TODO: this method should also know which month we are in.
         switch (currentStatus){
             case Start:
-                return firstPrompt(playerInput);}
+                return firstPrompt(playerInput);
+            case Month:
+                return currentMonthLevel.getOutputString(playerInput);}
         updateStatus();
+        return "NOT FINISHED IMPLEMENTING YET";
     }
 
     private void updateStatus() {
-        if (currentMonthLevel.monthEnded())
+        if (currentMonthLevel.monthEnded()){
+            switch (currentStatus){
+                case Month:
+                    currentMonth ++;
+                    currentStatus = statusOfGame.Report;
+                    break;
+                case FinalMonth:
+                    currentStatus = statusOfGame.FinalReport;
+                //TODO: finish implementing this method
+            }
+        }
     }
     // TODO: method that takes in the player's input and returns the output in the right phase
 }
