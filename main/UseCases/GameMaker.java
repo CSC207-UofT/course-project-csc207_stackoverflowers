@@ -142,8 +142,12 @@ public class GameMaker {
 
     // TODO: method generateProjects() (Generates and stores the projects in Entities.HRSystem) (change return type)
     public void generateProjects() {
-        // take the project prompts from GamePrompts and outputs a list
+        // take the project prompts from GamePrompts and output a list of projects for that specific game
+    }
 
+    // TODO: method generateFinalProject() (Generates and stores the final project in Entities.HRSystem)
+    public void generateFinalProject() {
+        // similar to generateProjects, use the final project prompts
     }
 
     // TODO: method generateInternResponses() (Generates a tree of the intern's possible responses)
