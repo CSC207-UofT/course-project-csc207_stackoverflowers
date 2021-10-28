@@ -81,7 +81,7 @@ public class GameMaker {
     private Intern helperMakeInternOneSkill(String name, int age, String skillName, int skillLevel){
         HashMap<String, Integer> skills = new HashMap<>();
         skills.put(skillName, skillLevel);
-        return new Intern(name, age, skills);
+        return new InterviewIntern(name, age, skills);
     }
 
     //TODO: method generateInterns() (Generates and stored the interns in Entities.HRSystem)
@@ -178,6 +178,5 @@ public class GameMaker {
      * Loads the previous saved state of the game (discuss later, still unsure)
      */
     public void loadGame() {
-
     }
 }
