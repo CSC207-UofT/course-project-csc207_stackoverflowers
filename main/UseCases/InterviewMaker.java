@@ -13,4 +13,7 @@ public class InterviewMaker {
     the
 
      */
+    // TODO: initiate instance variables InterviewIntern, HiredIntern, GamePrompts and HRSystem
+    // TODO:
+    // TODO: Implement method choicePrompt (display the prompt from GamePrompts before taking in the Player
 }
