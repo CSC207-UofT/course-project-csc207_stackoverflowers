@@ -3,12 +3,13 @@ package ControllersPresenters;
 import UseCases.GameMaker;
 
 public class GameManager {
-    /* this class is the controller class so it starts the game , waits for input etc
+    /*
+    this class is the controller class so it starts the game , waits for input etc
     for reference check JShell and JShellState in week 2 resources on quercus
      */
-    /*
-    try - catch?
-     */
+
+
+
     private GameMaker currentGameMaker;
     public GameManager(){
         this.currentGameMaker = new GameMaker();
@@ -20,4 +21,26 @@ public class GameManager {
         return this.currentGameMaker.firstPrompt(playerInput);
     }
     // TODO: method that takes in the player's input and returns the output in the right phase
+
+    //TODO: instantiate the ReportMaker classes i.e understands when player wants to view which report
+    // possibly create another class (ReportFactory)
+    public String checkReport(){
+
+    }
+
+    //TODO: return type may differ
+
+    public void startGame(){
+
+    }
+    public void quitGame() {
+
+    }
+    public void restartGame(){
+
+    }
+
+
+
 }
+
