@@ -47,6 +47,6 @@ public class GamePrompts {
 
     public final String FINAL_PROJECT3 = "";
 
-
+    public final String REPORT_CONCLUSION = "That's all! Have a good day manager. :)";
 
 }

@@ -12,8 +12,7 @@ public class ReportLevel extends Level{
     //TODO: instantiate and make new ReportLevel, and give it a new ReportMaker(the one needed for this current phase)
     public ReportLevel(int month){
         currentReportMaker = new MonthReportMaker(); //TODO: THIS IS NOT FINAL! CHANGE!!
-        //Would need to use factory method, or figure a way to instantiate the
-        //the right ReportMaker needed
+        //Would need to use factory method, or figure a way to instantiate the right ReportMaker needed
         currentReportPresenter = new ReportPresenter();
         currentMonth = month;
     }
@@ -24,7 +23,7 @@ public class ReportLevel extends Level{
         String header = currentReportMaker.makeReportHeader(currentMonth);
         String intro = currentReportMaker.makeReportIntro();
         String body = currentReportMaker.makeReportBody();
-        String end = currentReportMaker.endReport();
+        String end = currentReportMaker.makeReportConclusion();
         return currentReportPresenter.displayReport(header, intro, body, end);
     }
 

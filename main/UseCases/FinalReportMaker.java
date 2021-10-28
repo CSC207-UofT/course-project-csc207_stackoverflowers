@@ -1,9 +1,10 @@
 package UseCases;
+import Entities.GamePrompts;
 
 public class FinalReportMaker implements ReportMaker {
     @Override
     public String makeReportHeader(int month) {
-        return null;
+        return "Here is your final project report!" + "\n";
     }
 
     @Override
@@ -17,7 +18,7 @@ public class FinalReportMaker implements ReportMaker {
     }
 
     @Override
-    public String endReport() {
-        return null;
+    public String makeReportConclusion() {
+        return REPORT_CONCLUSION;
     }
 }
