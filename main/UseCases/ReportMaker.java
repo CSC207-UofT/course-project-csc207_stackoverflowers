@@ -8,24 +8,20 @@ public interface ReportMaker {
     //TODO:  * makeReportIntro()
     //TODO:  * makeReportBody()
     //TODO:  * endReport()
-    String makeReportHeader (String timeName){
-        return "Here is your report for the end of " + timeName + ": ";
-    }
+    String makeReportHeader (String timeName);
+        //return "Here is your report for the end of " + timeName + ": ";
 
-    String makeReportIntro (){
-        return "";
-    }
 
-    String makeReportBody (){
-        return "";
-    }
+    String makeReportIntro ();
+        //return "";
 
-    private String endReport(){
-        return "That's all! Have a good day manager. :)";
-    }
-    //TODO: void methods:
-    //makeReportHeader()
-    //makeReportIntro()
-    //makeReportBody()
-    //endReport()
+
+    String makeReportBody ();
+        //return "";
+
+
+    String endReport();
+        //return "That's all! Have a good day manager. :)";
+    // TODO: add all strings to gamePrompts and give names (Interface methods should not have bodies.)
+
 }
