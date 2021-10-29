@@ -10,7 +10,10 @@ public class ReportLevel extends Level{
     private ReportMaker currentReportMaker;
     private ReportPresenter currentReportPresenter;
     private int currentMonth;
-    //TODO: instantiate and make new ReportLevel, and give it a new ReportMaker(the one needed for this current phase)
+    //TODO: instantiate and make new ReportLevel,
+    // and give it a new ReportMaker(the one needed for this current phase)
+    // Would need to use factory design pattern, or figure
+    // a way to instantiate the right ReportMaker needed
     public ReportLevel(int month) {
         if (month < 6 & month % 2 == 1) {
             //this is for the end of month 1, 3 ,5
@@ -24,13 +27,12 @@ public class ReportLevel extends Level{
             //this is for the end of month 6
             currentReportMaker = new FinalReportMaker();
         }
-        currentReportPresenter = new ReportPresenter();
-        currentMonth = month;
-    }
+
+
 
     //TODO: method getReport() which asks the actual ReportMaker of choice to make the report and pass the info to
     // ReportPresenter to make formatted string
-    public String getReport() {
+    private String getReport() {
         String header = currentReportMaker.makeReportHeader(currentMonth);
         String intro = currentReportMaker.makeReportIntro();
         String body = currentReportMaker.makeReportBody();

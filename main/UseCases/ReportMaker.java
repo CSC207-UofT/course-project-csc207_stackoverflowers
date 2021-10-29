@@ -1,5 +1,7 @@
 package UseCases;
 
+import java.util.ArrayList;
+
 //An interface class that shows all common methods used to make reports:
 //TODO: * makeReportHeader()
 //TODO:  * makeReportIntro()
@@ -8,18 +10,39 @@ package UseCases;
 public interface ReportMaker {
 
     String makeReportHeader (int month);
-        //return "Here is your report for the end of " + month;
+
 
 
     String makeReportIntro ();
-        //return "";
+
 
 
     String makeReportBody ();
-        //return "";
+
 
 
     String makeReportConclusion();
-        //return REPORT_CONCLUSION;
+
+
+
+    String bakeProjectName (String projectName);
+
+
+
+    String bakeProgress (int projectProgress);
+
+
+
+    String bakeInterns (ArrayList interns);
+
+
+
+    int internNumber (ArrayList interns);
+
+
+
+    String bakeInternsPerformances (ArrayList interns);
+
+
 
 }

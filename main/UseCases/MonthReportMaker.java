@@ -15,7 +15,7 @@ public class MonthReportMaker implements ReportMaker {
     }
 
 
-    /* format for the report main body?
+    /* format for the report
     Project name: xxx (need to access project.projectName)
     Project progress: excellent/fair/mediocre (average of internPerformance)
     Assigned interns: hhh, yyy, zzz (how do we know who are working on this project? Class Project needs an instance variable
