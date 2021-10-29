@@ -3,7 +3,6 @@ package ControllersPresenters;
 import UseCases.MonthReportMaker;
 import UseCases.ReportMaker;
 
-//This class is a controller class that is in charge of the order
 public class ReportLevel extends Level{
     //has a ReportMaker made and stored inside private variable
     private ReportMaker currentReportMaker;
@@ -12,7 +11,7 @@ public class ReportLevel extends Level{
     //TODO: instantiate and make new ReportLevel, and give it a new ReportMaker(the one needed for this current phase)
     public ReportLevel(int month){
         currentReportMaker = new MonthReportMaker(); //TODO: THIS IS NOT FINAL! CHANGE!!
-        //Would need to use factory method, or figure a way to instantiate the right ReportMaker needed
+        //Would need to use factory design pattern, or figure a way to instantiate the right ReportMaker needed
         currentReportPresenter = new ReportPresenter();
         currentMonth = month;
     }
