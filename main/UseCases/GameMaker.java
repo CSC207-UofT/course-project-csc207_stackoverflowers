@@ -3,6 +3,7 @@ package UseCases;
 import Entities.GamePrompts;
 import Entities.HRSystem;
 import Entities.Intern;
+import Entities.InterviewIntern;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +81,7 @@ public class GameMaker {
     private Intern helperMakeInternOneSkill(String name, int age, String skillName, int skillLevel){
         HashMap<String, Integer> skills = new HashMap<>();
         skills.put(skillName, skillLevel);
-        return new Intern(name, age, skills);
+        return new InterviewIntern(name, age, skills);
     }
 
     //TODO: method generateInterns() (Generates and stored the interns in Entities.HRSystem)
@@ -90,8 +91,8 @@ public class GameMaker {
      * @return an ArrayList of randomly generated Interns.
      */
     public ArrayList<Intern> generateInterns(int numInterns) throws FileNotFoundException {
-        ArrayList<String> nameList = generateInternsHelper("UseCases/names.txt");
-        ArrayList<String> skillList = generateInternsHelper("UseCases/skills.txt");
+        ArrayList<String> nameList = generateInternsInfo("UseCases/names.txt");
+        ArrayList<String> skillList = generateInternsInfo("UseCases/skills.txt");
         Random random = new Random();
         ArrayList<Intern> internList = new ArrayList<>();
         for (int i = 1; i <= numInterns; i++) {
@@ -99,7 +100,7 @@ public class GameMaker {
             nameList.remove(name);
             HashMap<String, Integer> skillMap = generateUniqueSkillMap(skillList);
             int age = random.nextInt(45) + 20;
-            Intern interviewee = new Intern(name, age, skillMap);
+            Intern interviewee = new InterviewIntern(name, age, skillMap);
             internList.add(interviewee);
         }
         return internList;
@@ -111,7 +112,7 @@ public class GameMaker {
      * @param fileName the name of the file that is going to be converted
      * @return an ArrayList of Entities.Intern names or Entities.Intern skills
      */
-    private ArrayList<String> generateInternsHelper(String fileName) throws FileNotFoundException {
+    private ArrayList<String> generateInternsInfo(String fileName) throws FileNotFoundException {
         Scanner s = new Scanner(new File(fileName));
         ArrayList<String> infoList = new ArrayList<>();
         while (s.hasNext()){
@@ -141,10 +142,25 @@ public class GameMaker {
 
     // TODO: method generateProjects() (Generates and stores the projects in Entities.HRSystem) (change return type)
     public void generateProjects() {
+        // take the project prompts from GamePrompts and output a list of projects for that specific game
+    }
+
+    // TODO: method generateFinalProject() (Generates and stores the final project in Entities.HRSystem)
+    public void generateFinalProject() {
+        // similar to generateProjects, use the final project prompts
+    }
+
+    // TODO: method generateInternResponses() (Generates a tree of the intern's possible responses)
+    // TODO: change return type; may also change this into a separate class later
+    /**
+     * This method will generate a tree of the intern's possible responses.
+     * Their responses will be based on the intern's attributes (ex. skills, age)
+     */
+    public void generateInternResponses() {
 
     }
 
-    // TODO: method assignResponseToIntern() (Generates and assigns response trees for each intern)
+    // TODO: method assignResponseToIntern() (Assigns response trees for each intern)
     /**
      * This method will assign one of the responses from our response trees to an intern
      */
@@ -152,16 +168,18 @@ public class GameMaker {
 
     }
 
-    // TODO: method saveGame() ()
+    // TODO: method saveGame()
+    /**
+     * Saves the current state of the game (discuss later, still unsure)
+     */
     public void saveGame() {
 
     }
+
+    // TODO: method loadGame()
     /**
-     * a
+     * Loads the previous saved state of the game (discuss later, still unsure)
      */
-
-    // TODO: method loadGame() ()
     public void loadGame() {
-
     }
 }

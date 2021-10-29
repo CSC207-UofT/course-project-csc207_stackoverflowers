@@ -1,19 +1,13 @@
 package ControllersPresenters;
 
-import UseCases.ReportMaker;
-
 //an abstract class
-public class ReportPresenter implements ReportMaker {
+public class ReportPresenter extends Presenter {
     //TODO: instantiate
     public ReportPresenter () {}
 
-    //TODO: void methods
-    void displayReport (){
-        String header = makeReportHeader();
-        String intro = makeReportIntro();
-        String body = makeReportBody();
-        String end = endReport();
-        System.out.println(header + "\n" +
+    //TODO: method displayReport() that takes in multiple inputs and returns a formatted string.
+    String displayReport (String header, String intro, String body, String end){
+        return (header + "\n" +
                 "Entities.Project Intro:" + intro + "\n" +
                 body + "\n" +
                 end);

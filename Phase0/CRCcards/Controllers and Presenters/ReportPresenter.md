@@ -2,10 +2,10 @@ Class name: ReportPresenter
 
 Parent class: ControllersPresenters.Presenter
 
-Subclasses: InterviewPresenter, MonthPresenter, ReportPresenter
+Subclasses: InterviewPresenter, MonthPresenter 
 
 Responsibilities:
-* An class that takes in info about the report and returns it so that it can be displayed as a string.
+* A class that takes in info about the report and returns it so that it can be displayed as a string.
 
 Collaborators:
 * ReportLevel

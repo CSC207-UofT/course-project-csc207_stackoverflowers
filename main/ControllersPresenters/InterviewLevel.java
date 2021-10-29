@@ -1,5 +1,6 @@
 package ControllersPresenters;
 
+<<<<<<< HEAD
 import UseCases.InterviewMaker;
 // import ControllersPresenters.InterviewPresenter;
 
@@ -86,4 +87,7 @@ public class InterviewLevel {
 
     }
 
+=======
+public class InterviewLevel extends Level {
+>>>>>>> origin/main
 }
