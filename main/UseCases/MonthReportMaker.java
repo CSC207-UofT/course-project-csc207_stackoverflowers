@@ -2,6 +2,7 @@ package UseCases;
 import Entities.GamePrompts;
 
 public class MonthReportMaker implements ReportMaker {
+    //TODO: Make every string a call to GamePrompt
     @Override
     public String makeReportHeader(int month) {
         return "Here is your report for the end of " + month + "\n";
