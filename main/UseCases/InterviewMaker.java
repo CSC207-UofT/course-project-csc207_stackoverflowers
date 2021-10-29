@@ -13,7 +13,7 @@ public class InterviewMaker {
     private final InterviewIntern ... ;
     private final HiredIntern ... ;
     private final GamePrompts ... ;
-    private final HRSystem ... ;
+    private final HRSystem .... ;
     */
 
     // TODO: InterviewMaker constructor

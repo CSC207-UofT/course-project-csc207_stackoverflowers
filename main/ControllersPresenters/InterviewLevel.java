@@ -1,10 +1,9 @@
 package ControllersPresenters;
 
-<<<<<<< HEAD
 import UseCases.InterviewMaker;
 // import ControllersPresenters.InterviewPresenter;
 
-public class InterviewLevel {
+public class InterviewLevel extends Level{
 
     //TODO: Declare private instance attributes for InterviewMaker, InterviewPresenter and playerInput
     /*
@@ -87,7 +86,4 @@ public class InterviewLevel {
 
     }
 
-=======
-public class InterviewLevel extends Level {
->>>>>>> origin/main
 }
