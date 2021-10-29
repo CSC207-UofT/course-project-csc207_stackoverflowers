@@ -10,7 +10,7 @@ import UseCases.ReportMaker;
 import java.util.ArrayList;
 
 public class ReportLevel extends Level{
-    //has a ReportMaker made and stored inside private variable
+
     private ReportMaker currentReportMaker;
     private ReportPresenter currentReportPresenter;
     private int currentMonth;
@@ -18,10 +18,13 @@ public class ReportLevel extends Level{
     private int projectProgress;
     private ArrayList<Intern> interns;
     private Project project;
-    //TODO: instantiate and make new ReportLevel,
-    // and give it a new ReportMaker(the one needed for this current phase)
-    // Would need to use factory design pattern, or figure
-    // a way to instantiate the right ReportMaker needed
+
+    /**
+     * Create a ReportLevel object, which then creates a ReportMaker (stored as instance variable)
+     * that's corresponding to this current phase.
+     *
+     * @param month A month in this game
+     */
     public ReportLevel(int month) {
         if (month < 6 & month % 2 == 1) {
             //this is for the end of month 1, 3 ,5
@@ -37,9 +40,9 @@ public class ReportLevel extends Level{
     }
 
 
-
-    //TODO: method getReport() which asks the actual ReportMaker of choice to make the report and pass the info to
-    // ReportPresenter to make formatted string
+    /** getReport() asks the current ReportMaker to make a report,
+     * which is then passed to ReportPresenter to return a formatted string representation of the report.
+     */
     public String getReport() {
         String header = currentReportMaker.makeReportHeader(currentMonth);
         String intro = currentReportMaker.makeReportIntro();
