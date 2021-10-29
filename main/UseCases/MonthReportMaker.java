@@ -16,11 +16,11 @@ public class MonthReportMaker implements ReportMaker {
 
     /* format for the report main body?
     Project name: xxx (need to access project.projectName)
-    Project progress: excellent/fair/mediocre (randomly generated)
+    Project progress: excellent/fair/mediocre (average of internPerformance)
     Assigned interns: hhh, yyy, zzz (how do we know who are working on this project? Class Project needs an instance variable
                                      that stores the assigned interns, which first refers to None and later gets updated
                                      to refer to the list of assigned interns?)
-    Interns performances (randomly generated):
+    Interns performances (calculated by the skills * projectCompatability(A Dictionary)):
         - hhh: excellent, exhibits great leadership skills
         - yyy: great, but needs to be more efficient
         - zzz: poor, could be potentially fired

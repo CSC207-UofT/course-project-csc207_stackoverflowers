@@ -12,18 +12,14 @@ public class GameManager {
      */
     private GameMaker currentGameMaker;
     private statusOfGame currentStatus;
-    private InterviewLevel currentInterviewLevel;
-    private MonthLevel currentMonthLevel;
-    private ReportLevel currentReportLevel;
+    private Level currentLevel;
     private int currentMonth = 1;
     enum statusOfGame {Start, Month, Report, FinalMonth, FinalReport, End}
 
     public GameManager(){
         this.currentGameMaker = new GameMaker();
         this.currentStatus = statusOfGame.Start;
-        this.currentInterviewLevel = new InterviewLevel();
-        this.currentMonthLevel = new MonthLevel();
-        this.currentReportLevel = new ReportLevel(currentMonth);
+        this.currentLevel = new Level();
         //TODO: ask UseCases.GameMaker to generate the Interns and Projects needed for the current game.
 
     }
@@ -38,13 +34,13 @@ public class GameManager {
             case Start:
                 return firstPrompt(playerInput);
             case Month:
-                return currentMonthLevel.getOutputString(playerInput);}
+                return ((MonthLevel)currentLevel).getOutputString(playerInput);}
         updateStatus();
         return "NOT FINISHED IMPLEMENTING YET";
     }
 
     private void updateStatus() {
-        if (currentMonthLevel.monthEnded()){
+        if (currentLevel.levelEnded()){
             switch (currentStatus){
                 case Month:
                     currentMonth ++;
