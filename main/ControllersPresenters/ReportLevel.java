@@ -1,15 +1,23 @@
 package ControllersPresenters;
 
+import Entities.Intern;
+import Entities.Project;
 import UseCases.FinalReportMaker;
 import UseCases.MonthReportMaker;
 import UseCases.ProjectReportMaker;
 import UseCases.ReportMaker;
+
+import java.util.ArrayList;
 
 public class ReportLevel extends Level{
     //has a ReportMaker made and stored inside private variable
     private ReportMaker currentReportMaker;
     private ReportPresenter currentReportPresenter;
     private int currentMonth;
+    private String projectName;
+    private int projectProgress;
+    private ArrayList<Intern> interns;
+    private Project project;
     //TODO: instantiate and make new ReportLevel,
     // and give it a new ReportMaker(the one needed for this current phase)
     // Would need to use factory design pattern, or figure
@@ -35,7 +43,7 @@ public class ReportLevel extends Level{
     public String getReport() {
         String header = currentReportMaker.makeReportHeader(currentMonth);
         String intro = currentReportMaker.makeReportIntro();
-        String body = currentReportMaker.makeReportBody();
+        String body = currentReportMaker.makeReportBody(projectName,projectProgress, interns, project);
         String end = currentReportMaker.makeReportConclusion();
         return currentReportPresenter.displayOutput(header, intro, body, end);
     }

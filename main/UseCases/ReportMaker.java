@@ -1,5 +1,8 @@
 package UseCases;
 
+import Entities.Intern;
+import Entities.Project;
+
 import java.util.ArrayList;
 
 //An interface class that shows all common methods used to make reports:
@@ -17,7 +20,7 @@ public interface ReportMaker {
 
 
 
-    String makeReportBody ();
+    String makeReportBody (String projectName, int projectProgress, ArrayList<Intern> interns, Project project);
 
 
 
@@ -33,15 +36,15 @@ public interface ReportMaker {
 
 
 
-    String bakeInterns (ArrayList interns);
+    String bakeInterns (ArrayList<Intern> interns);
 
 
 
-    int internNumber (ArrayList interns);
+    int calculateInternPerformance (Intern intern, Project project);
 
 
 
-    String bakeInternsPerformances (ArrayList interns);
+    String bakeInternsPerformances (ArrayList<Intern> interns, Project project);
 
 
 
