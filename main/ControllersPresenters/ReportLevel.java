@@ -22,22 +22,22 @@ public class ReportLevel extends Level{
         if (month < 4 & month % 2 == 0) {
             //this is for the end of month 2, 4
             currentReportMaker = new ProjectReportMaker();
-        }
-        else{
+        } else {
             //this is for the end of month 6
             currentReportMaker = new FinalReportMaker();
         }
+    }
 
 
 
     //TODO: method getReport() which asks the actual ReportMaker of choice to make the report and pass the info to
     // ReportPresenter to make formatted string
-    private String getReport() {
+    public String getReport() {
         String header = currentReportMaker.makeReportHeader(currentMonth);
         String intro = currentReportMaker.makeReportIntro();
         String body = currentReportMaker.makeReportBody();
         String end = currentReportMaker.makeReportConclusion();
-        return currentReportPresenter.displayReport(header, intro, body, end);
+        return currentReportPresenter.displayOutput(header, intro, body, end);
     }
 
 
