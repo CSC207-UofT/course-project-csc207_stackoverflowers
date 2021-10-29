@@ -15,7 +15,7 @@ public class ProjectReportMaker implements ReportMaker{
 
 
     /*
-    project report format?
+    project report format
     Project name: xxx (need to access project.projectName)
     Project overall result rating: 8/10 (randomly generated)
 
