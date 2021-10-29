@@ -10,5 +10,6 @@ Responsibilities:
 * getSkillsNeeded
 * getTimeRequired = 2
 * getTeamSize
+* getSkillCompatability (A dictionary that stores the skill's compatability with this certain project)
 
 Collaborators:

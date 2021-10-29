@@ -11,11 +11,12 @@ public abstract class Level {
     public Level(){
         currentStatus = levelStatus.START;
     }
+
     public levelStatus getCurrentStatus() {
         return currentStatus;
     }
+
     public boolean levelEnded(){
         return currentStatus == levelStatus.END;
-
     }
 }
