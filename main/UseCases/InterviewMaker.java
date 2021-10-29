@@ -1,19 +1,104 @@
 package UseCases;
 
-public class InterviewMaker {
-    //
-    /*
-    update_interviewees list
-    - once the interns are generated,
-    - then they are given a response tree
-    - the interviewees list is updated
-    method get_interviewees list
-    - interns from HR and takes in the command
-    - interview maker in charge of taking the intern the player is interviewing and returns the response from
-    the
+import Entities.HRSystem;
+import Entities.InterviewIntern;
+import Entities.HiredIntern;
+import Entities.GamePrompts;
 
-     */
+
+public class InterviewMaker {
+
     // TODO: initiate instance variables InterviewIntern, HiredIntern, GamePrompts and HRSystem
-    // TODO:
-    // TODO: Implement method choicePrompt (display the prompt from GamePrompts before taking in the Player
+    /**
+    private final InterviewIntern ... ;
+    private final HiredIntern ... ;
+    private final GamePrompts ... ;
+    private final HRSystem .... ;
+    */
+
+    // TODO: InterviewMaker constructor
+    public InterviewMaker(){
+
+    }
+
+
+    //TODO: Implement method startOfInterviewPrompt
+    public void startOfInterviewPrompt(){
+
+    }
+
+    //TODO: Implement method ChoiceOptions
+    /**
+     * This method takes in this interviewIntern from Entities.HRSystem and return the intern's first choices that
+     * the player can choose.
+     */
+    public void ChoiceOptions(){
+
+    }
+
+
+    //TODO: Implement method storePlayerChoice
+    /**
+     * This method allows player to choose from the choices in displayChoiceOptions and stores the choice
+     */
+    public void storePlayerChoice(){
+
+    }
+
+
+    // TODO: Implement method internChoiceResponse
+    /**
+     * This method takes in the Player's choice from method playerChoice and returns the interviewIntern's
+     * corresponding response from the response tree in GameMaker.
+     */
+    public void internChoiceResponse(){
+
+    }
+
+
+
+    //TODO: Implement method internToHire
+    /**
+     * This method prompts the player if they would like to hire this intern and stores the response
+     */
+    public void internToHire(){
+
+    }
+
+
+
+    //TODO: Implement method getHiredInternList
+    /**
+     * Get the list of hiredInterns from HRSystem
+     */
+    public void getHiredInternList(){
+
+    }
+
+
+    //TODO: Implement method updateHiredInternList
+    /**
+     * Add a new hiredIntern to the list of hiredInterns
+     */
+    public void updateHiredInternList(){
+
+    }
+
+
+    //TODO: Implement method hireIntern
+    /**
+     * If the player responds "yes" to hire this interviewIntern, make this interviewIntern a hiredIntern and add this
+     * HiredIntern to the list of hired interns.
+     */
+    public void hireIntern(){
+
+    }
+
+    //TODO: Implement method endOfInterviewPrompt
+    public void endOfInterviewPrompt(){
+
+    }
+
+
 }
+
