@@ -3,7 +3,6 @@ package ControllersPresenters;
 import UseCases.MonthReportMaker;
 import UseCases.ReportMaker;
 
-//This class is a controller class that is in charge of the order
 public class ReportLevel extends Level{
     //has a ReportMaker made and stored inside private variable
     private ReportMaker currentReportMaker;
