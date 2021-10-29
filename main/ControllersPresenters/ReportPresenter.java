@@ -9,7 +9,7 @@ public class ReportPresenter implements Presenter {
 
     public String displayOutput (String header, String intro, String body, String end){
         return (header + "\n" +
-                "Entities.Project Intro:" + intro + "\n" +
+                "Intro:" + intro + "\n" +
                 body + "\n" +
                 end);
     }
