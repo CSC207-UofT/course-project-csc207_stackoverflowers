@@ -1,7 +1,8 @@
 package ControllersPresenters;
 
 import UseCases.GameMaker;
-import UseCases.ReportMaker;
+
+import java.io.FileNotFoundException;
 
 public class GameManager {
     /* this class is the controller class so it starts the game , waits for input etc
@@ -10,47 +11,97 @@ public class GameManager {
     /*
     try - catch?
      */
-    private GameMaker currentGameMaker;
+    private final GameMaker currentGameMaker;
     private statusOfGame currentStatus;
     private Level currentLevel;
     private int currentMonth = 1;
-    enum statusOfGame {Start, Month, Report, FinalMonth, FinalReport, End}
+    private static boolean isRunning;
 
-    public GameManager(){
+    public static boolean isRunning() {
+        return isRunning;
+    }
+
+    enum statusOfGame {Start, Interview, Month, Report, FinalMonth, FinalReport, End}
+
+    public GameManager() {
         this.currentGameMaker = new GameMaker();
         this.currentStatus = statusOfGame.Start;
-        this.currentLevel = new Level();
-        //TODO: ask UseCases.GameMaker to generate the Interns and Projects needed for the current game.
+        this.currentLevel = new MonthLevel(); //Use a factory to make the needed level?
+        // Or since the first level is interview just make it interview
+        //ask GameMaker to generate the Interns and Projects needed for the current game.
+        try {this.currentGameMaker.generateInterns(10);}
+        catch(FileNotFoundException e){
+            System.out.println("There is no file found to generate Interns from.");
+            //Is this how we do the try catch?
+        }
+        //TODO: catch the exception since this is the highest in the hierarchy
+        currentGameMaker.generateProjects();
+        isRunning = true; // So that the game is running
+    }
 
+    public String getOutput(String playerInput){
+        //This method checks the current status  of the game, and then asks for the desired
+        // output from that phase.
+        switch (currentStatus) {
+            case Start -> {
+                updateStatus();
+                return firstPrompt(playerInput);
+            }
+            case Interview -> {
+                updateStatus();
+                return ((InterviewLevel) currentLevel).getInterviewOutput();
+            }
+            case Month, FinalMonth -> {
+                updateStatus();
+                return ((MonthLevel) currentLevel).getOutputString(playerInput);
+            }
+            case Report, FinalReport -> {
+                updateStatus();
+                return ((ReportLevel) currentLevel).getReport();
+            }
+            case End -> {
+                isRunning = false; //return the last prompt and end the game.
+                return endingPrompt();
+            }
+        }
+        return "NOT FINISHED IMPLEMENTING YET";
     }
     public String firstPrompt(String playerInput) {
         return this.currentGameMaker.firstPrompt(playerInput);
     }
-    public String getOutput(String playerInput){
-        //TODO: finish implementing this method.
-        // checks the currentStatus of the game, and ask corresponding GameMaker/Levels for the output.
-        //TODO: this method should also know which month we are in.
-        switch (currentStatus){
-            case Start:
-                return firstPrompt(playerInput);
-            case Month:
-                return ((MonthLevel)currentLevel).getOutputString(playerInput);}
-        updateStatus();
-        return "NOT FINISHED IMPLEMENTING YET";
+
+    private String endingPrompt() {
+        return this.currentGameMaker.endPrompt();
+
     }
 
+
     private void updateStatus() {
+        if (currentStatus == statusOfGame.Start){
+                currentStatus = statusOfGame.Interview;
+        }
         if (currentLevel.levelEnded()){
             switch (currentStatus){
+                case Interview:
+                    currentStatus = statusOfGame.Month;
+                    currentLevel = new MonthLevel();
                 case Month:
-                    currentMonth ++;
                     currentStatus = statusOfGame.Report;
+                    currentLevel = new ReportLevel(currentMonth);
                     break;
+                case Report:
+                    currentMonth++;
+                    if (currentMonth < 4){
+                        currentStatus = statusOfGame.Month;
+                    }
+                    else{
+                        currentStatus = statusOfGame.FinalMonth;
+                    }
                 case FinalMonth:
                     currentStatus = statusOfGame.FinalReport;
-                //TODO: finish implementing this method
+                case FinalReport:
+                    currentStatus = statusOfGame.End;
             }
         }
     }
-    // TODO: method that takes in the player's input and returns the output in the right phase
 }

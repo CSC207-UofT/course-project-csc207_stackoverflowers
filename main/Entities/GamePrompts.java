@@ -7,7 +7,7 @@ public class GamePrompts {
     - feel free to add more as we continue coding our project
     - if class gets too long, maybe consider creating another prompt class
      */
-    public final String ASK_FOR_NAME = "Please enter your name:\n";
+    public final String ASK_FOR_NAME = "Welcome to HRSimulator! To start the game, please enter your name:\n";
 
     public final String FIRST_PROMPT_BEFORE_NAME = "Welcome! My friend ";
 

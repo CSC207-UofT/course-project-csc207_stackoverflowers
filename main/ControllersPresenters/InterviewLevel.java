@@ -76,8 +76,8 @@ public class InterviewLevel extends Level{
      * Takes in the player's input and uses the necessary methods defined above needed for a specific output in each
      * step of the interview process, asking InterviewPresenter to format this output using the formatInterview method.
      */
-    public void getInterviewOutput(){
-
+    public String getInterviewOutput(){
+        return "The method getInterviewOutput is not implemented yet.";
     }
 
 
@@ -86,4 +86,8 @@ public class InterviewLevel extends Level{
 
     }
 
+    //TODO: Implement method updateLevelStatus
+    //This method will update the inherited private instance levelEnded so that we can
+    // check when the level ended.
+    public void updateLevelStatus(){}
 }
