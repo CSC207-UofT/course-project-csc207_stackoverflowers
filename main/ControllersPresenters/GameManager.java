@@ -26,8 +26,6 @@ public class GameManager {
     public GameManager() {
         this.currentGameMaker = new GameMaker();
         this.currentStatus = statusOfGame.Start;
-        this.currentLevel = new MonthLevel(); //Use a factory to make the needed level?
-        // Or since the first level is interview just make it interview
         //ask GameMaker to generate the Interns and Projects needed for the current game.
         try {this.currentGameMaker.generateInterns(10);}
         catch(FileNotFoundException e){
@@ -82,9 +80,12 @@ public class GameManager {
         }
         if (currentLevel.levelEnded()){
             switch (currentStatus){
+                case Start:
+                    currentStatus = statusOfGame.Interview;
+                    currentLevel = new InterviewLevel();
                 case Interview:
                     currentStatus = statusOfGame.Month;
-                    currentLevel = new MonthLevel();
+                    currentLevel = new MonthLevel(currentMonth);
                 case Month:
                     currentStatus = statusOfGame.Report;
                     currentLevel = new ReportLevel(currentMonth);

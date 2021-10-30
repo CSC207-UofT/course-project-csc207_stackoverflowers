@@ -7,6 +7,10 @@ public class MonthPresenter implements Presenter{
     public String displayOutput() {
         //should take in some parameters!!!
         return "NOT DONE YET";
-        //could use aliasing/overriding to make this method take in diff inputs and still be able to
+        //could use overloading to make this method take in diff parameters and still be able to give an output
+    }
+
+    public String displayOutput(String wanted) {
+        return "NOT DONE YET";
     }
 }

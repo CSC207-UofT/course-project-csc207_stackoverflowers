@@ -83,11 +83,12 @@ public class InterviewLevel extends Level{
 
     //TODO: Implement method getEndOfInterviewPrompt
     public void getEndOfInterviewPrompt() {
-
     }
 
     //TODO: Implement method updateLevelStatus
     //This method will update the inherited private instance levelEnded so that we can
     // check when the level ended.
-    public void updateLevelStatus(){}
+    public void updateLevelStatus(){
+        endLevel();//Method in Level that can be used since we can't access the levelStatus as an private instance.
+    }
 }
