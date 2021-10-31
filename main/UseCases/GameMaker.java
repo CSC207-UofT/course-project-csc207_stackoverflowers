@@ -72,6 +72,7 @@ public class GameMaker {
         re += playerInput;
         re += this.prompts.FIRST_PROMPT_AFTER_NAME;
         re += this.currentHRSystem.makeInternsToPrompt();
+        re += this.prompts.ASK_FOR_INTERVIEWEE_NAME;
         return re;
     }
 

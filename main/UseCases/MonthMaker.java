@@ -11,16 +11,28 @@ public class MonthMaker {
     // * getProjectInfo()
     // * getInternInfo()
     public String startOfMonthPrompt() {
-        return "THIS IS NOT IMPLEMENTED";
+        return "This startOfMonthPrompt is not implemented";
     }
 
     public String getProjectInfo() {
-        return "THIS IS NOT IMPLEMENTED";
+        return "There is no project info method yet.";
     }
 
     public String getInternInfo(){
-        return "THIS IS NOT IMPLEMENTED";
+        return "There is no intern info method yet.";
     }
+
+    public boolean assignInternToProject(String internName, String projectName) {
+        //TODO: implement assignInternToProject by asking the current HRSystem to do so.
+        return false;
+    }
+
+    public boolean removeInternFromProject(String internName, String projectName) {
+        //TODO: implement this method by asking the current HRSystem to do so.
+        return false;
+    }
+
+
 
     //TODO: write methods related to player's command
     // * assignInternToProject()

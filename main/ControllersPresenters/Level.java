@@ -16,9 +16,13 @@ public abstract class Level {
         return currentStatus;
     }
 
+    public void getIntoLevel() {currentStatus = levelStatus.DURING;}
+
     public void endLevel(){
         currentStatus = levelStatus.END;
     }
+
+    public boolean levelStarted(){return currentStatus == levelStatus.START;}
 
     public boolean levelEnded(){
         return currentStatus == levelStatus.END;

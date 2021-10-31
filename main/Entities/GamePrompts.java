@@ -1,6 +1,9 @@
 package Entities;
 
 public class GamePrompts {
+
+
+
     //TODO:
     /*
     - any textual prompt we would need
@@ -11,9 +14,14 @@ public class GamePrompts {
 
     public final String FIRST_PROMPT_BEFORE_NAME = "Welcome! My friend ";
 
-    public final String FIRST_PROMPT_AFTER_NAME = ", you have just been hired as a new manager. Here are your potential " +
-            "interns. Choose wisely ...\n";
+    public final String FIRST_PROMPT_AFTER_NAME = ", you have just been hired as a new manager. \n" +
+            "You're company has decided to expand the staff for some new and exciting projects.\n" +
+            "Your job is to hire some interns and then... Here is a brief view of the interviewee list. \n" +
+            "Take a glance and let's start the interview! \n"; //
     //TODO:
+    public static final String ASK_FOR_INTERVIEWEE_NAME = "Now, which potential would you like to interview first?";
+    //see usage in firstPrompt
+
     public final String QUIT_GAME = "";
 
     public final String HIRE_INTERN = "";
@@ -40,6 +48,16 @@ public class GamePrompts {
     public final String PROJECT_PROMPT7 = "";
 
     public final String PROJECT_PROMPT8 = "";
+
+    //See usage in MonthMaker
+    public static final String INTERN_ASSIGNING_SUCCESS = "";
+
+    public static final String INTERN_ASSIGNING_FAILURE = "";
+
+    //See usage in MonthMaker
+    public static final String INTERN_REMOVING_SUCCESS = "";
+
+    public static final String INTERN_REMOVING_FAILURE = "";
 
     public final String FINAL_PROJECT1 = "";
 

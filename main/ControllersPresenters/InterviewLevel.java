@@ -14,16 +14,15 @@ public class InterviewLevel extends Level{
 
     //TODO: Initialize the constructor
     /**
-     * The constructor makes a new InterviewLevel for the current phase
+     * The constructor makes a new InterviewLevel for the current phase, and stores an
+     * InterviewMaker to use it when needed.
      */
-    public void InterviewMaker(){
-
+    public InterviewLevel(){
+        endLevel(); //Just for testing purposes, delete when actually implementing.
     }
 
     //TODO: Implement method getStartOfInterviewPrompt
-    public void getStartOfInterviewPrompt(){
-
-    }
+    public void getStartOfInterviewPrompt(){}
 
     //TODO: Implement method getChoiceOptions
     /**
@@ -77,6 +76,10 @@ public class InterviewLevel extends Level{
      * step of the interview process, asking InterviewPresenter to format this output using the formatInterview method.
      */
     public String getInterviewOutput(){
+        //TODO If the input is a list of names, do sth.
+        // If the input is a yes/no decision to hire, do sth.
+        // If the input is .... do sth.
+        // annnd, exceptions.
         return "The method getInterviewOutput is not implemented yet.";
     }
 
