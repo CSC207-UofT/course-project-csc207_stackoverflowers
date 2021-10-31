@@ -1,12 +1,22 @@
 package ControllersPresenters;
 
-//an abstract class
+
 public class ReportPresenter implements Presenter {
-    //TODO: instantiate
+
+    /**
+     *  Create a ReportPresenter object.
+     */
     public ReportPresenter () {}
 
-    //TODO: method displayReport() that takes in multiple inputs and returns a formatted string.
 
+    /**
+     * Return a formatted report with the inputs.
+     *
+     * @param header the header of the report
+     * @param intro the intro od the report
+     * @param body the body of the report
+     * @param end the conclusion of the report
+     */
     public String displayOutput (String header, String intro, String body, String end){
         return (header + "\n" +
                 "Intro:" + intro + "\n" +
@@ -14,6 +24,8 @@ public class ReportPresenter implements Presenter {
                 end);
     }
 
+
+    // This method is still work-in-progress?
     @Override
     public String displayOutput() {
         return null;
