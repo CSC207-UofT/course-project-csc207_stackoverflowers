@@ -3,10 +3,11 @@ package UseCases;
 public class MonthMaker {
     /* This MonthMaker class is responsible for returning the outputs related to month.
      */
-    public MonthMaker(){
-        //constructor, is constructed with no variables
+    private final HRSystem currentHRSystem;
+    public MonthMaker(HRSystem currentHRSystem){
+        this.currentHRSystem = currentHRSystem;
     }
-    //TODO: finish 3 methods that output the needed information from Entities.HRSystem
+    //TODO: finish 3 methods that output the needed information from UseCases.HRSystem
     // * startOfMonthPrompt()
     // * getProjectInfo()
     // * getInternInfo()
@@ -23,13 +24,13 @@ public class MonthMaker {
     }
 
     public boolean assignInternToProject(String internName, String projectName) {
-        //TODO: implement assignInternToProject by asking the current HRSystem to do so.
-        return false;
+        boolean result = currentHRSystem.assignInternToProject(internName, projectName);
+        return result;
     }
 
     public boolean removeInternFromProject(String internName, String projectName) {
-        //TODO: implement this method by asking the current HRSystem to do so.
-        return false;
+        boolean result = currentHRSystem.removeInternFromProject(internName, projectName);
+        return result;
     }
 
 

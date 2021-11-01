@@ -2,6 +2,7 @@ package ControllersPresenters;
 
 
 import Entities.GamePrompts;
+import UseCases.HRSystem;
 import UseCases.MonthMaker;
 
 import java.util.Objects;
@@ -17,10 +18,11 @@ public class MonthLevel extends Level {
     private final GamePrompts prompts = new GamePrompts();
 
     //constructor of this class
-    public MonthLevel(int currentMonth){
-        currentMonthMaker = new MonthMaker();
+    public MonthLevel(int currentMonth, HRSystem currentHRSystem){
+        currentMonthMaker = new MonthMaker(currentHRSystem);
         currentMonthPresenter = new MonthPresenter();
         this.currentMonth = currentMonth;
+
     }
 
     public String getStartOfMonthPrompt(){

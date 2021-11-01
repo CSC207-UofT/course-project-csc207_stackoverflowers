@@ -75,17 +75,17 @@ public class GameManager {
     private void updateStatus() {
         if (currentStatus == statusOfGame.Start){
                 currentStatus = statusOfGame.Interview;
-                currentLevel = new InterviewLevel();
+                currentLevel = new InterviewLevel(currentGameMaker.getCurrentHRSystem());
         }
         if (currentLevel.levelEnded()){
             switch (currentStatus){
                 case Interview:
                     currentStatus = statusOfGame.Month;
-                    currentLevel = new MonthLevel(currentMonth);
+                    currentLevel = new MonthLevel(currentMonth, currentGameMaker.getCurrentHRSystem());
                     break;
                 case Month:
                     currentStatus = statusOfGame.Report;
-                    currentLevel = new ReportLevel(currentMonth);
+                    currentLevel = new ReportLevel(currentMonth, currentGameMaker.getCurrentHRSystem());
                     break;
                 case Report:
                     currentMonth++;
