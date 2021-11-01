@@ -19,4 +19,4 @@ Collaborators:
 * Entities.GamePrompts
 * Entities.Intern
 * Entities.Project
-* Entities.HRSystem
+* UseCases.HRSystem

@@ -1,10 +1,5 @@
 package UseCases;
 
-import Entities.HRSystem;
-import Entities.InterviewIntern;
-import Entities.HiredIntern;
-import Entities.GamePrompts;
-
 
 public class InterviewMaker {
 
@@ -29,7 +24,7 @@ public class InterviewMaker {
 
     //TODO: Implement method ChoiceOptions
     /**
-     * This method takes in this interviewIntern from Entities.HRSystem and return the intern's first choices that
+     * This method takes in this interviewIntern from UseCases.HRSystem and return the intern's first choices that
      * the player can choose.
      */
     public void ChoiceOptions(){

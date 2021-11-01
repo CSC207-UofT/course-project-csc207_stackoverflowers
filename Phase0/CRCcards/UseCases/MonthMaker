@@ -14,5 +14,5 @@ Responsibilities:
   * removeInternFromProject()
 
 Collaborators:
-* Entities.HRSystem
+* UseCases.HRSystem
 * Entities.GamePrompts

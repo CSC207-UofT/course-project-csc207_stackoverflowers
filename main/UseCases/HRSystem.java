@@ -1,9 +1,13 @@
-package Entities;
+package UseCases;
+
+import Entities.HiredIntern;
+import Entities.Intern;
+import Entities.Project;
 
 import java.util.*;
 
 /* add the new interns to a list of new employees that the player can access with their skills
-Entities.HRSystem would extend Entities.Intern class?
+UseCases.HRSystem would extend Entities.Intern class?
 method updateInternList which takes in an ArrayList and puts it as the intern_list
 intern_list is a private instance
 method makeInternToPrompt which returns the interns in the intern_list as a formatted string (Can use method in intern
@@ -59,5 +63,15 @@ public class HRSystem {
 
     public void fireIntern(HiredIntern intern){
         this.internList.remove(intern);
+    }
+
+    public boolean assignInternToProject(String internName, String projectName) {
+        //TODO: implement this method
+        return false;
+    }
+
+    public boolean removeInternFromProject(String internName, String projectName) {
+        //TODO: implement this method
+        return false;
     }
 }

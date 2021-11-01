@@ -21,7 +21,7 @@ Farzana, Camille, Maggie and Enam started on the scenario walkthrough and the sk
 
 - Camille implemented class Entities.Intern and Entities.GamePrompts
 
-- Enam implemented class Entities.HRSystem
+- Enam implemented class UseCases.HRSystem
 
 - Jacob added more required information onto the specification as well as finalised the specification by doing the final edit
 
