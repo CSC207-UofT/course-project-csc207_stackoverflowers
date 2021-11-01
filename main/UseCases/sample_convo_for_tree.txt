@@ -1,36 +1,129 @@
-Hello! My name is [intern_name] 
-	A: let's get started with the interview, why should we hire you?
-	I'm a fast worker and a great cook! ;)
+A, B are player choices. // = intern response. -> game prompt for player from GamePrompts
 
-		A: you're hired!
-		// would you like to hire this candidate? not part of tree, this should be from prompt maybe?
 
-		B: next candidate!
-		// are you sure you would like to move onto the next candidate? You will not be able to re-interview this
-		candidate
+// Hello! My name is [intern_name], I am [intern_age] years old and my skills include [skill1], [skill2] and skill[3].
 
-	B: Nice to meet you, tell me a little about yourself. 
-	I'm [intern_age] years old. I graduated from UofT 2 years ago and then travelled the 
-	world to find inner peace.
+	NOTE: (first choice from first intern response is A, scroll down to see second choice B)
 
-		A: ...did you find it?
-		No. 
-			A: next candidate!
-			// are you sure you would like to move onto the next candidate? You will not be able to re-interview this
-			candidate
+	A: That's great. Why don't you tell me a little about yourself?
+	// I graduated from University of Toronto 2 years ago, I then went travelling around the world, in my travels I ended
+	up interning at a tech company for one year in Malaysia where I worked on projects with other team members.
 
-			B: That's unfortunate, I hope you can find inner peace in this company 
-			instead. You're hired!
-			// would you like to hire this candidate? are you sure? maybe not part of tree,
-			this should be from prompt i think?
+		A: Why do you want to work for this company?
+		// I believe that with my skills I will be a great addition to the team. Through my internship, I have also
+		worked in teams before therefore I think that I will be able to adjust very easily.
 
-		B: What skills did you gain from your travels? 
-		I learned creativity, flexibility and confidence.
+		    A: What are your hobbies?
 
-			A: Not good enough, next candidate!
-			// are you sure you would like to move onto the next candidate? You will not be able to re-interview
-			this candidate
+		   // Ever since I was young I have always been interested in gaming, especially rpg games and other
+		   character-interaction games so my dream has always been to develop my own game.
 
-			B: you're hired!
-			// would you like to hire this candidate? are you sure? maybe not part of tree,
-            			this should be from prompt i think?
+		        -> would you like to hire this intern? (gameprompts.HireIntern)
+		            A: yes
+		            -> are you sure (GamePrompts.confirmChoice)
+		            -> Congrats! You have hired this intern. (gameprompts.hireDintern)
+		            B: no
+		            -> are you sure (GamePrompts.confirmChoice)
+		            -> Onto next candidate! (gp.NextCandidate)
+
+		    B: What is your passion in life?
+		    // Ever since I was young I have always been interested in gaming, especially rpg games and other
+            character-interaction games so my dream has always been to develop my own game.
+
+                -> would you like to hire this intern? (GamePrompts.HireIntern)
+                	A: yes
+                	-> are you sure (GamePrompts.confirmChoice)
+                    -> Congrats! You have hired this intern. (gameprompts.hireDintern)
+                    B: no
+                	-> are you sure (GamePrompts.confirmChoice)
+                	-> Onto next candidate! (gp.nextCandidate)
+
+		B: Why should we hire you?
+		// I believe that with my skills I will be a great addition to the team. Through my internship, I have also
+           worked in teams before therefore I think that I will be able to adjust very easily.
+
+            A: What are your hobbies?
+            // Ever since I was young I have always been interested in gaming, especially rpg games and other
+            character-interaction games so my dream has always been to develop my own game.
+
+                -> would you like to hire this intern? (gameprompts.HireIntern)
+		            A: yes
+		            -> are you sure (GamePrompts.confirmChoice)
+		            -> Congrats! You have hired this intern. (gameprompts.hireDintern)
+		            B: no
+		            -> are you sure (GamePrompts.confirmChoice)
+		            -> Onto next candidate! (gp.nextCandidate)
+
+            B: What is your passion in life?
+           // Ever since I was young I have always been interested in gaming, especially rpg games and other
+           character-interaction games so my dream has always been to develop my own game.
+
+
+                -> would you like to hire this intern? (gameprompts.HireIntern)
+		            A: yes
+		            -> are you sure (GamePrompts.confirmChoice)
+		            -> Congrats! You have hired this intern. (gameprompts.hireDintern)
+		            B: no
+		            -> are you sure (GamePrompts.confirmChoice)
+		            -> Onto next candidate! (gp.nextCandidate)
+
+	B: Nice to meet you. Why don't you tell me a bit about your experience?
+	// I graduated from University of Toronto 2 years ago, I then went travelling around the world, in my travels I ended
+    up interning at a tech company for one year in Malaysia where I worked on projects with other team members.
+
+        A: Why do you want to work for this company?
+        // I believe that with my skills I will be a great addition to the team. Through my internship, I have also
+        worked in teams before therefore I think that I will be able to adjust very easily.
+
+        	A: What are your hobbies?
+        	// Ever since I was young I have always been interested in gaming, especially rpg games and other
+            character-interaction games so my dream has always been to develop my own game.
+
+                -> would you like to hire this intern? (gameprompts.HireIntern)
+		            A: yes
+		            -> are you sure (GamePrompts.confirmChoice)
+		            -> Congrats! You have hired this intern. (gameprompts.hireDintern)
+		            B: no
+		            -> are you sure (GamePrompts.confirmChoice)
+		            -> Onto next candidate! (gp.nextCandidate)
+
+        	B: What is your passion in life?
+        	// Ever since I was young I have always been interested in gaming, especially rpg games and other
+            character-interaction games so my dream has always been to develop my own game.
+
+                -> would you like to hire this intern? (gameprompts.HireIntern)
+		            A: yes
+		            -> are you sure (GamePrompts.confirmChoice)
+		            -> Congrats! You have hired this intern. (gameprompts.hireDintern)
+		            B: no
+		            -> are you sure (GamePrompts.confirmChoice)
+		            -> Onto next candidate! (gp.nextCandidate)
+
+
+        B: Why should we hire you?
+        // I believe that with my skills I will be a great addition to the team. Through my internship, I have also
+        worked in teams before therefore I think that I will be able to adjust very easily.
+
+            A: What are your hobbies?
+            // Ever since I was young I have always been interested in gaming, especially rpg games and other
+            character-interaction games so my dream has always been to develop my own game.
+
+                -> would you like to hire this intern? (gameprompts.HireIntern)
+		            A: yes
+		            -> are you sure (GamePrompts.confirmChoice)
+		            -> Congrats! You have hired this intern. (gameprompts.hireDintern)
+		            B: no
+		            -> are you sure (GamePrompts.confirmChoice)
+		            -> Onto next candidate! (gp.nextCandidate)
+
+            B: What is your passion in life?
+            // Ever since I was young I have always been interested in gaming, especially rpg games and other
+            character-interaction games so my dream has always been to develop my own game.
+
+                -> would you like to hire this intern? (gameprompts.HireIntern)
+		            A: yes
+		            -> are you sure (GamePrompts.confirmChoice)
+		            -> Congrats! You have hired this intern. (gameprompts.hireDintern)
+		            B: no
+		            -> are you sure (GamePrompts.confirmChoice)
+		            -> Onto next candidate! (gp.nextCandidate)
