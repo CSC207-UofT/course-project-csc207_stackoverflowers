@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class GameMaker {
-    private final HRSystem currentHRSystem;
+    private final HRSystem sys;
     private final GamePrompts prompts;
 
     /*
@@ -27,7 +27,7 @@ public class GameMaker {
      * Construct a game maker.
      */
     public GameMaker() {
-        this.currentHRSystem = new HRSystem();
+        this.sys = new HRSystem();
         this.prompts = new GamePrompts();
         //TODO: also stores the three levels of the game
 
@@ -54,14 +54,14 @@ public class GameMaker {
      * @param newInterns A list of interns constructed in the UseCases.GameMaker constructor
      */
     public void addInternToList(ArrayList<Intern> newInterns){
-        this.currentHRSystem.updateInternList(newInterns);
+        this.sys.updateInternList(newInterns);
     }
 
     /**
      * Return a list of interns.
      */
     public List<Intern> returnNewInterns() {
-        return this.currentHRSystem.getInternList();
+        return this.sys.getInternList();
     }
 
     /**
@@ -70,12 +70,12 @@ public class GameMaker {
      *  @param playerInput the input the player enters (their name)
      */
     public String firstPrompt(String playerInput){
-        this.currentHRSystem.updatePlayerName(playerInput);
+        this.sys.updatePlayerName(playerInput);
         String re = "";
         re += this.prompts.FIRST_PROMPT_BEFORE_NAME;
         re += playerInput;
         re += this.prompts.FIRST_PROMPT_AFTER_NAME;
-        re += this.currentHRSystem.makeInternsToPrompt();
+        re += this.sys.makeInternsToPrompt();
         re += this.prompts.ASK_FOR_INTERVIEWEE_NAME;
         return re;
     }
@@ -155,12 +155,13 @@ public class GameMaker {
 
     // TODO: method generateProjects() (Generates and stores the projects in UseCases.HRSystem) (change return type)
     public void generateProjects() {
-        // take the project prompts from GamePrompts and output a list of projects for that specific game
-    }
+        // take the project prompts from GamePrompts and outputs a list
+
 
     // TODO: method generateFinalProject() (Generates and stores the final project in UseCases.HRSystem)
     public void generateFinalProject() {
         // similar to generateProjects, use the final project prompts
+
     }
 
     // TODO: method generateInternResponses() (Generates a tree of the intern's possible responses)
@@ -172,6 +173,7 @@ public class GameMaker {
     public void generateInternResponses() {
 
     }
+
 
     // TODO: method assignResponseToIntern() (Assigns response trees for each intern)
     /**
@@ -195,5 +197,4 @@ public class GameMaker {
      */
     public void loadGame() {
     }
-
 }
