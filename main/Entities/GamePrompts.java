@@ -30,7 +30,7 @@ public class GamePrompts {
 
     public final String PLAYER_CHOICE = ""; // what would you like to choose etc
 
-    public final String CONFIRM_CHOICE = "";
+    public final String CONFIRM_CHOICE = "Are you sure you want to hire this intern?";
 
     public final String NEXT_CANDIDATE = "";
 

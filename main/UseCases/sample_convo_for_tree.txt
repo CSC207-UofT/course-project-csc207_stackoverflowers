@@ -24,13 +24,13 @@ A, B are player choices. // = intern response. -> game prompt for player from Ga
 		            -> Congrats! You have hired this intern. (gameprompts.hireDintern)
 		            B: no
 		            -> are you sure (GamePrompts.confirmChoice)
-		            -> Onto next candidate! (gp.nextCandidate)
+		            -> Onto next candidate! (gp.NextCandidate)
 
 		    B: What is your passion in life?
 		    // Ever since I was young I have always been interested in gaming, especially rpg games and other
             character-interaction games so my dream has always been to develop my own game.
 
-                -> would you like to hire this intern? (gameprompts.HireIntern)
+                -> would you like to hire this intern? (GamePrompts.HireIntern)
                 	A: yes
                 	-> are you sure (GamePrompts.confirmChoice)
                     -> Congrats! You have hired this intern. (gameprompts.hireDintern)
