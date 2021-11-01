@@ -39,7 +39,6 @@ public class HRSystem {
     }
 
 
-
     public void updateInternList(ArrayList<Intern> interns) {
 
         this.internList.addAll(interns);
@@ -59,6 +58,10 @@ public class HRSystem {
 
     public void updatePlayerName(String name){
         this.playerName = name;
+    }
+
+    public String getPlayerName(){
+        return playerName;
     }
 
     public void fireIntern(HiredIntern intern){

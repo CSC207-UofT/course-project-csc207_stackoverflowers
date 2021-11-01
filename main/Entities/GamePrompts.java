@@ -1,15 +1,14 @@
 package Entities;
 
 public class GamePrompts {
-
-
-
     //TODO:
     /*
     - any textual prompt we would need
     - feel free to add more as we continue coding our project
     - if class gets too long, maybe consider creating another prompt class
      */
+
+
     public final String ASK_FOR_NAME = "Welcome to HRSimulator! To start the game, please enter your name:\n";
 
     public final String FIRST_PROMPT_BEFORE_NAME = "Welcome! My friend ";
@@ -32,6 +31,18 @@ public class GamePrompts {
 
     // not all of the project prompts will be used, the projectgenerator will output a list and choose 4 projects
     // for the game from all the prompts here
+
+    public static final String START_OF_MONTH_PROMPT_BEFORE_NAME = "Welcome to the start of the month. \n " +
+            "Your job for this month, " ;
+
+    public static final String START_OF_MONTH_PROMPT_AFTER_NAME = "is to manage some new projects. \n " +
+            "Below is a list of projects that you will need to assign certain interns to:";
+
+    public static final String START_OF_MONTH_PROMPT_AFTER_PROJECTS = "Here are a list of commands you can do:\n" +
+            "assign intern to project <Intern Name> <Project Name> \n" +
+            "remove intern from project <Intern Name> <Project Name> \n" +
+            "check intern info \n" +
+            "check project info \n";
 
     public final String PROJECT_PROMPT1 = "";
 

@@ -1,7 +1,6 @@
 package ControllersPresenters;
 
 
-import Entities.GamePrompts;
 import UseCases.HRSystem;
 import UseCases.MonthMaker;
 
@@ -15,7 +14,6 @@ public class MonthLevel extends Level {
     private final MonthMaker currentMonthMaker;
     private final MonthPresenter currentMonthPresenter;
     private int currentMonth = 1;
-    private final GamePrompts prompts = new GamePrompts();
 
     //constructor of this class
     public MonthLevel(int currentMonth, HRSystem currentHRSystem){
@@ -56,30 +54,28 @@ public class MonthLevel extends Level {
             endLevel();
         }
         //TODO: adding exceptions if we get the wrong command.
-        return formatOutput(wanted);
+        return currentMonthPresenter.displayOutput(wanted);
     }
 
     private String removeInternFromProject(String input) {
         //TODO: same as assign
-        String intern = "";
-        String project = "";
-        boolean success = false;
-        success = currentMonthMaker.removeInternFromProject(intern, project);
+        String[] inputs = input.split(" ");
+        String intern = inputs[3];
+        String project = inputs[4];
+        return currentMonthMaker.removeInternFromProject(intern, project);
         //TODO: Shouldn't let controller MonthLevel be able to reach game prompts! Refactor so that MonthMaker returns
         // the message instead.
-        if (success){return prompts.INTERN_ASSIGNING_SUCCESS;}
-        return prompts.INTERN_ASSIGNING_FAILURE;
+
     }
+
 
     private String assignInternToProject(String input) {
         //TODO: parse the string, remove command, get the intern and the project Name
         String[] inputs = input.split(" ");
         String intern = inputs[3];
         String project = inputs[4];
-        boolean success = false;
-        success = currentMonthMaker.assignInternToProject(intern, project);
-        if (success){return prompts.INTERN_REMOVING_SUCCESS;}
-        return prompts.INTERN_REMOVING_FAILURE;
+        return currentMonthMaker.assignInternToProject(intern, project);
+
 
     }
 
