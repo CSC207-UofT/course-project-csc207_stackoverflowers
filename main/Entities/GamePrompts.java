@@ -26,9 +26,13 @@ public class GamePrompts {
 
     public final String HIRE_INTERN = "";
 
+    public final String HIRED_INTERN = "Congratulations! You have hired this intern! ";
+
     public final String PLAYER_CHOICE = ""; // what would you like to choose etc
 
     public final String CONFIRM_CHOICE = "";
+
+    public final String NEXT_CANDIDATE = "";
 
     // not all of the project prompts will be used, the projectgenerator will output a list and choose 4 projects
     // for the game from all the prompts here
