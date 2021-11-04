@@ -99,3 +99,4 @@ public class Project {
         return skillsCompatability;
     }
     // we prolly don't want a getter for skillsCompatability?
+}

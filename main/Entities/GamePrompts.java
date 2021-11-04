@@ -37,7 +37,16 @@ public class GamePrompts {
     // not all of the project prompts will be used, the projectgenerator will output a list and choose 4 projects
     // for the game from all the prompts here
 
-    public final String PROJECT_PROMPT1 = "";
+    public final String PROJECT_PROMPT1 = "Project Name: Create New Logo for Company. \n " +
+            "Project Description: This project requires individuals to be creative, artistic and imaginative.\n" +
+            "You will be working with a world-renowned graphic designer to create a new logo that represents " +
+            "our company morals, values and message.\n" +
+            "Thus, you must have a clear understanding of how our company operates.\n" +
+            "Please ensure you pick interns that have at least one skill that is required to complete this task.\n \n"+
+            "Length of Project: 2 months \n" +
+            "Team Size: 3 \n" +
+            "Skills: Creativity, Observant, Artistic and Teamwork"
+            ;
 
     public final String PROJECT_PROMPT2 = "";
 
