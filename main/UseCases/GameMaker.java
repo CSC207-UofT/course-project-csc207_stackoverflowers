@@ -4,13 +4,10 @@ import Entities.GamePrompts;
 import Entities.Intern;
 import Entities.InterviewIntern;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Random;
+import java.lang.reflect.Array;
+import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 public class GameMaker {
     private final HRSystem sys;
@@ -90,12 +87,13 @@ public class GameMaker {
 
     /**
      * A helper method for creating an intern. (ONLY FOR DEMO)
-     */
-    private Intern helperMakeInternOneSkill(String name, int age, String skillName, int skillLevel){
+
+     private Intern helperMakeInternOneSkill(String name, int age, String skillName, int skillLevel){
         HashMap<String, Integer> skills = new HashMap<>();
         skills.put(skillName, skillLevel);
         return new InterviewIntern(name, age, skills);
-    }
+        }
+     */
 
     //TODO: method generateInterns() (Generates and stored the interns in UseCases.HRSystem)
     /**
@@ -156,11 +154,34 @@ public class GameMaker {
     // TODO: method generateProjects() (Generates and stores the projects in UseCases.HRSystem) (change return type)
     public void generateProjects() {
         // take the project prompts from GamePrompts and outputs a list
+        ArrayList<String> projects = new ArrayList<>();
+        ArrayList<String> projForGame = new ArrayList<>();
+        projects.add(prompts.PROJECT_PROMPT1);
+        projects.add(prompts.PROJECT_PROMPT2);
+        projects.add(prompts.PROJECT_PROMPT3);
+        projects.add(prompts.PROJECT_PROMPT4);
+        projects.add(prompts.PROJECT_PROMPT5);
+        projects.add(prompts.PROJECT_PROMPT6);
+        projects.add(prompts.PROJECT_PROMPT7);
+        projects.add(prompts.PROJECT_PROMPT8);
+        Collections.shuffle(projects);
+        for (int i = 0; i < 5; i++) {
+            projForGame.add(projects.get(i));
+        }
+        return projForGame;
 
+    }
 
-    // TODO: method generateFinalProject() (Generates and stores the final project in UseCases.HRSystem)
-    public void generateFinalProject() {
-        // similar to generateProjects, use the final project prompts
+    public ArrayList<String> generateFinalProject(){
+        // take the final projects in gameprompts and pick a final project for this game.
+        ArrayList<String> finalProjects = new ArrayList<>();
+        ArrayList<String> finalProjForGame = new ArrayList<>();
+        finalProjects.add(prompts.FINAL_PROJECT1);
+        finalProjects.add(prompts.FINAL_PROJECT2);
+        finalProjects.add(prompts.FINAL_PROJECT3);
+        Collections.shuffle(finalProjects);
+        finalProjForGame.add(finalProjects.get(0));
+        return finalProjForGame;
 
     }
 
