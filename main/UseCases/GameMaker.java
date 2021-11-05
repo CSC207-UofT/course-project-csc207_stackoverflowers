@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 public class GameMaker {
     private final HRSystem currentHRSystem;
     private final GamePrompts prompts;
+    private final ArrayList<String> commands = new ArrayList<String>();
 
     /*
     - random intern generator - interns in HR
@@ -26,6 +27,8 @@ public class GameMaker {
     public GameMaker() {
         this.currentHRSystem = new HRSystem();
         this.prompts = new GamePrompts();
+        this.commands.add("quit");
+        this.commands.add("save");
         //TODO: also stores the three levels of the game
 
         /*
@@ -43,6 +46,10 @@ public class GameMaker {
 
     public HRSystem getCurrentHRSystem() {
         return currentHRSystem;
+    }
+
+    public ArrayList<String> getCommands() {
+        return commands;
     }
 
     /**
@@ -208,14 +215,27 @@ public class GameMaker {
     /**
      * Saves the current state of the game (discuss later, still unsure)
      */
-    public void saveGame() {
+    public void saveGame() {}
 
-    }
+    //TODO: method quitGame()
+    public void quitGame(){}
 
     // TODO: method loadGame()
     /**
      * Loads the previous saved state of the game (discuss later, still unsure)
      */
     public void loadGame() {
+    }
+
+    public String universalCommand(String playerInput) {
+        if (playerInput == "save"){
+            saveGame();
+            return "Game's save function not implemented yet";
+        }
+        else if (playerInput == "quit"){
+            quitGame();
+            return "Game's quit function not implemented yet";
+        }
+        //throw exception if input not one of these two... but how would they get here in the first place XD
     }
 }

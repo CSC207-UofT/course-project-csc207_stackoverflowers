@@ -1,6 +1,5 @@
 package ControllersPresenters;
 
-
 import UseCases.HRSystem;
 import UseCases.MonthMaker;
 
@@ -50,7 +49,7 @@ public class MonthLevel extends Level {
             wanted = removeInternFromProject(input);
         }
         if (input == "confirm all decisions"){
-            //TODO: MODIFY so that the level ends when we wnat
+            //TODO: MODIFY so that the level ends when we want
             endLevel();
         }
         //TODO: adding exceptions if we get the wrong command.
@@ -58,41 +57,25 @@ public class MonthLevel extends Level {
     }
 
     private String removeInternFromProject(String input) {
-        //TODO: same as assign
         String[] inputs = input.split(" ");
         String intern = inputs[3];
         String project = inputs[4];
         return currentMonthMaker.removeInternFromProject(intern, project);
-        //TODO: Shouldn't let controller MonthLevel be able to reach game prompts! Refactor so that MonthMaker returns
-        // the message instead.
-
+        //TODO: add exceptions to this method
     }
 
-
     private String assignInternToProject(String input) {
-        //TODO: parse the string, remove command, get the intern and the project Name
         String[] inputs = input.split(" ");
         String intern = inputs[3];
         String project = inputs[4];
         return currentMonthMaker.assignInternToProject(intern, project);
-
-
+        //TODO: add exceptions to this method
     }
 
     private String checkProjectInfo() {
         return currentMonthMaker.getProjectInfo();
     }
 
-    private String checkInternInfo() {
-        return currentMonthMaker.getInternInfo();
-    }
-
-    private String formatOutput(String wanted) {
-        //TODO: method formatOutput() takes in a input passes it to MonthMaker, then passes that result to
-        // MonthPresenter for formatted output
-        return currentMonthPresenter.displayOutput(wanted);
-    }
-
-
+    private String checkInternInfo() {return currentMonthMaker.getInternInfo();}
 
 }

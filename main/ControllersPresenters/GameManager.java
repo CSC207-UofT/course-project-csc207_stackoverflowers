@@ -42,6 +42,9 @@ public class GameManager {
     public String getOutput(String playerInput){
         //This method checks the current status  of the game, and then asks for the desired
         // output from that phase.
+        if (currentGameMaker.getCommands().contains(playerInput)){
+            return currentGameMaker.universalCommand(playerInput);
+        }
         statusOfGame statusBefore = currentStatus;
         updateStatus();
         switch (statusBefore) {

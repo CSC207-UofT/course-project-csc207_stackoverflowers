@@ -11,15 +11,17 @@ public class GamePrompts {
 
     public final String FIRST_PROMPT_BEFORE_NAME = "Welcome! My friend ";
 
-    public final String FIRST_PROMPT_AFTER_NAME = ", you have just been hired as a new manager. \n" +
-            "You're company has decided to expand the staff for some new and exciting projects.\n" +
-            "Your job is to hire some interns and then... Here is a brief view of the interviewee list. \n" +
-            "Take a glance and let's start the interview! \n"; //
+    public final String FIRST_PROMPT_AFTER_NAME = """
+            , you have just been hired as a new manager.\s
+            You're company has decided to expand the staff for some new and exciting projects.
+            Your job is to hire some interns and then... Here is a brief view of the interviewee list.\s
+            Take a glance and let's start the interview!\s
+            """; //
     //TODO:
     public static final String ASK_FOR_INTERVIEWEE_NAME = "Now, which potential would you like to interview first?";
     //see usage in firstPrompt
 
-    public final String QUIT_GAME = "";
+    public final String QUIT_GAME_CONFIRMATION = "Are you sure you want to quit the game?";
 
     public final String HIRE_INTERN = "";
 
@@ -46,7 +48,6 @@ public class GamePrompts {
             "check intern info \n" +
             "check project info \n";
 
-    public final String PROJECT_PROMPT1 = "";
     public final String PROJECT_PROMPT1 = """
             Project Name: Create New Logo\s
             Project Description: This project requires individuals to be creative, artistic and imaginative
@@ -78,8 +79,6 @@ public class GamePrompts {
             "Skills: Creativity, Observant and Artistic";
 
              */
-
-
 
     public final String PROJECT_PROMPT2 = """
             Project Name: A Bug's Life \s
@@ -126,14 +125,14 @@ public class GamePrompts {
             """;
 
     //See usage in MonthMaker
-    public static final String INTERN_ASSIGNING_SUCCESS = "";
+    public static final String INTERN_ASSIGNING_SUCCESS = "The intern was successfully assigned to the project specified.";
 
-    public static final String INTERN_ASSIGNING_FAILURE = "";
+    public static final String INTERN_ASSIGNING_FAILURE = "The intern could not be assigned to this project.";
 
     //See usage in MonthMaker
-    public static final String INTERN_REMOVING_SUCCESS = "";
+    public static final String INTERN_REMOVING_SUCCESS = "The intern was successfully removed from the project specified.";
 
-    public static final String INTERN_REMOVING_FAILURE = "";
+    public static final String INTERN_REMOVING_FAILURE = "The intern could not be removed from the project.";
 
     public final String FINAL_PROJECT1 = """
             Final Project Name: Add New Features to the Website\s

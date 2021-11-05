@@ -43,7 +43,4 @@ public class MonthMaker {
         if (success){return prompts.INTERN_REMOVING_SUCCESS;}
         return prompts.INTERN_REMOVING_FAILURE;
     }
-
-
-    // (the results need to be passed back to MonthLevel)
 }
