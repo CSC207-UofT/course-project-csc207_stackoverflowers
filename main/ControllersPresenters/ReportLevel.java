@@ -1,7 +1,9 @@
 package ControllersPresenters;
-
+//TODO: Remove Intern and Project and HRSystem, as a Controller it shouldn't touch them
+import UseCases.HRSystem;
 import Entities.Intern;
 import Entities.Project;
+
 import UseCases.FinalReportMaker;
 import UseCases.MonthReportMaker;
 import UseCases.ProjectReportMaker;
@@ -13,19 +15,21 @@ public class ReportLevel extends Level{
 
     private ReportMaker currentReportMaker;
     private ReportPresenter currentReportPresenter;
+    private final HRSystem currentHRsystem;
     private int currentMonth;
     private String projectName;
     private int projectProgress;
     private ArrayList<Intern> interns;
-    private Project project;
+    private Project project; //TODO: Remove Intern and Project: as a Controller it shouldn't touch them
 
     /**
      * Create a ReportLevel object, which then creates a ReportMaker (stored as instance variable)
      * that's corresponding to this current phase.
      *
      * @param month A month in this game
+     * @param currentHRSystem
      */
-    public ReportLevel(int month) {
+    public ReportLevel(int month, HRSystem currentHRSystem) {
         if (month < 6 & month % 2 == 1) {
             //this is for the end of month 1, 3 ,5
             currentReportMaker = new MonthReportMaker();
@@ -37,6 +41,7 @@ public class ReportLevel extends Level{
             //this is for the end of month 6
             currentReportMaker = new FinalReportMaker();
         }
+        currentHRsystem = currentHRSystem;
     }
 
 

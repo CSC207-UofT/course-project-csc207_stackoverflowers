@@ -1,6 +1,6 @@
 package ControllersPresenters;
 
-import UseCases.InterviewMaker;
+import UseCases.HRSystem;
 // import ControllersPresenters.InterviewPresenter;
 
 public class InterviewLevel extends Level{
@@ -11,14 +11,16 @@ public class InterviewLevel extends Level{
      * private InterviewPresenter currentInterviewPresenter;
      * private String playerInput;
      */
-
+    private final HRSystem currentHRSystem;
     //TODO: Initialize the constructor
     /**
      * The constructor makes a new InterviewLevel for the current phase, and stores an
      * InterviewMaker to use it when needed.
+     * @param currentHRSystem
      */
-    public InterviewLevel(){
+    public InterviewLevel(HRSystem currentHRSystem){
         endLevel(); //Just for testing purposes, delete when actually implementing.
+        this.currentHRSystem = currentHRSystem;
     }
 
     //TODO: Implement method getStartOfInterviewPrompt

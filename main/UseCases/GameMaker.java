@@ -1,7 +1,6 @@
 package UseCases;
 
 import Entities.GamePrompts;
-import Entities.HRSystem;
 import Entities.Intern;
 import Entities.InterviewIntern;
 
@@ -41,8 +40,13 @@ public class GameMaker {
 
          */
     }
+
+    public HRSystem getCurrentHRSystem() {
+        return currentHRSystem;
+    }
+
     /**
-     * Add the list of interns to Entities.HRSystem.
+     * Add the list of interns to UseCases.HRSystem.
      *
      * @param newInterns A list of interns constructed in the UseCases.GameMaker constructor
      */
@@ -73,6 +77,14 @@ public class GameMaker {
         return re;
     }
 
+
+    //TODO: method EndPrompt,
+    // which is very similar to firstPrompt()
+    // can access the player's name through HRSystem instead of needing an input
+    public String endPrompt() {
+        return "This endPrompt is not finished implementing yet";
+    }
+
     /**
      * A helper method for creating an intern. (ONLY FOR DEMO)
 
@@ -83,7 +95,7 @@ public class GameMaker {
         }
      */
 
-    //TODO: method generateInterns() (Generates and stored the interns in Entities.HRSystem)
+    //TODO: method generateInterns() (Generates and stored the interns in UseCases.HRSystem)
     /**
      * Generates an ArrayList of new random interns/interviewees.
      * @param numInterns the number of interns that will be generated.
@@ -139,8 +151,8 @@ public class GameMaker {
         return skillMap;
     }
 
-    // TODO: method generateProjects() (Generates and stores the projects in Entities.HRSystem) (change return type)
-    public ArrayList<String> generateProjects() {
+    // TODO: method generateProjects() (Generates and stores the projects in UseCases.HRSystem) (change return type)
+    public void generateProjects() {
         // take the project prompts from GamePrompts and outputs a list
         ArrayList<String> projects = new ArrayList<>();
         ArrayList<String> projForGame = new ArrayList<>();
@@ -170,6 +182,7 @@ public class GameMaker {
         Collections.shuffle(finalProjects);
         finalProjForGame.add(finalProjects.get(0));
         return finalProjForGame;
+
     }
 
     // TODO: method generateInternResponses() (Generates a tree of the intern's possible responses)

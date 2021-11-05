@@ -1,0 +1,3 @@
+Creativity: 0.87
+Confidence: 0.80 
+Artistic: 0.90

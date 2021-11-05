@@ -6,7 +6,7 @@ import java.util.Map;
 
 abstract public class Intern{
     /* the constructor method get skills (private) -> returns the skills of the interns from a text file -> (create text file)
-    we need to store the new interns to input into the Entities.HRSystem -> method generateInternFile
+    we need to store the new interns to input into the UseCases.HRSystem -> method generateInternFile
     - method getInternInfo
 
     */
