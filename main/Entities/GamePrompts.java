@@ -37,22 +37,60 @@ public class GamePrompts {
     // not all of the project prompts will be used, the projectgenerator will output a list and choose 4 projects
     // for the game from all the prompts here
 
-    public final String PROJECT_PROMPT1 = "Project Name: Create New Logo for Company. \n " +
-            "Project Description: This project requires individuals to be creative, artistic and imaginative.\n" +
-            "You will be working with a world-renowned graphic designer to create a new logo that represents " +
-            "our company morals, values and message.\n" +
-            "Thus, you must have a clear understanding of how our company operates.\n" +
-            "Please ensure you pick interns that have at least one skill that is required to complete this task.\n \n"+
+    public final String PROJECT_PROMPT1 = """
+            Project Name: Create New Logo\s
+            Project Description: This project requires individuals to be creative, artistic and imaginative
+            The interns will be working with world-renowned graphic designer to create a new logo that represents\s
+            our company morals, values and overall message. Thus, a clear understanding of how our company operates is required\s
+            Please ensure that you pick a team where each intern possesses at least one skill that is required to complete this task.
+            \s
+            Length of Project: 2 months\s
+            Team Size: 3
+            Skills: Creativity, Observant, Artistic""";
+
+            /*"""
+            Project Name: Create New Logo for Company.\s
+            Project Description: This project requires individuals to be creative, artistic and imaginative.
+            You will be working with a world-renowned graphic designer to create a new logo that represents\s
+            our company morals, values and message. Thus, you must have a clear understanding of how our  company operates.
+            Please ensure you pick interns that have at least one skill that is required to complete this task.
+            \s
+            Length of Project: 2 months\s
+            Team Size: 3\s
+            Skills: Creativity, Observant, Artistic and Teamwork""";
+
+            "Project Name: Create New Logo \n" + "Project Description: This project requires individuals to be creative, artistic and imaginative\n" +
+            "The interns will be working with world-renowned graphic designer to create a new logo that represents \n" +
+            "our company morals, values and overall message. Thus, a clear understanding of how our company operates is required \n" +
+            "Please ensure that you pick a team where each intern possesses at least one skill that is required to complete this task.\n \n" +
             "Length of Project: 2 months \n" +
-            "Team Size: 3 \n" +
-            "Skills: Creativity, Observant, Artistic and Teamwork"
-            ;
+            "Team Size: 3\n" +
+            "Skills: Creativity, Observant and Artistic";
 
-    public final String PROJECT_PROMPT2 = "";
+             */
 
-    public final String PROJECT_PROMPT3 = "";
 
-    public final String PROJECT_PROMPT4 = "";
+
+    public final String PROJECT_PROMPT2 = """
+            Project Name: A Bug's Life \s
+            Project Description: The software development team all went on vacation and didn't fully test their work and now 
+            they are riddled with bugs in their code!\s
+            Assign interns who can support the company's software engineers in exterminating all these bugs! The interns must be\s
+            orderly, flexible and quick on their feet for this task. They must also be able to work efficiently as a team for this task. 
+            \s
+            Length of Project: 2 months\s
+            Team Size: 3\s
+            Skills: Teamwork, Flexibility, Efficiency""";
+
+    public final String PROJECT_PROMPT3 = """
+            Project Name: Game Character Design\s
+            \s
+            Skills: Creativity, Confidence, Artistic""";
+
+    public final String PROJECT_PROMPT4 = """
+            Project Name: Hackathon Leaders\s
+            \s
+            Skills: Leadership, Confidence, Responsible""";
 
     public final String PROJECT_PROMPT5 = "";
 
@@ -72,11 +110,20 @@ public class GamePrompts {
 
     public static final String INTERN_REMOVING_FAILURE = "";
 
-    public final String FINAL_PROJECT1 = "";
+    public final String FINAL_PROJECT1 = """
+            Final Project Name: Add New Features to the Website\s
+            \s
+            Skills: Observant, Confidence, Creativity""";
 
-    public final String FINAL_PROJECT2 = "";
+    public final String FINAL_PROJECT2 = """
+            Project Name: Machine Learning Research Assistant\s
+            \s
+            Skills: Communication, Endurance, Observant""";
 
-    public final String FINAL_PROJECT3 = "";
+    public final String FINAL_PROJECT3 = """
+            Project Name: Debug Company's COVID-19 Tracking System\s
+            \s
+            Skills: Efficiency, Patience, Responsible""";
 
     public final String REPORT_CONCLUSION = "That's all! Have a good day manager. :)";
 
