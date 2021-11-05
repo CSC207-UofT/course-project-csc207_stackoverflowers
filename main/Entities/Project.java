@@ -37,6 +37,9 @@ public class Project {
         //this.teamSize = random.nextInt(6 + 1 - 2) + 2; //random.nextInt(max + 1 - min) + min
         this.teamSize = 3;
         this.isFinal = false;
+        HashMap<String, Integer> skillsCompatibility = new HashMap<String, Integer>();
+
+        this.skillsCompatability =
     }
     /* I'm not sure how to initialize skillsCompatability. It should be a map that's like: {teamwork: 80%, leadership: 90%,
     communication: 60%, ...}, including all the skills specified in the skills txt file, correct? However, the percentage

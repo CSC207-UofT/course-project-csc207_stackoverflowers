@@ -92,13 +92,28 @@ public class GamePrompts {
             \s
             Skills: Leadership, Confidence, Responsible""";
 
-    public final String PROJECT_PROMPT5 = "";
+    public final String PROJECT_PROMPT5 = """
+            Project Name: Customer Data Privacy & Security\s
+            \s
+            Skills: Teamwork, Creativity, Efficiency""";
 
-    public final String PROJECT_PROMPT6 = "";
+    public final String PROJECT_PROMPT6 = """
+            Project Name: Teaching Coding to Young Children\s
+            \s
+            Skills: Patience, Creativity, Responsible
+            """;
 
-    public final String PROJECT_PROMPT7 = "";
+    public final String PROJECT_PROMPT7 = """
+            Project Name: Social Media Management\s
+            \s
+            Skills: Efficiency, Teamwork, Endurance\s
+            """;
 
-    public final String PROJECT_PROMPT8 = "";
+    public final String PROJECT_PROMPT8 = """
+            Project Name: Customer Feedback Summary and Analysis\s
+            \s
+            Skills: Observant, Communications, Analytical\s
+            """;
 
     //See usage in MonthMaker
     public static final String INTERN_ASSIGNING_SUCCESS = "";
