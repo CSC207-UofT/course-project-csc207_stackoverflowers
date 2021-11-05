@@ -6,7 +6,7 @@ import UseCases.GameMaker;
 import java.io.FileNotFoundException;
 
 public class GameManager {
-    /* this class is the controller class so it starts the game , waits for input etc
+    /* this class is the controller class for the entire game. It starts the game , waits for input etc
     for reference check JShell and JShellState in week 2 resources on quercus
      */
     /*
@@ -91,12 +91,11 @@ public class GameManager {
                     currentMonth++;
                     if (currentMonth < 4){
                         currentStatus = statusOfGame.Month;
-                        break;
                     }
                     else{
                         currentStatus = statusOfGame.FinalMonth;
-                        break;
                     }
+                    break;
                 case FinalMonth:
                     currentStatus = statusOfGame.FinalReport;
                     break;

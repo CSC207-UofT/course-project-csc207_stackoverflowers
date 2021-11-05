@@ -20,16 +20,15 @@ public class Project {
      */
     private String projectName;
     private String projectDescription;
-    private final int length;
+    private final int length = 2;
     private int teamSize;
-    private ArrayList<String> skillsCompatability;
+    private HashMap skillsCompatability;
     private boolean isFinal;
 
 
     public Project(String projectName, String projectDescription) {
         this.projectName = projectName;
         this.projectDescription = projectDescription;
-        this.length = 2;
 
         // Rn I'm just randomly generating an int b/n 2 - 6 (inclusive) (6 bc we have 6 interns in total right??) for
         // the team size. This is for normal projects; for the final project, the team size has to be 1.
@@ -39,7 +38,7 @@ public class Project {
         this.isFinal = false;
         HashMap<String, Integer> skillsCompatibility = new HashMap<String, Integer>();
 
-        this.skillsCompatability =
+        this.skillsCompatability = skillsCompatibility;
     }
     /* I'm not sure how to initialize skillsCompatability. It should be a map that's like: {teamwork: 80%, leadership: 90%,
     communication: 60%, ...}, including all the skills specified in the skills txt file, correct? However, the percentage
@@ -100,7 +99,7 @@ public class Project {
     }
     // we prolly don't want a getter for teamSize?
 
-    public ArrayList<String> getSkillsCompatability() {
+    public HashMap getSkillsCompatability() {
         return skillsCompatability;
     }
     // we prolly don't want a getter for skillsCompatability?

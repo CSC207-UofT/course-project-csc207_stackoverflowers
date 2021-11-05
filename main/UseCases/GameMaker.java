@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class GameMaker {
-    private final HRSystem sys;
+    private final HRSystem currentHRSystem;
     private final GamePrompts prompts;
 
     /*
@@ -24,7 +24,7 @@ public class GameMaker {
      * Construct a game maker.
      */
     public GameMaker() {
-        this.sys = new HRSystem();
+        this.currentHRSystem = new HRSystem();
         this.prompts = new GamePrompts();
         //TODO: also stores the three levels of the game
 
@@ -51,14 +51,14 @@ public class GameMaker {
      * @param newInterns A list of interns constructed in the UseCases.GameMaker constructor
      */
     public void addInternToList(ArrayList<Intern> newInterns){
-        this.sys.updateInternList(newInterns);
+        this.currentHRSystem.updateInternList(newInterns);
     }
 
     /**
      * Return a list of interns.
      */
     public List<Intern> returnNewInterns() {
-        return this.sys.getInternList();
+        return this.currentHRSystem.getInternList();
     }
 
     /**
@@ -67,12 +67,12 @@ public class GameMaker {
      *  @param playerInput the input the player enters (their name)
      */
     public String firstPrompt(String playerInput){
-        this.sys.updatePlayerName(playerInput);
+        this.currentHRSystem.updatePlayerName(playerInput);
         String re = "";
         re += this.prompts.FIRST_PROMPT_BEFORE_NAME;
         re += playerInput;
         re += this.prompts.FIRST_PROMPT_AFTER_NAME;
-        re += this.sys.makeInternsToPrompt();
+        re += this.currentHRSystem.makeInternsToPrompt();
         re += this.prompts.ASK_FOR_INTERVIEWEE_NAME;
         return re;
     }
@@ -152,7 +152,7 @@ public class GameMaker {
     }
 
     // TODO: method generateProjects() (Generates and stores the projects in UseCases.HRSystem) (change return type)
-    public void generateProjects() {
+    public ArrayList<String> generateProjects() {
         // take the project prompts from GamePrompts and outputs a list
         ArrayList<String> projects = new ArrayList<>();
         ArrayList<String> projForGame = new ArrayList<>();
