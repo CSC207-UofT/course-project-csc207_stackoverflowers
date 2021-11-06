@@ -1,17 +1,20 @@
 package Entities;
 
 public class GamePrompts {
+    public static final String GAME_SAVED_SUCCESSFUL = "Your game was successfully saved under you username. You may now quit the game.";
     //TODO:
     /*
     - any textual prompt we would need
     - feel free to add more as we continue coding our project
     - if class gets too long, maybe consider creating another prompt class
      */
-    public final String ASK_FOR_NAME = "Welcome to HRSimulator! To start the game, please enter your name:\n";
+    public final String ASK_FOR_NAME = "Welcome to HRSimulator! To start the game, " +
+            "please enter your name.\n" +
+            "To load an already existing game under your name, please type 'load <name>'.";
 
-    public final String FIRST_PROMPT_BEFORE_NAME = "Welcome! My friend ";
+    public static final String FIRST_PROMPT_BEFORE_NAME = "Welcome! My friend ";
 
-    public final String FIRST_PROMPT_AFTER_NAME = """
+    public static final String FIRST_PROMPT_AFTER_NAME = """
             , you have just been hired as a new manager.\s
             You're company has decided to expand the staff for some new and exciting projects.
             Your job is to hire some interns and then... Here is a brief view of the interviewee list.\s
@@ -21,7 +24,8 @@ public class GamePrompts {
     public static final String ASK_FOR_INTERVIEWEE_NAME = "Now, which potential would you like to interview first?";
     //see usage in firstPrompt
 
-    public final String QUIT_GAME_CONFIRMATION = "Are you sure you want to quit the game?";
+    public static final String INFORM_QUIT_GAME = "You have quit your game, and you progress has been saved to a file " +
+            "with the player name you've used. Player name:";
 
     public final String HIRE_INTERN = "";
 

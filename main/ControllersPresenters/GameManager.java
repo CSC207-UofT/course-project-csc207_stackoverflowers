@@ -3,7 +3,7 @@ package ControllersPresenters;
 import Entities.Exceptions;
 import UseCases.GameMaker;
 
-import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class GameManager {
     /* this class is the controller class for the entire game. It starts the game , waits for input etc
@@ -18,11 +18,11 @@ public class GameManager {
     private int currentMonth = 1;
     private static boolean isRunning;
 
+    enum statusOfGame {Start, Interview, Month, Report, FinalMonth, FinalReport, End}
+
     public static boolean isRunning() {
         return isRunning;
     }
-
-    enum statusOfGame {Start, Interview, Month, Report, FinalMonth, FinalReport, End}
 
     public GameManager() throws Exception {
         this.currentGameMaker = new GameMaker();
@@ -33,14 +33,15 @@ public class GameManager {
             currentGameMaker.generateProjects();
         } finally {
             isRunning = true;
+
         }
     }
 
     public String getOutput(String playerInput) throws Exception {
         //This method checks the current status  of the game, and then asks for the desired
         // output from that phase.
-        if (currentGameMaker.getCommands().contains(playerInput)){
-            return currentGameMaker.universalCommand(playerInput);
+        if (GameMaker.getUniversalCommands().contains(playerInput)){
+            return universalCommand(playerInput);
         }
         statusOfGame statusBefore = currentStatus;
         updateStatus();
@@ -60,17 +61,36 @@ public class GameManager {
                 return endingPrompt();
 
         }
-        return "Not implemented yet";
+        throw new Exception(Exceptions.UNIVERSAL_COMMAND_NOT_FOUND);
     }
+
     public String firstPrompt(String playerInput) {
         updateStatus();
         //Prepare by changing the status of the game into the next level.(From start to interview)
         return this.currentGameMaker.firstPrompt(playerInput);
     }
+
     private String endingPrompt() {
         return this.currentGameMaker.endPrompt();
     }
 
+    private String universalCommand(String playerInput) throws Exception {
+    if(playerInput =="save") {
+        return currentGameMaker.save();
+    }if(playerInput =="quit"){
+        currentStatus = statusOfGame.End;
+        return currentGameMaker.quit();
+    }if(playerInput.contains("load")){
+    if (currentStatus == statusOfGame.Start) {
+            String[] loads = playerInput.split(" ");
+            currentGameMaker.load(loads[1]);
+        } else {
+            throw new Exception("Load only permitted at start of the game");
+        }
+    }
+    else{throw new Exception(Exceptions.UNIVERSAL_COMMAND_NOT_FOUND);}
+
+}
     private void updateStatus() {
         if (currentStatus == statusOfGame.Start){
                 currentStatus = statusOfGame.Interview;
