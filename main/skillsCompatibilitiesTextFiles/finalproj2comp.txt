@@ -1,11 +1,11 @@
 Confidence : 0.00
-Teamwork : 0.74
+Teamwork : 0.00
 Leadership  : 0.00
-Efficiency : 0.78
-Endurance : 0.00
-Flexibility : 0.80
-Observant : 0.00
-Communication : 0.00
+Efficiency : 0.00
+Endurance : 0.57
+Flexibility : 0.00
+Observant : 0.65
+Communication : 0.60
 Responsible : 0.00
 Creativity : 0.00
 Artistic : 0.00
