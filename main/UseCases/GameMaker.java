@@ -1,6 +1,5 @@
 package UseCases;
 
-import Entities.Exceptions;
 import Entities.GamePrompts;
 import Entities.Intern;
 import Entities.InterviewIntern;
@@ -11,7 +10,7 @@ import java.util.*;
 public class GameMaker implements Serializable {
     private final HRSystem currentHRSystem;
     private final GamePrompts prompts;
-    private final ArrayList<String> universalCommands;
+    private static ArrayList<String> universalCommands = null;
     /*
     - random intern generator - interns in HR
     - method for tree is also implement
@@ -203,9 +202,13 @@ public class GameMaker implements Serializable {
     /**
      * Loads the previous saved state of the game (discuss later, still unsure)
      * @param playerName
+     * @return
      */
-    public void load(String playerName) {
-        //TODO: implement method loadGame
+    public GameMaker load(String playerName) throws IOException, ClassNotFoundException {
+        FileInputStream fileIn = new FileInputStream(playerName);
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        GameMaker loadGameMaker = (GameMaker) in.readObject();
+        return null;
     }
     
     public String save() throws IOException {
