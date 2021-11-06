@@ -59,21 +59,34 @@ public class HRSystem {
     }
     //Overloaded the same method bc I just want the hired interns list as well.
     public String makeInternsToString(boolean hired) {
-        StringBuilder res = new StringBuilder();
+        StringBuilder result = new StringBuilder();
             for (Intern i : this.internList) {
                 if ((i instanceof HiredIntern) & hired){
-                    res.append(i.internToString());
+                    result.append(i.internToString());
                 }
         }
-        return res.toString();
+        return result.toString();
     }
 
     public String makeProjectsToString(){
-        StringBuilder res = new StringBuilder();
+        StringBuilder result = new StringBuilder();
         for (Project i : this.projectList) {
-            res.append(i.projectToString());
+            result.append(i.projectToString());
         }
-        return res.toString();
+        return result.toString();
+    }
+
+
+    public String makeAssignmentToString() {
+        //a method that takes all the assigning so far and returns the List of projects and interns assigned to it.
+        StringBuilder result = new StringBuilder();
+        for (Project p : projectList){
+            result.append(p.getProjectName());
+            result.append("    Interns in project: ");
+            //TODO: finish this method so that it displays all project names and the intern names that are
+            // assigned to this project.
+        }
+        return result.toString();
     }
 
     public void updatePlayerName(String name){
@@ -90,11 +103,13 @@ public class HRSystem {
 
     public boolean assignInternToProject(String internName, String projectName) {
         //TODO: implement this method
+        //Should return false if Intern is already been assigned to another project, or if they are not hired.
         return false;
     }
 
     public boolean removeInternFromProject(String internName, String projectName) {
         //TODO: implement this method
+        //Should return false if Intern is not in the project yet or in other project, or if Intern is not hired.
         return false;
     }
 
@@ -103,4 +118,5 @@ public class HRSystem {
         //TODO: implement this method
         return false;
     }
+
 }

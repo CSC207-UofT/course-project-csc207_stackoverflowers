@@ -1,7 +1,6 @@
 package ControllersPresenters;
 
 
-import Entities.GamePrompts;
 import UseCases.HRSystem;
 import UseCases.MonthMaker;
 
@@ -14,7 +13,7 @@ public class MonthLevel extends Level {
      */
     private final MonthMaker currentMonthMaker;
     private final MonthPresenter currentMonthPresenter;
-    private int currentMonth = 1;
+    private int currentMonth;
 
     //constructor of this class
     public MonthLevel(int currentMonth, HRSystem currentHRSystem){
@@ -28,6 +27,8 @@ public class MonthLevel extends Level {
         return currentMonthMaker.startOfMonthPrompt();
     }
 
+    public String endPrompt(){ return currentMonthMaker.endOfMonthPrompt();}
+
     public String getOutputString(String input){
         // takes in the player's input and then uses the needed method to be used for the output,
         // then asks MonthPresenter to use those stuff for a formatted output.
@@ -35,13 +36,23 @@ public class MonthLevel extends Level {
             getIntoLevel();
             return getStartOfMonthPrompt();
         }
+        if (Objects.equals(input, "confirm all decisions")){
+            endLevel();
+            return endPrompt();
+        }
+        if (finishedAssigning()){
+            return currentMonthMaker.confirmChoice();
+        }
         String wanted = "";
         if (Objects.equals(input, "check project info")){
             wanted = checkProjectInfo(); //the same should happen for checkInternInfo, assignInternToProject(),
             // removeInternFromProject and other commands!! (If too many if statements, USE DESIGN PATTERN TO REFACTOR?)
         }
-        if (input == "check interns info"){
+        if (Objects.equals(input, "check interns info")){
             wanted = checkInternsInfo();
+        }
+        if (Objects.equals(input, "check assign")){
+            wanted = checkAssigningInfo();
         }
         if (input.contains("" +
                 "assign intern to project")) {
@@ -50,11 +61,12 @@ public class MonthLevel extends Level {
         if (input.contains("remove intern from project")){
             wanted = removeInternFromProject(input);
         }
-        if (input == "confirm all decisions" || currentMonthMaker.finishedAssigning() ){
-            endLevel();
-        }
         //TODO: adding exceptions if we get the wrong command.
-        return currentMonthPresenter.displayOutput(wanted);
+        return wanted;
+    }
+
+    private String checkAssigningInfo() {
+        return currentMonthMaker.getAssigningInfo();
     }
 
     private String removeInternFromProject(String input) {
@@ -73,6 +85,9 @@ public class MonthLevel extends Level {
         //TODO: add exceptions to this method
     }
 
+    private boolean finishedAssigning(){
+        return currentMonthMaker.checkAllInternsAssigned();
+    }
     private String checkProjectInfo() {
         return currentMonthMaker.getProjectInfo();
     }
@@ -80,13 +95,6 @@ public class MonthLevel extends Level {
     private String checkInternsInfo() {
         return currentMonthMaker.getInternsInfo();
     }
-
-    private String formatOutput(String wanted) {
-        //TODO: method formatOutput() takes in a input passes it to MonthMaker, then passes that result to
-        // MonthPresenter for formatted output
-        return currentMonthPresenter.displayOutput(wanted);
-    }
-
 
 
 }
