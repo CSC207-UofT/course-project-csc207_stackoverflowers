@@ -17,10 +17,7 @@ public class ReportLevel extends Level{
     private ReportPresenter currentReportPresenter;
     private final HRSystem currentHRsystem;
     private int currentMonth;
-    private String projectName;
     private int projectProgress;
-    private ArrayList<Intern> interns;
-    private Project project; //TODO: Remove Intern and Project: as a Controller it shouldn't touch them
 
     /**
      * Create a ReportLevel object, which then creates a ReportMaker (stored as instance variable)
@@ -42,6 +39,7 @@ public class ReportLevel extends Level{
             currentReportMaker = new FinalReportMaker();
         }
         currentHRsystem = currentHRSystem;
+        currentMonth = month;
     }
 
 
@@ -51,7 +49,11 @@ public class ReportLevel extends Level{
     public String getReport() {
         String header = currentReportMaker.makeReportHeader(currentMonth);
         String intro = currentReportMaker.makeReportIntro();
-        String body = currentReportMaker.makeReportBody(projectName,projectProgress, interns, project);
+        String body = currentReportMaker.makeReportBody
+                (currentHRsystem.makeProjectsToString(currentMonth),
+                        projectProgress,
+                        currentHRsystem.getInternList(),
+                        project);
         String end = currentReportMaker.makeReportConclusion();
         return currentReportPresenter.displayOutput(header, intro, body, end);
     }
