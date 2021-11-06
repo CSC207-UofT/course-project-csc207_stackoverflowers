@@ -22,6 +22,7 @@ which formats each single intern into a string)
  */
 // the attribute: internList, a list of interns.
 public class HRSystem {
+    public static final int FINAL_MONTH = 5;
 
     //initialize the private intern_list
     //initialize the private player_name
@@ -68,16 +69,13 @@ public class HRSystem {
         return result.toString();
     }
 
-    public String makeProjectsToString(){
-        StringBuilder result = new StringBuilder();
-        for (Project i : this.projectList) {
-            result.append(i.projectToString());
-        }
-        return result.toString();
+    public String makeProjectsToString(int currentMonth) {
+        //TODO: This method returns only the projects that should be displayed for that particular month,
+        // indicated by the given parameter
+        return "Returning a month's list of projects is not implemented yet. ";
     }
 
-
-    public String makeAssignmentToString() {
+    public String makeAssignmentToString(int currentMonth) {
         //a method that takes all the assigning so far and returns the List of projects and interns assigned to it.
         StringBuilder result = new StringBuilder();
         for (Project p : projectList){
@@ -113,8 +111,9 @@ public class HRSystem {
         return false;
     }
 
-    public boolean internsAllAssigned() {
-        //a method that checks if all Hiredinterns have been assigned to a project. returns true when all i
+    public boolean internsAllAssigned(int currentMonth) {
+        //a method that checks if all Hiredinterns have been assigned to a project within that month.
+        // returns true when all interns have been assigned.
         //TODO: implement this method
         return false;
     }

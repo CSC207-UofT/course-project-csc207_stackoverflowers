@@ -1,6 +1,6 @@
 package ControllersPresenters;
 
-
+import Entities.Exceptions;
 import UseCases.HRSystem;
 import UseCases.MonthMaker;
 
@@ -12,24 +12,13 @@ public class MonthLevel extends Level {
     * @param currentMonthMaker the current MonthMaker that corresponds to this MonthLevel that will be asked to do the specific stuff
      */
     private final MonthMaker currentMonthMaker;
-    private final MonthPresenter currentMonthPresenter;
-    private int currentMonth;
 
     //constructor of this class
     public MonthLevel(int currentMonth, HRSystem currentHRSystem){
-        currentMonthMaker = new MonthMaker(currentHRSystem);
-        currentMonthPresenter = new MonthPresenter();
-        this.currentMonth = currentMonth;
-
+        currentMonthMaker = new MonthMaker(currentHRSystem, currentMonth);
     }
 
-    public String getStartOfMonthPrompt(){
-        return currentMonthMaker.startOfMonthPrompt();
-    }
-
-    public String endPrompt(){ return currentMonthMaker.endOfMonthPrompt();}
-
-    public String getOutputString(String input){
+    public String getOutputString(String input) throws Exception {
         // takes in the player's input and then uses the needed method to be used for the output,
         // then asks MonthPresenter to use those stuff for a formatted output.
         if (levelStarted()){
@@ -43,57 +32,63 @@ public class MonthLevel extends Level {
         if (finishedAssigning()){
             return currentMonthMaker.confirmChoice();
         }
-        String wanted = "";
+
         if (Objects.equals(input, "check project info")){
-            wanted = checkProjectInfo(); //the same should happen for checkInternInfo, assignInternToProject(),
+            return checkProjectInfo(); //the same should happen for checkInternInfo, assignInternToProject(),
             // removeInternFromProject and other commands!! (If too many if statements, USE DESIGN PATTERN TO REFACTOR?)
         }
         if (Objects.equals(input, "check interns info")){
-            wanted = checkInternsInfo();
+            return checkInternsInfo();
         }
         if (Objects.equals(input, "check assign")){
-            wanted = checkAssigningInfo();
+            return checkAssigningInfo();
         }
         if (input.contains("" +
                 "assign intern to project")) {
-            wanted = assignInternToProject(input);
+            return assignInternToProject(input);
         }
         if (input.contains("remove intern from project")){
-            wanted = removeInternFromProject(input);
+            return removeInternFromProject(input);
         }
-        //TODO: adding exceptions if we get the wrong command.
-        return wanted;
+        else{throw new Exception(Exceptions.INVALID_COMMAND);}
     }
 
-    private String checkAssigningInfo() {
-        return currentMonthMaker.getAssigningInfo();
-    }
-
-    private String removeInternFromProject(String input) {
+    private String removeInternFromProject(String input) throws Exception {
         String[] inputs = input.split(" ");
         String intern = inputs[3];
         String project = inputs[4];
         return currentMonthMaker.removeInternFromProject(intern, project);
-        //TODO: add exceptions to this method
     }
 
-    private String assignInternToProject(String input) {
+    private String assignInternToProject(String input) throws Exception {
         String[] inputs = input.split(" ");
         String intern = inputs[3];
         String project = inputs[4];
         return currentMonthMaker.assignInternToProject(intern, project);
-        //TODO: add exceptions to this method
     }
+
+    private String getStartOfMonthPrompt(){
+            return currentMonthMaker.startOfMonthPrompt();
+    }
+
+    private String endPrompt(){
+            return currentMonthMaker.endOfMonthPrompt();
+        }
 
     private boolean finishedAssigning(){
         return currentMonthMaker.checkAllInternsAssigned();
     }
+
     private String checkProjectInfo() {
         return currentMonthMaker.getProjectInfo();
     }
 
     private String checkInternsInfo() {
         return currentMonthMaker.getInternsInfo();
+    }
+
+    private String checkAssigningInfo() {
+        return currentMonthMaker.getAssigningInfo();
     }
 
 

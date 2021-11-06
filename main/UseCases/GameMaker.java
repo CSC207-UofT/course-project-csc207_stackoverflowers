@@ -1,5 +1,6 @@
 package UseCases;
 
+import Entities.Exceptions;
 import Entities.GamePrompts;
 import Entities.Intern;
 import Entities.InterviewIntern;
@@ -51,6 +52,8 @@ public class GameMaker {
         return commands;
     }
 
+    //TODO: The following methods are not used anywhere for now. See if can be deleted
+
     /**
      * Add the list of interns to UseCases.HRSystem.
      *
@@ -83,12 +86,8 @@ public class GameMaker {
         return re;
     }
 
-
-    //TODO: method EndPrompt,
-    // which is very similar to firstPrompt()
-    // can access the player's name through HRSystem instead of needing an input
     public String endPrompt() {
-        return "This endPrompt is not finished implementing yet";
+        return GamePrompts.END_PROMPT;
     }
 
     /**
@@ -101,13 +100,12 @@ public class GameMaker {
         }
      */
 
-    //TODO: method generateInterns() (Generates and stored the interns in UseCases.HRSystem)
     /**
      * Generates an ArrayList of new random interns/interviewees.
      * @param numInterns the number of interns that will be generated.
      * @return an ArrayList of randomly generated Interns.
      */
-    public ArrayList<Intern> generateInterns(int numInterns) throws FileNotFoundException {
+    public void generateInterns(int numInterns) throws FileNotFoundException {
         ArrayList<String> nameList = generateInternsInfo("UseCases/names.txt");
         ArrayList<String> skillList = generateInternsInfo("UseCases/skills.txt");
         Random random = new Random();
@@ -120,7 +118,7 @@ public class GameMaker {
             Intern interviewee = new InterviewIntern(name, age, skillMap);
             internList.add(interviewee);
         }
-        return internList;
+        currentHRSystem.updateInternList(internList);
     }
 
     /**
@@ -158,7 +156,7 @@ public class GameMaker {
     }
 
     // TODO: method generateProjects() (Generates and stores the projects in UseCases.HRSystem) (change return type)
-    public ArrayList<String> generateProjects() {
+    public void generateProjects() {
         // take the project prompts from GamePrompts and outputs a list
         ArrayList<String> projects = new ArrayList<>();
         ArrayList<String> projForGame = new ArrayList<>();
@@ -174,7 +172,7 @@ public class GameMaker {
         for (int i = 0; i < 5; i++) {
             projForGame.add(projects.get(i));
         }
-        return projForGame;
+        currentHRSystem.updateProjectList(projForGame);
 
     }
 
@@ -226,15 +224,14 @@ public class GameMaker {
     public void loadGame() {
     }
 
-    public String universalCommand(String playerInput) {
-        if (playerInput == "save"){
-            saveGame();
-            return "Game's save function not implemented yet";
-        }
-        else if (playerInput == "quit"){
-            quitGame();
-            return "Game's quit function not implemented yet";
-        }
+    public String universalCommand(String playerInput) throws Exception {
+            if (Objects.equals(playerInput, "save")) {
+                saveGame();
+                return "Game's save function not implemented yet";
+            }if (Objects.equals(playerInput, "quit")) {
+                quitGame();
+                return "Game's quit function not implemented yet";
+            }else{throw new Exception(Exceptions.UNIVERSAL_COMMAND_NOT_FOUND);}
         //throw exception if input not one of these two... but how would they get here in the first place XD
     }
 }

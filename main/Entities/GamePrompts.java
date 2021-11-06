@@ -1,7 +1,6 @@
 package Entities;
 
 public class GamePrompts {
-
     //TODO:
     /*
     - any textual prompt we would need
@@ -58,6 +57,14 @@ public class GamePrompts {
 
     public static final String END_OF_MONTH_PROMPT = "Now you finished your part of the job, all interns have started " +
             "working hard on their own. The month went by quickly, and now you can view this month's progress! " +
+            "type anything to continue and view the report that has been generated... ";
+
+    public static final String FINAL_MONTH_PROMPT_BEFORE_PROJECT = "" ;
+    public static final String FINAL_MONTH_PROMPT_AFTER_PROJECT = "";
+
+    public static final String END_OF_FINAL_MONTH_PROMPT = "Now you finished assigning your SUPER intern to the FINAL project." +
+            "Must feel good huh! Sit back and relax as we return to you the report on how the chosen one has done " +
+            "after the month has finished. "+
             "type anything to continue and view the report that has been generated... ";
 
     public final String PROJECT_PROMPT1 = """
@@ -139,12 +146,9 @@ public class GamePrompts {
     //See usage in MonthMaker
     public static final String INTERN_ASSIGNING_SUCCESS = "The intern was successfully assigned to the project specified.";
 
-    public static final String INTERN_ASSIGNING_FAILURE = "The intern could not be assigned to this project.";
-
     //See usage in MonthMaker
     public static final String INTERN_REMOVING_SUCCESS = "The intern was successfully removed from the project specified.";
 
-    public static final String INTERN_REMOVING_FAILURE = "The intern could not be removed from the project.";
 
     public final String FINAL_PROJECT1 = """
             Final Project Name: Add New Features to the Website\s
@@ -163,4 +167,6 @@ public class GamePrompts {
 
     public final String REPORT_CONCLUSION = "That's all! Have a good day manager. :)";
 
+    public static final String END_PROMPT = "Thank you so much for playing our game.";
+    //TODO: modify END_PROMPT so it includes credits?
 }

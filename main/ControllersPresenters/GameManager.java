@@ -24,22 +24,19 @@ public class GameManager {
 
     enum statusOfGame {Start, Interview, Month, Report, FinalMonth, FinalReport, End}
 
-    public GameManager() {
+    public GameManager() throws Exception {
         this.currentGameMaker = new GameMaker();
         this.currentStatus = statusOfGame.Start;
         //ask GameMaker to generate the Interns and Projects needed for the current game.
-        try {this.currentGameMaker.generateInterns(10);}
-        //TODO: catch the exception and do something with it
-        // since this is the highest in the hierarchy? Is this what I should do?
-        catch(FileNotFoundException e){
-            System.out.println(Exceptions.INTERNS_FILE_NOT_FOUND);
-            //Is this how we do the try catch?
+        try {
+            currentGameMaker.generateInterns(10);
+            currentGameMaker.generateProjects();
+        } finally {
+            isRunning = true;
         }
-        currentGameMaker.generateProjects();
-        isRunning = true; // So that the game is running
     }
 
-    public String getOutput(String playerInput){
+    public String getOutput(String playerInput) throws Exception {
         //This method checks the current status  of the game, and then asks for the desired
         // output from that phase.
         if (currentGameMaker.getCommands().contains(playerInput)){
@@ -58,7 +55,6 @@ public class GameManager {
             case Report:
             case FinalReport:
                 return ((ReportLevel) currentLevel).getReport();
-
             case End:
                 isRunning = false; //return the last prompt and end the game.
                 return endingPrompt();
@@ -67,14 +63,14 @@ public class GameManager {
         return "Not implemented yet";
     }
     public String firstPrompt(String playerInput) {
-        updateStatus();//Prepare by changing the status of the game into the next level.(From start to interview)
+        updateStatus();
+        //Prepare by changing the status of the game into the next level.(From start to interview)
         return this.currentGameMaker.firstPrompt(playerInput);
     }
-
     private String endingPrompt() {
         return this.currentGameMaker.endPrompt();
     }
-    //TODO: do something with these breaks, they aren't looking very good...
+
     private void updateStatus() {
         if (currentStatus == statusOfGame.Start){
                 currentStatus = statusOfGame.Interview;
