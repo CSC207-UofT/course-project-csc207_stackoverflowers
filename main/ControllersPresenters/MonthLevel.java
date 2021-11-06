@@ -28,8 +28,7 @@ public class MonthLevel extends Level {
 
     public String getOutputString(String input){
         // takes in the player's input and then uses the needed method to be used for the output,
-        // then asks MonthPresenter to use those stuff for a formatted output
-        //TODO: finish implementing this body
+        // then asks MonthPresenter to use those stuff for a formatted output.
         if (levelStarted()){
             getIntoLevel();
             return getStartOfMonthPrompt();
@@ -48,8 +47,7 @@ public class MonthLevel extends Level {
         if (input.contains("remove intern from project")){
             wanted = removeInternFromProject(input);
         }
-        if (input == "confirm all decisions"){
-            //TODO: MODIFY so that the level ends when we want
+        if (input == "confirm all decisions" || currentMonthMaker.finishedAssigning() ){
             endLevel();
         }
         //TODO: adding exceptions if we get the wrong command.

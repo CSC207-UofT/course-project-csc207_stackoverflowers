@@ -77,4 +77,10 @@ public class HRSystem {
         //TODO: implement this method
         return false;
     }
+
+    public boolean internsAllAssigned() {
+        //a method that checks if all Hiredinterns have been assigned to a project. returns true when all i
+        //TODO: implement this method
+        return false;
+    }
 }

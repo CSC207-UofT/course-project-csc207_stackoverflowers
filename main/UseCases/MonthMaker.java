@@ -43,4 +43,8 @@ public class MonthMaker {
         if (success){return prompts.INTERN_REMOVING_SUCCESS;}
         return prompts.INTERN_REMOVING_FAILURE;
     }
+
+    public boolean finishedAssigning() {
+        return currentHRSystem.internsAllAssigned();
+    }
 }
