@@ -1,8 +1,5 @@
 package Entities;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
 // The project in this game.
 public class Project {
@@ -22,7 +19,7 @@ public class Project {
     private String projectDescription;
     private final int length = 2;
     private int teamSize;
-    private HashMap skillsCompatability;
+    private final HashMap<String, Integer> skillsCompatability;
     private boolean isFinal;
 
 
@@ -36,9 +33,7 @@ public class Project {
         //this.teamSize = random.nextInt(6 + 1 - 2) + 2; //random.nextInt(max + 1 - min) + min
         this.teamSize = 3;
         this.isFinal = false;
-        HashMap<String, Integer> skillsCompatibility = new HashMap<String, Integer>();
-
-        this.skillsCompatability = skillsCompatibility;
+        this.skillsCompatability = new HashMap<String, Integer>();
     }
     /* I'm not sure how to initialize skillsCompatability. It should be a map that's like: {teamwork: 80%, leadership: 90%,
     communication: 60%, ...}, including all the skills specified in the skills txt file, correct? However, the percentage
@@ -99,8 +94,13 @@ public class Project {
     }
     // we prolly don't want a getter for teamSize?
 
-    public HashMap getSkillsCompatability() {
+    public HashMap<String, Integer> getSkillsCompatability() {
         return skillsCompatability;
+    }
+
+    public String projectToString(){
+        // TODO: Implement this method. See Intern internToString
+        return "Turns a project into a string is not implemented yet.";
     }
     // we prolly don't want a getter for skillsCompatability?
 }

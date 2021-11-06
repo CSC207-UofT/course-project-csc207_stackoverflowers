@@ -1,43 +1,69 @@
 package UseCases;
 
+import Entities.Exceptions;
+import Entities.GamePrompts;
+
 public class MonthMaker {
     /* This MonthMaker class is responsible for returning the outputs related to month.
      */
     private final HRSystem currentHRSystem;
-    public MonthMaker(HRSystem currentHRSystem){
+    private final int currentMonth;
+
+    public MonthMaker(HRSystem currentHRSystem, int currentMonth){
         this.currentHRSystem = currentHRSystem;
+        this.currentMonth = currentMonth;
     }
-    //TODO: finish 3 methods that output the needed information from UseCases.HRSystem
-    // * startOfMonthPrompt()
-    // * getProjectInfo()
-    // * getInternInfo()
+
+
     public String startOfMonthPrompt() {
-        return "This startOfMonthPrompt is not implemented";
+        if (currentMonth == HRSystem.FINAL_MONTH){
+            return GamePrompts.START_OF_MONTH_PROMPT_BEFORE_NAME + GamePrompts.START_OF_MONTH_PROMPT_BEFORE_NAME +
+                    currentHRSystem.getPlayerName() +
+                    GamePrompts.START_OF_MONTH_PROMPT_AFTER_NAME +
+                    getProjectInfo() +
+                    GamePrompts.START_OF_MONTH_PROMPT_AFTER_PROJECTS;
+        }
+        return GamePrompts.FINAL_MONTH_PROMPT_BEFORE_PROJECT + getProjectInfo() +
+                GamePrompts.FINAL_MONTH_PROMPT_AFTER_PROJECT;
+    }
+
+    public String endOfMonthPrompt() {
+        if (currentMonth == HRSystem.FINAL_MONTH){return GamePrompts.END_OF_FINAL_MONTH_PROMPT;}
+        else{return GamePrompts.END_OF_MONTH_PROMPT;}
     }
 
     public String getProjectInfo() {
-        return "There is no project info method yet.";
+        return "Here are the projects that you are responsible for:" + currentHRSystem.makeProjectsToString(currentMonth);
     }
 
-    public String getInternInfo(){
-        return "There is no intern info method yet.";
+    public String getInternsInfo(){
+        return "Here is the list of interns that you have hired:" + currentHRSystem.makeInternsToString(true);
     }
 
-    public boolean assignInternToProject(String internName, String projectName) {
-        boolean result = currentHRSystem.assignInternToProject(internName, projectName);
-        return result;
+    public String assignInternToProject(String internName, String projectName) throws Exception {
+        boolean success = currentHRSystem.assignInternToProject(internName, projectName);
+        if (!success){throw new Exception(Exceptions.INTERN_ASSIGNING_FAILURE);}
+        return GamePrompts.INTERN_ASSIGNING_SUCCESS;
     }
 
-    public boolean removeInternFromProject(String internName, String projectName) {
-        boolean result = currentHRSystem.removeInternFromProject(internName, projectName);
-        return result;
+    public String removeInternFromProject(String internName, String projectName) throws Exception {
+        boolean success = currentHRSystem.removeInternFromProject(internName, projectName);
+        if (!success){ throw new Exception(Exceptions.INTERN_REMOVING_FAILURE);}
+        return GamePrompts.INTERN_REMOVING_SUCCESS;
+    }
+
+    public boolean checkAllInternsAssigned() {
+        //returns true if all interns have been assigned to a project
+        return currentHRSystem.internsAllAssigned(currentMonth);
+    }
+
+    public String confirmChoice() {
+        return GamePrompts.CONFIRM_ASSIGNING + currentHRSystem.makeAssignmentToString(currentMonth);
+    }
+
+    public String getAssigningInfo() {
+        return currentHRSystem.makeAssignmentToString(currentMonth);
     }
 
 
-
-    //TODO: write methods related to player's command
-    // * assignInternToProject()
-    // * removeInternFromProject()
-
-    // (the results need to be passed back to MonthLevel)
 }

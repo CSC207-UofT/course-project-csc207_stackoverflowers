@@ -1,9 +1,6 @@
 package Entities;
 
 public class GamePrompts {
-
-
-
     //TODO:
     /*
     - any textual prompt we would need
@@ -14,15 +11,17 @@ public class GamePrompts {
 
     public final String FIRST_PROMPT_BEFORE_NAME = "Welcome! My friend ";
 
-    public final String FIRST_PROMPT_AFTER_NAME = ", you have just been hired as a new manager. \n" +
-            "You're company has decided to expand the staff for some new and exciting projects.\n" +
-            "Your job is to hire some interns and then... Here is a brief view of the interviewee list. \n" +
-            "Take a glance and let's start the interview! \n"; //
+    public final String FIRST_PROMPT_AFTER_NAME = """
+            , you have just been hired as a new manager.\s
+            You're company has decided to expand the staff for some new and exciting projects.
+            Your job is to hire some interns and then... Here is a brief view of the interviewee list.\s
+            Take a glance and let's start the interview!\s
+            """; //
     //TODO:
     public static final String ASK_FOR_INTERVIEWEE_NAME = "Now, which potential would you like to interview first?";
     //see usage in firstPrompt
 
-    public final String QUIT_GAME = "";
+    public final String QUIT_GAME_CONFIRMATION = "Are you sure you want to quit the game?";
 
     public final String HIRE_INTERN = "";
 
@@ -30,12 +29,43 @@ public class GamePrompts {
 
     public final String PLAYER_CHOICE = ""; // what would you like to choose etc
 
-    public final String CONFIRM_CHOICE = "Are you sure you want to hire this intern?";
+    public final String CONFIRM_HIRING = "Are you sure you want to hire this intern?";
 
     public final String NEXT_CANDIDATE = "";
 
     // not all of the project prompts will be used, the projectgenerator will output a list and choose 4 projects
     // for the game from all the prompts here
+
+    public static final String START_OF_MONTH_PROMPT_BEFORE_NAME = "Welcome to the start of the month. \n " +
+            "Your job for this month, " ;
+
+    public static final String START_OF_MONTH_PROMPT_AFTER_NAME = "is to manage some new projects. \n " +
+            "Below is a list of projects that you will need to assign certain interns to:";
+
+    public static final String START_OF_MONTH_PROMPT_AFTER_PROJECTS = """
+            Here are a list of commands you can do:
+            assign intern to project <Intern Name> <Project Name>\s
+            remove intern from project <Intern Name> <Project Name>\s
+            check intern info\s
+            check project info\s
+            """;
+
+    public static final String CONFIRM_ASSIGNING = """
+            All interns have been assigned to a project, and here is the entire assignment you made so far. If you are sure with your decisions, type 'confirm all decisions'.
+            If not, feel free to use the same given commands to modify your decisions.\s
+            \s""";
+
+    public static final String END_OF_MONTH_PROMPT = "Now you finished your part of the job, all interns have started " +
+            "working hard on their own. The month went by quickly, and now you can view this month's progress! " +
+            "type anything to continue and view the report that has been generated... ";
+
+    public static final String FINAL_MONTH_PROMPT_BEFORE_PROJECT = "" ;
+    public static final String FINAL_MONTH_PROMPT_AFTER_PROJECT = "";
+
+    public static final String END_OF_FINAL_MONTH_PROMPT = "Now you finished assigning your SUPER intern to the FINAL project." +
+            "Must feel good huh! Sit back and relax as we return to you the report on how the chosen one has done " +
+            "after the month has finished. "+
+            "type anything to continue and view the report that has been generated... ";
 
     public final String PROJECT_PROMPT1 = """
             Project Name: Create New Logo\s
@@ -69,14 +99,12 @@ public class GamePrompts {
 
              */
 
-
-
     public final String PROJECT_PROMPT2 = """
             Project Name: A Bug's Life \s
-            Project Description: The software development team all went on vacation and didn't fully test their work and now 
+            Project Description: The software development team all went on vacation and didn't fully test their work and now\040
             they are riddled with bugs in their code!\s
             Assign interns who can support the company's software engineers in exterminating all these bugs! The interns must be\s
-            orderly, flexible and quick on their feet for this task. They must also be able to work efficiently as a team for this task. 
+            orderly, flexible and quick on their feet for this task. They must also be able to work efficiently as a team for this task.\040
             \s
             Length of Project: 2 months\s
             Team Size: 3\s
@@ -116,14 +144,11 @@ public class GamePrompts {
             """;
 
     //See usage in MonthMaker
-    public static final String INTERN_ASSIGNING_SUCCESS = "";
-
-    public static final String INTERN_ASSIGNING_FAILURE = "";
+    public static final String INTERN_ASSIGNING_SUCCESS = "The intern was successfully assigned to the project specified.";
 
     //See usage in MonthMaker
-    public static final String INTERN_REMOVING_SUCCESS = "";
+    public static final String INTERN_REMOVING_SUCCESS = "The intern was successfully removed from the project specified.";
 
-    public static final String INTERN_REMOVING_FAILURE = "";
 
     public final String FINAL_PROJECT1 = """
             Final Project Name: Add New Features to the Website\s
@@ -142,4 +167,6 @@ public class GamePrompts {
 
     public final String REPORT_CONCLUSION = "That's all! Have a good day manager. :)";
 
+    public static final String END_PROMPT = "Thank you so much for playing our game.";
+    //TODO: modify END_PROMPT so it includes credits?
 }
