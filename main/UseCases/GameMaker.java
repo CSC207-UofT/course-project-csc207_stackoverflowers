@@ -4,7 +4,6 @@ import Entities.GamePrompts;
 import Entities.Intern;
 import Entities.InterviewIntern;
 
-import java.lang.reflect.Array;
 import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -79,7 +78,7 @@ public class GameMaker {
         re += this.prompts.FIRST_PROMPT_BEFORE_NAME;
         re += playerInput;
         re += this.prompts.FIRST_PROMPT_AFTER_NAME;
-        re += this.currentHRSystem.makeInternsToPrompt();
+        re += this.currentHRSystem.makeInternsToString();
         re += this.prompts.ASK_FOR_INTERVIEWEE_NAME;
         return re;
     }

@@ -25,11 +25,12 @@ public class MonthMaker {
     }
 
     public String getProjectInfo() {
-        return "There is no project info method yet.";
+        return currentHRSystem.makeProjectsToString();
     }
 
-    public String getInternInfo(){
-        return "There is no intern info method yet.";
+    public String getInternsInfo(){
+        //We only want the list of hired interns
+        return currentHRSystem.makeInternsToString(true);
     }
 
     public String assignInternToProject(String internName, String projectName) {

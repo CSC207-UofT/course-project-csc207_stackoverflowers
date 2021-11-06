@@ -26,7 +26,8 @@ public class HRSystem {
     //initialize the private intern_list
     //initialize the private player_name
 
-    private ArrayList<Intern> internList;
+    private ArrayList<Intern> internList;//TODO: Is it better if we used a set....
+    // so that we don't have repeating issues (when adding new elements to the set)?
     private ArrayList<Project> projectList;
     private String playerName;
 
@@ -44,14 +45,33 @@ public class HRSystem {
         this.internList.addAll(interns);
     }
 
-    public void updateProjectList(){
+    public void updateProjectList(ArrayList<Project> projects){
         //TODO: finish this method(parameters)
+        projectList = projects;
     }
 
-    public String makeInternsToPrompt() {
+    public String makeInternsToString() {
         StringBuilder res = new StringBuilder();
         for (Intern i : this.internList) {
             res.append(i.internToString());
+        }
+        return res.toString();
+    }
+    //Overloaded the same method bc I just want the hired interns list as well.
+    public String makeInternsToString(boolean hired) {
+        StringBuilder res = new StringBuilder();
+            for (Intern i : this.internList) {
+                if ((i instanceof HiredIntern) & hired){
+                    res.append(i.internToString());
+                }
+        }
+        return res.toString();
+    }
+
+    public String makeProjectsToString(){
+        StringBuilder res = new StringBuilder();
+        for (Project i : this.projectList) {
+            res.append(i.projectToString());
         }
         return res.toString();
     }

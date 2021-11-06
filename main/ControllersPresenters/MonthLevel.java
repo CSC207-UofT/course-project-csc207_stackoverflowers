@@ -1,5 +1,7 @@
 package ControllersPresenters;
 
+
+import Entities.GamePrompts;
 import UseCases.HRSystem;
 import UseCases.MonthMaker;
 
@@ -39,9 +41,10 @@ public class MonthLevel extends Level {
             // removeInternFromProject and other commands!! (If too many if statements, USE DESIGN PATTERN TO REFACTOR?)
         }
         if (input == "check interns info"){
-            wanted = checkInternInfo();
+            wanted = checkInternsInfo();
         }
-        if (input.contains("assign intern to project")) {
+        if (input.contains("" +
+                "assign intern to project")) {
             wanted = assignInternToProject(input);
         }
         if (input.contains("remove intern from project")){
@@ -74,6 +77,16 @@ public class MonthLevel extends Level {
         return currentMonthMaker.getProjectInfo();
     }
 
-    private String checkInternInfo() {return currentMonthMaker.getInternInfo();}
+    private String checkInternsInfo() {
+        return currentMonthMaker.getInternsInfo();
+    }
+
+    private String formatOutput(String wanted) {
+        //TODO: method formatOutput() takes in a input passes it to MonthMaker, then passes that result to
+        // MonthPresenter for formatted output
+        return currentMonthPresenter.displayOutput(wanted);
+    }
+
+
 
 }
