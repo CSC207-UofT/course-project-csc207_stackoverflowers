@@ -12,7 +12,7 @@ public class GameManager {
     /*
     try - catch?
      */
-    private final GameMaker currentGameMaker;
+    private GameMaker currentGameMaker;
     private statusOfGame currentStatus;
     private Level currentLevel;
     private int currentMonth = 1;
@@ -83,14 +83,14 @@ public class GameManager {
     }if(playerInput.contains("load")){
     if (currentStatus == statusOfGame.Start) {
             String[] loads = playerInput.split(" ");
-            currentGameMaker.load(loads[1]);
+            currentGameMaker = currentGameMaker.load(loads[1]);
         } else {
             throw new Exception("Load only permitted at start of the game");
         }
     }
-    else{throw new Exception(Exceptions.UNIVERSAL_COMMAND_NOT_FOUND);}
+    throw new Exception(Exceptions.UNIVERSAL_COMMAND_NOT_FOUND);
+    }
 
-}
     private void updateStatus() {
         if (currentStatus == statusOfGame.Start){
                 currentStatus = statusOfGame.Interview;
