@@ -1,63 +1,116 @@
 package Entities;
 import java.util.HashMap;
+import java.util.Objects;
+import java.io.File;  // Import the File class
+import java.util.Scanner; // Import the Scanner class to read text files
 
 // The project in this game.
 public class Project {
     /*
     Instance variables:
-     * projectName: the name of this project
+     * projectName: the name of this project. Note the name has to be the same as the same the PROJECT_NAME constants in GamePrompts.
      * projectDescription: the description of this project
-     * length: the length of this project, which is always 2 (months)
+     * length: the length of this project, which is 2 (months) for regular projects and 1 (month) for final projects
      * teamSize: the number of interns required to finish this project. By default, team size is b/n 2 - 6, however,
      for the final project, team size is 1
-     * skillsCompatability: a dictionary that maps a skill with a percentage b/n 30% - 100%, which indicates the skill's
+     * skillsCompatibilities: a dictionary that maps a skill with a percentage b/n 30% - 100%, which indicates the skill's
       compatability with this project (so the higher the percentage associated with a particular skill, the more this project
       requires this skill)
      * isFinal: a boolean value that indicates whether this project is a final project (as comparing to normal projects)
      */
     private String projectName;
     private String projectDescription;
-    private final int length = 2;
+    private int length;
     private int teamSize;
-    private final HashMap<String, Integer> skillsCompatability;
+    private final HashMap<String, Integer> skillsCompatibilities;
     private boolean isFinal;
 
 
-    public Project(String projectName, String projectDescription) {
+    /**
+     * Construct a project.
+     * Note that </projectName> has to be the same as one of the PROJECT_NAME constants in GamePrompts.
+     */
+    public Project(String projectName) {
         this.projectName = projectName;
-        this.projectDescription = projectDescription;
-
-        // Rn I'm just randomly generating an int b/n 2 - 6 (inclusive) (6 bc we have 6 interns in total right??) for
-        // the team size. This is for normal projects; for the final project, the team size has to be 1.
+        // If we were to randomize team size b/n 2-6
         //Random random = new Random();
         //this.teamSize = random.nextInt(6 + 1 - 2) + 2; //random.nextInt(max + 1 - min) + min
         this.teamSize = 3;
         this.isFinal = false;
-        this.skillsCompatability = new HashMap<String, Integer>();
+        this.length = 2;
+        this.skillsCompatibilities = new HashMap<>();
+        GamePrompts gamePrompts = new GamePrompts();
+
+        if (Objects.equals(this.projectName, gamePrompts.PROJECT1_NAME)) {
+            this.projectDescription = gamePrompts.PROJECT1_DESCRIPTION;
+            skillsCompatibilitiesHelper("proj1comp.txt");
+            }
+        else if (Objects.equals(this.projectName, gamePrompts.PROJECT2_NAME)) {
+            this.projectDescription = gamePrompts.PROJECT2_DESCRIPTION;
+            skillsCompatibilitiesHelper("proj2comp.txt");
+        }
+        else if (Objects.equals(this.projectName, gamePrompts.PROJECT3_NAME)) {
+            this.projectDescription = gamePrompts.PROJECT3_DESCRIPTION;
+            skillsCompatibilitiesHelper("proj3comp.txt");
+        }
+        else if (Objects.equals(this.projectName, gamePrompts.PROJECT4_NAME)) {
+            this.projectDescription = gamePrompts.PROJECT4_DESCRIPTION;
+            skillsCompatibilitiesHelper("proj4comp.txt");
+        }
+        else if (Objects.equals(this.projectName, gamePrompts.PROJECT5_NAME)) {
+            this.projectDescription = gamePrompts.PROJECT5_DESCRIPTION;
+            skillsCompatibilitiesHelper("proj5comp.txt");
+        }
+        else if (Objects.equals(this.projectName, gamePrompts.PROJECT6_NAME)) {
+            this.projectDescription = gamePrompts.PROJECT6_DESCRIPTION;
+            skillsCompatibilitiesHelper("proj6comp.txt");
+        }
+        else if (Objects.equals(this.projectName, gamePrompts.PROJECT7_NAME)) {
+            this.projectDescription = gamePrompts.PROJECT7_DESCRIPTION;
+            skillsCompatibilitiesHelper("proj7comp.txt");
+        }
+        else if (Objects.equals(this.projectName, gamePrompts.PROJECT8_NAME)) {
+            this.projectDescription = gamePrompts.PROJECT8_DESCRIPTION;
+            skillsCompatibilitiesHelper("proj8comp.txt");
+        }
+        else if (Objects.equals(this.projectName, gamePrompts.FINAL_PROJECT1_PROMPT)) {
+            this.projectDescription = gamePrompts.FINAL_PROJECT1_DESCRIPTION;
+            makeProjectFinal();
+            skillsCompatibilitiesHelper("finalproj1comp.txt");
+        }
+        else if (Objects.equals(this.projectName, gamePrompts.FINAL_PROJECT2_PROMPT)) {
+            this.projectDescription = gamePrompts.FINAL_PROJECT2_DESCRIPTION;
+            makeProjectFinal();
+            skillsCompatibilitiesHelper("finalproj2comp.txt");
+        }
+        else if (Objects.equals(this.projectName, gamePrompts.FINAL_PROJECT3_PROMPT)) {
+            this.projectDescription = gamePrompts.FINAL_PROJECT3_DESCRIPTION;
+            makeProjectFinal();
+            skillsCompatibilitiesHelper("finalproj3comp.txt");
+        }
     }
-    /* I'm not sure how to initialize skillsCompatability. It should be a map that's like: {teamwork: 80%, leadership: 90%,
-    communication: 60%, ...}, including all the skills specified in the skills txt file, correct? However, the percentage
-    associate with each skill cannot be completely randomly generated, since, like we've talked about in vc, each project
-     has some 'theme' skills. E.g., project <crossCulturalExchange> requires multilingualism & communication, and so its
-     <skillsCompatability> would be smth like {teamwork: 80%, leadership: 70%, communication: 100%, multilingualism: 100% ...}
 
-     So I think we need to:
-     1) decide on a list of project (names)
-     2) decide on a list of skills
-     3) for each project, decide which skills it requires (we might need an instance variable like <skillsRequired> to store this?)
-     4) for <skillsCompatability> of each project, those skilled that are in <skillsRequired> will be associated with 100%,
-     and other skills can have percentages that are randomly generated b/n, say, 30% - 80%?
-
-     What do you think? :D
-     */
 
     /**
-     * Make the project final.
-     * Note that by default the project isn't final.
+     * A helper method that reads the skillsCompatibilities files and initializes </skillsCompatibilities>.
      */
-    public void makeProjectFinal() {
+    private void skillsCompatibilitiesHelper(String file_name) {
+        File file = new File(file_name);
+        Scanner myReader = new Scanner(file);
+        while (myReader.hasNextLine()) {
+            String line = myReader.nextLine();
+            String skill = line.split(": ")[0];
+            Integer score = Integer.valueOf(line.split(": ")[1]);
+            this.skillsCompatibilities.put(skill, score);
+    }
+
+    /**
+     * A helper method that makes the project final in the constructor.
+     */
+    private void makeProjectFinal() {
         this.isFinal = true;
         this.teamSize = 1;
+        this.length = 1;
     }
 
     /**
@@ -94,10 +147,10 @@ public class Project {
     }
     // we prolly don't want a setter for teamSize?
 
-    public HashMap<String, Integer> getSkillsCompatability() {
-        return skillsCompatability;
+    public HashMap<String, Integer> getSkillsCompatibilities() {
+        return skillsCompatibilities;
     }
-    // we prolly don't want a setter for skillsCompatability?
+    // we prolly don't want a setter for skillsCompatibilities?
 
     public String projectToString(){
         // TODO: Implement this method. See Intern internToString
