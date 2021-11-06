@@ -92,15 +92,15 @@ public class Project {
     public int getTeamSize() {
         return teamSize;
     }
-    // we prolly don't want a getter for teamSize?
+    // we prolly don't want a setter for teamSize?
 
     public HashMap<String, Integer> getSkillsCompatability() {
         return skillsCompatability;
     }
+    // we prolly don't want a setter for skillsCompatability?
 
     public String projectToString(){
         // TODO: Implement this method. See Intern internToString
         return "Turns a project into a string is not implemented yet.";
     }
-    // we prolly don't want a getter for skillsCompatability?
 }
