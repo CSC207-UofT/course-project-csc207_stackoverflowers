@@ -5,15 +5,13 @@ import Entities.GamePrompts;
 import Entities.Intern;
 import Entities.InterviewIntern;
 
+import java.io.*;
 import java.util.*;
-import java.io.File;
-import java.io.FileNotFoundException;
 
-public class GameMaker {
+public class GameMaker implements Serializable {
     private final HRSystem currentHRSystem;
     private final GamePrompts prompts;
-    private final ArrayList<String> commands = new ArrayList<String>();
-
+    private final ArrayList<String> universalCommands;
     /*
     - random intern generator - interns in HR
     - method for tree is also implement
@@ -27,32 +25,13 @@ public class GameMaker {
     public GameMaker() {
         this.currentHRSystem = new HRSystem();
         this.prompts = new GamePrompts();
-        this.commands.add("quit");
-        this.commands.add("save");
-        //TODO: also stores the three levels of the game
-
-        /*
-        Entities.Intern Farzana = helperMakeInternOneSkill("Farzana Rahman", 20, "Teamwork", 98 );
-        Entities.Intern Maggie = helperMakeInternOneSkill("Maggie Huang", 20, "Leadership", 82);
-        Entities.Intern Mary = helperMakeInternOneSkill("Mary Yijia Li", 19, "Efficiency", 99 );
-        ArrayList<Entities.Intern> newInterns = new ArrayList<>();
-        newInterns.add(Farzana);
-        newInterns.add(Maggie);
-        newInterns.add(Mary);
-        this.addInternToList(newInterns);
-
-         */
+        universalCommands = new ArrayList<String>(Arrays.asList("save", "quit", "load"));
     }
 
     public HRSystem getCurrentHRSystem() {
         return currentHRSystem;
     }
-
-    public ArrayList<String> getCommands() {
-        return commands;
-    }
-
-    //TODO: The following methods are not used anywhere for now. See if can be deleted
+    public static ArrayList<String> getUniversalCommands(){return universalCommands;}
 
     /**
      * Add the list of interns to UseCases.HRSystem.
@@ -63,6 +42,7 @@ public class GameMaker {
         this.currentHRSystem.updateInternList(newInterns);
     }
 
+    //TODO: this method below is never used. Can I delete it?
     /**
      * Return a list of interns.
      */
@@ -78,11 +58,11 @@ public class GameMaker {
     public String firstPrompt(String playerInput){
         this.currentHRSystem.updatePlayerName(playerInput);
         String re = "";
-        re += this.prompts.FIRST_PROMPT_BEFORE_NAME;
+        re += GamePrompts.FIRST_PROMPT_BEFORE_NAME;
         re += playerInput;
-        re += this.prompts.FIRST_PROMPT_AFTER_NAME;
+        re += GamePrompts.FIRST_PROMPT_AFTER_NAME;
         re += this.currentHRSystem.makeInternsToString();
-        re += this.prompts.ASK_FOR_INTERVIEWEE_NAME;
+        re += GamePrompts.ASK_FOR_INTERVIEWEE_NAME;
         return re;
     }
 
@@ -118,7 +98,7 @@ public class GameMaker {
             Intern interviewee = new InterviewIntern(name, age, skillMap);
             internList.add(interviewee);
         }
-        currentHRSystem.updateInternList(internList);
+        addInternToList(internList);
     }
 
     /**
@@ -176,8 +156,8 @@ public class GameMaker {
 
     }
 
-    public ArrayList<String> generateFinalProject(){
-        // take the final projects in gameprompts and pick a final project for this game.
+    public void generateFinalProject(){
+        // take the final projects in gamePrompts and pick a final project for this game.
         ArrayList<String> finalProjects = new ArrayList<>();
         ArrayList<String> finalProjForGame = new ArrayList<>();
         finalProjects.add(prompts.FINAL_PROJECT1);
@@ -185,7 +165,7 @@ public class GameMaker {
         finalProjects.add(prompts.FINAL_PROJECT3);
         Collections.shuffle(finalProjects);
         finalProjForGame.add(finalProjects.get(0));
-        return finalProjForGame;
+        currentHRSystem.updateFinalProject(finalProjForGame);
 
     }
 
@@ -198,8 +178,6 @@ public class GameMaker {
     public void generateInternResponses() {
 
     }
-
-
     // TODO: method assignResponseToIntern() (Assigns response trees for each intern)
     /**
      * This method will assign one of the responses from our response trees to an intern
@@ -208,30 +186,37 @@ public class GameMaker {
 
     }
 
-    // TODO: method saveGame()
     /**
-     * Saves the current state of the game (discuss later, still unsure)
+     * Saves the current state of the game under a file that is the player's name.
      */
-    public void saveGame() {}
-
-    //TODO: method quitGame()
-    public void quitGame(){}
-
-    // TODO: method loadGame()
+    private void saveGame(String name) throws IOException {
+        FileOutputStream fileOut = new FileOutputStream(name);
+        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        out.writeObject(this);
+        out.close();
+    }
+    
+    private void quitGame() throws IOException {
+        saveGame(currentHRSystem.getPlayerName());
+    }
+    
     /**
      * Loads the previous saved state of the game (discuss later, still unsure)
+     * @param playerName
      */
-    public void loadGame() {
+    public void load(String playerName) {
+        //TODO: implement method loadGame
     }
-
-    public String universalCommand(String playerInput) throws Exception {
-            if (Objects.equals(playerInput, "save")) {
-                saveGame();
-                return "Game's save function not implemented yet";
-            }if (Objects.equals(playerInput, "quit")) {
-                quitGame();
-                return "Game's quit function not implemented yet";
-            }else{throw new Exception(Exceptions.UNIVERSAL_COMMAND_NOT_FOUND);}
+    
+    public String save() throws IOException {
+        saveGame(currentHRSystem.getPlayerName());
+        return GamePrompts.GAME_SAVED_SUCCESSFUL + currentHRSystem.getPlayerName();
+    }
+    
+    public String quit() throws IOException{
+        quitGame();
+        return GamePrompts.INFORM_QUIT_GAME + currentHRSystem.getPlayerName();
+    }
         //throw exception if input not one of these two... but how would they get here in the first place XD
-    }
+
 }
