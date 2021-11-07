@@ -1,4 +1,5 @@
 package Entities;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Objects;
 import java.io.File;  // Import the File class
@@ -21,9 +22,9 @@ public class Project {
      which the first element is the corresponding project description, the second element is the corresponding project
      prompt, and the third element is the corresponding projcomp file name.
      */
-    private String name;
-    private String description;
-    private int length;
+    private final String name;
+    private final String description;
+    private final int length;
     private int teamSize;
     private HashMap<String, Integer> skillsCompatibilities;
     private boolean isFinal;
@@ -33,7 +34,7 @@ public class Project {
      * Construct a project.
      * Note that argument </projectName> has to be the same as one of the PROJECT_NAME constants in GamePrompts.
      */
-    public Project(String projectName) {
+    public Project(String projectName) throws FileNotFoundException {
         this.name = projectName;
 
         this.length = 2;
@@ -51,36 +52,34 @@ public class Project {
 
         initializeSkillsCompatibilities(this.nameToDscpPromptFile.get(this.name)[2]);
 
-        if (Objects.equals(this.name, gamePrompts.FINAL_PROJECT1_NAME) ||
-           (Objects.equals(this.name, gamePrompts.FINAL_PROJECT2_NAME) ||
-           (Objects.equals(this.name, gamePrompts.FINAL_PROJECT3_NAME) {
+        if (Objects.equals(this.name, GamePrompts.FINAL_PROJECT1_NAME) || Objects.equals(this.name, GamePrompts.FINAL_PROJECT2_NAME) || Objects.equals(this.name, GamePrompts.FINAL_PROJECT3_NAME)) {
                makeProjectFinal();
         }
+    }
 
     /**
      * A helper method that initializes </nameToDscpPromptFile> in the constructor.
      */
     private void initializeNameToDscpPromptFile() {
-        GamePrompts gamePrompts = new GamePrompts();
         HashMap<String, String[]> map = new HashMap<>();
-        map.put(gamePrompts.PROJECT1_NAME, new String[]{gamePrompts.PROJECT1_DESCRIPTION, gamePrompts.PROJECT1_PROMPT, "proj1comp.txt"});
-        map.put(gamePrompts.PROJECT2_NAME, new String[]{gamePrompts.PROJECT2_DESCRIPTION, gamePrompts.PROJECT2_PROMPT, "proj2comp.txt"});
-        map.put(gamePrompts.PROJECT3_NAME, new String[]{gamePrompts.PROJECT3_DESCRIPTION, gamePrompts.PROJECT3_PROMPT, "proj3comp.txt"});
-        map.put(gamePrompts.PROJECT4_NAME, new String[]{gamePrompts.PROJECT4_DESCRIPTION, gamePrompts.PROJECT4_PROMPT, "proj4comp.txt"});
-        map.put(gamePrompts.PROJECT5_NAME, new String[]{gamePrompts.PROJECT5_DESCRIPTION, gamePrompts.PROJECT5_PROMPT, "proj5comp.txt"});
-        map.put(gamePrompts.PROJECT6_NAME, new String[]{gamePrompts.PROJECT6_DESCRIPTION, gamePrompts.PROJECT6_PROMPT, "proj6comp.txt"});
-        map.put(gamePrompts.PROJECT7_NAME, new String[]{gamePrompts.PROJECT7_DESCRIPTION, gamePrompts.PROJECT7_PROMPT, "proj7comp.txt"});
-        map.put(gamePrompts.PROJECT8_NAME, new String[]{gamePrompts.PROJECT8_DESCRIPTION, gamePrompts.PROJECT8_PROMPT, "proj8comp.txt"});
-        map.put(gamePrompts.FINAL_PROJECT1_NAME, new String[]{gamePrompts.FINAL_PROJECT1_DESCRIPTION, gamePrompts.FINAL_PROJECT1_PROMPT, "finalproj1comp.txt"});
-        map.put(gamePrompts.FINAL_PROJECT2_NAME, new String[]{gamePrompts.FINAL_PROJECT2_DESCRIPTION, gamePrompts.FINAL_PROJECT2_PROMPT, "finalproj2comp.txt"});
-        map.put(gamePrompts.FINAL_PROJECT3_NAME, new String[]{gamePrompts.FINAL_PROJECT3_DESCRIPTION, gamePrompts.FINAL_PROJECT3_PROMPT, "finalproj3comp.txt"});
+        map.put(GamePrompts.PROJECT1_NAME, new String[]{GamePrompts.PROJECT1_DESCRIPTION, GamePrompts.PROJECT1_PROMPT, "proj1comp.txt"});
+        map.put(GamePrompts.PROJECT2_NAME, new String[]{GamePrompts.PROJECT2_DESCRIPTION, GamePrompts.PROJECT2_PROMPT, "proj2comp.txt"});
+        map.put(GamePrompts.PROJECT3_NAME, new String[]{GamePrompts.PROJECT3_DESCRIPTION, GamePrompts.PROJECT3_PROMPT, "proj3comp.txt"});
+        map.put(GamePrompts.PROJECT4_NAME, new String[]{GamePrompts.PROJECT4_DESCRIPTION, GamePrompts.PROJECT4_PROMPT, "proj4comp.txt"});
+        map.put(GamePrompts.PROJECT5_NAME, new String[]{GamePrompts.PROJECT5_DESCRIPTION, GamePrompts.PROJECT5_PROMPT, "proj5comp.txt"});
+        map.put(GamePrompts.PROJECT6_NAME, new String[]{GamePrompts.PROJECT6_DESCRIPTION, GamePrompts.PROJECT6_PROMPT, "proj6comp.txt"});
+        map.put(GamePrompts.PROJECT7_NAME, new String[]{GamePrompts.PROJECT7_DESCRIPTION, GamePrompts.PROJECT7_PROMPT, "proj7comp.txt"});
+        map.put(GamePrompts.PROJECT8_NAME, new String[]{GamePrompts.PROJECT8_DESCRIPTION, GamePrompts.PROJECT8_PROMPT, "proj8comp.txt"});
+        map.put(GamePrompts.FINAL_PROJECT1_NAME, new String[]{GamePrompts.FINAL_PROJECT1_DESCRIPTION, GamePrompts.FINAL_PROJECT1_PROMPT, "finalproj1comp.txt"});
+        map.put(GamePrompts.FINAL_PROJECT2_NAME, new String[]{GamePrompts.FINAL_PROJECT2_DESCRIPTION, GamePrompts.FINAL_PROJECT2_PROMPT, "finalproj2comp.txt"});
+        map.put(GamePrompts.FINAL_PROJECT3_NAME, new String[]{GamePrompts.FINAL_PROJECT3_DESCRIPTION, GamePrompts.FINAL_PROJECT3_PROMPT, "finalproj3comp.txt"});
         this.nameToDscpPromptFile = map;
     }
 
     /**
      * A helper method that reads the skillsCompatibilities files and initializes </skillsCompatibilities>  in the constructor.
      */
-    private void initializeSkillsCompatibilities(String file_name) {
+    private void initializeSkillsCompatibilities(String file_name) throws FileNotFoundException {
         HashMap<String, Integer> map = new HashMap<>();
         File file = new File(file_name);
         Scanner myReader = new Scanner(file);
@@ -88,7 +87,7 @@ public class Project {
             String line = myReader.nextLine();
             String skill = line.split(": ")[0];
             Integer score = Integer.valueOf(line.split(": ")[1]);
-            map.put(skill, score);
+            map.put(skill, score); }
         this.skillsCompatibilities = map;
     }
 
@@ -98,7 +97,6 @@ public class Project {
     private void makeProjectFinal() {
         this.isFinal = true;
         this.teamSize = 1;
-        this.length = 1;
     }
 
     /**
@@ -112,17 +110,15 @@ public class Project {
      * Return the string representation of the project.
      */
     public String projectToString(){
-        GamePrompts gamePrompts = new GamePrompts();
-        String prompt = this.nameToDscpPromptFile.get(this.name)[1];
-        return gamePrompts.prompt;
+        return this.nameToDscpPromptFile.get(this.name)[1];
     }
 
     // Belows are the getters for all the instance variables.
-    public String getProjectName() {
+    public String getName() {
         return name;
     }
 
-    public String getProjectDescription() {
+    public String getDescription() {
         return description;
     }
 
