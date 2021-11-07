@@ -1,6 +1,7 @@
 package ControllersPresenters;
 
 import Entities.Exceptions;
+import UseCases.GameGenerators;
 import UseCases.GameMaker;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class GameManager {
     try - catch?
      */
     private GameMaker currentGameMaker;
+    private GameGenerators currentGameGenerators;
     private statusOfGame currentStatus;
     private Level currentLevel;
     private int currentMonth = 1;
@@ -26,11 +28,12 @@ public class GameManager {
 
     public GameManager() throws Exception {
         this.currentGameMaker = new GameMaker();
+        this.currentGameGenerators = new GameGenerators();
         this.currentStatus = statusOfGame.Start;
         //ask GameMaker to generate the Interns and Projects needed for the current game.
         try {
-            currentGameMaker.generateInterns(10);
-            currentGameMaker.generateProjects();
+            currentGameGenerators.generateInterns(10);
+            currentGameGenerators.generateProjects(4);
         } finally {
             isRunning = true;
 

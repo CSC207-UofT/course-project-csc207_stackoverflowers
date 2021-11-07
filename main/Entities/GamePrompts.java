@@ -27,15 +27,15 @@ public class GamePrompts {
     public static final String INFORM_QUIT_GAME = "You have quit your game, and you progress has been saved to a file " +
             "with the player name you've used. Player name:";
 
-    public final String HIRE_INTERN = "";
+    public final String HIRE_INTERN = "Would you like to hire this intern?";
 
-    public final String HIRED_INTERN = "Congratulations! You have hired this intern! ";
+    public final String HIRED_INTERN = "Congratulations! You have hired this intern!";
 
-    public final String PLAYER_CHOICE = ""; // what would you like to choose etc
+    public final String PLAYER_CHOICE = "Choose from either A or B";
 
     public final String CONFIRM_HIRING = "Are you sure you want to hire this intern?";
 
-    public final String NEXT_CANDIDATE = "";
+    public final String NEXT_CANDIDATE = "Would you like to move on to the next candidate?";
 
     // not all of the project prompts will be used, the projectgenerator will output a list and choose 4 projects
     // for the game from all the prompts here
