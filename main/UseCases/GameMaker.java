@@ -32,6 +32,7 @@ public class GameMaker implements Serializable {
         return currentHRSystem;
     }
     public static ArrayList<String> getUniversalCommands(){return universalCommands;}
+
     public int getCurrentMonth(){return currentMonth;}
     /**
      * Add the list of interns to UseCases.HRSystem.
@@ -41,6 +42,7 @@ public class GameMaker implements Serializable {
     public void addInternToList(ArrayList<Intern> newInterns){
         this.currentHRSystem.updateInternList(newInterns);
     }
+
 
     //TODO: this method below is never used. Can I delete it?
     /**
@@ -79,6 +81,7 @@ public class GameMaker implements Serializable {
         return new InterviewIntern(name, age, skills);
         }
      */
+
 
     /**
      * Generates an ArrayList of new random interns/interviewees.

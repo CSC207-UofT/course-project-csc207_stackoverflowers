@@ -18,6 +18,8 @@ which formats each single intern into a string)
 
 //TODO: Implement method updateProjectList
 
+// TODO: update final project !!
+
 //TODO: Specify and implement update and get InternList for each type of intern (HiredIntern and InterviewIntern)
 
  */
@@ -119,7 +121,7 @@ public class HRSystem implements Serializable {
         return false;
     }
 
-    public void updateFinalProject(ArrayList<String> finalProjForGame) {
+    public void updateFinalProject(ArrayList<Project> finalProjForGame) {
         //TODO: implement this method
     }
 }

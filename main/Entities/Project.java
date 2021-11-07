@@ -74,17 +74,17 @@ public class Project {
             this.projectDescription = gamePrompts.PROJECT8_DESCRIPTION;
             skillsCompatibilitiesHelper("proj8comp.txt");
         }
-        else if (Objects.equals(this.projectName, gamePrompts.FINAL_PROJECT1_PROMPT)) {
+        else if (Objects.equals(this.projectName, gamePrompts.FINAL_PROJECT1_NAME)) {
             this.projectDescription = gamePrompts.FINAL_PROJECT1_DESCRIPTION;
             makeProjectFinal();
             skillsCompatibilitiesHelper("finalproj1comp.txt");
         }
-        else if (Objects.equals(this.projectName, gamePrompts.FINAL_PROJECT2_PROMPT)) {
+        else if (Objects.equals(this.projectName, gamePrompts.FINAL_PROJECT2_NAME)) {
             this.projectDescription = gamePrompts.FINAL_PROJECT2_DESCRIPTION;
             makeProjectFinal();
             skillsCompatibilitiesHelper("finalproj2comp.txt");
         }
-        else if (Objects.equals(this.projectName, gamePrompts.FINAL_PROJECT3_PROMPT)) {
+        else if (Objects.equals(this.projectName, gamePrompts.FINAL_PROJECT3_NAME)) {
             this.projectDescription = gamePrompts.FINAL_PROJECT3_DESCRIPTION;
             makeProjectFinal();
             skillsCompatibilitiesHelper("finalproj3comp.txt");
