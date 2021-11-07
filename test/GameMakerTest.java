@@ -10,11 +10,12 @@ import static org.junit.Assert.*;
 
 public class GameMakerTest {
     GameMaker gameMaker;
-    GamePrompts gamePrompts;
 
     @Before
     public void setUp() {
          gameMaker = new GameMaker();
+         gameMaker.firstPrompt("Maggie");//To update the player's name
+         gameMaker.setCurrentMonth(3);
     }
     
     // Hi Camille, feel free to change this test as needed. - Maggie
@@ -32,19 +33,20 @@ public class GameMakerTest {
     }
 
     @Test(timeout = 100)
-    public void TestSerializable(){
-        try {
+    public void TestSerializable() throws IOException {
             new ObjectOutputStream(new FileOutputStream("Maggie")).writeObject(gameMaker);
-        }catch (IOException e){
-            assertEquals(1,2);//What should I do if exception occurs?
-        }
-    }
 
-    @Test(timeout = 100)
+    }
+    @Test(timeout = 1000)
+    public void TestSaveGame() throws IOException {
+        gameMaker.save(gameMaker.getCurrentMonth());
+    }
+    @Test(timeout = 1000)
     public  void TestLoad() throws IOException, ClassNotFoundException {
-        gameMaker.save();
+        gameMaker.save(3);
         GameMaker copy = gameMaker.load(gameMaker.getCurrentHRSystem().getPlayerName());
-        assertEquals(gameMaker, copy);
+        assertEquals(gameMaker.getCurrentHRSystem().getPlayerName(), copy.getCurrentHRSystem().getPlayerName());
+        assertEquals(gameMaker.getCurrentHRSystem().getInternList(), copy.getCurrentHRSystem().getInternList());
     }
 
 
