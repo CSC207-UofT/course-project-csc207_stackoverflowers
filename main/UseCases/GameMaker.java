@@ -208,7 +208,7 @@ public class GameMaker implements Serializable {
         FileInputStream fileIn = new FileInputStream(playerName);
         ObjectInputStream in = new ObjectInputStream(fileIn);
         GameMaker loadGameMaker = (GameMaker) in.readObject();
-        return null;
+        return loadGameMaker;
     }
     
     public String save() throws IOException {
