@@ -73,17 +73,17 @@ public class GamePrompts implements Serializable {
             "after the month has finished. \n "+
             "type anything to continue and view the report that has been generated... ";
 
-    public final String PROJECT1_NAME = "Logo Design";
-    public final String PROJECT2_NAME = "A Bug's Life";
-    public final String PROJECT3_NAME = "Game Character Design";
-    public final String PROJECT4_NAME = "Hackathon Leaders";
-    public final String PROJECT5_NAME = "Customer Data Privacy & Security";
-    public final String PROJECT6_NAME = "Coding Lessons to Young Children";
-    public final String PROJECT7_NAME = "Social Media Platform Management";
-    public final String PROJECT8_NAME = "Customer Feedback Summary and Analysis";
-    public final String FINAL_PROJECT1_NAME = "Website Featuring";
-    public final String FINAL_PROJECT2_NAME = "Machine Learning Research Assistant";
-    public final String FINAL_PROJECT3_NAME = "COVID-19 Tracking System Debug";
+    public static final String PROJECT1_NAME = "Logo Design";
+    public static final String PROJECT2_NAME = "A Bug's Life";
+    public static final String PROJECT3_NAME = "Game Character Design";
+    public static final String PROJECT4_NAME = "Hackathon Leaders";
+    public static final String PROJECT5_NAME = "Customer Data Privacy & Security";
+    public static final String PROJECT6_NAME = "Coding Lessons to Young Children";
+    public static final String PROJECT7_NAME = "Social Media Platform Management";
+    public static final String PROJECT8_NAME = "Customer Feedback Summary and Analysis";
+    public static final String FINAL_PROJECT1_NAME = "Website Featuring";
+    public static final String FINAL_PROJECT2_NAME = "Machine Learning Research Assistant";
+    public static final String FINAL_PROJECT3_NAME = "COVID-19 Tracking System Debug";
 
     public static final String PROJECT1_DESCRIPTION = "";
     public static final String PROJECT2_DESCRIPTION = "";
@@ -142,36 +142,52 @@ public class GamePrompts implements Serializable {
                                                  " \n" +
                                                  "Skills: Creativity, Confidence, Artistic";
 
-    public static final String PROJECT4_PROMPT = "Project Name: Hackathon Leaders \n" +
-                                                 " \n" +
+    public static final String PROJECT4_PROMPT = "Project Name:" + PROJECT4_NAME + "\n" +
+                                                 "Project Description: " + PROJECT4_DESCRIPTION + "\n" +
+                                                 "Length of Project: 2 months \n" +
+                                                 "Team Size: 3 \n" +
                                                  "Skills: Leadership, Confidence, Responsible";
 
-    public static final String PROJECT5_PROMPT = "Project Name: Customer Data Privacy & Security \n" +
-                                                 " \n" +
+    public static final String PROJECT5_PROMPT = "Project Name:" + PROJECT5_NAME + "\n" +
+                                                 "Project Description: " + PROJECT5_DESCRIPTION + "\n" +
+                                                 "Length of Project: 2 months \n" +
+                                                 "Team Size: 3 \n" +
                                                  "Skills: Teamwork, Creativity, Efficiency";
 
-    public static final String PROJECT6_PROMPT = "Project Name: Teaching Coding to Young Children \n" +
-                                                 " \n" +
-                                                 "Skills: Patience, Creativity, Responsible\n";
+    public static final String PROJECT6_PROMPT = "Project Name:" + PROJECT6_NAME + "\n" +
+                                                 "Project Description: " + PROJECT6_DESCRIPTION + "\n" +
+                                                 "Length of Project: 2 months \n" +
+                                                 "Team Size: 3 \n" +
+                                                 "Skills: Patience, Creativity, Responsible";
 
-    public static final String PROJECT7_PROMPT = "Project Name: Social Media Management \n" +
-                                                 " \n" +
-                                                 "Skills: Efficiency, Teamwork, Endurance \n";
+    public static final String PROJECT7_PROMPT = "Project Name:" + PROJECT7_NAME + "\n" +
+                                                 "Project Description: " + PROJECT7_DESCRIPTION + "\n" +
+                                                 "Length of Project: 2 months \n" +
+                                                 "Team Size: 3 \n" +
+                                                 "Skills: Efficiency, Teamwork, Endurance";
 
-    public static final String PROJECT8_PROMPT = "Project Name: Customer Feedback Summary and Analysis \n" +
-                                                 " \n" +
-                                                 "Skills: Observant, Communications, Analytical \n";
+    public static final String PROJECT8_PROMPT = "Project Name:" + PROJECT8_NAME + "\n" +
+                                                 "Project Description: " + PROJECT8_DESCRIPTION + "\n" +
+                                                 "Length of Project: 2 months \n" +
+                                                 "Team Size: 3 \n" +
+                                                 "Skills: Observant, Communications, Analytical";
 
-    public static final String FINAL_PROJECT1_PROMPT = "Final Project Name: Adding New Features to the Website \n" +
-                                                       " \n" +
+    public static final String FINAL_PROJECT1_PROMPT = "Project Name:" + FINAL_PROJECT1_NAME + "\n" +
+                                                       "Project Description: " + FINAL_PROJECT1_DESCRIPTION + "\n" +
+                                                       "Length of Project: 2 months \n" +
+                                                       "Team Size: 1 \n" +
                                                        "Skills: Observant, Confidence, Creativity";
 
-    public static final String FINAL_PROJECT2_PROMPT = "Project Name: Machine Learning Research Assistant \n" +
-                                                       " \n" +
+    public static final String FINAL_PROJECT2_PROMPT = "Project Name:" + FINAL_PROJECT2_NAME + "\n" +
+                                                       "Project Description: " + FINAL_PROJECT2_DESCRIPTION + "\n" +
+                                                       "Length of Project: 2 months \n" +
+                                                       "Team Size: 1 \n" +
                                                        "Skills: Communication, Endurance, Observant";
 
-    public static final String FINAL_PROJECT3_PROMPT = "Project Name: Company's COVID-19 Tracking System \n" +
-                                                       " \n" +
+    public static final String FINAL_PROJECT3_PROMPT = "Project Name:" + FINAL_PROJECT3_NAME + "\n" +
+                                                       "Project Description: " + FINAL_PROJECT3_DESCRIPTION + "\n" +
+                                                       "Length of Project: 2 months \n" +
+                                                       "Team Size: 1 \n" +
                                                        "Skills: Efficiency, Patience, Responsible";
 
     //See usage in MonthMaker

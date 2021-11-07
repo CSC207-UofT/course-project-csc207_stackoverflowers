@@ -82,7 +82,7 @@ public class HRSystem implements Serializable {
         //a method that takes all the assigning so far and returns the List of projects and interns assigned to it.
         StringBuilder result = new StringBuilder();
         for (Project p : projectList){
-            result.append(p.getProjectName());
+            result.append(p.getName());
             result.append("    Interns in project: ");
             //TODO: finish this method so that it displays all project names and the intern names that are
             // assigned to this project.
