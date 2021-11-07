@@ -139,14 +139,14 @@ public class GameMaker implements Serializable {
         // take the project prompts from GamePrompts and outputs a list
         ArrayList<String> projects = new ArrayList<>();
         ArrayList<String> projForGame = new ArrayList<>();
-        projects.add(prompts.PROJECT_PROMPT1);
-        projects.add(prompts.PROJECT_PROMPT2);
-        projects.add(prompts.PROJECT_PROMPT3);
-        projects.add(prompts.PROJECT_PROMPT4);
-        projects.add(prompts.PROJECT_PROMPT5);
-        projects.add(prompts.PROJECT_PROMPT6);
-        projects.add(prompts.PROJECT_PROMPT7);
-        projects.add(prompts.PROJECT_PROMPT8);
+        projects.add(GamePrompts.PROJECT1_PROMPT);
+        projects.add(GamePrompts.PROJECT2_PROMPT);
+        projects.add(GamePrompts.PROJECT3_PROMPT);
+        projects.add(GamePrompts.PROJECT4_PROMPT);
+        projects.add(GamePrompts.PROJECT5_PROMPT);
+        projects.add(GamePrompts.PROJECT6_PROMPT);
+        projects.add(GamePrompts.PROJECT7_PROMPT);
+        projects.add(GamePrompts.PROJECT8_PROMPT);
         Collections.shuffle(projects);
         for (int i = 0; i < 5; i++) {
             projForGame.add(projects.get(i));
@@ -159,9 +159,9 @@ public class GameMaker implements Serializable {
         // take the final projects in gamePrompts and pick a final project for this game.
         ArrayList<String> finalProjects = new ArrayList<>();
         ArrayList<String> finalProjForGame = new ArrayList<>();
-        finalProjects.add(prompts.FINAL_PROJECT1);
-        finalProjects.add(prompts.FINAL_PROJECT2);
-        finalProjects.add(prompts.FINAL_PROJECT3);
+        finalProjects.add(GamePrompts.FINAL_PROJECT1_PROMPT);
+        finalProjects.add(GamePrompts.FINAL_PROJECT2_PROMPT);
+        finalProjects.add(GamePrompts.FINAL_PROJECT3_PROMPT);
         Collections.shuffle(finalProjects);
         finalProjForGame.add(finalProjects.get(0));
         currentHRSystem.updateFinalProject(finalProjForGame);
@@ -208,7 +208,7 @@ public class GameMaker implements Serializable {
         FileInputStream fileIn = new FileInputStream(playerName);
         ObjectInputStream in = new ObjectInputStream(fileIn);
         GameMaker loadGameMaker = (GameMaker) in.readObject();
-        return null;
+        return loadGameMaker;
     }
     
     public String save() throws IOException {

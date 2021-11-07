@@ -1,3 +1,0 @@
-Teamwork : 0.72
-Flexibility : 0.88
-Efficiency : 0.80

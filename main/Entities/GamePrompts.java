@@ -8,7 +8,7 @@ public class GamePrompts {
     - feel free to add more as we continue coding our project
     - if class gets too long, maybe consider creating another prompt class
      */
-    public final String ASK_FOR_NAME = "Welcome to HRSimulator! To start the game, " +
+    public static final String ASK_FOR_NAME = "Welcome to HRSimulator! To start the game, " +
             "please enter your name.\n" +
             "To load an already existing game under your name, please type 'load <name>'.";
 
@@ -27,15 +27,15 @@ public class GamePrompts {
     public static final String INFORM_QUIT_GAME = "You have quit your game, and you progress has been saved to a file " +
             "with the player name you've used. Player name:";
 
-    public final String HIRE_INTERN = "";
+    public static final String HIRE_INTERN = "";
 
-    public final String HIRED_INTERN = "Congratulations! You have hired this intern! ";
+    public static final String HIRED_INTERN = "Congratulations! You have hired this intern! ";
 
-    public final String PLAYER_CHOICE = ""; // what would you like to choose etc
+    public static final String PLAYER_CHOICE = ""; // what would you like to choose etc
 
-    public final String CONFIRM_HIRING = "Are you sure you want to hire this intern?";
+    public static final String CONFIRM_HIRING = "Are you sure you want to hire this intern?";
 
-    public final String NEXT_CANDIDATE = "";
+    public static final String NEXT_CANDIDATE = "";
 
     // not all of the project prompts will be used, the projectgenerator will output a list and choose 4 projects
     // for the game from all the prompts here
@@ -71,7 +71,31 @@ public class GamePrompts {
             "after the month has finished. "+
             "type anything to continue and view the report that has been generated... ";
 
-    public final String PROJECT_PROMPT1 = """
+    public final String PROJECT1_NAME = "Logo Design";
+    public final String PROJECT2_NAME = "A Bug's Life";
+    public final String PROJECT3_NAME = "Game Character Design";
+    public final String PROJECT4_NAME = "Hackathon Leaders";
+    public final String PROJECT5_NAME = "Customer Data Privacy & Security";
+    public final String PROJECT6_NAME = "Coding Lessons to Young Children";
+    public final String PROJECT7_NAME = "Social Media Platform Management";
+    public final String PROJECT8_NAME = "Customer Feedback Summary and Analysis";
+    public final String FINAL_PROJECT1_NAME = "Website Featuring";
+    public final String FINAL_PROJECT2_NAME = "Machine Learning Research Assistant";
+    public final String FINAL_PROJECT3_NAME = "COVID-19 Tracking System Debug";
+
+    public static final String PROJECT1_DESCRIPTION = "";
+    public static final String PROJECT2_DESCRIPTION = "";
+    public static final String PROJECT3_DESCRIPTION = "";
+    public static final String PROJECT4_DESCRIPTION = "";
+    public static final String PROJECT5_DESCRIPTION = "";
+    public static final String PROJECT6_DESCRIPTION = "";
+    public static final String PROJECT7_DESCRIPTION = "";
+    public static final String PROJECT8_DESCRIPTION = "";
+    public static final String FINAL_PROJECT1_DESCRIPTION = "";
+    public static final String FINAL_PROJECT2_DESCRIPTION = "";
+    public static final String FINAL_PROJECT3_DESCRIPTION = "";
+
+    public static final String PROJECT1_PROMPT = """
             Project Name: Create New Logo\s
             Project Description: This project requires individuals to be creative, artistic and imaginative
             The interns will be working with world-renowned graphic designer to create a new logo that represents\s
@@ -103,7 +127,7 @@ public class GamePrompts {
 
              */
 
-    public final String PROJECT_PROMPT2 = """
+    public static final String PROJECT2_PROMPT = """
             Project Name: A Bug's Life \s
             Project Description: The software development team all went on vacation and didn't fully test their work and now\040
             they are riddled with bugs in their code!\s
@@ -114,60 +138,59 @@ public class GamePrompts {
             Team Size: 3\s
             Skills: Teamwork, Flexibility, Efficiency""";
 
-    public final String PROJECT_PROMPT3 = """
+    public static final String PROJECT3_PROMPT = """
             Project Name: Game Character Design\s
             \s
             Skills: Creativity, Confidence, Artistic""";
 
-    public final String PROJECT_PROMPT4 = """
+    public static final String PROJECT4_PROMPT = """
             Project Name: Hackathon Leaders\s
             \s
             Skills: Leadership, Confidence, Responsible""";
 
-    public final String PROJECT_PROMPT5 = """
+    public static final String PROJECT5_PROMPT = """
             Project Name: Customer Data Privacy & Security\s
             \s
             Skills: Teamwork, Creativity, Efficiency""";
 
-    public final String PROJECT_PROMPT6 = """
+    public static final String PROJECT6_PROMPT = """
             Project Name: Teaching Coding to Young Children\s
             \s
             Skills: Patience, Creativity, Responsible
             """;
 
-    public final String PROJECT_PROMPT7 = """
+    public static final String PROJECT7_PROMPT = """
             Project Name: Social Media Management\s
             \s
             Skills: Efficiency, Teamwork, Endurance\s
             """;
 
-    public final String PROJECT_PROMPT8 = """
+    public static final String PROJECT8_PROMPT = """
             Project Name: Customer Feedback Summary and Analysis\s
             \s
             Skills: Observant, Communications, Analytical\s
             """;
+
+    public static final String FINAL_PROJECT1_PROMPT = """
+            Final Project Name: Adding New Features to the Website\s
+            \s
+            Skills: Observant, Confidence, Creativity""";
+
+    public static final String FINAL_PROJECT2_PROMPT = """
+            Project Name: Machine Learning Research Assistant\s
+            \s
+            Skills: Communication, Endurance, Observant""";
+
+    public static final String FINAL_PROJECT3_PROMPT = """
+            Project Name: Company's COVID-19 Tracking System\s
+            \s
+            Skills: Efficiency, Patience, Responsible""";
 
     //See usage in MonthMaker
     public static final String INTERN_ASSIGNING_SUCCESS = "The intern was successfully assigned to the project specified.";
 
     //See usage in MonthMaker
     public static final String INTERN_REMOVING_SUCCESS = "The intern was successfully removed from the project specified.";
-
-
-    public final String FINAL_PROJECT1 = """
-            Final Project Name: Add New Features to the Website\s
-            \s
-            Skills: Observant, Confidence, Creativity""";
-
-    public final String FINAL_PROJECT2 = """
-            Project Name: Machine Learning Research Assistant\s
-            \s
-            Skills: Communication, Endurance, Observant""";
-
-    public final String FINAL_PROJECT3 = """
-            Project Name: Debug Company's COVID-19 Tracking System\s
-            \s
-            Skills: Efficiency, Patience, Responsible""";
 
     public final String REPORT_CONCLUSION = "That's all! Have a good day manager. :)";
 
