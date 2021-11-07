@@ -8,100 +8,88 @@ import java.util.Scanner; // Import the Scanner class to read text files
 public class Project {
     /*
     Instance variables:
-     * projectName: the name of this project. Note the name has to be the same as the same the PROJECT_NAME constants in GamePrompts.
-     * projectDescription: the description of this project
+     * name: the name of this project. Note the name has to be the same as the same the PROJECT_NAME constants in GamePrompts.
+     * description: the description of this project
      * length: the length of this project, which is 2 (months) for regular projects and 1 (month) for final projects
      * teamSize: the number of interns required to finish this project. By default, team size is b/n 2 - 6, however,
      for the final project, team size is 1
-     * skillsCompatibilities: a dictionary that maps a skill with a percentage b/n 30% - 100%, which indicates the skill's
+     * skillsCompatibilities: a dictionary that maps a skill with a number b/n 0.00 and 1.00, which indicates the skill's
       compatability with this project (so the higher the percentage associated with a particular skill, the more this project
       requires this skill)
      * isFinal: a boolean value that indicates whether this project is a final project (as comparing to normal projects)
+     * nameToDscpPromptFile: a map whose key is the project name, and the associated value is an array (of length 3) in
+     which the first element is the corresponding project description, the second element is the corresponding project
+     prompt, and the third element is the corresponding projcomp file name.
      */
-    private String projectName;
-    private String projectDescription;
+    private String name;
+    private String description;
     private int length;
     private int teamSize;
-    private final HashMap<String, Integer> skillsCompatibilities;
+    private HashMap<String, Integer> skillsCompatibilities;
     private boolean isFinal;
-
+    private HashMap<String, String[]> nameToDscpPromptFile;
 
     /**
      * Construct a project.
-     * Note that </projectName> has to be the same as one of the PROJECT_NAME constants in GamePrompts.
+     * Note that argument </projectName> has to be the same as one of the PROJECT_NAME constants in GamePrompts.
      */
     public Project(String projectName) {
-        this.projectName = projectName;
-        // If we were to randomize team size b/n 2-6
+        this.name = projectName;
+
+        this.length = 2;
+
+        // If we were to randomize team size b/n 2-6:
         //Random random = new Random();
         //this.teamSize = random.nextInt(6 + 1 - 2) + 2; //random.nextInt(max + 1 - min) + min
         this.teamSize = 3;
+
         this.isFinal = false;
-        this.length = 2;
-        this.skillsCompatibilities = new HashMap<>();
-        GamePrompts gamePrompts = new GamePrompts();
 
-        if (Objects.equals(this.projectName, gamePrompts.PROJECT1_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT1_DESCRIPTION;
-            skillsCompatibilitiesHelper("proj1comp.txt");
-            }
-        else if (Objects.equals(this.projectName, gamePrompts.PROJECT2_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT2_DESCRIPTION;
-            skillsCompatibilitiesHelper("proj2comp.txt");
-        }
-        else if (Objects.equals(this.projectName, gamePrompts.PROJECT3_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT3_DESCRIPTION;
-            skillsCompatibilitiesHelper("proj3comp.txt");
-        }
-        else if (Objects.equals(this.projectName, gamePrompts.PROJECT4_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT4_DESCRIPTION;
-            skillsCompatibilitiesHelper("proj4comp.txt");
-        }
-        else if (Objects.equals(this.projectName, gamePrompts.PROJECT5_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT5_DESCRIPTION;
-            skillsCompatibilitiesHelper("proj5comp.txt");
-        }
-        else if (Objects.equals(this.projectName, gamePrompts.PROJECT6_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT6_DESCRIPTION;
-            skillsCompatibilitiesHelper("proj6comp.txt");
-        }
-        else if (Objects.equals(this.projectName, gamePrompts.PROJECT7_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT7_DESCRIPTION;
-            skillsCompatibilitiesHelper("proj7comp.txt");
-        }
-        else if (Objects.equals(this.projectName, gamePrompts.PROJECT8_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT8_DESCRIPTION;
-            skillsCompatibilitiesHelper("proj8comp.txt");
-        }
-        else if (Objects.equals(this.projectName, gamePrompts.FINAL_PROJECT1_PROMPT)) {
-            this.projectDescription = gamePrompts.FINAL_PROJECT1_DESCRIPTION;
-            makeProjectFinal();
-            skillsCompatibilitiesHelper("finalproj1comp.txt");
-        }
-        else if (Objects.equals(this.projectName, gamePrompts.FINAL_PROJECT2_PROMPT)) {
-            this.projectDescription = gamePrompts.FINAL_PROJECT2_DESCRIPTION;
-            makeProjectFinal();
-            skillsCompatibilitiesHelper("finalproj2comp.txt");
-        }
-        else if (Objects.equals(this.projectName, gamePrompts.FINAL_PROJECT3_PROMPT)) {
-            this.projectDescription = gamePrompts.FINAL_PROJECT3_DESCRIPTION;
-            makeProjectFinal();
-            skillsCompatibilitiesHelper("finalproj3comp.txt");
-        }
-    }
+        initializeNameToDscpPromptFile();
 
+        this.description = this.nameToDscpPromptFile.get(this.name)[0];
+
+        initializeSkillsCompatibilities(this.nameToDscpPromptFile.get(this.name)[2]);
+
+        if (Objects.equals(this.name, gamePrompts.FINAL_PROJECT1_NAME) ||
+           (Objects.equals(this.name, gamePrompts.FINAL_PROJECT2_NAME) ||
+           (Objects.equals(this.name, gamePrompts.FINAL_PROJECT3_NAME) {
+               makeProjectFinal();
+        }
 
     /**
-     * A helper method that reads the skillsCompatibilities files and initializes </skillsCompatibilities>.
+     * A helper method that initializes </nameToDscpPromptFile> in the constructor.
      */
-    private void skillsCompatibilitiesHelper(String file_name) {
+    private void initializeNameToDscpPromptFile() {
+        GamePrompts gamePrompts = new GamePrompts();
+        HashMap<String, String[]> map = new HashMap<>();
+        map.put(gamePrompts.PROJECT1_NAME, new String[]{gamePrompts.PROJECT1_DESCRIPTION, gamePrompts.PROJECT1_PROMPT, "proj1comp.txt"});
+        map.put(gamePrompts.PROJECT2_NAME, new String[]{gamePrompts.PROJECT2_DESCRIPTION, gamePrompts.PROJECT2_PROMPT, "proj2comp.txt"});
+        map.put(gamePrompts.PROJECT3_NAME, new String[]{gamePrompts.PROJECT3_DESCRIPTION, gamePrompts.PROJECT3_PROMPT, "proj3comp.txt"});
+        map.put(gamePrompts.PROJECT4_NAME, new String[]{gamePrompts.PROJECT4_DESCRIPTION, gamePrompts.PROJECT4_PROMPT, "proj4comp.txt"});
+        map.put(gamePrompts.PROJECT5_NAME, new String[]{gamePrompts.PROJECT5_DESCRIPTION, gamePrompts.PROJECT5_PROMPT, "proj5comp.txt"});
+        map.put(gamePrompts.PROJECT6_NAME, new String[]{gamePrompts.PROJECT6_DESCRIPTION, gamePrompts.PROJECT6_PROMPT, "proj6comp.txt"});
+        map.put(gamePrompts.PROJECT7_NAME, new String[]{gamePrompts.PROJECT7_DESCRIPTION, gamePrompts.PROJECT7_PROMPT, "proj7comp.txt"});
+        map.put(gamePrompts.PROJECT8_NAME, new String[]{gamePrompts.PROJECT8_DESCRIPTION, gamePrompts.PROJECT8_PROMPT, "proj8comp.txt"});
+        map.put(gamePrompts.FINAL_PROJECT1_NAME, new String[]{gamePrompts.FINAL_PROJECT1_DESCRIPTION, gamePrompts.FINAL_PROJECT1_PROMPT, "finalproj1comp.txt"});
+        map.put(gamePrompts.FINAL_PROJECT2_NAME, new String[]{gamePrompts.FINAL_PROJECT2_DESCRIPTION, gamePrompts.FINAL_PROJECT2_PROMPT, "finalproj2comp.txt"});
+        map.put(gamePrompts.FINAL_PROJECT3_NAME, new String[]{gamePrompts.FINAL_PROJECT3_DESCRIPTION, gamePrompts.FINAL_PROJECT3_PROMPT, "finalproj3comp.txt"});
+        this.nameToDscpPromptFile = map;
+    }
+
+    /**
+     * A helper method that reads the skillsCompatibilities files and initializes </skillsCompatibilities>  in the constructor.
+     */
+    private void initializeSkillsCompatibilities(String file_name) {
+        HashMap<String, Integer> map = new HashMap<>();
         File file = new File(file_name);
         Scanner myReader = new Scanner(file);
         while (myReader.hasNextLine()) {
             String line = myReader.nextLine();
             String skill = line.split(": ")[0];
             Integer score = Integer.valueOf(line.split(": ")[1]);
-            this.skillsCompatibilities.put(skill, score);
+            map.put(skill, score);
+        this.skillsCompatibilities = map;
     }
 
     /**
@@ -120,21 +108,30 @@ public class Project {
         return isFinal;
     }
 
-    // Belows are the getters and setters for all the instance variables.
-    public String getProjectName() {
-        return projectName;
+    /**
+     * Return the string representation of the project.
+     */
+    public String projectToString(){
+        GamePrompts gamePrompts = new GamePrompts();
+        String prompt = this.nameToDscpPromptFile.get(this.name)[1];
+        return gamePrompts.prompt;
     }
 
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
+    // Belows are the getters and setters for all the instance variables.
+    public String getProjectName() {
+        return name;
+    }
+
+    public void setProjectName(String name) {
+        this.name = name;
     }
 
     public String getProjectDescription() {
-        return projectDescription;
+        return description;
     }
 
-    public void setProjectDescription(String projectDescription) {
-        this.projectDescription = projectDescription;
+    public void setProjectDescription(String description) {
+        this.description = description;
     }
 
     public int getLength() {
@@ -145,15 +142,8 @@ public class Project {
     public int getTeamSize() {
         return teamSize;
     }
-    // we prolly don't want a setter for teamSize?
 
     public HashMap<String, Integer> getSkillsCompatibilities() {
         return skillsCompatibilities;
-    }
-    // we prolly don't want a setter for skillsCompatibilities?
-
-    public String projectToString(){
-        // TODO: Implement this method. See Intern internToString
-        return "Turns a project into a string is not implemented yet.";
     }
 }
