@@ -117,27 +117,18 @@ public class Project {
         return gamePrompts.prompt;
     }
 
-    // Belows are the getters and setters for all the instance variables.
+    // Belows are the getters for all the instance variables.
     public String getProjectName() {
         return name;
-    }
-
-    public void setProjectName(String name) {
-        this.name = name;
     }
 
     public String getProjectDescription() {
         return description;
     }
-
-    public void setProjectDescription(String description) {
-        this.description = description;
-    }
-
+    
     public int getLength() {
         return length;
     }
-    // we prolly don't want a setter for length?
 
     public int getTeamSize() {
         return teamSize;
