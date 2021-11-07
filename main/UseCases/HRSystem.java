@@ -51,28 +51,49 @@ public class HRSystem {
         projectList = projects;
     }
 
-    public String makeInternsToString() {
+    public String getInternString() {
         StringBuilder res = new StringBuilder();
         for (Intern i : this.internList) {
             res.append(i.internToString());
+            res.append("|");
         }
         return res.toString();
     }
     //Overloaded the same method bc I just want the hired interns list as well.
-    public String makeInternsToString(boolean hired) {
+    public String getInternString(boolean hired) {
         StringBuilder result = new StringBuilder();
             for (Intern i : this.internList) {
                 if ((i instanceof HiredIntern) & hired){
                     result.append(i.internToString());
+                    result.append("|");
                 }
         }
         return result.toString();
     }
 
-    public String makeProjectsToString(int currentMonth) {
+    public String getProjectName(int currentMonth) {
         //TODO: This method returns only the projects that should be displayed for that particular month,
         // indicated by the given parameter
         return "Returning a month's list of projects is not implemented yet. ";
+    }
+    public HashMap<String, Integer> getProjectCompatibility(int currentMonth){
+        //TODO: This method returns only the projects' skillCompatibility that should be displayed for that particular
+        // month, indicated by the given parameter
+        HashMap<String, Integer> skillMap = new HashMap<String, Integer>();
+        return skillMap;
+    }
+    public ArrayList<HashMap<String, Integer>> getInternCompatibilityList (String InternNames){
+        //TODO: This method returns only the arraylist of intern's skillCompatibility that should be displayed,
+        // indicated by the given parameter, note that the parameter format is equivalent to the out put of
+        // getInternsString
+        ArrayList<HashMap<String, Integer>> skillMapList = new ArrayList<HashMap<String, Integer>>();
+        return  skillMapList;
+    }
+    public HashMap<String, Integer> getInternCompatibility(Intern intern){
+        //TODO: This method returns only the intern's skillCompatibility that should be displayed for that particular
+        // intern, indicated by the given parameter
+        HashMap<String, Integer> skillMap = new HashMap<String, Integer>();
+        return skillMap;
     }
 
     public String makeAssignmentToString(int currentMonth) {

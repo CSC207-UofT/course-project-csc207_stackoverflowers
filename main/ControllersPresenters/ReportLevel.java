@@ -49,11 +49,11 @@ public class ReportLevel extends Level{
     public String getReport() {
         String header = currentReportMaker.makeReportHeader(currentMonth);
         String intro = currentReportMaker.makeReportIntro();
-        String body = currentReportMaker.makeReportBody
-                (currentHRsystem.makeProjectsToString(currentMonth),
-                        projectProgress,
-                        currentHRsystem.getInternList(),
-                        project);
+        String body = currentReportMaker.makeReportBody(
+                currentHRsystem.getProjectName(currentMonth),
+                projectProgress, currentHRsystem.getInternString(),
+                currentHRsystem.getProjectCompatibility(currentMonth),
+                currentHRsystem.getInternCompatibilityList(currentHRsystem.getInternString()));
         String end = currentReportMaker.makeReportConclusion();
         return currentReportPresenter.displayOutput(header, intro, body, end);
     }

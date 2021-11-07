@@ -4,6 +4,7 @@ import Entities.Intern;
 import Entities.Project;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 //An interface class that shows all common methods used to make reports:
 public interface ReportMaker {
@@ -30,10 +31,10 @@ public interface ReportMaker {
      * @param projectName // do we need to parameter?
      * @param projectProgress an int between 0 and 10 that indicates how well the project is going
      * @param interns the list of interns that were assigned to the project of which this Reportmaker is trying to make a report
-     * @param project the project of which this Reportmaker is trying to make a report
+     * @param projectSkill the project's skill compatibility used to calculate the intern performance on the project
      * @return correctly formatted body for the report based on the current phase (month)
      */
-    String makeReportBody (String projectName, int projectProgress, ArrayList<Intern> interns, Project project);
+    String makeReportBody (String projectName, int projectProgress, String internNames, HashMap<String, Integer> projectSkill, ArrayList<HashMap<String, Integer>>  internSkills) ;
 
 
     /**
@@ -53,16 +54,17 @@ public interface ReportMaker {
 
 
 
-    String bakeInterns (ArrayList<Intern> interns);
+    String bakeInterns (String internNames);
 
 
 
-    int calculateInternPerformance (Intern intern, Project project);
+    int calculateInternPerformance (HashMap<String, Integer> internSkills, HashMap<String, Integer> projectSkill);
 
 
 
-    String bakeInternsPerformances (ArrayList<Intern> interns, Project project);
-
-
+    String bakeInternsPerformances (
+            String internNames,
+            ArrayList<HashMap<String, Integer>>  internSkills,
+            HashMap<String, Integer> projectSkill);
 
 }
