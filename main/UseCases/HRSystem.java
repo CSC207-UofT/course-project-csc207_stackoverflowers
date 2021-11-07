@@ -4,6 +4,7 @@ import Entities.HiredIntern;
 import Entities.Intern;
 import Entities.Project;
 
+import java.io.Serializable;
 import java.util.*;
 
 /* add the new interns to a list of new employees that the player can access with their skills
@@ -21,7 +22,7 @@ which formats each single intern into a string)
 
  */
 // the attribute: internList, a list of interns.
-public class HRSystem {
+public class HRSystem implements Serializable {
     public static final int FINAL_MONTH = 5;
 
     //initialize the private intern_list

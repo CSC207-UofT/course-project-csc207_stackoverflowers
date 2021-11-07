@@ -10,6 +10,7 @@ import java.util.*;
 public class GameMaker implements Serializable {
     private final HRSystem currentHRSystem;
     private final GamePrompts prompts;
+    private int currentMonth;
     private static ArrayList<String> universalCommands = null;
     /*
     - random intern generator - interns in HR
@@ -24,14 +25,14 @@ public class GameMaker implements Serializable {
     public GameMaker() {
         this.currentHRSystem = new HRSystem();
         this.prompts = new GamePrompts();
-        universalCommands = new ArrayList<String>(Arrays.asList("save", "quit", "load"));
+        universalCommands = new ArrayList<>(Arrays.asList("save", "quit", "load"));
     }
 
     public HRSystem getCurrentHRSystem() {
         return currentHRSystem;
     }
     public static ArrayList<String> getUniversalCommands(){return universalCommands;}
-
+    public int getCurrentMonth(){return currentMonth;}
     /**
      * Add the list of interns to UseCases.HRSystem.
      *
@@ -82,7 +83,6 @@ public class GameMaker implements Serializable {
     /**
      * Generates an ArrayList of new random interns/interviewees.
      * @param numInterns the number of interns that will be generated.
-     * @return an ArrayList of randomly generated Interns.
      */
     public void generateInterns(int numInterns) throws FileNotFoundException {
         ArrayList<String> nameList = generateInternsInfo("UseCases/names.txt");
@@ -122,7 +122,7 @@ public class GameMaker implements Serializable {
      * @param skillList an ArrayList of skills.
      * @return a HashMap of Skills and the percentage of the skill
      */
-    private HashMap<String, Integer> generateUniqueSkillMap(ArrayList<String> skillList) throws FileNotFoundException{
+    private HashMap<String, Integer> generateUniqueSkillMap(ArrayList<String> skillList) {
         Random random = new Random();
         HashMap<String, Integer> skillMap = new HashMap<>();
         while (skillMap.size() < 3) {
@@ -137,21 +137,21 @@ public class GameMaker implements Serializable {
     // TODO: method generateProjects() (Generates and stores the projects in UseCases.HRSystem) (change return type)
     public void generateProjects() {
         // take the project prompts from GamePrompts and outputs a list
-        ArrayList<String> projects = new ArrayList<>();
-        ArrayList<String> projForGame = new ArrayList<>();
-        projects.add(GamePrompts.PROJECT1_PROMPT);
-        projects.add(GamePrompts.PROJECT2_PROMPT);
-        projects.add(GamePrompts.PROJECT3_PROMPT);
-        projects.add(GamePrompts.PROJECT4_PROMPT);
-        projects.add(GamePrompts.PROJECT5_PROMPT);
-        projects.add(GamePrompts.PROJECT6_PROMPT);
-        projects.add(GamePrompts.PROJECT7_PROMPT);
-        projects.add(GamePrompts.PROJECT8_PROMPT);
-        Collections.shuffle(projects);
-        for (int i = 0; i < 5; i++) {
-            projForGame.add(projects.get(i));
-        }
-        currentHRSystem.updateProjectList(projForGame);
+//        ArrayList<String> projects = new ArrayList<>();
+//        ArrayList<String> projForGame = new ArrayList<>();
+//        projects.add(GamePrompts.PROJECT1_PROMPT);
+//        projects.add(GamePrompts.PROJECT2_PROMPT);
+//        projects.add(GamePrompts.PROJECT3_PROMPT);
+//        projects.add(GamePrompts.PROJECT4_PROMPT);
+//        projects.add(GamePrompts.PROJECT5_PROMPT);
+//        projects.add(GamePrompts.PROJECT6_PROMPT);
+//        projects.add(GamePrompts.PROJECT7_PROMPT);
+//        projects.add(GamePrompts.PROJECT8_PROMPT);
+//        Collections.shuffle(projects);
+//        for (int i = 0; i < 5; i++) {
+//            projForGame.add(projects.get(i));
+//        }
+//        currentHRSystem.updateProjectList(projForGame);
 
     }
 
@@ -201,25 +201,30 @@ public class GameMaker implements Serializable {
     
     /**
      * Loads the previous saved state of the game (discuss later, still unsure)
-     * @param playerName
-     * @return
+     * @param playerName the player's name which will become the name of the file the serialized object is saved to.
+     * @return returns the loaded GameMaker to GameManager.
      */
     public GameMaker load(String playerName) throws IOException, ClassNotFoundException {
         FileInputStream fileIn = new FileInputStream(playerName);
         ObjectInputStream in = new ObjectInputStream(fileIn);
-        GameMaker loadGameMaker = (GameMaker) in.readObject();
-        return loadGameMaker;
+        return (GameMaker) in.readObject();
     }
     
-    public String save() throws IOException {
+    public String save(int currentMonth) throws IOException {
+        setCurrentMonth(currentMonth);
         saveGame(currentHRSystem.getPlayerName());
         return GamePrompts.GAME_SAVED_SUCCESSFUL + currentHRSystem.getPlayerName();
     }
     
-    public String quit() throws IOException{
+    public String quit(int currentMonth) throws IOException{
+        setCurrentMonth(currentMonth);
         quitGame();
         return GamePrompts.INFORM_QUIT_GAME + currentHRSystem.getPlayerName();
     }
-        //throw exception if input not one of these two... but how would they get here in the first place XD
+
+    public void setCurrentMonth(int currentMonth) {
+        this.currentMonth = currentMonth;
+    }
+    //throw exception if input not one of these two... but how would they get here in the first place XD
 
 }
