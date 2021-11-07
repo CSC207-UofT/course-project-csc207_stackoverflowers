@@ -139,14 +139,14 @@ public class GameMaker implements Serializable {
         // take the project prompts from GamePrompts and outputs a list
         ArrayList<String> projects = new ArrayList<>();
         ArrayList<String> projForGame = new ArrayList<>();
-        projects.add(prompts.PROJECT1_PROMPT);
-        projects.add(prompts.PROJECT2_PROMPT);
-        projects.add(prompts.PROJECT3_PROMPT);
-        projects.add(prompts.PROJECT4_PROMPT);
-        projects.add(prompts.PROJECT5_PROMPT);
-        projects.add(prompts.PROJECT6_PROMPT);
-        projects.add(prompts.PROJECT7_PROMPT);
-        projects.add(prompts.PROJECT8_PROMPT);
+        projects.add(GamePrompts.PROJECT1_PROMPT);
+        projects.add(GamePrompts.PROJECT2_PROMPT);
+        projects.add(GamePrompts.PROJECT3_PROMPT);
+        projects.add(GamePrompts.PROJECT4_PROMPT);
+        projects.add(GamePrompts.PROJECT5_PROMPT);
+        projects.add(GamePrompts.PROJECT6_PROMPT);
+        projects.add(GamePrompts.PROJECT7_PROMPT);
+        projects.add(GamePrompts.PROJECT8_PROMPT);
         Collections.shuffle(projects);
         for (int i = 0; i < 5; i++) {
             projForGame.add(projects.get(i));
@@ -159,9 +159,9 @@ public class GameMaker implements Serializable {
         // take the final projects in gamePrompts and pick a final project for this game.
         ArrayList<String> finalProjects = new ArrayList<>();
         ArrayList<String> finalProjForGame = new ArrayList<>();
-        finalProjects.add(prompts.FINAL_PROJECT1_PROMPT);
-        finalProjects.add(prompts.FINAL_PROJECT2_PROMPT);
-        finalProjects.add(prompts.FINAL_PROJECT3_PROMPT);
+        finalProjects.add(GamePrompts.FINAL_PROJECT1_PROMPT);
+        finalProjects.add(GamePrompts.FINAL_PROJECT2_PROMPT);
+        finalProjects.add(GamePrompts.FINAL_PROJECT3_PROMPT);
         Collections.shuffle(finalProjects);
         finalProjForGame.add(finalProjects.get(0));
         currentHRSystem.updateFinalProject(finalProjForGame);
