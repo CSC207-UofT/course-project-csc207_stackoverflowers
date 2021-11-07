@@ -1,3 +1,13 @@
-Teamwork : 0.72
-Flexibility : 0.88
-Efficiency : 0.80
+Confidence: 0.00
+Teamwork: 0.74
+Leadership: 0.00
+Efficiency: 0.91
+Endurance: 0.00
+Flexibility: 0.86
+Observant: 0.00
+Communication: 0.00
+Responsible: 0.00
+Creativity: 0.00
+Artistic: 0.00
+Patience: 0.00
+Analytical: 0.00
