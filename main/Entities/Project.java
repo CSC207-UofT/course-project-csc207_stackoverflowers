@@ -125,7 +125,7 @@ public class Project {
     public String getProjectDescription() {
         return description;
     }
-    
+
     public int getLength() {
         return length;
     }
