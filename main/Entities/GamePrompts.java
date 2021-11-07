@@ -48,16 +48,19 @@ public class GamePrompts {
 
     public static final String START_OF_MONTH_PROMPT_AFTER_PROJECTS = """
             Here are a list of commands you can do:
-            assign intern to project <Intern Name> <Project Name>\s
-            remove intern from project <Intern Name> <Project Name>\s
-            check intern info\s
-            check project info\s
+            assign intern to project <Intern Name> <Project Name>
+                        
+            remove intern from project <Intern Name> <Project Name>
+                        
+            check intern info
+            
+            check project info
             """;
 
     public static final String CONFIRM_ASSIGNING = """
             All interns have been assigned to a project, and here is the entire assignment you made so far. If you are sure with your decisions, type 'confirm all decisions'.
-            If not, feel free to use the same given commands to modify your decisions.\s
-            \s""";
+            If not, feel free to use the same given commands to modify your decisions.
+            """;
 
     public static final String END_OF_MONTH_PROMPT = "Now you finished your part of the job, all interns have started " +
             "working hard on their own. The month went by quickly, and now you can view this month's progress! " +
