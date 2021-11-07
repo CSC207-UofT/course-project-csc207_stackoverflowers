@@ -75,13 +75,14 @@ public class GameManager {
     }
 
     private String universalCommand(String playerInput) throws Exception {
-    if(playerInput =="save") {
+    if(playerInput.strip() =="save") {
         return currentGameMaker.save(currentMonth);
     }if(playerInput =="quit"){
         currentStatus = statusOfGame.End;
         return currentGameMaker.quit(currentMonth);
-    }if(playerInput.contains("load")){
+    }if(playerInput.split("")[0] == ("load")){
     if (currentStatus == statusOfGame.Start) {
+        //Only load a new game if the current input has just started.
             String[] loads = playerInput.split(" ");
             currentGameMaker = currentGameMaker.load(loads[1]);
             currentMonth = currentGameMaker.getCurrentMonth();
