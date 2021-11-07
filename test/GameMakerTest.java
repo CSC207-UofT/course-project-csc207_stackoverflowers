@@ -1,27 +1,53 @@
+import Entities.GamePrompts;
 import UseCases.GameMaker;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.*;
+
 import static org.junit.Assert.*;
 
 
 public class GameMakerTest {
-    GameMaker gm;
+    GameMaker gameMaker;
 
     @Before
     public void setUp() {
-         gm = new GameMaker();
+         gameMaker = new GameMaker();
+         gameMaker.firstPrompt("Maggie");//To update the player's name
+         gameMaker.setCurrentMonth(3);
     }
     
     // Hi Camille, feel free to change this test as needed. - Maggie
-    @Test(timeout = 1000)
+    @Test(timeout = 100)
     public void TestFirstPrompt() {
-        //TODO: use GamePrompts instead of typing the entire string ;)
-        // (So that we can change the strings in GamePrompt and don't need to modify tests)
-        String expectedResult = "Welcome! My friend Maggie, you have just been hired as a new manager."
-            + " Here are your potential interns. Choose wisely ...\n"
-            + "Name: Farzana Rahman; age: 20; skills: Teamwork (98)\n"
-            + "Name: Maggie Huang; age: 20; skills: Leadership (82)\n"
-            + "Name: Mary Yijia Li; age: 19; skills: Efficiency (99)\n";
-        assertEquals(expectedResult, gm.firstPrompt("Maggie"));
+        String expectedResult = GamePrompts.FIRST_PROMPT_BEFORE_NAME + "Maggie" + GamePrompts.FIRST_PROMPT_AFTER_NAME +
+                gameMaker.getCurrentHRSystem().makeInternsToString() + GamePrompts.ASK_FOR_INTERVIEWEE_NAME;
+        assertEquals(expectedResult, gameMaker.firstPrompt("Maggie"));
     }
+
+    @Test(timeout =  100)
+    public void TestEndPrompt(){
+        String expectedResult = GamePrompts.END_PROMPT;
+        assertEquals(expectedResult, gameMaker.endPrompt());
+    }
+
+    @Test(timeout = 100)
+    public void TestSerializable() throws IOException {
+            new ObjectOutputStream(new FileOutputStream("Maggie")).writeObject(gameMaker);
+
+    }
+    @Test(timeout = 1000)
+    public void TestSaveGame() throws IOException {
+        gameMaker.save(gameMaker.getCurrentMonth());
+    }
+    @Test(timeout = 1000)
+    public  void TestLoad() throws IOException, ClassNotFoundException {
+        gameMaker.save(3);
+        GameMaker copy = gameMaker.load(gameMaker.getCurrentHRSystem().getPlayerName());
+        assertEquals(gameMaker.getCurrentHRSystem().getPlayerName(), copy.getCurrentHRSystem().getPlayerName());
+        assertEquals(gameMaker.getCurrentHRSystem().getInternList(), copy.getCurrentHRSystem().getInternList());
+    }
+
+
 }

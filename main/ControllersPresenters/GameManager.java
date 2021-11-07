@@ -79,14 +79,15 @@ public class GameManager {
 
     private String universalCommand(String playerInput) throws Exception {
     if(playerInput =="save") {
-        return currentGameMaker.save();
+        return currentGameMaker.save(currentMonth);
     }if(playerInput =="quit"){
         currentStatus = statusOfGame.End;
-        return currentGameMaker.quit();
+        return currentGameMaker.quit(currentMonth);
     }if(playerInput.contains("load")){
     if (currentStatus == statusOfGame.Start) {
             String[] loads = playerInput.split(" ");
             currentGameMaker = currentGameMaker.load(loads[1]);
+            currentMonth = currentGameMaker.getCurrentMonth();
         } else {
             throw new Exception("Load only permitted at start of the game");
         }

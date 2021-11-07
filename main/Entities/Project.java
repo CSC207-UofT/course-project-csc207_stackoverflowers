@@ -1,4 +1,5 @@
 package Entities;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Objects;
 import java.io.File;  // Import the File class
@@ -30,7 +31,7 @@ public class Project {
      * Construct a project.
      * Note that </projectName> has to be the same as one of the PROJECT_NAME constants in GamePrompts.
      */
-    public Project(String projectName) {
+    public Project(String projectName) throws FileNotFoundException {
         this.projectName = projectName;
         // If we were to randomize team size b/n 2-6
         //Random random = new Random();
@@ -90,20 +91,6 @@ public class Project {
         }
     }
 
-
-    /**
-     * A helper method that reads the skillsCompatibilities files and initializes </skillsCompatibilities>.
-     */
-    private void skillsCompatibilitiesHelper(String file_name) {
-        File file = new File(file_name);
-        Scanner myReader = new Scanner(file);
-        while (myReader.hasNextLine()) {
-            String line = myReader.nextLine();
-            String skill = line.split(": ")[0];
-            Integer score = Integer.valueOf(line.split(": ")[1]);
-            this.skillsCompatibilities.put(skill, score);
-    }
-
     /**
      * A helper method that makes the project final in the constructor.
      */
@@ -113,16 +100,32 @@ public class Project {
         this.length = 1;
     }
 
+
+    /**
+     * A helper method that reads the skillsCompatibilities files and initializes </skillsCompatibilities>.
+     * @return
+     */
+    private void skillsCompatibilitiesHelper(String file_name) throws FileNotFoundException {
+        File file = new File(file_name);
+        Scanner myReader = new Scanner(file);
+        while (myReader.hasNextLine()) {
+            String line = myReader.nextLine();
+            String skill = line.split(": ")[0];
+            Integer score = Integer.valueOf(line.split(": ")[1]);
+            this.skillsCompatibilities.put(skill, score);
+        }
+        }
+
+
+
     /**
      * Return whether if this project is final.
      */
-    public boolean isFinal() {
-        return isFinal;
-    }
+    public boolean isFinal(){return this.isFinal;}
 
     // Belows are the getters and setters for all the instance variables.
-    public String getProjectName() {
-        return projectName;
+    public String getProjectName(){
+        return this.projectName;
     }
 
     public void setProjectName(String projectName) {
@@ -152,7 +155,7 @@ public class Project {
     }
     // we prolly don't want a setter for skillsCompatibilities?
 
-    public String projectToString(){
+    public String projectToString() {
         // TODO: Implement this method. See Intern internToString
         return "Turns a project into a string is not implemented yet.";
     }
