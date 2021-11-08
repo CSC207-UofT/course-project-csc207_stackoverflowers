@@ -18,6 +18,8 @@ which formats each single intern into a string)
 
 //TODO: Implement method updateProjectList
 
+// TODO: update final project !!
+
 //TODO: Specify and implement update and get InternList for each type of intern (HiredIntern and InterviewIntern)
 
  */
@@ -41,6 +43,16 @@ public class HRSystem implements Serializable {
         return internList;
     }
 
+    public ArrayList<Intern> getInternList(boolean hired) {
+        ArrayList<Intern> hiredList = new ArrayList<>();
+        for (Intern i : this.internList) {
+            if ((i instanceof HiredIntern) & hired) {
+                hiredList.add(i);
+            }
+        }
+        return internList;
+    }
+
 
     public void updateInternList(ArrayList<Intern> interns) {
         this.internList.addAll(interns);
@@ -49,6 +61,27 @@ public class HRSystem implements Serializable {
     public void updateProjectList(ArrayList<Project> projects){
         //TODO: finish this method(parameters)
         projectList = projects;
+    }
+
+    public String getInternNames() {
+        //Get only the names of the interns seperated by "|".
+        StringBuilder res = new StringBuilder();
+        for (Intern i : this.internList) {
+            res.append(i.getInternName());
+            res.append("|");
+        }
+        return res.toString();
+    }
+    //Overloaded the same method bc I just want the hired interns names list as well.
+    public String getInternNames(boolean hired) {
+        StringBuilder result = new StringBuilder();
+            for (Intern i : this.internList) {
+                if ((i instanceof HiredIntern) & hired){
+                    result.append(i.getInternName());
+                    result.append("|");
+                }
+        }
+        return result.toString();
     }
 
     public String makeInternsToString() {
@@ -61,10 +94,10 @@ public class HRSystem implements Serializable {
     //Overloaded the same method bc I just want the hired interns list as well.
     public String makeInternsToString(boolean hired) {
         StringBuilder result = new StringBuilder();
-            for (Intern i : this.internList) {
-                if ((i instanceof HiredIntern) & hired){
-                    result.append(i.internToString());
-                }
+        for (Intern i : this.internList) {
+            if ((i instanceof HiredIntern) & hired){
+                result.append(i.internToString());
+            }
         }
         return result.toString();
     }
@@ -74,12 +107,20 @@ public class HRSystem implements Serializable {
         // indicated by the given parameter
         return "Returning a month's list of projects is not implemented yet. ";
     }
+    public String getProjectName(int currentMonth) {
+        //TODO: This method returns only the projects that should be displayed for that particular month,
+        // indicated by the given parameter
+        return "Returning a month's list of projects is not implemented yet. ";
+    }
+    public Project getProject(int currentMonth){
+        //TODO: This method returns the list of projects in the current month.(OR JUST ONE PROJECT PER MONTH????);
+    }
 
     public String makeAssignmentToString(int currentMonth) {
         //a method that takes all the assigning so far and returns the List of projects and interns assigned to it.
         StringBuilder result = new StringBuilder();
         for (Project p : projectList){
-            result.append(p.getProjectName());
+            result.append(p.getName());
             result.append("    Interns in project: ");
             //TODO: finish this method so that it displays all project names and the intern names that are
             // assigned to this project.
@@ -119,7 +160,7 @@ public class HRSystem implements Serializable {
         return false;
     }
 
-    public void updateFinalProject(ArrayList<String> finalProjForGame) {
+    public void updateFinalProject(ArrayList<Project> finalProjForGame) {
         //TODO: implement this method
     }
 }

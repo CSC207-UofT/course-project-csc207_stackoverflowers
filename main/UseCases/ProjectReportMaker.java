@@ -1,16 +1,17 @@
 package UseCases;
 import Entities.GamePrompts;
 import Entities.Intern;
-import Entities.Project;
 
 import java.util.ArrayList;
-import java.util.Set;
+import java.util.HashMap;
 
 public class ProjectReportMaker implements ReportMaker{
     private final GamePrompts prompts;
+    private final HRSystem currentHRSystem;
 
-    public ProjectReportMaker(){
+    public ProjectReportMaker(HRSystem currentHRSystem){
         this.prompts = new GamePrompts();
+        this.currentHRSystem = currentHRSystem;
     }
     //TODO: Make every string a call to GamePrompt
     @Override
@@ -38,11 +39,23 @@ public class ProjectReportMaker implements ReportMaker{
         - zzz: 3/10: poor attendance, bad teamwork
     */
     @Override
-    public String makeReportBody(String projectName, int projectProgress, ArrayList<Intern> interns, Project project) {
-        return bakeProjectName(projectName) + "\n" +
+    public String makeReportBody(int projectProgress, int currentMonth) {
+        String internNames = currentHRSystem.getInternNames();
+        HashMap<String, Integer> projectCompatibilityList = currentHRSystem.getProject(currentMonth).getSkillsCompatability();
+        ArrayList<HashMap<String, Integer>> internsSkills = getInternsSkills(currentHRSystem.getInternList(true));
+        return bakeProjectName(currentHRSystem.getProjectName(currentMonth)) + "\n" +
                 bakeProgress(projectProgress)+"\n"+
-                bakeInterns(interns) + "\n" +
-                bakeInternsPerformances(interns, project);
+                bakeInterns(internNames) + "\n" +
+                bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
+    }
+
+    private ArrayList<HashMap<String, Integer>> getInternsSkills(ArrayList<Intern> internList) {
+        //Makes an arrayList full of internSkills.
+        ArrayList<HashMap<String, Integer>> internCompatabilityList  = new ArrayList<>();
+        for (Intern i :internList){
+            internCompatabilityList.add(i.getInternSkills());
+        }
+        return internCompatabilityList;
     }
 
     @Override
@@ -56,32 +69,32 @@ public class ProjectReportMaker implements ReportMaker{
     }
 
     @Override
-    public String bakeInterns(ArrayList<Intern> interns) {
-        StringBuilder returnLine = new StringBuilder("Assigned interns: ");
-        for (int i =0; i != interns.size(); i++){
-            returnLine.append(interns.get(i)).append("|");
+    public String bakeInterns(String internNames) {
+        return internNames;
+    }
+    @Override
+    public String bakeInternsPerformances (String internNames, ArrayList<HashMap<String, Integer>>  internSkills, HashMap<String, Integer> projectSkill) {
+        StringBuilder returnLine = new StringBuilder("Assigned interns: " + internNames + "\n");
+        String[] internNamesList = internNames.split("|");
+        for (int i = 0; i != internNamesList.length; i+=1) {
+            returnLine.append("     - ").append(internNamesList[i]).append(": ").append(calculateInternPerformance(internSkills.get(i), projectSkill)).append("\n");
         }
         return returnLine.toString();
     }
 
     @Override
-    public String bakeInternsPerformances (ArrayList<Intern> interns, Project project) {
-        StringBuilder returnLine = new StringBuilder("Assigned interns: " + interns + "\n");
-        for (int i = 0; i != interns.size(); i++){
-            returnLine.append("     - ").append(interns.get(i)).append(": ").append(calculateInternPerformance(interns.get(i), project)).append("\n");
-        }
-        return returnLine.toString();
-    }
-
-    @Override
-    public int calculateInternPerformance(Intern intern, Project project) {
-        //TODO: Can't go on as of now, need my friends to make get method for skillsCompatability in Entities.Project
+    public int calculateInternPerformance(HashMap<String, Integer> internSkills, HashMap<String, Integer> projectSkill) {
         int result = 0;
-        Set<String> keys = intern.getInternSkills().keySet();
-        for(Object item:keys){
-            result += intern.getInternSkills().get(item);
+        ArrayList<Double> effectiveSkills = new ArrayList<Double>();
+        for (String key : internSkills.keySet()) {
+            int internSkill = internSkills.get(key);
+            double compatibility = projectSkill.get(key);
+            effectiveSkills.add(internSkill* compatibility);
         }
-        return result;
+        for (Double number : effectiveSkills) {
+            result += number;
+        }
+        return result/effectiveSkills.size();
     }
 
     @Override
