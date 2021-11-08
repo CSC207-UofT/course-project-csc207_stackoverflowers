@@ -92,7 +92,7 @@ public class GameGenerators implements Serializable {
         Collections.shuffle(finalProjects);
         String finalProjName = finalProjects.get(0);
         finalProjects.remove(finalProjName);
-        Project finalProject = new Project(finalProjName);
+        Project finalProject = new  Project(finalProjName);
         finalProjForGame.add(finalProject);
         currentHRSystem.updateFinalProject(finalProjForGame);
     }
