@@ -5,6 +5,7 @@ import Entities.Project;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Set;
 
 public class FinalReportMaker implements ReportMaker {
@@ -60,9 +61,17 @@ public class FinalReportMaker implements ReportMaker {
 
     @Override
     public int calculateInternPerformance(HashMap<String, Integer> internSkills, HashMap<String, Integer> projectSkill) {
-        //TODO: Can't go on as of now, need my friends to make get method for skillsCompatability in Entities.Project
         int result = 0;
-        return result;
+        ArrayList<Double> effectiveSkills = new ArrayList<Double>();
+        for (String key : internSkills.keySet()) {
+            int internSkill = internSkills.get(key);
+            double compatibility = projectSkill.get(key);
+            effectiveSkills.add(internSkill* compatibility);
+        }
+        for (Double number : effectiveSkills) {
+            result += number;
+        }
+        return result/effectiveSkills.size();
     }
 
     @Override

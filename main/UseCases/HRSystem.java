@@ -70,6 +70,29 @@ public class HRSystem {
         }
         return result.toString();
     }
+    public String makeInternsToString() {
+        StringBuilder res = new StringBuilder();
+        for (Intern i : this.internList) {
+            res.append(i.internToString());
+        }
+        return res.toString();
+    }
+    //Overloaded the same method bc I just want the hired interns list as well.
+    public String makeInternsToString(boolean hired) {
+        StringBuilder result = new StringBuilder();
+        for (Intern i : this.internList) {
+            if ((i instanceof HiredIntern) & hired){
+                result.append(i.internToString());
+            }
+        }
+        return result.toString();
+    }
+
+    public String makeProjectsToString(int currentMonth) {
+        //TODO: This method returns only the projects that should be displayed for that particular month,
+        // indicated by the given parameter
+        return "Returning a month's list of projects is not implemented yet. ";
+    }
 
     public String getProjectName(int currentMonth) {
         //TODO: This method returns only the projects that should be displayed for that particular month,
