@@ -17,14 +17,14 @@ public class GameManagerTest {
     }
 
     @Test(timeout = 100)
-    public void TestSaveGameFail() throws Exception {
+    public void testSaveGameFail() throws Exception {
         String actual = gameManager.getOutput("save M");
         String expected = Exceptions.UNIVERSAL_COMMAND_NOT_FOUND;
         assertEquals(expected, actual);
     }
 
     @Test(timeout = 100)
-    public void TestSaveGameSuccess() throws Exception {
+    public void testSaveGameSuccess() throws Exception {
         String actual = gameManager.getOutput("save");
         String expected = GamePrompts.GAME_SAVED_SUCCESSFUL;
     }

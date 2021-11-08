@@ -79,6 +79,7 @@ public class GamePrompts implements Serializable {
     public static final String PROJECT4_NAME = "Hackathon Leaders";
     public static final String PROJECT5_NAME = "Customer Data Privacy & Security";
     public static final String PROJECT6_NAME = "Coding Lessons to Young Children";
+
     public static final String PROJECT7_NAME = "Social Media Marketing";
     public static final String PROJECT8_NAME = "Customer Feedback Summary and Analysis";
     public static final String FINAL_PROJECT1_NAME = "Website Featuring";
