@@ -4,6 +4,7 @@ import Entities.HiredIntern;
 import Entities.Intern;
 import Entities.Project;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /* add the new interns to a list of new employees that the player can access with their skills
@@ -40,9 +41,19 @@ public class HRSystem {
         return internList;
     }
 
+    public ArrayList<Intern> getInternList(boolean hired) {
+        ArrayList<Intern> hiredList = new ArrayList<>();
+        for (Intern i : this.internList) {
+            if ((i instanceof HiredIntern) & hired) {
+                hiredList.add(i);
+            }
+        }
+        return internList;
+    }
+
+
 
     public void updateInternList(ArrayList<Intern> interns) {
-
         this.internList.addAll(interns);
     }
 
@@ -51,25 +62,27 @@ public class HRSystem {
         projectList = projects;
     }
 
-    public String getInternString() {
+    public String getInternNames() {
+        //Get only the names of the interns seperated by "|".
         StringBuilder res = new StringBuilder();
         for (Intern i : this.internList) {
-            res.append(i.internToString());
+            res.append(i.getInternName());
             res.append("|");
         }
         return res.toString();
     }
-    //Overloaded the same method bc I just want the hired interns list as well.
-    public String getInternString(boolean hired) {
+    //Overloaded the same method bc I just want the hired interns names list as well.
+    public String getInternNames(boolean hired) {
         StringBuilder result = new StringBuilder();
             for (Intern i : this.internList) {
                 if ((i instanceof HiredIntern) & hired){
-                    result.append(i.internToString());
+                    result.append(i.getInternName());
                     result.append("|");
                 }
         }
         return result.toString();
     }
+
     public String makeInternsToString() {
         StringBuilder res = new StringBuilder();
         for (Intern i : this.internList) {
@@ -93,30 +106,13 @@ public class HRSystem {
         // indicated by the given parameter
         return "Returning a month's list of projects is not implemented yet. ";
     }
-
     public String getProjectName(int currentMonth) {
         //TODO: This method returns only the projects that should be displayed for that particular month,
         // indicated by the given parameter
         return "Returning a month's list of projects is not implemented yet. ";
     }
-    public HashMap<String, Integer> getProjectCompatibility(int currentMonth){
-        //TODO: This method returns only the projects' skillCompatibility that should be displayed for that particular
-        // month, indicated by the given parameter
-        HashMap<String, Integer> skillMap = new HashMap<String, Integer>();
-        return skillMap;
-    }
-    public ArrayList<HashMap<String, Integer>> getInternCompatibilityList (String InternNames){
-        //TODO: This method returns only the arraylist of intern's skillCompatibility that should be displayed,
-        // indicated by the given parameter, note that the parameter format is equivalent to the out put of
-        // getInternsString
-        ArrayList<HashMap<String, Integer>> skillMapList = new ArrayList<HashMap<String, Integer>>();
-        return  skillMapList;
-    }
-    public HashMap<String, Integer> getInternCompatibility(Intern intern){
-        //TODO: This method returns only the intern's skillCompatibility that should be displayed for that particular
-        // intern, indicated by the given parameter
-        HashMap<String, Integer> skillMap = new HashMap<String, Integer>();
-        return skillMap;
+    public Project getProject(int currentMonth){
+        //TODO: This method returns the list of projects in the current month.(OR JUST ONE PROJECT PER MONTH????);
     }
 
     public String makeAssignmentToString(int currentMonth) {

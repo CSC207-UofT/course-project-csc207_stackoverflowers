@@ -36,7 +36,7 @@ public interface ReportMaker {
      * @param internSkills the interns' skill compatibility used to calculate the intern performance on the project
      * @return correctly formatted body for the report based on the current phase (month)
      */
-    String makeReportBody (String projectName, int projectProgress, String internNames, HashMap<String, Integer> projectSkill, ArrayList<HashMap<String, Integer>>  internSkills) ;
+    String makeReportBody (int projectProgress, int currentMonth) ;
 
     /**
      * Make a conclusion for the report corresponding to the current phase (month) the player is in
