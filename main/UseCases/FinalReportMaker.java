@@ -4,6 +4,8 @@ import Entities.Intern;
 import Entities.Project;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Set;
 
 public class FinalReportMaker implements ReportMaker {
@@ -25,11 +27,11 @@ public class FinalReportMaker implements ReportMaker {
 
     //这个格式和其他那两个差不多，但别忘了这是最后的project，所以只有一个intern（见mary在discord上发的照片）
     @Override
-    public String makeReportBody(String projectName, int projectProgress, ArrayList<Intern> interns, Project project) {
+    public String makeReportBody(String projectName, int projectProgress, String internNames, HashMap<String, Integer> projectSkill, ArrayList<HashMap<String, Integer>>  internSkills) {
         return bakeProjectName(projectName) + "\n" +
                 bakeProgress(projectProgress)+"\n"+
-                bakeInterns(interns) + "\n" +
-                bakeInternsPerformances(interns, project);
+                bakeInterns(internNames) + "\n" +
+                bakeInternsPerformances(internNames, internSkills, projectSkill);
     }
 
     @Override
@@ -43,32 +45,33 @@ public class FinalReportMaker implements ReportMaker {
     }
 
     @Override
-    public String bakeInterns(ArrayList<Intern> interns) {
-        StringBuilder returnLine = new StringBuilder("Assigned interns: ");
-        for (int i =0; i != interns.size(); i++){
-            returnLine.append(interns.get(i)).append("|");
+    public String bakeInterns(String internNames) {
+        return internNames;
+    }
+
+    @Override
+    public String bakeInternsPerformances (String internNames, ArrayList<HashMap<String, Integer>>  internSkills, HashMap<String, Integer> projectSkill) {
+        StringBuilder returnLine = new StringBuilder("Assigned interns: " + internNames + "\n");
+        String[] internNamesList = internNames.split("|");
+        for (int i = 0; i != internNamesList.length; i+=1) {
+            returnLine.append("     - ").append(internNamesList[i]).append(": ").append(calculateInternPerformance(internSkills.get(i), projectSkill)).append("\n");
         }
         return returnLine.toString();
     }
 
     @Override
-    public String bakeInternsPerformances (ArrayList<Intern> interns, Project project) {
-        StringBuilder returnLine = new StringBuilder("Assigned interns: " + interns + "\n");
-        for (int i = 0; i != interns.size(); i++){
-            returnLine.append("     - ").append(interns.get(i)).append(": ").append(calculateInternPerformance(interns.get(i), project)).append("\n");
-        }
-        return returnLine.toString();
-    }
-
-    @Override
-    public int calculateInternPerformance(Intern intern, Project project) {
-        //TODO: Can't go on as of now, need my friends to make get method for skillsCompatability in Entities.Project
+    public int calculateInternPerformance(HashMap<String, Integer> internSkills, HashMap<String, Integer> projectSkill) {
         int result = 0;
-        Set<String> keys = intern.getInternSkills().keySet();
-        for(Object item:keys){
-            result += intern.getInternSkills().get(item);
+        ArrayList<Double> effectiveSkills = new ArrayList<Double>();
+        for (String key : internSkills.keySet()) {
+            int internSkill = internSkills.get(key);
+            double compatibility = projectSkill.get(key);
+            effectiveSkills.add(internSkill* compatibility);
         }
-        return result;
+        for (Double number : effectiveSkills) {
+            result += number;
+        }
+        return result/effectiveSkills.size();
     }
 
     @Override
