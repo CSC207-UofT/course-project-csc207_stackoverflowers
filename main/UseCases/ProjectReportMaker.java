@@ -41,7 +41,7 @@ public class ProjectReportMaker implements ReportMaker{
     @Override
     public String makeReportBody(int projectProgress, int currentMonth) {
         String internNames = currentHRSystem.getInternNames();
-        HashMap<String, Integer> projectCompatibilityList = currentHRSystem.getProject(currentMonth).getSkillsCompatability();
+        HashMap<String, Integer> projectCompatibilityList = currentHRSystem.getProject(currentMonth).getSkillsCompatibilities();
         ArrayList<HashMap<String, Integer>> internsSkills = getInternsSkills(currentHRSystem.getInternList(true));
         return bakeProjectName(currentHRSystem.getProjectName(currentMonth)) + "\n" +
                 bakeProgress(projectProgress)+"\n"+

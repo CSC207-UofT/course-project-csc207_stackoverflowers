@@ -29,8 +29,9 @@ public class FinalReportMaker implements ReportMaker {
     //这个格式和其他那两个差不多，但别忘了这是最后的project，所以只有一个intern（见mary在discord上发的照片）
     @Override
     public String makeReportBody(int projectProgress, int currentMonth) {
-                String internNames = currentHRSystem.getInternNames();
-        HashMap<String, Integer> projectCompatibilityList = currentHRSystem.getProject(currentMonth).getSkillsCompatability();                ArrayList<HashMap<String, Integer>> internsSkills = getInternsSkills(currentHRSystem.getInternList(true));
+        String internNames = currentHRSystem.getInternNames();
+        HashMap<String, Integer> projectCompatibilityList = currentHRSystem.getProject(currentMonth).getSkillsCompatibilities();
+        ArrayList<HashMap<String, Integer>> internsSkills = getInternsSkills(currentHRSystem.getInternList(true));
         return bakeProjectName(currentHRSystem.getProjectName(currentMonth)) + "\n" +
                 bakeProgress(projectProgress)+"\n"+
                 bakeInterns(internNames) + "\n" +
