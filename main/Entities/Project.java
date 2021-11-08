@@ -40,52 +40,51 @@ public class Project {
         this.isFinal = false;
         this.length = 2;
         this.skillsCompatibilities = new HashMap<>();
-        GamePrompts gamePrompts = new GamePrompts();
 
-        if (Objects.equals(this.projectName, gamePrompts.PROJECT1_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT1_DESCRIPTION;
+        if (Objects.equals(this.projectName, GamePrompts.PROJECT1_NAME)) {
+            this.projectDescription = GamePrompts.PROJECT1_DESCRIPTION;
             skillsCompatibilitiesHelper("proj1comp.txt");
             }
-        else if (Objects.equals(this.projectName, gamePrompts.PROJECT2_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT2_DESCRIPTION;
+        else if (Objects.equals(this.projectName, GamePrompts.PROJECT2_NAME)) {
+            this.projectDescription = GamePrompts.PROJECT2_DESCRIPTION;
             skillsCompatibilitiesHelper("proj2comp.txt");
         }
-        else if (Objects.equals(this.projectName, gamePrompts.PROJECT3_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT3_DESCRIPTION;
+        else if (Objects.equals(this.projectName, GamePrompts.PROJECT3_NAME)) {
+            this.projectDescription = GamePrompts.PROJECT3_DESCRIPTION;
             skillsCompatibilitiesHelper("proj3comp.txt");
         }
-        else if (Objects.equals(this.projectName, gamePrompts.PROJECT4_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT4_DESCRIPTION;
+        else if (Objects.equals(this.projectName, GamePrompts.PROJECT4_NAME)) {
+            this.projectDescription = GamePrompts.PROJECT4_DESCRIPTION;
             skillsCompatibilitiesHelper("proj4comp.txt");
         }
-        else if (Objects.equals(this.projectName, gamePrompts.PROJECT5_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT5_DESCRIPTION;
+        else if (Objects.equals(this.projectName, GamePrompts.PROJECT5_NAME)) {
+            this.projectDescription = GamePrompts.PROJECT5_DESCRIPTION;
             skillsCompatibilitiesHelper("proj5comp.txt");
         }
-        else if (Objects.equals(this.projectName, gamePrompts.PROJECT6_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT6_DESCRIPTION;
+        else if (Objects.equals(this.projectName, GamePrompts.PROJECT6_NAME)) {
+            this.projectDescription = GamePrompts.PROJECT6_DESCRIPTION;
             skillsCompatibilitiesHelper("proj6comp.txt");
         }
-        else if (Objects.equals(this.projectName, gamePrompts.PROJECT7_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT7_DESCRIPTION;
+        else if (Objects.equals(this.projectName, GamePrompts.PROJECT7_NAME)) {
+            this.projectDescription = GamePrompts.PROJECT7_DESCRIPTION;
             skillsCompatibilitiesHelper("proj7comp.txt");
         }
-        else if (Objects.equals(this.projectName, gamePrompts.PROJECT8_NAME)) {
-            this.projectDescription = gamePrompts.PROJECT8_DESCRIPTION;
+        else if (Objects.equals(this.projectName, GamePrompts.PROJECT8_NAME)) {
+            this.projectDescription = GamePrompts.PROJECT8_DESCRIPTION;
             skillsCompatibilitiesHelper("proj8comp.txt");
         }
-        else if (Objects.equals(this.projectName, gamePrompts.FINAL_PROJECT1_PROMPT)) {
-            this.projectDescription = gamePrompts.FINAL_PROJECT1_DESCRIPTION;
+        else if (Objects.equals(this.projectName, GamePrompts.FINAL_PROJECT1_PROMPT)) {
+            this.projectDescription = GamePrompts.FINAL_PROJECT1_DESCRIPTION;
             makeProjectFinal();
             skillsCompatibilitiesHelper("finalproj1comp.txt");
         }
-        else if (Objects.equals(this.projectName, gamePrompts.FINAL_PROJECT2_PROMPT)) {
-            this.projectDescription = gamePrompts.FINAL_PROJECT2_DESCRIPTION;
+        else if (Objects.equals(this.projectName, GamePrompts.FINAL_PROJECT2_PROMPT)) {
+            this.projectDescription = GamePrompts.FINAL_PROJECT2_DESCRIPTION;
             makeProjectFinal();
             skillsCompatibilitiesHelper("finalproj2comp.txt");
         }
-        else if (Objects.equals(this.projectName, gamePrompts.FINAL_PROJECT3_PROMPT)) {
-            this.projectDescription = gamePrompts.FINAL_PROJECT3_DESCRIPTION;
+        else if (Objects.equals(this.projectName, GamePrompts.FINAL_PROJECT3_PROMPT)) {
+            this.projectDescription = GamePrompts.FINAL_PROJECT3_DESCRIPTION;
             makeProjectFinal();
             skillsCompatibilitiesHelper("finalproj3comp.txt");
         }
@@ -99,7 +98,6 @@ public class Project {
         this.teamSize = 1;
         this.length = 1;
     }
-
 
     /**
      * A helper method that reads the skillsCompatibilities files and initializes </skillsCompatibilities>.

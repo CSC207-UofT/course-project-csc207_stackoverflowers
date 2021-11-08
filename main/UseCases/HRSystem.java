@@ -43,7 +43,6 @@ public class HRSystem implements Serializable {
 
 
     public void updateInternList(ArrayList<Intern> interns) {
-
         this.internList.addAll(interns);
     }
 
@@ -102,7 +101,8 @@ public class HRSystem implements Serializable {
 
     public boolean assignInternToProject(String internName, String projectName) {
         //TODO: implement this method
-        //Should return false if Intern is already been assigned to another project, or if they are not hired.
+        //Should return true if assignment was successful.
+        //Else, should poi return false if Intern is already been assigned to another project, or if they are not hired.
         return false;
     }
 

@@ -70,17 +70,17 @@ public class GamePrompts implements Serializable {
             "after the month has finished. \n "+
             "type anything to continue and view the report that has been generated... ";
 
-    public final String PROJECT1_NAME = "Logo Design";
-    public final String PROJECT2_NAME = "A Bug's Life";
-    public final String PROJECT3_NAME = "Game Character Design";
-    public final String PROJECT4_NAME = "Hackathon Leaders";
-    public final String PROJECT5_NAME = "Customer Data Privacy & Security";
-    public final String PROJECT6_NAME = "Coding Lessons to Young Children";
-    public final String PROJECT7_NAME = "Social Media Platform Management";
-    public final String PROJECT8_NAME = "Customer Feedback Summary and Analysis";
-    public final String FINAL_PROJECT1_NAME = "Website Featuring";
-    public final String FINAL_PROJECT2_NAME = "Machine Learning Research Assistant";
-    public final String FINAL_PROJECT3_NAME = "COVID-19 Tracking System Debug";
+    public static final String PROJECT1_NAME = "Logo Design";
+    public static final String PROJECT2_NAME = "A Bug's Life";
+    public static final String PROJECT3_NAME = "Game Character Design";
+    public static final String PROJECT4_NAME = "Hackathon Leaders";
+    public static final String PROJECT5_NAME = "Customer Data Privacy & Security";
+    public static final String PROJECT6_NAME = "Coding Lessons to Young Children";
+    public static final String PROJECT7_NAME = "Social Media Platform Management";
+    public static final String PROJECT8_NAME = "Customer Feedback Summary and Analysis";
+    public static final String FINAL_PROJECT1_NAME = "Website Featuring";
+    public static final String FINAL_PROJECT2_NAME = "Machine Learning Research Assistant";
+    public static final String FINAL_PROJECT3_NAME = "COVID-19 Tracking System Debug";
 
     public static final String PROJECT1_DESCRIPTION = "";
     public static final String PROJECT2_DESCRIPTION = "";
