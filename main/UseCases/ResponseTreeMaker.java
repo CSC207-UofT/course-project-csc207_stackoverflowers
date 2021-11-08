@@ -5,6 +5,9 @@ public class ResponseTreeMaker {
     to an Intern.
      */
 
+    // TODO: define and initialize ResponseTreeMaker's instance attributes
+
+    // TODO: ResponseTreeMaker constructor
     public ResponseTreeMaker() {}
 
     // TODO: method generateInternResponses() (Generates a tree of the intern's possible responses)
@@ -18,5 +21,6 @@ public class ResponseTreeMaker {
     /**
      * This method will assign one of the responses from our response trees to an intern
      */
-    public void assignResponseToIntern(){}
+    public void assignResponseToIntern() {}
 }
+

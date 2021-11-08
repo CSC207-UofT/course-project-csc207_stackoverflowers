@@ -1,6 +1,5 @@
 package UseCases;
 
-import Entities.Exceptions;
 import Entities.GamePrompts;
 import Entities.Intern;
 import Entities.InterviewIntern;
@@ -11,7 +10,8 @@ import java.util.*;
 public class GameMaker implements Serializable {
     private final HRSystem currentHRSystem;
     private final GamePrompts prompts;
-    private final ArrayList<String> universalCommands;
+    private int currentMonth;
+    private static ArrayList<String> universalCommands = null;
     /*
     - random intern generator - interns in HR
     - method for tree is also implement
@@ -25,7 +25,7 @@ public class GameMaker implements Serializable {
     public GameMaker() {
         this.currentHRSystem = new HRSystem();
         this.prompts = new GamePrompts();
-        universalCommands = new ArrayList<String>(Arrays.asList("save", "quit", "load"));
+        universalCommands = new ArrayList<>(Arrays.asList("save", "quit", "load"));
     }
 
     public HRSystem getCurrentHRSystem() {
@@ -33,6 +33,7 @@ public class GameMaker implements Serializable {
     }
     public static ArrayList<String> getUniversalCommands(){return universalCommands;}
 
+    public int getCurrentMonth(){return currentMonth;}
     /**
      * Add the list of interns to UseCases.HRSystem.
      *
@@ -41,6 +42,7 @@ public class GameMaker implements Serializable {
     public void addInternToList(ArrayList<Intern> newInterns){
         this.currentHRSystem.updateInternList(newInterns);
     }
+
 
     //TODO: this method below is never used. Can I delete it?
     /**
@@ -80,10 +82,10 @@ public class GameMaker implements Serializable {
         }
      */
 
+
     /**
      * Generates an ArrayList of new random interns/interviewees.
      * @param numInterns the number of interns that will be generated.
-     * @return an ArrayList of randomly generated Interns.
      */
     public void generateInterns(int numInterns) throws FileNotFoundException {
         ArrayList<String> nameList = generateInternsInfo("UseCases/names.txt");
@@ -123,7 +125,7 @@ public class GameMaker implements Serializable {
      * @param skillList an ArrayList of skills.
      * @return a HashMap of Skills and the percentage of the skill
      */
-    private HashMap<String, Integer> generateUniqueSkillMap(ArrayList<String> skillList) throws FileNotFoundException{
+    private HashMap<String, Integer> generateUniqueSkillMap(ArrayList<String> skillList) {
         Random random = new Random();
         HashMap<String, Integer> skillMap = new HashMap<>();
         while (skillMap.size() < 3) {
@@ -140,29 +142,28 @@ public class GameMaker implements Serializable {
         // take the project prompts from GamePrompts and outputs a list
         ArrayList<String> projects = new ArrayList<>();
         ArrayList<String> projForGame = new ArrayList<>();
-        projects.add(prompts.PROJECT_PROMPT1);
-        projects.add(prompts.PROJECT_PROMPT2);
-        projects.add(prompts.PROJECT_PROMPT3);
-        projects.add(prompts.PROJECT_PROMPT4);
-        projects.add(prompts.PROJECT_PROMPT5);
-        projects.add(prompts.PROJECT_PROMPT6);
-        projects.add(prompts.PROJECT_PROMPT7);
-        projects.add(prompts.PROJECT_PROMPT8);
+        projects.add(prompts.PROJECT1_PROMPT);
+        projects.add(prompts.PROJECT2_PROMPT);
+        projects.add(prompts.PROJECT3_PROMPT);
+        projects.add(prompts.PROJECT4_PROMPT);
+        projects.add(prompts.PROJECT5_PROMPT);
+        projects.add(prompts.PROJECT6_PROMPT);
+        projects.add(prompts.PROJECT7_PROMPT);
+        projects.add(prompts.PROJECT8_PROMPT);
         Collections.shuffle(projects);
         for (int i = 0; i < 5; i++) {
             projForGame.add(projects.get(i));
         }
         currentHRSystem.updateProjectList(projForGame);
-
     }
 
     public void generateFinalProject(){
         // take the final projects in gamePrompts and pick a final project for this game.
         ArrayList<String> finalProjects = new ArrayList<>();
         ArrayList<String> finalProjForGame = new ArrayList<>();
-        finalProjects.add(prompts.FINAL_PROJECT1);
-        finalProjects.add(prompts.FINAL_PROJECT2);
-        finalProjects.add(prompts.FINAL_PROJECT3);
+        finalProjects.add(prompts.FINAL_PROJECT1_PROMPT);
+        finalProjects.add(prompts.FINAL_PROJECT2_PROMPT);
+        finalProjects.add(prompts.FINAL_PROJECT3_PROMPT);
         Collections.shuffle(finalProjects);
         finalProjForGame.add(finalProjects.get(0));
         currentHRSystem.updateFinalProject(finalProjForGame);
@@ -202,21 +203,30 @@ public class GameMaker implements Serializable {
     
     /**
      * Loads the previous saved state of the game (discuss later, still unsure)
-     * @param playerName
+     * @param playerName the player's name which will become the name of the file the serialized object is saved to.
+     * @return returns the loaded GameMaker to GameManager.
      */
-    public void load(String playerName) {
-        //TODO: implement method loadGame
+    public GameMaker load(String playerName) throws IOException, ClassNotFoundException {
+        FileInputStream fileIn = new FileInputStream(playerName);
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        return (GameMaker) in.readObject();
     }
     
-    public String save() throws IOException {
+    public String save(int currentMonth) throws IOException {
+        setCurrentMonth(currentMonth);
         saveGame(currentHRSystem.getPlayerName());
         return GamePrompts.GAME_SAVED_SUCCESSFUL + currentHRSystem.getPlayerName();
     }
     
-    public String quit() throws IOException{
+    public String quit(int currentMonth) throws IOException{
+        setCurrentMonth(currentMonth);
         quitGame();
         return GamePrompts.INFORM_QUIT_GAME + currentHRSystem.getPlayerName();
     }
-        //throw exception if input not one of these two... but how would they get here in the first place XD
+
+    public void setCurrentMonth(int currentMonth) {
+        this.currentMonth = currentMonth;
+    }
+    //throw exception if input not one of these two... but how would they get here in the first place XD
 
 }

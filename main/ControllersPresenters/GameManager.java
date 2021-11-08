@@ -1,6 +1,7 @@
 package ControllersPresenters;
 
 import Entities.Exceptions;
+import UseCases.GameGenerators;
 import UseCases.GameMaker;
 
 import java.util.ArrayList;
@@ -12,7 +13,8 @@ public class GameManager {
     /*
     try - catch?
      */
-    private final GameMaker currentGameMaker;
+    private GameMaker currentGameMaker;
+    private GameGenerators currentGameGenerators;
     private statusOfGame currentStatus;
     private Level currentLevel;
     private int currentMonth = 1;
@@ -26,11 +28,12 @@ public class GameManager {
 
     public GameManager() throws Exception {
         this.currentGameMaker = new GameMaker();
+        this.currentGameGenerators = new GameGenerators();
         this.currentStatus = statusOfGame.Start;
         //ask GameMaker to generate the Interns and Projects needed for the current game.
         try {
-            currentGameMaker.generateInterns(10);
-            currentGameMaker.generateProjects();
+            currentGameGenerators.generateInterns(10);
+            currentGameGenerators.generateProjects(4);
         } finally {
             isRunning = true;
 
@@ -75,22 +78,24 @@ public class GameManager {
     }
 
     private String universalCommand(String playerInput) throws Exception {
-    if(playerInput =="save") {
-        return currentGameMaker.save();
+    if(playerInput.strip() =="save") {
+        return currentGameMaker.save(currentMonth);
     }if(playerInput =="quit"){
         currentStatus = statusOfGame.End;
-        return currentGameMaker.quit();
-    }if(playerInput.contains("load")){
+        return currentGameMaker.quit(currentMonth);
+    }if(playerInput.split("")[0] == ("load")){
     if (currentStatus == statusOfGame.Start) {
+        //Only load a new game if the current input has just started.
             String[] loads = playerInput.split(" ");
-            currentGameMaker.load(loads[1]);
+            currentGameMaker = currentGameMaker.load(loads[1]);
+            currentMonth = currentGameMaker.getCurrentMonth();
         } else {
             throw new Exception("Load only permitted at start of the game");
         }
     }
-    else{throw new Exception(Exceptions.UNIVERSAL_COMMAND_NOT_FOUND);}
+    throw new Exception(Exceptions.UNIVERSAL_COMMAND_NOT_FOUND);
+    }
 
-}
     private void updateStatus() {
         if (currentStatus == statusOfGame.Start){
                 currentStatus = statusOfGame.Interview;
