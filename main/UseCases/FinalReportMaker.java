@@ -1,18 +1,19 @@
 package UseCases;
 import Entities.GamePrompts;
 import Entities.Intern;
-import Entities.Project;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
 
 public class FinalReportMaker implements ReportMaker {
     private final GamePrompts prompts;
+    private final HRSystem currentHRSystem;
 
-    public  FinalReportMaker(){
+    public  FinalReportMaker(HRSystem currentHRSystem){
         this.prompts = new GamePrompts();
+        this.currentHRSystem = currentHRSystem;
+
     }
     //TODO: Make every string a call to GamePrompt
     @Override
@@ -27,13 +28,22 @@ public class FinalReportMaker implements ReportMaker {
 
     //这个格式和其他那两个差不多，但别忘了这是最后的project，所以只有一个intern（见mary在discord上发的照片）
     @Override
-    public String makeReportBody(String projectName, int projectProgress, String internNames, HashMap<String, Integer> projectSkill, ArrayList<HashMap<String, Integer>>  internSkills) {
-        return bakeProjectName(projectName) + "\n" +
+    public String makeReportBody(int projectProgress, int currentMonth) {
+                String internNames = currentHRSystem.getInternNames();
+        HashMap<String, Integer> projectCompatibilityList = currentHRSystem.getProject(currentMonth).getSkillsCompatability();                ArrayList<HashMap<String, Integer>> internsSkills = getInternsSkills(currentHRSystem.getInternList(true));
+        return bakeProjectName(currentHRSystem.getProjectName(currentMonth)) + "\n" +
                 bakeProgress(projectProgress)+"\n"+
                 bakeInterns(internNames) + "\n" +
-                bakeInternsPerformances(internNames, internSkills, projectSkill);
+                bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
     }
-
+    private ArrayList<HashMap<String, Integer>> getInternsSkills(ArrayList<Intern> internList) {
+        //Makes an arrayList full of internSkills.
+        ArrayList<HashMap<String, Integer>> internCompatabilityList  = new ArrayList<>();
+        for (Intern i :internList){
+            internCompatabilityList.add(i.getInternSkills());
+        }
+        return internCompatabilityList;
+    }
     @Override
     public String bakeProjectName(String projectName) {
         return "Project name: " + projectName;
