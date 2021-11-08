@@ -116,7 +116,7 @@ public class MonthLevelTest {
         @Test(timeout = 1000)
         public void testConfirmDecisions() throws Exception {
             //Test that prompt asking to confirm decisions will actually appear
-            // if all interns have been assigned to a project.
+            // if all Hiredinterns have been assigned to a project.
             hrSystem.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
             hrSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
             hrSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
@@ -127,6 +127,7 @@ public class MonthLevelTest {
 
         private ArrayList<Project> makeProjects() throws FileNotFoundException {
             //A helper function that sets up the Projects in HRSystem for the test.
+            //Only one project for the first month.
             Project project1 = new Project(GamePrompts.PROJECT1_NAME);
             ArrayList<Project> projects = new ArrayList<>();
             projects.add(project1);
@@ -145,12 +146,12 @@ public class MonthLevelTest {
             Intern Maggie = new HiredIntern("Maggie", 20, maggieSkills);
 
             HashMap<String, Integer> rubySkills = new HashMap<>();
-            maggieSkills.put("Communication", 66);
+            rubySkills.put("Communication", 66);
             Intern Ruby = new HiredIntern("Ruby", 21, rubySkills);
 
             //Also add a interviewIntern that shouldn't be used anywhere during month:
             HashMap<String, Integer> bobSkills = new HashMap<>();
-            maggieSkills.put("Flexibility", 50);
+            bobSkills.put("Flexibility", 50);
             Intern Bob = new HiredIntern("Bob", 60, bobSkills);
             //Make a new list of interns to put in HRSystem to update:
             ArrayList<Intern> interns = new ArrayList<>();
