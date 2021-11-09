@@ -32,6 +32,7 @@ public class GameMaker implements Serializable {
         return currentHRSystem;
     }
     public static ArrayList<String> getUniversalCommands(){return universalCommands;}
+
     public int getCurrentMonth(){return currentMonth;}
     /**
      * Add the list of interns to UseCases.HRSystem.
@@ -41,6 +42,7 @@ public class GameMaker implements Serializable {
     public void addInternToList(ArrayList<Intern> newInterns){
         this.currentHRSystem.updateInternList(newInterns);
     }
+
 
     //TODO: this method below is never used. Can I delete it?
     /**
@@ -79,6 +81,7 @@ public class GameMaker implements Serializable {
         return new InterviewIntern(name, age, skills);
         }
      */
+
 
     /**
      * Generates an ArrayList of new random interns/interviewees.
@@ -137,31 +140,30 @@ public class GameMaker implements Serializable {
     // TODO: method generateProjects() (Generates and stores the projects in UseCases.HRSystem) (change return type)
     public void generateProjects() {
         // take the project prompts from GamePrompts and outputs a list
-//        ArrayList<String> projects = new ArrayList<>();
-//        ArrayList<String> projForGame = new ArrayList<>();
-//        projects.add(GamePrompts.PROJECT1_PROMPT);
-//        projects.add(GamePrompts.PROJECT2_PROMPT);
-//        projects.add(GamePrompts.PROJECT3_PROMPT);
-//        projects.add(GamePrompts.PROJECT4_PROMPT);
-//        projects.add(GamePrompts.PROJECT5_PROMPT);
-//        projects.add(GamePrompts.PROJECT6_PROMPT);
-//        projects.add(GamePrompts.PROJECT7_PROMPT);
-//        projects.add(GamePrompts.PROJECT8_PROMPT);
-//        Collections.shuffle(projects);
-//        for (int i = 0; i < 5; i++) {
-//            projForGame.add(projects.get(i));
-//        }
-//        currentHRSystem.updateProjectList(projForGame);
-
+        ArrayList<String> projects = new ArrayList<>();
+        ArrayList<String> projForGame = new ArrayList<>();
+        projects.add(prompts.PROJECT1_PROMPT);
+        projects.add(prompts.PROJECT2_PROMPT);
+        projects.add(prompts.PROJECT3_PROMPT);
+        projects.add(prompts.PROJECT4_PROMPT);
+        projects.add(prompts.PROJECT5_PROMPT);
+        projects.add(prompts.PROJECT6_PROMPT);
+        projects.add(prompts.PROJECT7_PROMPT);
+        projects.add(prompts.PROJECT8_PROMPT);
+        Collections.shuffle(projects);
+        for (int i = 0; i < 5; i++) {
+            projForGame.add(projects.get(i));
+        }
+        currentHRSystem.updateProjectList(projForGame);
     }
 
     public void generateFinalProject(){
         // take the final projects in gamePrompts and pick a final project for this game.
         ArrayList<String> finalProjects = new ArrayList<>();
         ArrayList<String> finalProjForGame = new ArrayList<>();
-        finalProjects.add(GamePrompts.FINAL_PROJECT1_PROMPT);
-        finalProjects.add(GamePrompts.FINAL_PROJECT2_PROMPT);
-        finalProjects.add(GamePrompts.FINAL_PROJECT3_PROMPT);
+        finalProjects.add(prompts.FINAL_PROJECT1_PROMPT);
+        finalProjects.add(prompts.FINAL_PROJECT2_PROMPT);
+        finalProjects.add(prompts.FINAL_PROJECT3_PROMPT);
         Collections.shuffle(finalProjects);
         finalProjForGame.add(finalProjects.get(0));
         currentHRSystem.updateFinalProject(finalProjForGame);

@@ -27,15 +27,18 @@ public class GamePrompts implements Serializable {
     public static final String INFORM_QUIT_GAME = "You have quit your game, and you progress has been saved to a file " +
             "with the player name you've used. Player name:";
 
-    public static final String HIRE_INTERN = "";
+    public static final String HIRE_INTERN = "Would you like to hire this intern?";
 
     public static final String HIRED_INTERN = "Congratulations! You have hired this intern! ";
 
-    public static final String PLAYER_CHOICE = ""; // what would you like to choose etc
+    public static final String PLAYER_CHOICE = "Choose from either A or B";
+
 
     public static final String CONFIRM_HIRING = "Are you sure you want to hire this intern?";
 
-    public static final String NEXT_CANDIDATE = "";
+
+    public static final String NEXT_CANDIDATE = "Would you like to move on to the next candidate?";
+
 
     // not all of the project prompts will be used, the projectgenerator will output a list and choose 4 projects
     // for the game from all the prompts here
@@ -76,7 +79,8 @@ public class GamePrompts implements Serializable {
     public static final String PROJECT4_NAME = "Hackathon Leaders";
     public static final String PROJECT5_NAME = "Customer Data Privacy & Security";
     public static final String PROJECT6_NAME = "Coding Lessons to Young Children";
-    public static final String PROJECT7_NAME = "Social Media Platform Management";
+
+    public static final String PROJECT7_NAME = "Social Media Marketing";
     public static final String PROJECT8_NAME = "Customer Feedback Summary and Analysis";
     public static final String FINAL_PROJECT1_NAME = "Website Featuring";
     public static final String FINAL_PROJECT2_NAME = "Machine Learning Research Assistant";
@@ -86,9 +90,23 @@ public class GamePrompts implements Serializable {
     public static final String PROJECT2_DESCRIPTION = "";
     public static final String PROJECT3_DESCRIPTION = "";
     public static final String PROJECT4_DESCRIPTION = "";
-    public static final String PROJECT5_DESCRIPTION = "";
-    public static final String PROJECT6_DESCRIPTION = "";
-    public static final String PROJECT7_DESCRIPTION = "";
+    public static final String PROJECT5_DESCRIPTION = "Protecting consumer data should be a top priority for any organization. " +
+            "In this project, the interns will work with the cybersecurity department within the company to ensure the " +
+            "safe storage of customer information. They will work on how to recognize and prevent common cyber threats " +
+            "such as malware, phishing, SQL injection, and DNS tunneling. They will also help ensuring that our company's" +
+            " encryption practices are up-to-date and adhere to the General Data Protection Regulation. ";
+    public static final String PROJECT6_DESCRIPTION = "Computer programming for kids has many benefits that stretch far" +
+            " beyond the computer screen: critical thinking, creativity, and persistence, etc. That's why our company " +
+            "values teaching coding to children. Interns in this project will introduce k1-9 students to coding through " +
+            "the virtual classroom. They will work together to come up with activities, worksheets, games, homework, and" +
+            " simple interactive apps that pique children's interests meanwhile convey meaningful coding concepts. " +
+            "In addition, regular communications and accommodations to children's special needs will be crucial. ";
+    public static final String PROJECT7_DESCRIPTION = "In this project, interns will be required to create and publish " +
+            "contents on the company's Facebook, Instagram, and Twitter pages to promote the company's products and services." +
+            " They will also monitor likes/dislikes, comments, reposts, and interact with the online communities to build " +
+            "relationships with them. Furthermore, they will be in charge of employing data analytics tools to track the " +
+            "progress, success, and engagement of ad campaigns. The end goal is to employ social media platforms effectively" +
+            " to attract potential customers and establish the company's desired social media \"culture\"/\"tone\".";
     public static final String PROJECT8_DESCRIPTION = "";
     public static final String FINAL_PROJECT1_DESCRIPTION = "";
     public static final String FINAL_PROJECT2_DESCRIPTION = "";
@@ -104,27 +122,6 @@ public class GamePrompts implements Serializable {
                                                  "Team Size: 3\n" +
                                                  "Skills: Creativity, Observant, Artistic";
 
-            /*"""
-            Project Name: Create New Logo for Company.\s
-            Project Description: This project requires individuals to be creative, artistic and imaginative.
-            You will be working with a world-renowned graphic designer to create a new logo that represents\s
-            our company morals, values and message. Thus, you must have a clear understanding of how our  company operates.
-            Please ensure you pick interns that have at least one skill that is required to complete this task.
-            \s
-            Length of Project: 2 months\s
-            Team Size: 3\s
-            Skills: Creativity, Observant, Artistic and Teamwork""";
-
-            "Project Name: Create New Logo \n" + "Project Description: This project requires individuals to be creative, artistic and imaginative\n" +
-            "The interns will be working with world-renowned graphic designer to create a new logo that represents \n" +
-            "our company morals, values and overall message. Thus, a clear understanding of how our company operates is required \n" +
-            "Please ensure that you pick a team where each intern possesses at least one skill that is required to complete this task.\n \n" +
-            "Length of Project: 2 months \n" +
-            "Team Size: 3\n" +
-            "Skills: Creativity, Observant and Artistic";
-
-             */
-
     public static final String PROJECT2_PROMPT = "Project Name: A Bug's Life  \n" +
                                                  "Project Description: The software development team all went on vacation and didn't fully test their work and now \n" +
                                                  "they are riddled with bugs in their code! \n" +
@@ -139,36 +136,52 @@ public class GamePrompts implements Serializable {
                                                  " \n" +
                                                  "Skills: Creativity, Confidence, Artistic";
 
-    public static final String PROJECT4_PROMPT = "Project Name: Hackathon Leaders \n" +
-                                                 " \n" +
+    public static final String PROJECT4_PROMPT = "Project Name:" + PROJECT4_NAME + "\n" +
+                                                 "Project Description: " + PROJECT4_DESCRIPTION + "\n" +
+                                                 "Length of Project: 2 months \n" +
+                                                 "Team Size: 3 \n" +
                                                  "Skills: Leadership, Confidence, Responsible";
 
-    public static final String PROJECT5_PROMPT = "Project Name: Customer Data Privacy & Security \n" +
-                                                 " \n" +
+    public static final String PROJECT5_PROMPT = "Project Name:" + PROJECT5_NAME + "\n" +
+                                                 "Project Description: " + PROJECT5_DESCRIPTION + "\n" +
+                                                 "Length of Project: 2 months \n" +
+                                                 "Team Size: 3 \n" +
                                                  "Skills: Teamwork, Creativity, Efficiency";
 
-    public static final String PROJECT6_PROMPT = "Project Name: Teaching Coding to Young Children \n" +
-                                                 " \n" +
-                                                 "Skills: Patience, Creativity, Responsible\n";
+    public static final String PROJECT6_PROMPT = "Project Name:" + PROJECT6_NAME + "\n" +
+                                                 "Project Description: " + PROJECT6_DESCRIPTION + "\n" +
+                                                 "Length of Project: 2 months \n" +
+                                                 "Team Size: 3 \n" +
+                                                 "Skills: Patience, Creativity, Responsible";
 
-    public static final String PROJECT7_PROMPT = "Project Name: Social Media Management \n" +
-                                                 " \n" +
-                                                 "Skills: Efficiency, Teamwork, Endurance \n";
+    public static final String PROJECT7_PROMPT = "Project Name:" + PROJECT7_NAME + "\n" +
+                                                 "Project Description: " + PROJECT7_DESCRIPTION + "\n" +
+                                                 "Length of Project: 2 months \n" +
+                                                 "Team Size: 3 \n" +
+                                                 "Skills: Efficiency, Teamwork, Endurance";
 
-    public static final String PROJECT8_PROMPT = "Project Name: Customer Feedback Summary and Analysis \n" +
-                                                 " \n" +
-                                                 "Skills: Observant, Communications, Analytical \n";
+    public static final String PROJECT8_PROMPT = "Project Name:" + PROJECT8_NAME + "\n" +
+                                                 "Project Description: " + PROJECT8_DESCRIPTION + "\n" +
+                                                 "Length of Project: 2 months \n" +
+                                                 "Team Size: 3 \n" +
+                                                 "Skills: Observant, Communications, Analytical";
 
-    public static final String FINAL_PROJECT1_PROMPT = "Final Project Name: Adding New Features to the Website \n" +
-                                                       " \n" +
+    public static final String FINAL_PROJECT1_PROMPT = "Project Name:" + FINAL_PROJECT1_NAME + "\n" +
+                                                       "Project Description: " + FINAL_PROJECT1_DESCRIPTION + "\n" +
+                                                       "Length of Project: 2 months \n" +
+                                                       "Team Size: 1 \n" +
                                                        "Skills: Observant, Confidence, Creativity";
 
-    public static final String FINAL_PROJECT2_PROMPT = "Project Name: Machine Learning Research Assistant \n" +
-                                                       " \n" +
+    public static final String FINAL_PROJECT2_PROMPT = "Project Name:" + FINAL_PROJECT2_NAME + "\n" +
+                                                       "Project Description: " + FINAL_PROJECT2_DESCRIPTION + "\n" +
+                                                       "Length of Project: 2 months \n" +
+                                                       "Team Size: 1 \n" +
                                                        "Skills: Communication, Endurance, Observant";
 
-    public static final String FINAL_PROJECT3_PROMPT = "Project Name: Company's COVID-19 Tracking System \n" +
-                                                       " \n" +
+    public static final String FINAL_PROJECT3_PROMPT = "Project Name:" + FINAL_PROJECT3_NAME + "\n" +
+                                                       "Project Description: " + FINAL_PROJECT3_DESCRIPTION + "\n" +
+                                                       "Length of Project: 2 months \n" +
+                                                       "Team Size: 1 \n" +
                                                        "Skills: Efficiency, Patience, Responsible";
 
     //See usage in MonthMaker
