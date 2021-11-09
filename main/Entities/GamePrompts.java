@@ -81,10 +81,10 @@ public class GamePrompts implements Serializable {
     public static final String PROJECT6_NAME = "Coding Lessons to Young Children";
 
     public static final String PROJECT7_NAME = "Social Media Marketing";
-    public static final String PROJECT8_NAME = "Customer Feedback Summary and Analysis";
-    public static final String FINAL_PROJECT1_NAME = "Website Featuring";
-    public static final String FINAL_PROJECT2_NAME = "Machine Learning Research Assistant";
-    public static final String FINAL_PROJECT3_NAME = "COVID-19 Tracking System Debug";
+    public static final String PROJECT8_NAME = "Product Management";
+    public static final String FINAL_PROJECT1_NAME = "Software Engineering";
+    public static final String FINAL_PROJECT2_NAME = "Machine Learning & AI Research Assistant";
+    public static final String FINAL_PROJECT3_NAME = "COVID-19 Tracking System Featuring";
 
     public static final String PROJECT1_DESCRIPTION = "";
     public static final String PROJECT2_DESCRIPTION = "";
@@ -107,9 +107,27 @@ public class GamePrompts implements Serializable {
             "relationships with them. Furthermore, they will be in charge of employing data analytics tools to track the " +
             "progress, success, and engagement of ad campaigns. The end goal is to employ social media platforms effectively" +
             " to attract potential customers and establish the company's desired social media \"culture\"/\"tone\".";
-    public static final String PROJECT8_DESCRIPTION = "";
-    public static final String FINAL_PROJECT1_DESCRIPTION = "";
-    public static final String FINAL_PROJECT2_DESCRIPTION = "";
+    public static final String PROJECT8_DESCRIPTION = "Product management is the practice of strategically driving the " +
+            "development, market launch, and continual support and improvement of a company’s products." +
+            "Chosen interns will be working with a team of engineers to develop the strategy and roadmap of a specific " +
+            "product for our company as well as to QA test the product. They will do so in accordance with the following " +
+            "phases: idea generation, idea screening, concept development, and testing, building a market strategy, product " +
+            "development, market testing, and market commercialization. Furthermore, product management interns" +
+            "also act as a bridge between the engineering and marketing teams, helping to do market research and come up " +
+            "with effective marketing strategies for our products.";
+    public static final String FINAL_PROJECT1_DESCRIPTION = "Your job is to pick the best programmer among the existing " +
+            "interns to develop and improve, along with other programmers, the company's applications. Full-stack engineering" +
+            " intern will be combining the best of both worlds by working on both front-end and back-end technologies, " +
+            "seeing how data flows through the application and how it’s transferred and displayed. By being actively involved" +
+            " with the technological components the customer sees and with the back-end data that powers the site, the intern" +
+            " will quickly develop an understanding of the different technologies and will be able to implement optimizations " +
+            "to enhance performance. The selected intern should have experience in building a feature end-to-end.";
+    public static final String FINAL_PROJECT2_DESCRIPTION = "The Machine Learning & AI Research team is looking for an " +
+            "assistant. The assistant will work under the supervision of the project manager. He/she likely will not have" +
+            " coding duties, but may help the programmers test or debug their code. He/she will also work with algorithms" +
+            " and the mathematical aspects of artificial intelligence. Additionally, certain project logistics will be a" +
+            " part of the assistant's responsibilities. The intern will receive step-by-step guidance from industry experts," +
+            " and through intensive immersion, they will develop specialized, highly valued skills regarding Machine Learning & AI. ";
     public static final String FINAL_PROJECT3_DESCRIPTION = "";
 
     public static final String PROJECT1_PROMPT = "Project Name: Create New Logo \n" +
@@ -120,7 +138,7 @@ public class GamePrompts implements Serializable {
                                                  " \n" +
                                                  "Length of Project: 2 months \n" +
                                                  "Team Size: 3\n" +
-                                                 "Skills: Creativity, Observant, Artistic";
+                                                 "Skills Required: Creativity, Observant, Artistic";
 
     public static final String PROJECT2_PROMPT = "Project Name: A Bug's Life  \n" +
                                                  "Project Description: The software development team all went on vacation and didn't fully test their work and now \n" +
@@ -130,7 +148,7 @@ public class GamePrompts implements Serializable {
                                                  " \n" +
                                                  "Length of Project: 2 months \n" +
                                                  "Team Size: 3 \n" +
-                                                 "Skills: Teamwork, Flexibility, Efficiency";
+                                                 "Skills Required: Teamwork, Flexibility, Efficiency";
 
     public static final String PROJECT3_PROMPT = "Project Name: Game Character Design \n" +
                                                  " \n" +
@@ -140,49 +158,49 @@ public class GamePrompts implements Serializable {
                                                  "Project Description: " + PROJECT4_DESCRIPTION + "\n" +
                                                  "Length of Project: 2 months \n" +
                                                  "Team Size: 3 \n" +
-                                                 "Skills: Leadership, Confidence, Responsible";
+                                                 "Skills Required: Leadership, Confidence, Responsible";
 
     public static final String PROJECT5_PROMPT = "Project Name:" + PROJECT5_NAME + "\n" +
                                                  "Project Description: " + PROJECT5_DESCRIPTION + "\n" +
                                                  "Length of Project: 2 months \n" +
                                                  "Team Size: 3 \n" +
-                                                 "Skills: Teamwork, Creativity, Efficiency";
+                                                 "Skills Required: Teamwork, Creativity, Efficiency";
 
     public static final String PROJECT6_PROMPT = "Project Name:" + PROJECT6_NAME + "\n" +
                                                  "Project Description: " + PROJECT6_DESCRIPTION + "\n" +
                                                  "Length of Project: 2 months \n" +
                                                  "Team Size: 3 \n" +
-                                                 "Skills: Patience, Creativity, Responsible";
+                                                 "Skills Required: Patience, Creativity, Responsible";
 
     public static final String PROJECT7_PROMPT = "Project Name:" + PROJECT7_NAME + "\n" +
                                                  "Project Description: " + PROJECT7_DESCRIPTION + "\n" +
                                                  "Length of Project: 2 months \n" +
                                                  "Team Size: 3 \n" +
-                                                 "Skills: Efficiency, Teamwork, Endurance";
+                                                 "Skills Required: Efficiency, Teamwork, Endurance";
 
     public static final String PROJECT8_PROMPT = "Project Name:" + PROJECT8_NAME + "\n" +
                                                  "Project Description: " + PROJECT8_DESCRIPTION + "\n" +
                                                  "Length of Project: 2 months \n" +
                                                  "Team Size: 3 \n" +
-                                                 "Skills: Observant, Communications, Analytical";
+                                                 "Skills Required: Leadership, Communication, Responsible";
 
     public static final String FINAL_PROJECT1_PROMPT = "Project Name:" + FINAL_PROJECT1_NAME + "\n" +
                                                        "Project Description: " + FINAL_PROJECT1_DESCRIPTION + "\n" +
                                                        "Length of Project: 2 months \n" +
                                                        "Team Size: 1 \n" +
-                                                       "Skills: Observant, Confidence, Creativity";
+                                                       "Skills Required: Teamwork, Endurance, Creativity";
 
     public static final String FINAL_PROJECT2_PROMPT = "Project Name:" + FINAL_PROJECT2_NAME + "\n" +
                                                        "Project Description: " + FINAL_PROJECT2_DESCRIPTION + "\n" +
                                                        "Length of Project: 2 months \n" +
                                                        "Team Size: 1 \n" +
-                                                       "Skills: Communication, Endurance, Observant";
+                                                       "Skills Required: Efficiency, Communication, Analytical";
 
     public static final String FINAL_PROJECT3_PROMPT = "Project Name:" + FINAL_PROJECT3_NAME + "\n" +
                                                        "Project Description: " + FINAL_PROJECT3_DESCRIPTION + "\n" +
                                                        "Length of Project: 2 months \n" +
                                                        "Team Size: 1 \n" +
-                                                       "Skills: Efficiency, Patience, Responsible";
+                                                       "Skills Required: Efficiency, Patience, Responsible";
 
     //See usage in MonthMaker
     public static final String INTERN_ASSIGNING_SUCCESS = "The intern was successfully assigned to the project specified.";
