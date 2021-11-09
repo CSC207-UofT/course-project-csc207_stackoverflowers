@@ -18,6 +18,9 @@ Is the Dependency Rule consistently followed when interacting with details in th
 Give us a concrete example from something like your UI or an interaction with a database.
 ##Design Patterns
 Has your group used design patterns in appropriate places in the code? Identified and described any patterns that could be applied in future with more time?
+- We used the factory design pattern in GameManger, so that when it has a stage, it knows where it should get it's output from (?)
+- Also for ReportMaker's, we used the design pattern Builder, as they are three different builders(ReportMakers) that have build a report using the same structure. Using The Builder pattern, we are able to assemble each component of the Report in ReportMaker, so that the ReportLevel only needs to generally ask the currentReportMaker for a report, instead of using a bunch of if- statements each time. (Jacob you can edit this if this is not what you want)
+- We also kind of got inspiration from the Observer Design pattern, as our Abstract Class Level will change statuses, and those statuses need to be reported to GameManager. Right now we are making GameManager check each time if the status of the currentLevel has changed, so that it fits more into the Observer design pattern. 
 ADD TO THIS!!!!
 
 Have you clearly indicated where the pattern was used and possibly pointed out which Pull Request it was implemented in?
