@@ -32,10 +32,10 @@ public class GameMakerTest {
         assertEquals(expectedResult, gameMaker.endPrompt());
     }
 
-    @Test(timeout = 1000)
-    public void TestGenerateInterns() throws FileNotFoundException {
-        gameMaker.generateInterns(3);
-    }
+//    @Test(timeout = 1000)
+//    public void TestGenerateInterns() throws FileNotFoundException {
+//        gameMaker.generateInterns(3);
+//    }
 
     @Test(timeout = 100)
     public void TestSerializable() throws IOException {

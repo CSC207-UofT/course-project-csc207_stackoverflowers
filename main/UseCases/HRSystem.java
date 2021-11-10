@@ -116,6 +116,7 @@ public class HRSystem implements Serializable {
     }
     public Project getProject(int currentMonth){
         //TODO: This method returns the list of projects in the current month.(OR JUST ONE PROJECT PER MONTH????);
+    return null;
     }
 
     public String makeAssignmentToString(int currentMonth) {
