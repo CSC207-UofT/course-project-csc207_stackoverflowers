@@ -65,7 +65,8 @@ public class GamePrompts implements Serializable {
             "working hard on their own. \n The month went by quickly, and now you can view this month's progress! \n" +
             "type anything to continue and view the report that has been generated... ";
 
-    public static final String FINAL_MONTH_PROMPT_BEFORE_PROJECT = "" ;
+    public static final String FINAL_MONTH_PROMPT_BEFORE_PROJECT = "Ah, welcome to the last month where you get to assign interns to projects." +
+            "This month, you will only have ONE project that requires ONE intern. How fun! Here's your project:" ;
     public static final String FINAL_MONTH_PROMPT_AFTER_PROJECT = "Here are a list of commands you can do:\n" +
             "assign intern to project <Intern Name> <Project Name>\n" +
             "\n" +
@@ -73,7 +74,7 @@ public class GamePrompts implements Serializable {
             "\n" +
             "check intern info\n" +
             "\n" +
-            "check project info\n";;
+            "check project info\n";
 
     public static final String END_OF_FINAL_MONTH_PROMPT = "Now you finished assigning your SUPER intern to the FINAL project." +
             "Must feel good huh! Sit back and relax as we return to you the report on how the chosen one has done " +
