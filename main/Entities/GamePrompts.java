@@ -122,17 +122,22 @@ public class GamePrompts implements Serializable {
                                                  "Skills: Creativity, Observant, Artistic";
 
     public static final String PROJECT2_PROMPT = "Project Name: A Bug's Life  \n" +
-                                                 "Project Description: The software development team all went on vacation and didn't fully test their work and now \n" +
-                                                 "they are riddled with bugs in their code! \n" +
-                                                 "Assign interns who can support the company's software engineers in exterminating all these bugs! The interns must be \n" +
-                                                 "orderly, flexible and quick on their feet for this task. They must also be able to work efficiently as a team for this task. \n" +
-                                                 " \n" +
-                                                 "Length of Project: 2 months \n" +
-                                                 "Team Size: 3 \n" +
+                                                 "Project Description: The software development team all went on vacation and didn't fully test their work and now\n" +
+                                                 "they are riddled with bugs in their code!\n" +
+                                                 "Assign interns who can support the company's software engineers in exterminating all these bugs! The interns must be\n" +
+                                                 "orderly, flexible and quick on their feet for this task. They must also be able to work efficiently as a team for this task.\n" +
+                                                 "\n" +
+                                                 "Length of Project: 2 months\n" +
+                                                 "Team Size: 3\n" +
                                                  "Skills: Teamwork, Flexibility, Efficiency";
 
     public static final String PROJECT3_PROMPT = "Project Name: Game Character Design \n" +
-                                                 " \n" +
+                                                 "Project Description: The interns for this project must work together with a client game company and its illustrators\n" +
+            "to create, design and code new video game characters for the new game a client company is launching"
+
+
+
+
                                                  "Skills: Creativity, Confidence, Artistic";
 
     public static final String PROJECT4_PROMPT = "Project Name:" + PROJECT4_NAME + "\n" +
