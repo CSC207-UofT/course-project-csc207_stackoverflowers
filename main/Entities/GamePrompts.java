@@ -66,7 +66,14 @@ public class GamePrompts implements Serializable {
             "type anything to continue and view the report that has been generated... ";
 
     public static final String FINAL_MONTH_PROMPT_BEFORE_PROJECT = "" ;
-    public static final String FINAL_MONTH_PROMPT_AFTER_PROJECT = "";
+    public static final String FINAL_MONTH_PROMPT_AFTER_PROJECT = "Here are a list of commands you can do:\n" +
+            "assign intern to project <Intern Name> <Project Name>\n" +
+            "\n" +
+            "remove intern from project <Intern Name> <Project Name>\n" +
+            "\n" +
+            "check intern info\n" +
+            "\n" +
+            "check project info\n";;
 
     public static final String END_OF_FINAL_MONTH_PROMPT = "Now you finished assigning your SUPER intern to the FINAL project." +
             "Must feel good huh! Sit back and relax as we return to you the report on how the chosen one has done " +
