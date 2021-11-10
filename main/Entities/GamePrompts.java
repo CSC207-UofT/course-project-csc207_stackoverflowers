@@ -83,7 +83,7 @@ public class GamePrompts implements Serializable {
 
 
 
-    public static final String FINAL_MONTH_PROMPT_BEFORE_PROJECT = ""Ah, welcome to the last month where you get to assign interns to projects.\n" + "Your final task is to assign one intern you think has performed well who" +
+    public static final String FINAL_MONTH_PROMPT_BEFORE_PROJECT = "Ah, welcome to the last month where you get to assign interns to projects.\n" + "Your final task is to assign one intern you think has performed well who" +
             "will be able to accomplish a bigger project on their own. Here's the project:\n";
   
     public static final String FINAL_MONTH_PROMPT_AFTER_PROJECT = "Here are a list of commands you can do:\n" +
