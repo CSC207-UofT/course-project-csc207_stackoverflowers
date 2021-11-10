@@ -22,14 +22,6 @@ public class MonthReportMaker implements ReportMaker {
         return "Here is your report for the end of " + month + "\n";
     }
 
-
-    @Override
-    public String makeReportIntro() {
-
-        return "This is an intermediate report of this ongoing project." + "\n";
-    }
-
-
     /* format for the reportBody
     Project name: xxx (need to access project.projectName)
     Project progress: excellent/fair/mediocre (average of internPerformance)

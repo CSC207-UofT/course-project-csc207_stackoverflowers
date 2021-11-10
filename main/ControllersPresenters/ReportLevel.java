@@ -1,5 +1,4 @@
 package ControllersPresenters;
-//TODO: Remove Intern and Project and HRSystem, as a Controller it shouldn't touch them
 import Entities.Exceptions;
 import UseCases.HRSystem;
 import Entities.Intern;
@@ -45,8 +44,6 @@ public class ReportLevel extends Level{
     }
 
     public String getOutputString(String input) throws Exception {
-        //TODO: remember, last project does not have a upgrade period, you need to implement that
-        // takes in the player's input and then uses the needed method to be used for the output
         if (levelStarted()){
             getIntoLevel();
             return getReport();
@@ -80,7 +77,6 @@ public class ReportLevel extends Level{
      */
     public String getReport() {
         String header = currentReportMaker.makeReportHeader(currentMonth);
-        String intro = currentReportMaker.makeReportIntro();
         String body = currentReportMaker.makeReportBody(currentMonth, projectProgress);
         String end = currentReportMaker.makeReportConclusion();
         return currentReportPresenter.displayOutput(header, intro, body, end);
