@@ -62,6 +62,7 @@ public class ResponseTree<T> {
      */
     public ArrayList<ResponseTree<T>> getChildren() {
         return this.children;
+        // hi
     }
 
     /**
