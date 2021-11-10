@@ -34,6 +34,7 @@ public class GameManager {
         try {
             currentGameGenerators.generateInterns(10);
             currentGameGenerators.generateProjects(4);
+            currentGameGenerators.generateFinalProject();
         } finally {
             isRunning = true;
 
