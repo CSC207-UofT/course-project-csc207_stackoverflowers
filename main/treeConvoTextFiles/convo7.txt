@@ -1,0 +1,22 @@
+\\ Introduction: Hello my name is [intern_name], I'm [intern_age] years old and my skills include skill[0], skill[1], and skill[3]. 
+\\ format [q, answer]
+
+[That's great. Why don't you tell me a little about yourself?, I graduated from University of Toronto 2 years ago, I then went travelling around the world,
+in my travels I ended up interning at a tech company for one year in Malaysia where I worked on projects with other team members.]
+
+[Nice to meet you. Why don't you tell me a bit about your experience?, I graduated from University of Toronto 2 years ago, I then went travelling around the world,
+in my travels I ended up interning at a tech company for one year in Malaysia where I worked on projects with other team members.]
+
+[Why do you want to work for this company?, I believe that with my skills I will be a great addition to the team. Through my internship, 
+I have also worked in teams before therefore I think that I will be able to adjust very easily.] 
+
+[Why should we hire you?, I believe that with my skills I will be a great addition to the team. Through my internship, 
+I have also worked in teams before therefore I think that I will be able to adjust very easily.] 
+
+[What are your hobbies?, Ever since I was young I have always been interested in gaming, 
+especially rpg games and other character-interaction games so my dream has always been to develop my own game.]
+
+[What is your passion in life?, Ever since I was young I have always been interested in gaming, 
+especially rpg games and other character-interaction games so my dream has always been to develop my own game.]
+
+//Game Prompts (would you like to hire this intern?) 
