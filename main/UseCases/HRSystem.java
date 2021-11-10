@@ -65,7 +65,8 @@ public class HRSystem implements Serializable {
     }
 
     public String getInternNames() {
-        //Get only the names of the interns seperated by "|".
+        // Get the names of the interns in a single string, seperated by "|". Example: xxx|xxx|xxx|xxx
+        //TODO: finish this method according to the description
         StringBuilder res = new StringBuilder();
         for (Intern i : this.internList) {
             res.append(i.getInternName());
@@ -73,8 +74,10 @@ public class HRSystem implements Serializable {
         }
         return res.toString();
     }
-    //Overloaded the same method bc I just want the hired interns names list as well.
+
     public String getInternNames(boolean hired) {
+        // Get the names of the hired interns in a single string, seperated by "|". Example: xxx|xxx|xxx|xxx
+        //TODO: finish this method according to the description
         StringBuilder result = new StringBuilder();
             for (Intern i : this.internList) {
                 if ((i instanceof HiredIntern) & hired){
@@ -109,8 +112,7 @@ public class HRSystem implements Serializable {
         return "Returning a month's list of projects is not implemented yet. ";
     }
     public String getProjectName(int currentMonth) {
-        //TODO: This method returns only the projects that should be displayed for that particular month,
-        // indicated by the given parameter
+        //TODO: This method returns the name of the project given int currentMonth
         return "Returning a month's list of projects is not implemented yet. ";
     }
     public Project getProject(int currentMonth){
@@ -125,6 +127,17 @@ public class HRSystem implements Serializable {
             result.append("    Interns in project: ");
             //TODO: finish this method so that it displays all project names and the intern names that are
             // assigned to this project.
+        }
+        return result.toString();
+    }
+
+    public String makeUpgradeToString(int currentMonth) {
+        //a method that takes the upgrade and returns a list of skills point the intern have now.
+        StringBuilder result = new StringBuilder();
+        for (Project p : projectList){
+            result.append(p.getName());
+            result.append("    Interns in project: ");
+            //TODO: finish this method so that it displays a list of skills point the intern have now
         }
         return result.toString();
     }
@@ -147,6 +160,12 @@ public class HRSystem implements Serializable {
         return false;
     }
 
+    public boolean assignInternToUpgrade(String internName) {
+        //TODO: implement this method
+        //Should return false if Intern's specific skill is already max, or if they do not exist.
+        return false;
+    }
+
     public boolean removeInternFromProject(String internName, String projectName) {
         //TODO: implement this method
         //Should return false if Intern is not in the project yet or in other project, or if Intern is not hired.
@@ -156,6 +175,13 @@ public class HRSystem implements Serializable {
     public boolean internsAllAssigned(int currentMonth) {
         //a method that checks if all Hiredinterns have been assigned to a project within that month.
         // returns true when all interns have been assigned.
+        //TODO: implement this method
+        return false;
+    }
+
+    public boolean internUpgraded(int currentMonth) {
+        //a method that checks if a intern have been upgraded.
+        // returns true when a intern have been upgraded.
         //TODO: implement this method
         return false;
     }

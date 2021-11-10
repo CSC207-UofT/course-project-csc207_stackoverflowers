@@ -10,6 +10,21 @@ public class GamePrompts implements Serializable {
     - feel free to add more as we continue coding our project
     - if class gets too long, maybe consider creating another prompt class
      */
+
+    public static final String REPORT_HEADER = "Here is your final project report!" + "\n";
+
+    public static final String PROJECT_NAME_HEADER = "Project name: ";
+
+    public static final String PROJECT_PROGRESS_HEADER = "Project progress: ";
+
+    public static final String INTERN_PERFORMANCE_HEADER = "Assigned interns: ";
+
+    public static final String INTERN_INFO_HEADER = "Here is the list of interns that you have hired:";
+
+    public static final String PROJECT_INFO_HEADER = "Here are the projects that you are responsible for:";
+
+    public static final String INTERN_UPGRADING_SUCCESS = "The skill was successfully assigned to the intern.";
+
     public static final String ASK_FOR_NAME = "Welcome to HRSimulator! To start the game, " +
             "please enter your name.\n" +
             "To load an already existing game under your name, please type 'load <name>'.";
@@ -72,6 +87,7 @@ public class GamePrompts implements Serializable {
             "Must feel good huh! Sit back and relax as we return to you the report on how the chosen one has done " +
             "after the month has finished. \n "+
             "type anything to continue and view the report that has been generated... ";
+    
 
     public static final String PROJECT1_NAME = "Logo Design";
     public static final String PROJECT2_NAME = "A Bug's Life";
