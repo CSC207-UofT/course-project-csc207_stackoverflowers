@@ -4,6 +4,7 @@ import Entities.HiredIntern;
 import Entities.Intern;
 import Entities.Project;
 
+import java.io.Serializable;
 import java.util.*;
 
 /* add the new interns to a list of new employees that the player can access with their skills
@@ -17,11 +18,13 @@ which formats each single intern into a string)
 
 //TODO: Implement method updateProjectList
 
+// TODO: update final project !!
+
 //TODO: Specify and implement update and get InternList for each type of intern (HiredIntern and InterviewIntern)
 
  */
 // the attribute: internList, a list of interns.
-public class HRSystem {
+public class HRSystem implements Serializable {
     public static final int FINAL_MONTH = 5;
 
     //initialize the private intern_list
@@ -40,15 +43,48 @@ public class HRSystem {
         return internList;
     }
 
+    public ArrayList<Intern> getInternList(boolean hired) {
+        ArrayList<Intern> hiredList = new ArrayList<>();
+        for (Intern i : this.internList) {
+            if ((i instanceof HiredIntern) & hired) {
+                hiredList.add(i);
+            }
+        }
+        return internList;
+    }
+
 
     public void updateInternList(ArrayList<Intern> interns) {
-
         this.internList.addAll(interns);
     }
 
     public void updateProjectList(ArrayList<Project> projects){
         //TODO: finish this method(parameters)
         projectList = projects;
+    }
+
+    public String getInternNames() {
+        // Get the names of the interns in a single string, seperated by "|". Example: xxx|xxx|xxx|xxx
+        //TODO: finish this method according to the description
+        StringBuilder res = new StringBuilder();
+        for (Intern i : this.internList) {
+            res.append(i.getInternName());
+            res.append("|");
+        }
+        return res.toString();
+    }
+
+    public String getInternNames(boolean hired) {
+        // Get the names of the hired interns in a single string, seperated by "|". Example: xxx|xxx|xxx|xxx
+        //TODO: finish this method according to the description
+        StringBuilder result = new StringBuilder();
+            for (Intern i : this.internList) {
+                if ((i instanceof HiredIntern) & hired){
+                    result.append(i.getInternName());
+                    result.append("|");
+                }
+        }
+        return result.toString();
     }
 
     public String makeInternsToString() {
@@ -61,10 +97,10 @@ public class HRSystem {
     //Overloaded the same method bc I just want the hired interns list as well.
     public String makeInternsToString(boolean hired) {
         StringBuilder result = new StringBuilder();
-            for (Intern i : this.internList) {
-                if ((i instanceof HiredIntern) & hired){
-                    result.append(i.internToString());
-                }
+        for (Intern i : this.internList) {
+            if ((i instanceof HiredIntern) & hired){
+                result.append(i.internToString());
+            }
         }
         return result.toString();
     }
@@ -74,15 +110,34 @@ public class HRSystem {
         // indicated by the given parameter
         return "Returning a month's list of projects is not implemented yet. ";
     }
+    public String getProjectName(int currentMonth) {
+        //TODO: This method returns the name of the project given int currentMonth
+        return "Returning a month's list of projects is not implemented yet. ";
+    }
+    public Project getProject(int currentMonth){
+        //TODO: This method returns the list of projects in the current month.(OR JUST ONE PROJECT PER MONTH????);
+    return null;
+    }
 
     public String makeAssignmentToString(int currentMonth) {
         //a method that takes all the assigning so far and returns the List of projects and interns assigned to it.
         StringBuilder result = new StringBuilder();
         for (Project p : projectList){
-            result.append(p.getProjectName());
+            result.append(p.getName());
             result.append("    Interns in project: ");
             //TODO: finish this method so that it displays all project names and the intern names that are
             // assigned to this project.
+        }
+        return result.toString();
+    }
+
+    public String makeUpgradeToString(int currentMonth) {
+        //a method that takes the upgrade and returns a list of skills point the intern have now.
+        StringBuilder result = new StringBuilder();
+        for (Project p : projectList){
+            result.append(p.getName());
+            result.append("    Interns in project: ");
+            //TODO: finish this method so that it displays a list of skills point the intern have now
         }
         return result.toString();
     }
@@ -101,7 +156,14 @@ public class HRSystem {
 
     public boolean assignInternToProject(String internName, String projectName) {
         //TODO: implement this method
-        //Should return false if Intern is already been assigned to another project, or if they are not hired.
+        //Should return true if assignment was successful.
+        //Else, should poi return false if Intern is already been assigned to another project, or if they are not hired.
+        return false;
+    }
+
+    public boolean assignInternToUpgrade(String internName) {
+        //TODO: implement this method
+        //Should return false if Intern's specific skill is already max, or if they do not exist.
         return false;
     }
 
@@ -118,7 +180,14 @@ public class HRSystem {
         return false;
     }
 
-    public void updateFinalProject(ArrayList<String> finalProjForGame) {
+    public boolean internUpgraded(int currentMonth) {
+        //a method that checks if a intern have been upgraded.
+        // returns true when a intern have been upgraded.
+        //TODO: implement this method
+        return false;
+    }
+
+    public void updateFinalProject(ArrayList<Project> finalProjForGame) {
         //TODO: implement this method
     }
 }
