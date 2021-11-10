@@ -1,5 +1,7 @@
 package UseCases;
 
+import Entities.Exceptions;
+import Entities.GamePrompts;
 import Entities.Intern;
 import Entities.Project;
 
@@ -97,4 +99,17 @@ public interface ReportMaker {
             ArrayList<HashMap<String, Integer>>  internSkills,
             HashMap<String, Integer> projectSkill);
 
+    String endOfMonthPrompt(int currentMonth);
+
+    String confirmChoice(int currentMonth);
+
+    String getInternsInfo();
+
+    String getProjectInfo(int currentMonth);
+
+    String assignInternToUpgrade(String internName) throws Exception;
+
+    String getUpgradingInfo(int currentMonth);
+
+    boolean checkUpgraded(int currentMonth);
 }
