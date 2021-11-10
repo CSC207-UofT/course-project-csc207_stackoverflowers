@@ -1,4 +1,5 @@
-["That's great. Why don't you tell me a little about yourself?", "I graduated from University of Toronto 2 years ago, I then went travelling around the world, in my travels I ended up interning at a tech company for one year in Malaysia where I worked on projects with other team members."]
+["That's great. Why don't you tell me a little about yourself?", "I graduated from University of Toronto 2 years ago, I then went travelling around the world, 
+in my travels I ended up interning at a tech company for one year in Malaysia where I worked on projects with other team members."]
 ["Nice to meet you. Why don't you tell me a bit about your experience?", "I graduated from University of Toronto 2 years ago, I then went travelling around the world, in my travels I ended up interning at a tech company for one year in Malaysia where I worked on projects with other team members."]
 ["Why do you want to work for this company?", "I believe that with my skills I will be a great addition to the team. Through my internship, I have also worked in teams before therefore I think that I will be able to adjust very easily."]
 ["Why should we hire you?", "I believe that with my skills I will be a great addition to the team. Through my internship, I have also worked in teams before therefore I think that I will be able to adjust very easily."]
