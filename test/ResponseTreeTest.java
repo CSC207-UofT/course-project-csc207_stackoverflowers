@@ -55,7 +55,7 @@ public class ResponseTreeTest {
         data2.add("Hi");
         ResponseTree<ArrayList<String>> tree2 = new ResponseTree<>(data2);
         tree1.addChild(tree2);
-        assertEquals(2, tree1.getSize());
+        assertEquals(2, tree1.getHeight());
     }
 
     @Test(timeout = 1000)

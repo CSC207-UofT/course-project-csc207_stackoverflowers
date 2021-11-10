@@ -62,7 +62,6 @@ public class ResponseTree<T> {
      */
     public ArrayList<ResponseTree<T>> getChildren() {
         return this.children;
-        // hi
     }
 
     /**
@@ -70,12 +69,6 @@ public class ResponseTree<T> {
      * @return an int which is the number of nodes in this ResponseTree
      */
     public int getSize() {
-        /*
-        if (this.isRoot())
-            return 0;
-        else
-            return parent.getHeight() + 1;
-         */
         int num = 1;  //count the root
         for (ResponseTree<T> child : this.children) {
             num += child.getSize(); // gets num of children from each child
