@@ -13,12 +13,20 @@ Acknowledging bad design can earn you marks and demonstrates understanding — e
 Is your program consistent with Clean Architecture?
 Show us with something like a CRC model or UML diagram.
 Describe a scenario walk-through and highlight how it demonstrates Clean Architecture.
+
+
 Are there any clear violations if we were to randomly look at the imports in a few of your files?
 Is the Dependency Rule consistently followed when interacting with details in the outer layer?
 Give us a concrete example from something like your UI or an interaction with a database.
 ##Design Patterns
 Has your group used design patterns in appropriate places in the code? Identified and described any patterns that could be applied in future with more time?
-- We used the factory design pattern in GameManger, so that when it has a stage, it knows where it should get it's output from (?)
+
+- We used the factory design pattern using GameManger to evaluate the player's response and the interface class ReportMaker that is implemented by the ProjectReportMaker and MonthReportMaker subclasses. 
+- 
+-  
+-    for example our so that when it has a stage, it knows where it should get it's output from (?)
+
+
 - Also for ReportMaker's, we used the design pattern Builder, as they are three different builders(ReportMakers) that have build a report using the same structure. Using The Builder pattern, we are able to assemble each component of the Report in ReportMaker, so that the ReportLevel only needs to generally ask the currentReportMaker for a report, instead of using a bunch of if- statements each time. (Jacob you can edit this if this is not what you want)
 - We also kind of got inspiration from the Observer Design pattern, as our Abstract Class Level will change statuses, and those statuses need to be reported to GameManager. Right now we are making GameManager check each time if the status of the currentLevel has changed, so that it fits more into the Observer design pattern. 
 ADD TO THIS!!!!
