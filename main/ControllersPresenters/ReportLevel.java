@@ -90,8 +90,6 @@ public class ReportLevel extends Level{
     }
 
     private String endPrompt(int currentMonth){
-        //TODO: As of now, I'm using Mary's gameprompt, after knowing what super intern is, you are gona potentially
-        // add your own prompt aswell.
         return currentReportMaker.endOfMonthPrompt(currentMonth);
     }
 
