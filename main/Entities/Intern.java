@@ -1,6 +1,7 @@
 package Entities;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 abstract public class Intern{
@@ -9,9 +10,9 @@ abstract public class Intern{
     - method getInternInfo
 
     */
-    private final String internName;
-    private final int internAge;
-    private final HashMap<String, Integer> internSkills;
+    private String internName;
+    private int internAge;
+    private HashMap<String, Integer> internSkills;
 
     /**
      * Construct an Entities.Intern, giving them the given internName,

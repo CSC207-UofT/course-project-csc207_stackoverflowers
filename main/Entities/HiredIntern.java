@@ -15,11 +15,12 @@ public class  HiredIntern extends Intern {
     /**
      * Construct a hiredIntern, giving them the given hiredInternName,
      * hiredInternAge and hiredInternSkills.
-     *  @param hiredInternName   The name of this Entities.Intern
+     *
+     * @param hiredInternName   The name of this Entities.Intern
      * @param hiredInternAge    The age of this Entities.Intern
      * @param hiredInternSkills A map of skills where the key is the name of the skill and the value is the percentage.
      */
-    public HiredIntern(String hiredInternName, int hiredInternAge, HashMap<String, Double> hiredInternSkills) {
+    public HiredIntern(String hiredInternName, int hiredInternAge, HashMap<String, Integer> hiredInternSkills) {
         super(hiredInternName, hiredInternAge, hiredInternSkills);
     }
 
