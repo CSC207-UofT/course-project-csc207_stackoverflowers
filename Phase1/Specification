@@ -1,5 +1,4 @@
-This is the specification for our group project:
-Name of game: HR manager simulator 
+##Name of game: HR manager simulator 
 
 This project will imitate a game that allows the player to interview interns, assign interns to projects, assess the intern's performance and more. It is comprised 
 of aproximately 3 levels. The first level where the player will interview some randomly generated interns, the second level where player will assign interns that 
@@ -12,14 +11,14 @@ interns that the player will interview which will be the first level of the game
     - restart - restarts the whole game with new interns and new projects
     - all the game prompts will be stored in the Entities.GamePrompts class
     
-## First Level of the Game = Interview Level     
+##First Level of the Game = Interview Level     
 
 In the Interview level, the player will be able to interview the list of InterviewInterns, the interns will have automated responses to the interview question 
 and the player will also be able to pick their own responses which will determine how the interview level progresses. The player will be able to choose if they 
 will hire the intern after each interview is over. The hired interns will be put in the company HR system. Therefore, the ‘hired’ list in the UseCases.HRSystem 
 will be updated to reflect the player’s choices.
 
-## Second Level of the Game = Project Level 
+##Second Level of the Game = Project Level 
 
 In the second level of the game, after the player has hired 6 interns from the list of 10 provided, the player will then be able to assign interns to projects 
 based off of the intern's skills and the skills required to complete the projects. 
@@ -33,13 +32,13 @@ each project, the player will also be shown month reports that allow them to see
 The monthly report will show how each project is progressing, monthly report will show each project and the interns assigned to it and their progress and will 
 show any irregularities that occur during the months (intern on sick leave, intern failed task etc). 
 
-## Final Level of the Game = Final Project Level 
+##Final Level of the Game = Final Project Level 
  
 After the initial 2 months are over which will mark the end of the first 2 projects, another 2 month cycle will occur and the player will be able to assign 
 interns to the remaining two projects. When the second level of the game is over, the player will enter the final stage where they will assign one intern to one 
 final project. 
 
-## Structure/Entities 
+##Structure/Entities 
 
 The Entities are comprised of class Entities.GamePrompts that stores all prompts we will display to the player for our game and class Entities.Exceptions 
 that stores prompts that are exception that will be displayed to the player. Also comprised of class Intern which is an abstract class that allows us to 
