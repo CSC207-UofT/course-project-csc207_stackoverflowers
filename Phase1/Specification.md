@@ -38,6 +38,8 @@ each project, the player will also be shown month reports that allow them to see
 
 The monthly report will show how each project and the interns assigned to it and their progress is, and will also show any irregularities that occur during the months (intern on sick leave, intern failed task etc). 
 
+The project report that is shown after every 2 months is over will show all things from month report as well as the conclusion of the project (whether it went well or not). 
+
 ## Final Level of the Game = Final Project Level 
  
 After the initial 2 months are over which will mark the end of the first 2 projects, another 2 month cycle will occur and the player will be able to assign 
