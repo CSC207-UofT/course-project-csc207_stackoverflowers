@@ -1,5 +1,8 @@
 package Entities;
 
+import UseCases.ResponseTree;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class InterviewIntern extends Intern{
@@ -9,6 +12,7 @@ public class InterviewIntern extends Intern{
     private String interviewInternName;
     private int interviewInternAge;
     private HashMap<String, Integer> interviewInternSkills;
+    private ResponseTree<ArrayList<String>> responseTree;
 
     /**
      * Construct an interviewIntern, giving them the given interviewInternName,
@@ -23,4 +27,7 @@ public class InterviewIntern extends Intern{
         super(interviewInternName, interviewInternAge, interviewInternSkills);
     }
 
+    public void setResponseTree(ResponseTree<ArrayList<String>> responseTree) { this.responseTree = responseTree; }
+
+    public ResponseTree<ArrayList<String>> getResponseTree() { return this.responseTree; }
 }
