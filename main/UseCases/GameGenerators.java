@@ -10,18 +10,15 @@ import java.io.*;
 import java.util.*;
 
 public class GameGenerators implements Serializable {
-    private final GamePrompts prompts;
     private final HRSystem currentHRSystem;
 
 
     public GameGenerators(){
-        this.prompts = new GamePrompts();
         this.currentHRSystem = new HRSystem();
     }
 
     /**
      * Add the list of interns to UseCases.HRSystem.
-     *
      * @param newInterns A list of interns constructed in the UseCases.GameMaker constructor
      */
     public void addInternToList(ArrayList<Intern> newInterns){
@@ -29,9 +26,8 @@ public class GameGenerators implements Serializable {
     }
 
     /**
-     * Generates an ArrayList of new random interns/interviewees.
+     * Randomly generates an ArrayList of interns/interviewees, and adds it to UseCases.HRSystem
      * @param numInterns the number of interns that will be generated.
-     * @return an ArrayList of randomly generated Interns.
      */
     public void generateInterns(int numInterns) throws FileNotFoundException {
         ArrayList<String> nameList = generateInfo("UseCases/names.txt");
@@ -50,11 +46,9 @@ public class GameGenerators implements Serializable {
     }
 
     /**
-     * Generates a random list of projects that player will be interacting with during the game.
-     * Creates an ArrayList of Projects.
-     * updates current HR system to reflect the projects that will be used for this game.
+     * Randomly generates an ArrayList of projects that player will be interacting with during the game,
+     * and updates the current HR system to reflect the projects that will be used for this game.
      * @param proj the number of projects that will be generated.
-     * @return an ArrayList of projects.
      */
     public void generateProjects(int proj) throws FileNotFoundException {
         // take the project prompts from GamePrompts and outputs a list
@@ -77,10 +71,10 @@ public class GameGenerators implements Serializable {
         }
         currentHRSystem.updateProjectList(projForGame);
     }
+
     /**
-     * Generates a random final project that player will be interacting with during the game.
-     * updates current HR system to reflect the final project that will be used for this game.
-     * @return an ArrayList containing one final project.
+     * Generates an ArrayList containing one randomly generated final project that player will be interacting with
+     * during the game, and updates the current HR system to reflect the final project that will be used for this game.
      */
     public void generateFinalProject() throws FileNotFoundException {
         // take the final projects in gamePrompts and pick a final project for this game.
@@ -130,10 +124,4 @@ public class GameGenerators implements Serializable {
         }
         return skillMap;
     }
-
-
-
-
-
-
 }
