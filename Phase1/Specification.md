@@ -4,8 +4,9 @@ This project will imitate a game that allows the player to interview interns, as
 of aproximately 3 levels. The first level where the player will interview some randomly generated interns, the second level where player will assign interns that 
 they hired from the first level to projects that will be generated from our game. The final level is when the player will assign the intern they believe performed
 the best to one final project. 
-As soon as the game is started (when our SPhase starts running), a GameManager will be created to manage this game. GameManager will also ask the user for it's name to start the game. After receiving the User's first input, It will instantiate useCase class GameGenerator, which will create the list of 
-interns and projects needed for this game. It will store this information in HRSystem.
+
+As soon as the game is started (when our SPhase starts running), SPhase will ask the player for it's name to start the game. A GameManager will also be created to manage all inputs and outputs of the game. After receiving the User's first input, GameManager will instantiate useCase class GameGenerator, which will create the list of 
+interns and projects needed for this game. It will store this information in HRSystem, and also store the name of the Player.
 Then, it will prompt the player to start the interview Level. 
 
 - While running the game, we have some game prompts:
@@ -26,20 +27,22 @@ will be updated to reflect the player’s choices.
 In the second level of the game, after the player has hired 6 interns from the list of 10 provided, the player will then be able to assign interns to projects 
 based off of the intern's skills and the skills required to complete the projects. 
 
-Each project runs for approximately 2 months in our game, months therefore is just a unit of time we are using so we just consider it a period of time. 
-Level two will run for a total of 4 months with a total of 4 projects in which 2 projects will be shown to player in the beginning of the first two months and 
-2 more projects will be shown to player at the beginning of month 3. During the project, the intern's compatibility with the project will be calculated based off 
+Each project runs for approximately 2 months in our game, and note that month therefore is just a unit of time we are using.
+Level two will run for a total of 4 months with a total of 4 projects in which 2 projects will be shown to player in the beginning of month 1 and 
+2 more projects will be shown to player at the beginning of month 3.
+At those times, the player will be able to assign, remove a certain intern from the project, check their assignments so far, and also check interns and projects info.
+After all projects have been assigned interns, the "month" part of the project has ended, and the report part will start. 
+- The intern's compatibility with the project will be calculated based off 
 of their skills which will be displayed to the player in the project reports they will receive every time the one project is finished. During the 2 months of 
 each project, the player will also be shown month reports that allow them to see the progress of each project after every month. 
 
-The monthly report will show how each project is progressing, monthly report will show each project and the interns assigned to it and their progress and will 
-show any irregularities that occur during the months (intern on sick leave, intern failed task etc). 
+The monthly report will show how each project and the interns assigned to it and their progress is, and will also show any irregularities that occur during the months (intern on sick leave, intern failed task etc). 
 
 ## Final Level of the Game = Final Project Level 
  
 After the initial 2 months are over which will mark the end of the first 2 projects, another 2 month cycle will occur and the player will be able to assign 
 interns to the remaining two projects. When the second level of the game is over, the player will enter the final stage where they will assign one intern to one 
-final project. 
+final project. Which is the 5th and 6th month.
 
 ## Structure/Entities 
 
