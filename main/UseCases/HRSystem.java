@@ -290,10 +290,24 @@ public class HRSystem implements Serializable {
         */
     }
 
+
+    //TODO: finish new method
+    public String makeUpgradeToString(int currentMonth) {
+        //a method that takes the upgrade and returns a list of skills point the intern have now.
+        StringBuilder result = new StringBuilder();
+        for (Project p : projectList){
+            result.append(p.getName());
+            result.append("    Interns in project: ");
+            //TODO: finish this method so that it displays a list of skills point the intern have now
+        }
+        return result.toString();
+    }
+
+
     /**
      * This method updates a Player's name.
      * @param name the name of a current Player.
-     */
+     */    
     public void updatePlayerName(String name){
         this.playerName = name;
     }
@@ -378,13 +392,20 @@ public class HRSystem implements Serializable {
         return false;
     }
 
-    /**
+    //TODO: finish new method
+    public boolean assignInternToUpgrade(String internName) {
+        //TODO: implement this method
+        //Should return false if Intern's specific skill is already max, or if they do not exist.
+        return false;
+    }
+
+     /**
      * This method removes a given Entities.HiredIntern from an assigned Entities.Project.
      * @param internName the name of the Entities.HiredIntern to be removed.
      * @param projectName the name of the Entities.Project to be removed.
      * @return true if this Entities.HiredIntern has been removed from an assignment or false if Intern is not in the
      * project yet or in another project, or if Intern is not hired.
-     */
+     */    
     public boolean removeInternFromProject(String internName, String projectName) {
         for (Intern i : this.internList) {
             for (Project p : this.projectList) {
@@ -421,11 +442,21 @@ public class HRSystem implements Serializable {
 
     }
 
-    /**
+
+    //TODO: finish this new method
+    public boolean internUpgraded(int currentMonth) {
+        //a method that checks if a intern have been upgraded.
+        // returns true when a intern have been upgraded.
+        //TODO: implement this method
+        return false;
+    }
+
+
+   /**
      * This method adds the chosen final project to the current game's Entities.Project list.
      * @param finalProjForGame the final Entities.Project to be added.
-     */
-    public void updateFinalProject(ArrayList<Project> finalProjForGame) {
+     */    
+   public void updateFinalProject(ArrayList<Project> finalProjForGame) {
         this.projectList.addAll(finalProjForGame);
     }
 }

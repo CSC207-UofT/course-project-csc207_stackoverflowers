@@ -1,10 +1,11 @@
 package UseCases;
 
+import Entities.Exceptions;
+import Entities.GamePrompts;
 import Entities.Intern;
 import Entities.Project;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 //An interface class that shows all common methods used to make reports:
 public interface ReportMaker {
@@ -28,15 +29,14 @@ public interface ReportMaker {
     /**
      * Make a body for the report corresponding to the current phase (month) the player is in
      *
-     * @param projectName name of the project, retrieved from HRSystem
+     * @param projectName // do we need to parameter?
      * @param projectProgress an int between 0 and 10 that indicates how well the project is going
-     * @param internNames the intern names(not a list!) that were assigned to the project of which this ReportMaker is
-     *                    trying to make a report
-     * @param projectSkill the project's skill compatibility used to calculate the intern performance on the project
-     * @param internSkills the interns' skill compatibility used to calculate the intern performance on the project
+     * @param interns the list of interns that were assigned to the project of which this Reportmaker is trying to make a report
+     * @param project the project of which this Reportmaker is trying to make a report
      * @return correctly formatted body for the report based on the current phase (month)
      */
-    String makeReportBody (int projectProgress, int currentMonth) ;
+    String makeReportBody (String projectName, int projectProgress, ArrayList<Intern> interns, Project project);
+
 
     /**
      * Make a conclusion for the report corresponding to the current phase (month) the player is in
@@ -45,56 +45,39 @@ public interface ReportMaker {
      */
     String makeReportConclusion();
 
-    /**
-     * Generate a string in the format of 'Project name: xxx' for makeReportBody to append
-     *
-     * @param projectName name of the project, retrieved from HRSystem
-     *
-     * @return a string in the format of 'Project name: xxx'
-     */
+
+    // Hi Jacob, I'm not sure what these "back" methods do. Do you mind writing out the java docs for them yourself?
     String bakeProjectName (String projectName);
 
-    /**
-     * Make a string in the format of 'Project progress: xxx' for makeReportBody to append
-     *
-     * @param projectProgress an int between 0 and 10 that indicates how well the project is going
-     * @return  string in the format of 'Project progress: xxx'
-     */
+
+
     String bakeProgress (int projectProgress);
 
-    /**
-     * Make a string in the format of 'Assigned interns: xxx|xxx|xxx|xxx|' for makeReportBody to append
-     *
-     * @param internNames the intern names(not a list!) that were assigned to the project of which this ReportMaker is trying to make a report
-     * @return a string in the format of 'Assigned interns: xxx|xxx|xxx|xxx|'
-     */
-    String bakeInterns (String internNames);
 
-    /**
-     * A helper method, makes an int based on internSkills' compatibility with projectSkill for bakeInternsPerformances
-     * to use
-     *
-     * @param projectSkill the project's skill compatibility used to calculate the intern performance on the project
-     * @param internSkills the interns' skill compatibility used to calculate the intern performance on the project
-     * @return an int based on sum[[each skill]*[skill compatibility]]/[number of skills]
-     */
-    int calculateInternPerformance (HashMap<String, Integer> internSkills, HashMap<String, Integer> projectSkill);
 
-    /**
-     * Generate the proper format of a report on each intern's performances on a project
-     *
-     * @param internNames the intern names(not a list!) that were assigned to the project of which this ReportMaker is trying to make a report
-     * @param projectSkill the project's skill compatibility used to calculate the intern performance on the project
-     * @param internSkills the interns' skill compatibility used to calculate the intern performance on the project
-     * @return EX:
-     *      Interns performances:
-     *         - hhh: c
-     *         - yyy: b
-     *         - zzz: a
-     */
-    String bakeInternsPerformances (
-            String internNames,
-            ArrayList<HashMap<String, Integer>>  internSkills,
-            HashMap<String, Integer> projectSkill);
+    String bakeInterns (ArrayList<Intern> interns);
 
+
+
+    int calculateInternPerformance (Intern intern, Project project);
+
+
+
+    String bakeInternsPerformances (ArrayList<Intern> interns, Project project);
+
+
+
+    String endOfMonthPrompt(int currentMonth);
+
+    String confirmChoice(int currentMonth);
+
+    String getInternsInfo();
+
+    String getProjectInfo(int currentMonth);
+
+    String assignInternToUpgrade(String internName) throws Exception;
+
+    String getUpgradingInfo(int currentMonth);
+
+    boolean checkUpgraded(int currentMonth);
 }
