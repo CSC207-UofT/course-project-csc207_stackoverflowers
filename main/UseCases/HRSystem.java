@@ -142,16 +142,6 @@ public class HRSystem implements Serializable {
         return result.toString();
     }
 
-    public String makeUpgradeToString(int currentMonth) {
-        //a method that takes the upgrade and returns a list of skills point the intern have now.
-        StringBuilder result = new StringBuilder();
-        for (Project p : projectList){
-            result.append(p.getName());
-            result.append("    Interns in project: ");
-            //TODO: finish this method so that it displays a list of skills point the intern have now
-        }
-        return result.toString();
-    }
 
     public void updatePlayerName(String name){
         this.playerName = name;
@@ -178,12 +168,6 @@ public class HRSystem implements Serializable {
         return false;
     }
 
-    public boolean assignInternToUpgrade(String internName) {
-        //TODO: implement this method
-        //Should return false if Intern's specific skill is already max, or if they do not exist.
-        return false;
-    }
-
     public boolean removeInternFromProject(String internName, String projectName) {
         //TODO: implement this method
         //Should return false if Intern is not in the project yet or in other project, or if Intern is not hired.
@@ -197,12 +181,6 @@ public class HRSystem implements Serializable {
         return false;
     }
 
-    public boolean internUpgraded(int currentMonth) {
-        //a method that checks if a intern have been upgraded.
-        // returns true when a intern have been upgraded.
-        //TODO: implement this method
-        return false;
-    }
 
     public boolean internUpgraded(int currentMonth) {
         //a method that checks if a intern have been upgraded.

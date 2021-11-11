@@ -24,13 +24,13 @@ public class GameGeneratorsTest {
     }
 
     @Test (timeout = 1000)
-    public void TestGenerateProjects(){
+    public void TestGenerateProjects() throws FileNotFoundException {
         gameGenerators.generateProjects(4);
 
     }
 
     @Test (timeout = 1000)
-    public void TestGenerateFinalProjects(){
+    public void TestGenerateFinalProjects() throws FileNotFoundException {
         gameGenerators.generateFinalProject();
 
     }
