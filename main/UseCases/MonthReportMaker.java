@@ -44,7 +44,7 @@ public class MonthReportMaker implements ReportMaker {
      */
     @Override
     public String makeReportBody(int projectProgress, int currentMonth) {
-       String internNames = currentHRSystem.getInternNames();
+        String internNames = currentHRSystem.getInternNames();
 
         ArrayList<Project> projList = currentHRSystem.getProject(currentMonth);
         HashMap<String, Integer> projectCompatibilityList = new HashMap<>();
@@ -56,7 +56,7 @@ public class MonthReportMaker implements ReportMaker {
                 bakeProgress(projectProgress)+"\n"+
                 bakeInterns(internNames) + "\n" +
                 bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
-
+    }
     private ArrayList<HashMap<String, Integer>> getHiredInternsSkills(ArrayList<HiredIntern> hiredInternList) {
         //Makes an arrayList full of internSkills.
         ArrayList<HashMap<String, Integer>> internCompatabilityList  = new ArrayList<>();
