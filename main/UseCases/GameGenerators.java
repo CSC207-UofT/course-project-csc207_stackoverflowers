@@ -11,7 +11,6 @@ import java.util.*;
 
 public class GameGenerators implements Serializable {
     private final HRSystem currentHRSystem;
-    //HHHHH
 
 
     public GameGenerators(){

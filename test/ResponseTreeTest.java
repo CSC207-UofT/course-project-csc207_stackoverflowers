@@ -1,5 +1,3 @@
-package UseCases;
-
 import UseCases.ResponseTree;
 import java.util.ArrayList;
 import org.junit.Test;
