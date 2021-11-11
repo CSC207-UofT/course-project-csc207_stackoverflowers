@@ -2,15 +2,12 @@ package ControllersPresenters;
 //TODO: Remove Intern and Project and HRSystem, as a Controller it shouldn't touch them
 import Entities.Exceptions;
 import UseCases.HRSystem;
-import Entities.Intern;
-import Entities.Project;
 
 import UseCases.FinalReportMaker;
 import UseCases.MonthReportMaker;
 import UseCases.ProjectReportMaker;
 import UseCases.ReportMaker;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class ReportLevel extends Level{
