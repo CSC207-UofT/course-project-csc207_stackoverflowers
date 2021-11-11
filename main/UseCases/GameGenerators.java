@@ -56,7 +56,7 @@ public class GameGenerators implements Serializable {
      * @param proj the number of projects that will be generated.
      * @return an ArrayList of projects.
      */
-    public void generateProjects(int proj) throws FileNotFoundException {
+    public void generateProjects(int proj){
         // take the project prompts from GamePrompts and outputs a list
         ArrayList<String> projList = new ArrayList<>();
         ArrayList<Project> projForGame = new ArrayList<>();
@@ -82,7 +82,7 @@ public class GameGenerators implements Serializable {
      * updates current HR system to reflect the final project that will be used for this game.
      * @return an ArrayList containing one final project.
      */
-    public void generateFinalProject() throws FileNotFoundException {
+    public void generateFinalProject(){
         // take the final projects in gamePrompts and pick a final project for this game.
         ArrayList<String> finalProjects = new ArrayList<>();
         ArrayList<Project> finalProjForGame = new ArrayList<>();
