@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class InterviewIntern extends Intern{
-    // this is an intern class for new Interns to the company, partaking in Interviews
+    // this is an intern class for new Interns to the company, partaking in Interviews.
     // these are the type of Entities.Intern in IntervieweeList
 
     private String interviewInternName;
