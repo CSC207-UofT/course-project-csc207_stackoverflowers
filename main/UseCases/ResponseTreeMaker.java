@@ -18,7 +18,7 @@ public class ResponseTreeMaker {
         this.intern = intern;
     }
 
-    // TODO: finish method generateInternResponses() (Generates a tree of the intern's possible responses)
+    // TODO: Change this method for phase 2 so that each node is not constructed manually
     /**
      * This method will generate a tree of the intern's possible responses.
      * @return ResponseTree of the intern's possible dialogue.
@@ -28,7 +28,7 @@ public class ResponseTreeMaker {
         ArrayList<String> answers = generateDialogueList("treeConvoTextFiles/answers.txt");
         ArrayList<ArrayList<String>> dataList = generateTreeDataList(questions, answers);
 
-        //constructing tree nodes manually; will change to a loop/recursion for phase 2
+        // constructing tree nodes manually; will change to a loop (maybe recursion?) for phase 2
         ResponseTree<ArrayList<String>> respTree = this.generateTreeRoot();
         ResponseTree<ArrayList<String>> node1 = new ResponseTree<>(dataList.get(0));
         ResponseTree<ArrayList<String>> node2 = new ResponseTree<>(dataList.get(1));
@@ -118,4 +118,3 @@ public class ResponseTreeMaker {
      */
     public void assignResponseToIntern() {}
 }
-
