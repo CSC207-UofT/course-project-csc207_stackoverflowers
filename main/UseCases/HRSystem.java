@@ -54,7 +54,6 @@ public class HRSystem implements Serializable {
     }
 
 
-
     public void updateInternList(ArrayList<Intern> interns) {
         this.internList.addAll(interns);
     }
@@ -117,6 +116,7 @@ public class HRSystem implements Serializable {
     }
     public Project getProject(int currentMonth){
         //TODO: This method returns the list of projects in the current month.(OR JUST ONE PROJECT PER MONTH????);
+    return null;
     }
 
     public String makeAssignmentToString(int currentMonth) {
@@ -142,6 +142,7 @@ public class HRSystem implements Serializable {
         return result.toString();
     }
 
+
     public void updatePlayerName(String name){
         this.playerName = name;
     }
@@ -156,7 +157,8 @@ public class HRSystem implements Serializable {
 
     public boolean assignInternToProject(String internName, String projectName) {
         //TODO: implement this method
-        //Should return false if Intern is already been assigned to another project, or if they are not hired.
+        //Should return true if assignment was successful.
+        //Else, should poi return false if Intern is already been assigned to another project, or if they are not hired.
         return false;
     }
 
@@ -178,6 +180,7 @@ public class HRSystem implements Serializable {
         //TODO: implement this method
         return false;
     }
+
 
     public boolean internUpgraded(int currentMonth) {
         //a method that checks if a intern have been upgraded.

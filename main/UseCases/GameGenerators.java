@@ -59,7 +59,7 @@ public class GameGenerators implements Serializable {
     public void generateProjects(int proj) throws FileNotFoundException {
         // take the project prompts from GamePrompts and outputs a list
         ArrayList<String> projList = new ArrayList<>();
-        ArrayList<Project> projForGame = new ArrayList<Project>();
+        ArrayList<Project> projForGame = new ArrayList<>();
         Random random = new Random();
         projList.add(GamePrompts.PROJECT1_NAME);
         projList.add(GamePrompts.PROJECT2_NAME);
@@ -86,9 +86,9 @@ public class GameGenerators implements Serializable {
         // take the final projects in gamePrompts and pick a final project for this game.
         ArrayList<String> finalProjects = new ArrayList<>();
         ArrayList<Project> finalProjForGame = new ArrayList<>();
-        finalProjects.add(prompts.FINAL_PROJECT1_NAME);
-        finalProjects.add(prompts.FINAL_PROJECT2_NAME);
-        finalProjects.add(prompts.FINAL_PROJECT3_NAME);
+        finalProjects.add(GamePrompts.FINAL_PROJECT1_NAME);
+        finalProjects.add(GamePrompts.FINAL_PROJECT2_NAME);
+        finalProjects.add(GamePrompts.FINAL_PROJECT3_NAME);
         Collections.shuffle(finalProjects);
         String finalProjName = finalProjects.get(0);
         finalProjects.remove(finalProjName);

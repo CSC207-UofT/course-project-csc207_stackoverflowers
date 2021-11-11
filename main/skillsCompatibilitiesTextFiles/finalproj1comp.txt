@@ -1,8 +1,8 @@
-Confidence: 0.94
-Teamwork: 0.00
+Confidence: 0.00
+Teamwork: 0.88
 Leadership: 0.00
 Efficiency: 0.00
-Endurance: 0.00
+Endurance: 0.90
 Flexibility: 0.00
 Observant: 0.86
 Communication: 0.00

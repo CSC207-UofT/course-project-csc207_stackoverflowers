@@ -16,8 +16,8 @@ public class MonthMaker {
 
 
     public String startOfMonthPrompt() {
-        if (currentMonth == HRSystem.FINAL_MONTH){
-            return GamePrompts.START_OF_MONTH_PROMPT_BEFORE_NAME + GamePrompts.START_OF_MONTH_PROMPT_BEFORE_NAME +
+        if (currentMonth != HRSystem.FINAL_MONTH){
+            return GamePrompts.START_OF_MONTH_PROMPT_BEFORE_NAME +
                     currentHRSystem.getPlayerName() +
                     GamePrompts.START_OF_MONTH_PROMPT_AFTER_NAME +
                     getProjectInfo() +

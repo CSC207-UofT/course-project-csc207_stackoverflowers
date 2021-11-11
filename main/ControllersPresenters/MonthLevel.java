@@ -4,6 +4,10 @@ import Entities.Exceptions;
 import UseCases.HRSystem;
 import UseCases.MonthMaker;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class MonthLevel extends Level {
@@ -33,18 +37,17 @@ public class MonthLevel extends Level {
             return currentMonthMaker.confirmChoice();
         }
 
-        if (Objects.equals(input, "check project info")){
+        if (Objects.equals(input.strip(), "check project info")){
             return checkProjectInfo(); //the same should happen for checkInternInfo, assignInternToProject(),
             // removeInternFromProject and other commands!! (If too many if statements, USE DESIGN PATTERN TO REFACTOR?)
         }
-        if (Objects.equals(input, "check interns info")){
+        if (Objects.equals(input.strip(), "check interns info")){
             return checkInternsInfo();
         }
-        if (Objects.equals(input, "check assign")){
+        if (Objects.equals(input.strip(), "check assign")){
             return checkAssigningInfo();
         }
-        if (input.contains("" +
-                "assign intern to project")) {
+        if (input.contains("assign intern to project")) {
             return assignInternToProject(input);
         }
         if (input.contains("remove intern from project")){
@@ -54,17 +57,27 @@ public class MonthLevel extends Level {
     }
 
     private String removeInternFromProject(String input) throws Exception {
-        String[] inputs = input.split(" ");
-        String intern = inputs[3];
-        String project = inputs[4];
-        return currentMonthMaker.removeInternFromProject(intern, project);
+        ArrayList<String> internAndProject = parseForAssigning(input);
+        return currentMonthMaker.removeInternFromProject(internAndProject.get(0), internAndProject.get(1) );
     }
 
     private String assignInternToProject(String input) throws Exception {
-        String[] inputs = input.split(" ");
-        String intern = inputs[3];
-        String project = inputs[4];
-        return currentMonthMaker.assignInternToProject(intern, project);
+        ArrayList<String> internAndProject = parseForAssigning(input);
+        return currentMonthMaker.assignInternToProject(internAndProject.get(0), internAndProject.get(1));
+    }
+
+    private ArrayList<String> parseForAssigning(String input) throws Exception {
+        //helper method that parses the string so that it returns the intern and project involved.
+        List<String> inputs = Arrays.asList((input.split(" ")));
+        if (inputs.size()< 3 || inputs.size() > 10){
+            throw new Exception(Exceptions.INVALID_COMMAND);
+        }
+        String intern = inputs.get(4);
+        String project = String.join(" ", inputs.subList(5, inputs.size()));
+        ArrayList<String> internAndProject  = new ArrayList<String>();
+        internAndProject.add(intern);
+        internAndProject.add(project);
+        return internAndProject;
     }
 
     private String getStartOfMonthPrompt(){
