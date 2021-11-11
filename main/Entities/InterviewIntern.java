@@ -16,7 +16,7 @@ public class InterviewIntern extends Intern{
 
     /**
      * Construct an interviewIntern, giving them the given interviewInternName,
-     * interviewInternAge and interviewInternSkills.
+     * interviewInternAge and interviewInternSkills
      *
      * @param interviewInternName   The name of this Entities.Intern
      * @param interviewInternAge    The age of this Entities.Intern

@@ -113,7 +113,7 @@ public class ResponseTreeMaker {
     }
 
     /**
-     * This method will assign a ResponseTree to an intern.
+     * This method will assign a ResponseTree to an intern
      */
     public void assignResponseToIntern(ResponseTree<ArrayList<String>> resTree) {
         this.intern.setResponseTree(resTree);
