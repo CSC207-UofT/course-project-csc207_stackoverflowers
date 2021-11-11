@@ -26,12 +26,24 @@ Show us with something like a CRC model or UML diagram.
 Describe a scenario walk-through and highlight how it demonstrates Clean Architecture.
 
 ## SCENARIO WALKTHROUGH: 
-STEP 1: run the Sphase, GameMaker and GameGenerator is ran so that 
+
+STEP 1: Starting SPhase
+
+When SPhase is first run, SPhase creates a ControllersPresenters.GameManager.
+When ControllersPresenters.GameManager is initialized, it creates a new UseCases.GameMaker and UseCases.GameGenerators.
+When UseCases.GameMaker and Usecases.GameGenerators is initialized, it creates an HRsystem and Entities.GamePrompts needed for the game (the actual
+prompts of the game are stored in it as instances). ControllersPresenters.GameManager then randomly generates the list of interns, projects and final project needed for the game from UseCases.GameGenerators where GameGenerator also stores them as a list in UseCases.HRSystem. SPhase then asks Entities.GamePrompts for the ask-for-name prompt and presents it to the player. The player’s name is then stored in UseCases.HRSystem. Then, SPhase takes the User’s input and asks ControllersPresenters.GameManager for the first prompt. ControllersPresenters.GameManager will then askUseCases.GameMaker to construct the first prompt with the player’s input.
+
+UseCases.GameMaker will use prompts in Entities.GamePrompts to construct the greeting part of the prompt, and then it will
+ask UseCases.HRSystem to make the list of inters into a prompt. UseCases.HRSystem will do so by asking the Entities.InterviewIntern Class
+to make each intern into a string, and format that. Then, UseCases.GameMaker collects and returns the prompt to ControllersPresenters.GameManager, which then returns it to SPhase for it to output to the player.The output welcomes the player to the game along with the interns and their age and skills(from HRsystem). These are candidates the player will interview in their first level of the game. 
+
+STEP 2: Interview level 
+
+InterviewMaker ----> ??? Please can Camille and Enam work on this to show how ResponseTree and InterviewMaker work together for interview level and all classes it interacts with (GameManager, etc) 
 
 
-Are there any clear violations if we were to randomly look at the imports in a few of your files?
-Is the Dependency Rule consistently followed when interacting with details in the outer layer?
-Give us a concrete example from something like your UI or an interaction with a database.
+
 
 
 ## Design Patterns
