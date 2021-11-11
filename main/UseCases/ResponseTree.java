@@ -75,15 +75,4 @@ public class ResponseTree<T> {
         }
         return num;
     }
-
-    /**
-     * Returns the height of this ResponseTree
-     * @return an int which is the height of this ResponseTree
-     */
-    public int getHeight() {
-        if (this.isRoot())
-            return 0;
-        else
-            return parent.getHeight() + 1;
-    }
 }
