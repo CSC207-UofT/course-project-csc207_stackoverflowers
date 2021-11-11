@@ -3,12 +3,15 @@
 This project will imitate a game that allows the player to interview interns, assign interns to projects, assess the intern's performance and more. It is comprised 
 of aproximately 3 levels. The first level where the player will interview some randomly generated interns, the second level where player will assign interns that 
 they hired from the first level to projects that will be generated from our game. The final level is when the player will assign the intern they believe performed
-the best to one final project. As soon as the game is started (when our SPhase is ran), our usecase classes GameMaker and GameGenerator will create the list of 
-interns that the player will interview which will be the first level of the game. 
+the best to one final project. 
+As soon as the game is started (when our SPhase starts running), a GameManager will be created to manage this game. GameManager will also ask the user for it's name to start the game. After receiving the User's first input, It will instantiate useCase class GameGenerator, which will create the list of 
+interns and projects needed for this game. It will store this information in HRSystem.
+Then, it will prompt the player to start the interview Level. 
 
 - While running the game, we have some game prompts:
-    - quit - quit the game
-    - restart - restarts the whole game with new interns and new projects
+    - quit - saves and quits the game
+    - save - saves the game as is.
+    - load - loads the game 
     - all the game prompts will be stored in the Entities.GamePrompts class
     
 ## First Level of the Game = Interview Level     
