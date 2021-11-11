@@ -37,7 +37,7 @@ public class MonthMaker {
     }
 
     public String getInternsInfo(){
-        return "Here is the list of interns that you have hired:" + currentHRSystem.getInternNames(true);
+        return "Here is the list of interns that you have hired:" + currentHRSystem.getHiredInternNames();
     }
 
     public String assignInternToProject(String internName, String projectName) throws Exception {
