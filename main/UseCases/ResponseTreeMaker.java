@@ -18,7 +18,7 @@ public class ResponseTreeMaker {
         this.intern = intern;
     }
 
-    // TODO: finish method generateInternResponses() (Generates a tree of the intern's possible responses)
+    // TODO: Change this method so that nodes are not constructed manually
     /**
      * This method will generate a tree of the intern's possible responses.
      * @return ResponseTree of the intern's possible dialogue.
@@ -112,9 +112,10 @@ public class ResponseTreeMaker {
         return treeData;
     }
 
-    // TODO: method assignResponseToIntern() (Assigns response trees for each intern)
     /**
-     * This method will assign one of the responses from our response trees to an intern
+     * This method will assign a ResponseTree to an intern.
      */
-    public void assignResponseToIntern() {}
+    public void assignResponseToIntern(ResponseTree<ArrayList<String>> resTree) {
+        this.intern.setResponseTree(resTree);
+    }
 }
