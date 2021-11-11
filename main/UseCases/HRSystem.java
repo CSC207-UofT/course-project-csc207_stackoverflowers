@@ -142,6 +142,7 @@ public class HRSystem implements Serializable {
         return result.toString();
     }
 
+
     public void updatePlayerName(String name){
         this.playerName = name;
     }
@@ -179,6 +180,7 @@ public class HRSystem implements Serializable {
         //TODO: implement this method
         return false;
     }
+
 
     public boolean internUpgraded(int currentMonth) {
         //a method that checks if a intern have been upgraded.
