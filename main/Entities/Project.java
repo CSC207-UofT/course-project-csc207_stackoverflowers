@@ -1,61 +1,100 @@
 package Entities;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Objects;
+import java.io.File;  // Import the File class
+import java.util.Scanner; // Import the Scanner class to read text files
 
 // The project in this game.
 public class Project {
     /*
     Instance variables:
-     * projectName: the name of this project
-     * projectDescription: the description of this project
-     * length: the length of this project, which is always 2 (months)
-     * teamSize: the number of interns required to finish this project. By default, team size is b/n 2 - 6, however,
+     * name: the name of this project. Note the name has to be the same as the same the PROJECT_NAME constants in GamePrompts.
+     * description: the description of this project
+     * length: the length of this project, which is 2 (months) for regular projects and 1 (month) for final projects
+     * teamSize: the number of interns required to finish this project. By default, team size is 3, however,
      for the final project, team size is 1
-     * skillsCompatability: a dictionary that maps a skill with a percentage b/n 30% - 100%, which indicates the skill's
+     * skillsCompatibilities: a dictionary that maps a skill with a number b/n 0.00 and 1.00, which indicates the skill's
       compatability with this project (so the higher the percentage associated with a particular skill, the more this project
       requires this skill)
      * isFinal: a boolean value that indicates whether this project is a final project (as comparing to normal projects)
+     * nameToDscpPromptFile: a map whose key is the project name, and the associated value is an array (of length 3) in
+     which the first element is the corresponding project description, the second element is the corresponding project
+     prompt, and the third element is the corresponding projcomp file name.
      */
-    private String projectName;
-    private String projectDescription;
-    private final int length = 2;
+    private final String name;
+    private final String description;
+    private final int length;
     private int teamSize;
-    private final HashMap<String, Integer> skillsCompatability;
+    private HashMap<String, Integer> skillsCompatibilities;
     private boolean isFinal;
+    private HashMap<String, String[]> nameToDscpPromptFile;
 
+    /**
+     * Construct a project.
+     * Note that argument </projectName> has to be the same as one of the PROJECT_NAME constants in GamePrompts.
+     */
+    public Project(String projectName) throws FileNotFoundException {
+        this.name = projectName;
 
-    public Project(String projectName, String projectDescription) {
-        this.projectName = projectName;
-        this.projectDescription = projectDescription;
+        this.length = 2;
 
-        // Rn I'm just randomly generating an int b/n 2 - 6 (inclusive) (6 bc we have 6 interns in total right??) for
-        // the team size. This is for normal projects; for the final project, the team size has to be 1.
+        // If we were to randomize team size b/n 2-6:
         //Random random = new Random();
         //this.teamSize = random.nextInt(6 + 1 - 2) + 2; //random.nextInt(max + 1 - min) + min
         this.teamSize = 3;
+
         this.isFinal = false;
-        this.skillsCompatability = new HashMap<String, Integer>();
+
+        initializeNameToDscpPromptFile();
+
+        this.description = this.nameToDscpPromptFile.get(this.name)[0];
+
+        initializeSkillsCompatibilities(this.nameToDscpPromptFile.get(this.name)[2]);
+
+        if (Objects.equals(this.name, GamePrompts.FINAL_PROJECT1_NAME) || Objects.equals(this.name, GamePrompts.FINAL_PROJECT2_NAME) || Objects.equals(this.name, GamePrompts.FINAL_PROJECT3_NAME)) {
+               makeProjectFinal();
+        }
     }
-    /* I'm not sure how to initialize skillsCompatability. It should be a map that's like: {teamwork: 80%, leadership: 90%,
-    communication: 60%, ...}, including all the skills specified in the skills txt file, correct? However, the percentage
-    associate with each skill cannot be completely randomly generated, since, like we've talked about in vc, each project
-     has some 'theme' skills. E.g., project <crossCulturalExchange> requires multilingualism & communication, and so its
-     <skillsCompatability> would be smth like {teamwork: 80%, leadership: 70%, communication: 100%, multilingualism: 100% ...}
-
-     So I think we need to:
-     1) decide on a list of project (names)
-     2) decide on a list of skills
-     3) for each project, decide which skills it requires (we might need an instance variable like <skillsRequired> to store this?)
-     4) for <skillsCompatability> of each project, those skilled that are in <skillsRequired> will be associated with 100%,
-     and other skills can have percentages that are randomly generated b/n, say, 30% - 80%?
-
-     What do you think? :D
-     */
 
     /**
-     * Make the project final.
-     * Note that by default the project isn't final.
+     * A helper method that initializes </nameToDscpPromptFile> in the constructor.
      */
-    public void makeProjectFinal() {
+    private void initializeNameToDscpPromptFile() {
+        HashMap<String, String[]> map = new HashMap<>();
+        map.put(GamePrompts.PROJECT1_NAME, new String[]{GamePrompts.PROJECT1_DESCRIPTION, GamePrompts.PROJECT1_PROMPT, "proj1comp.txt"});
+        map.put(GamePrompts.PROJECT2_NAME, new String[]{GamePrompts.PROJECT2_DESCRIPTION, GamePrompts.PROJECT2_PROMPT, "proj2comp.txt"});
+        map.put(GamePrompts.PROJECT3_NAME, new String[]{GamePrompts.PROJECT3_DESCRIPTION, GamePrompts.PROJECT3_PROMPT, "proj3comp.txt"});
+        map.put(GamePrompts.PROJECT4_NAME, new String[]{GamePrompts.PROJECT4_DESCRIPTION, GamePrompts.PROJECT4_PROMPT, "proj4comp.txt"});
+        map.put(GamePrompts.PROJECT5_NAME, new String[]{GamePrompts.PROJECT5_DESCRIPTION, GamePrompts.PROJECT5_PROMPT, "proj5comp.txt"});
+        map.put(GamePrompts.PROJECT6_NAME, new String[]{GamePrompts.PROJECT6_DESCRIPTION, GamePrompts.PROJECT6_PROMPT, "proj6comp.txt"});
+        map.put(GamePrompts.PROJECT7_NAME, new String[]{GamePrompts.PROJECT7_DESCRIPTION, GamePrompts.PROJECT7_PROMPT, "proj7comp.txt"});
+        map.put(GamePrompts.PROJECT8_NAME, new String[]{GamePrompts.PROJECT8_DESCRIPTION, GamePrompts.PROJECT8_PROMPT, "proj8comp.txt"});
+        map.put(GamePrompts.FINAL_PROJECT1_NAME, new String[]{GamePrompts.FINAL_PROJECT1_DESCRIPTION, GamePrompts.FINAL_PROJECT1_PROMPT, "finalproj1comp.txt"});
+        map.put(GamePrompts.FINAL_PROJECT2_NAME, new String[]{GamePrompts.FINAL_PROJECT2_DESCRIPTION, GamePrompts.FINAL_PROJECT2_PROMPT, "finalproj2comp.txt"});
+        map.put(GamePrompts.FINAL_PROJECT3_NAME, new String[]{GamePrompts.FINAL_PROJECT3_DESCRIPTION, GamePrompts.FINAL_PROJECT3_PROMPT, "finalproj3comp.txt"});
+        this.nameToDscpPromptFile = map;
+    }
+
+    /**
+     * A helper method that reads the skillsCompatibilities files and initializes </skillsCompatibilities>  in the constructor.
+     */
+    private void initializeSkillsCompatibilities(String file_name) throws FileNotFoundException {
+        HashMap<String, Integer> map = new HashMap<>();
+        File file = new File(file_name);
+        Scanner myReader = new Scanner(file);
+        while (myReader.hasNextLine()) {
+            String line = myReader.nextLine();
+            String skill = line.split(": ")[0];
+            Integer score = Integer.valueOf(line.split(": ")[1]);
+            map.put(skill, score); }
+        this.skillsCompatibilities = map;
+    }
+
+    /**
+     * A helper method that makes the project final in the constructor.
+     */
+    private void makeProjectFinal() {
         this.isFinal = true;
         this.teamSize = 1;
     }
@@ -67,40 +106,31 @@ public class Project {
         return isFinal;
     }
 
-    // Belows are the getters and setters for all the instance variables.
-    public String getProjectName() {
-        return projectName;
+    /**
+     * Return the string representation of the project.
+     */
+    public String projectToString(){
+        return this.nameToDscpPromptFile.get(this.name)[1];
     }
 
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
+    // Belows are the getters for all the instance variables.
+    public String getName() {
+        return name;
     }
 
-    public String getProjectDescription() {
-        return projectDescription;
-    }
-
-    public void setProjectDescription(String projectDescription) {
-        this.projectDescription = projectDescription;
+    public String getDescription() {
+        return description;
     }
 
     public int getLength() {
         return length;
     }
-    // we prolly don't want a setter for length?
 
     public int getTeamSize() {
         return teamSize;
     }
-    // we prolly don't want a setter for teamSize?
 
-    public HashMap<String, Integer> getSkillsCompatability() {
-        return skillsCompatability;
-    }
-    // we prolly don't want a setter for skillsCompatability?
-
-    public String projectToString(){
-        // TODO: Implement this method. See Intern internToString
-        return "Turns a project into a string is not implemented yet.";
+    public HashMap<String, Integer> getSkillsCompatibilities() {
+        return skillsCompatibilities;
     }
 }
