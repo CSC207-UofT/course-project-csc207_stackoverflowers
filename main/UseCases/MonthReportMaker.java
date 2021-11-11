@@ -1,5 +1,4 @@
 package UseCases;
-import Entities.Exceptions;
 import Entities.GamePrompts;
 import Entities.HiredIntern;
 import Entities.Intern;
@@ -42,20 +41,23 @@ public class MonthReportMaker implements ReportMaker {
         - yyy: great, but needs to be more efficient
         - zzz: poor, could be potentially fired
      */
+    //TODO: since there is so much duplicate code, we could make ReportMaker an abstractclass instead of a Interface?
     @Override
     public String makeReportBody(int projectProgress, int currentMonth) {
-       String internNames = currentHRSystem.getInternNames();
+        String internNames = currentHRSystem.getInternNames();
 
         ArrayList<Project> projList = currentHRSystem.getProject(currentMonth);
         HashMap<String, Integer> projectCompatibilityList = new HashMap<>();
-        for (Project proj : projList) {
+        for (Project proj : projList){
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
+
         ArrayList<HashMap<String, Integer>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
         return bakeProjectName(currentHRSystem.getProjectName(currentMonth)) + "\n" +
                 bakeProgress(projectProgress)+"\n"+
                 bakeInterns(internNames) + "\n" +
-                bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
+                bakeInternsPerformances(internNames,internsSkills, projectCompatibilityList);
+    }
 
     private ArrayList<HashMap<String, Integer>> getHiredInternsSkills(ArrayList<HiredIntern> hiredInternList) {
         //Makes an arrayList full of internSkills.
@@ -124,7 +126,7 @@ public class MonthReportMaker implements ReportMaker {
 
     @Override
     public String getInternsInfo(){
-        return GamePrompts.INTERN_INFO_HEADER + currentHRSystem.getInternNames(true);
+        return GamePrompts.INTERN_INFO_HEADER + currentHRSystem.getHiredInternNames();
     }
 
     @Override
