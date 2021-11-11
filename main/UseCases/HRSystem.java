@@ -30,7 +30,7 @@ public class HRSystem implements Serializable {
     //initialize the private intern_list
     //initialize the private player_name
 
-    private final ArrayList<Intern> internList;//TODO: Is it better if we used a set....
+    private ArrayList<Intern> internList;//TODO: Is it better if we used a set....
     // so that we don't have repeating issues (when adding new elements to the set)?
     private ArrayList<Project> projectList;
     private String playerName;
@@ -114,7 +114,7 @@ public class HRSystem implements Serializable {
         //TODO: This method returns the name of the project given int currentMonth
         return "Returning a month's list of projects is not implemented yet. ";
     }
-    public ArrayList<Project> getProject(int currentMonth){
+    public Project getProject(int currentMonth){
         //TODO: This method returns the list of projects in the current month.(OR JUST ONE PROJECT PER MONTH????);
     return null;
     }
