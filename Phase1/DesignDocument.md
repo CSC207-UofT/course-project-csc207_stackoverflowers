@@ -39,10 +39,13 @@ Has your group used design patterns in appropriate places in the code? Identifie
 
 1. FACTORY DESIGN PATTERN 
 
-- We used the factory design pattern using GameManger to evaluate the player's response and the interface class ReportMaker that is implemented by the ProjectReportMaker and MonthReportMaker subclasses. 
-- 
--  
--    for example our so that when it has a stage, it knows where it should get it's output from (?)
+We used the factory design pattern using GameManger to evaluate the player's response and the interface class ReportMaker that is implemented by the ProjectReportMaker, FinalReportMaker and MonthReportMaker subclasses. We created an interface class ReportMaker and let the concrete classes MonthReportMaker, 
+FinalReportMaker and ProjectReportMaker implement this interface. The interface holds the virtual constructor that defines the general description of the methods needed in each subclass (makeReportHeader(), makeReportIntro() etc.) and the subclasses holds the other requirements needed for example MonthReportMaker show progress of each month in the game whereas ProjectReportMaker will show the outcome of the project in each level. GameManager then instantiates the concrete 
+classes and it can get a report object by checking the player’s input. So if a player wanted to check the month report, GameManager simply outputs the month report  it without having to reach into the specific MonthReportMaker class. This was implemented as soon as Phase 0 was over, when DQ1 was due. 
+
+Currently GameManager is responsible for instantiating many classes and is the sole class that evaluates the player's inputs. In the future, we would like to create
+a separate factory class ReportFactory that is responsible for only evaluating player inputs regarding the reports. 
+
 
 2. BUILDER PATTERN DESIGN 
 
@@ -52,13 +55,14 @@ Has your group used design patterns in appropriate places in the code? Identifie
 - We also kind of got inspiration from the Observer Design pattern, as our Abstract Class Level will change statuses, and those statuses need to be reported to GameManager. Right now we are making GameManager check each time if the status of the currentLevel has changed, so that it fits more into the Observer design pattern. 
 ADD TO THIS!!!!
 
+
 Have you clearly indicated where the pattern was used and possibly pointed out which Pull Request it was implemented in?
 Be careful that there aren't any obvious places a design pattern should have been applied that your group forgot to mention.
 
 
 
 ## Use of GitHub Features, Code Style and Documentation
-Warnings were fixed as we went, and we tried our best to review each other's pull request. We didn't use the issue feature much since a lot of issues were solved through discord. But issues that weren't solved on the spot were put up on Git as reminders. We also had Maggie that was in charge of putting Javadocs for most classes.
+Warnings were fixed as we went, and we tried our best to review each other's pull request. We didn't use the issue feature much since a lot of issues were solved through discord. But issues that weren't solved on the spot were put up on Git as reminders. We also had Maggie that was in charge of putting Javadocs for most classes. 
 
 ## Testing
 Since there is a time crunch, our group decided that we would focus on writing test cases for the Controller/Presenters and UseCases. 
@@ -75,6 +79,8 @@ Is there evidence that your team has refactored code in a meaningful way during 
 ## Are there any obvious code smells still in your code that you missed fixing?
 - Kind of worried about duplicate code, 
 - and also GameManager and GameMaker are quite bloated classes: we could work on fixing that.
+- We have already created new usecase class GameGenerators that holds all methods used for generating from GameMaker
+- GameManager can be split into sections as currenlty, GameManager is the only class evaluating player input. For example we can take any methods that are related to reports from GameManager into a new class.
 - ADD TO THIS!!!
 
 ## Code Organization
