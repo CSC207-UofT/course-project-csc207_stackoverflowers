@@ -1,9 +1,9 @@
-package UseCases;
-
 import UseCases.ResponseTree;
 import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
 
 public class ResponseTreeTest {
 
@@ -68,8 +68,9 @@ public class ResponseTreeTest {
         ArrayList<String> data2 = new ArrayList<>();
         data2.add("Hi");
         ResponseTree<ArrayList<String>> tree2 = new ResponseTree<>(data2);
+        tree1.addChild(tree2);
         ArrayList<String> data3 = new ArrayList<>();
-        data3.add("sup");
+        data3.add("Hey");
         ResponseTree<ArrayList<String>> tree3 = new ResponseTree<>(data3);
         tree1.addChild(tree2);
         tree1.addChild(tree3);
