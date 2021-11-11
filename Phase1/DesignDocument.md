@@ -8,31 +8,54 @@ If you found that something in your design wasn't good, tell us about that too!
 Pretending part of your design is good — when you know it isn't — can potentially hurt your mark significantly!
 Acknowledging bad design can earn you marks and demonstrates understanding — especially if you discuss how you could fix it if you had more time!
 
+SINGLE REPONSIBILITY PRINCIPLE: 
+
+OPEN/CLOSED PRINCIPLE: 
+
+LISKOV SUBSTITUTION PRINCIPLE: 
+
+INTEGRATION SEGREGATION PRINCIPLE: 
+
+DEPENDENCY INVERSION PRINCIPLE: 
+
+
 ##Clean Architecture
 
 Is your program consistent with Clean Architecture?
 Show us with something like a CRC model or UML diagram.
 Describe a scenario walk-through and highlight how it demonstrates Clean Architecture.
 
+SCENARIO WALKTHROUGH: 
+STEP 1: run the Sphase, GameMaker and GameGenerator is ran so that 
+
 
 Are there any clear violations if we were to randomly look at the imports in a few of your files?
 Is the Dependency Rule consistently followed when interacting with details in the outer layer?
 Give us a concrete example from something like your UI or an interaction with a database.
+
+
 ##Design Patterns
 Has your group used design patterns in appropriate places in the code? Identified and described any patterns that could be applied in future with more time?
+
+1. FACTORY DESIGN PATTERN 
 
 - We used the factory design pattern using GameManger to evaluate the player's response and the interface class ReportMaker that is implemented by the ProjectReportMaker and MonthReportMaker subclasses. 
 - 
 -  
 -    for example our so that when it has a stage, it knows where it should get it's output from (?)
 
+2. BUILDER PATTERN DESIGN 
 
 - Also for ReportMaker's, we used the design pattern Builder, as they are three different builders(ReportMakers) that have build a report using the same structure. Using The Builder pattern, we are able to assemble each component of the Report in ReportMaker, so that the ReportLevel only needs to generally ask the currentReportMaker for a report, instead of using a bunch of if- statements each time. (Jacob you can edit this if this is not what you want)
+
+3. OBSERVER DESIGN PATTERN 
 - We also kind of got inspiration from the Observer Design pattern, as our Abstract Class Level will change statuses, and those statuses need to be reported to GameManager. Right now we are making GameManager check each time if the status of the currentLevel has changed, so that it fits more into the Observer design pattern. 
 ADD TO THIS!!!!
 
 Have you clearly indicated where the pattern was used and possibly pointed out which Pull Request it was implemented in?
 Be careful that there aren't any obvious places a design pattern should have been applied that your group forgot to mention.
+
+
 
 ##Use of GitHub Features, Code Style and Documentation
 Warnings were fixed as we went, and we tried our best to review each other's pull request. We didn't use the issue feature much since a lot of issues were solved through discord. But issues that weren't solved on the spot were put up on Git as reminders. We also had Maggie that was in charge of putting Javadocs for most classes.
@@ -49,7 +72,7 @@ Is there evidence that your team has refactored code in a meaningful way during 
 - At the beginning, our team thought that HRSystem would be a entity, as it stored information. However, as we went, we found that it was needed alot by the UseCases, and also that it more so "manipulated" entities than be one of them. So, to keep our design follow CLEAN, we did a refactoring of making HRSystem a UseCase instead of a entity. See pull request #4.
 - During coding there were also small refactors here and there to change method names, parameters, and also extract helper methods to make code more readable. See pull request #3 for GameMaker,  #19 for three ReportMakers, and #21 for MonthLevel.
 
-Are there any obvious code smells still in your code that you missed fixing?
+## Are there any obvious code smells still in your code that you missed fixing?
 - Kind of worried about duplicate code, 
 - and also GameManager and GameMaker are quite bloated classes: we could work on fixing that.
 - ADD TO THIS!!!
