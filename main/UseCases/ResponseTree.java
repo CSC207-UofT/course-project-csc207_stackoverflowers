@@ -18,7 +18,7 @@ public class ResponseTree<T> {
 
     /**
      * The constructor for a ResponseTree
-     * @param data an ArrayList containing a question and the Intern's corresponding answer
+     * @param data an ArrayList containing a question and the Intern's corresponding answer.
      */
     public ResponseTree(ArrayList<String> data) {
         this.data = data;
