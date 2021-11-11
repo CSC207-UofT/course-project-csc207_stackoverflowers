@@ -65,7 +65,7 @@ public class ReportLevel extends Level{
             return checkUpgradingInfo(currentMonth);
         }
         if (input.contains("" +
-                "assign intern to project")) {
+                "assign intern to upgrade")) {
             return assignInternToUpgrade(input);
         }
         else{throw new Exception(Exceptions.INVALID_COMMAND);}
@@ -105,5 +105,9 @@ public class ReportLevel extends Level{
 
     private boolean finishedUpgrading(int currentMonth){
         return currentReportMaker.checkUpgraded(currentMonth);
+    }
+
+    public ReportMaker getCurrentReportMaker(){
+        return currentReportMaker;
     }
 }

@@ -115,6 +115,20 @@ public class GamePrompts implements Serializable {
     public static final String FINAL_PROJECT2_NAME = "Machine Learning & AI Research Assistant";
     public static final String FINAL_PROJECT3_NAME = "COVID-19 Tracking System Update";
 
+    public static final String SKILL1 ="Confidence";
+    public static final String SKILL2 ="Teamwork";
+    public static final String SKILL3 ="Leadership";
+    public static final String SKILL4 ="Efficiency";
+    public static final String SKILL5 ="Endurance";
+    public static final String SKILL6 ="Flexibility";
+    public static final String SKILL7 ="Observant";
+    public static final String SKILL8 ="Communication";
+    public static final String SKILL9 ="Responsible";
+    public static final String SKILL10 ="Creativity";
+    public static final String SKILL11 ="Artistic";
+    public static final String SKILL12 ="Patience";
+    public static final String SKILL13 ="Analytical";
+
     public static final String PROJECT1_DESCRIPTION = "Our company wishes to rebrand itself this upcoming Winter, our first step in rebranding our company is to create a new logo\n" +
             "that will encourage more employees to apply to work here and will emulate trust amongst our clients\n" +
             "This project requires individuals to be creative, artistic and imaginative\n" +
