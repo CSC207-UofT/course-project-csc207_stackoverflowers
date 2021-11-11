@@ -27,6 +27,8 @@ Describe a scenario walk-through and highlight how it demonstrates Clean Archite
 
 ## SCENARIO WALKTHROUGH: 
 
+Starting the game -> Interview Level -> Assign interns to projects -> First monthly report 
+
 STEP 1: Starting SPhase
 
 When SPhase is first run, SPhase creates a ControllersPresenters.GameManager.
@@ -41,6 +43,13 @@ to make each intern into a string, and format that. Then, UseCases.GameMaker col
 STEP 2: Interview level 
 
 InterviewMaker ----> ??? Please can Camille and Enam work on this to show how ResponseTree and InterviewMaker work together for interview level and all classes it interacts with (GameManager, etc) 
+
+Step 3: Assign Interns to Project 
+- describe how the projects are run (first two months only), skillcomp, etc 
+
+
+Step 4: Check monthly report 
+- describe how montly report is made and how it is displayed (interaction with GameManager when player wants to check monthly report) 
 
 
 
