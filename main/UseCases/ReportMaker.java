@@ -37,11 +37,7 @@ public interface ReportMaker {
      */
     String makeReportConclusion();
 
-
-    // Hi Jacob, I'm not sure what these "back" methods do. Do you mind writing out the java docs for them yourself?
     String bakeProjectName (String projectName);
-
-
 
     String bakeProgress (int projectProgress);
 
