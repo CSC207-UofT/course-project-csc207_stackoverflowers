@@ -127,7 +127,7 @@ Is there evidence that your team has refactored code in a meaningful way during 
 - and also GameManager and GameMaker are quite bloated classes: we could work on fixing that.
 - We have already created new usecase class GameGenerators that holds all methods used for generating from GameMaker
 - GameManager can be split into sections as currently, GameManager is the only class evaluating player input. For example we can take any methods that are related to reports from GameManager into a new class.
-- A method in ResponseTreeMaker (generateInternResponses) is really long as every tree node was created manually - this will be fixed in Phase 2
+- A method in ResponseTreeMaker (generateInternResponses) is really long as every tree node was created manually - this will be fixed in Phase 2.
 - There is a duplicate method in GameGenerators and ResponseTreeMaker. Making an interface won't get rid of duplicate code, and the two classes shouldn't have the same parent class as they don't have much in common other than this duplicate method.
 
 ## Code Organization
