@@ -4,6 +4,8 @@ import Entities.Exceptions;
 import UseCases.GameGenerators;
 import UseCases.GameMaker;
 
+import java.util.ArrayList;
+
 public class GameManager {
     /* this class is the controller class for the entire game. It starts the game , waits for input etc
     for reference check JShell and JShellState in week 2 resources on quercus

@@ -20,7 +20,7 @@ public class SPhase {
         }
         GamePrompts prompts = new GamePrompts();
         Scanner in = new Scanner(System.in);
-        System.out.println(prompts.ASK_FOR_NAME);
+        System.out.println(GamePrompts.ASK_FOR_NAME);
         while (GameManager.isRunning()) {
             String playerInput = in.nextLine();
             try {
