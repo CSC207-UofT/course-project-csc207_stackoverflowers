@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class InterviewMaker {
 
     // private HiredIntern currentHiredIntern; (may not need this in interviewmaker)
-    private final InterviewIntern currentInterviewIntern ; //update interviewIntern
+    private InterviewIntern currentInterviewIntern ; //update interviewIntern
     // private GamePrompts prompt ;
     private final HRSystem currentHRSystem ;
 
@@ -21,8 +21,7 @@ public class InterviewMaker {
      */
     public InterviewMaker(HRSystem currentHRSystem){
         // this.currentHiredIntern = new HiredIntern();
-        this.currentInterviewIntern = new InterviewIntern("", 0,
-                "":"");
+        //this.currentInterviewIntern = new InterviewIntern("", 0,)
         this.currentHRSystem = currentHRSystem;
 
     }

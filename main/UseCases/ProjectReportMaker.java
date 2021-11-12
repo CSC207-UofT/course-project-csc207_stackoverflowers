@@ -47,7 +47,7 @@ public class ProjectReportMaker implements ReportMaker{
         return bakeProjectName(currentHRSystem.getProjectName(currentMonth)) + "\n" +
                 bakeProgress(projectProgress)+"\n"+
                 bakeInterns(internNames) + "\n" +
-                bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
+                bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);}
 
     private ArrayList<HashMap<String, Integer>> getHiredInternsSkills(ArrayList<HiredIntern> hiredInternList) {
         //Makes an arrayList full of internSkills.
