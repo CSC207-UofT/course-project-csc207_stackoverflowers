@@ -1,1 +1,8 @@
-
+["That's great. Why don't you tell me a little about yourself?", "I have worked as a freelance software developer since I was 17, now I wish to enter the work 
+force officially. As a freelance software developer, I have adequate experience in object-oriented programming in both Java and C++"]
+["Nice to meet you. Why don't you tell me a bit about your experience?", "I have worked as a freelance software developer since I was 17, now I wish to enter the work force officially. As a freelance software developer, I have adequate experience in object-oriented programming in both Java and C++"]
+["Why do you want to work for this company?", "I believe that with my skills I will be a great addition to the team. I'm a quick learner so I believe I will be able to adapt to working in teams very easily but I will also be able to take on tasks by myself."]
+["Why should we hire you?", "I believe that with my skills I will be a great addition to the team. I'm a quick learner so I believe I will be able to 
+adapt to working in teams very easily but I will also be able to take on tasks by myself."]
+["What are your hobbies?", "I enjoy sports and fitness. Last month I ran a very big marathon around our city. In the future I would like to create an app that can help track people's health statistics and encourage more people to be fit."]
+["What is your passion in life?", "I enjoy sports and fitness. Last month I ran a very big marathon around our city. In the future I would like to create an app that can help track people's health statistics and encourage more people to be fit."]

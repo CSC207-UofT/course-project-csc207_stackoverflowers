@@ -1,3 +1,5 @@
+package UseCases;
+
 import Entities.GamePrompts;
 import Entities.HiredIntern;
 import Entities.Intern;
@@ -59,7 +61,7 @@ public class GameGeneratorsTest {
     void TestGenerateInterns() throws FileNotFoundException {
         gameGenerators.generateInterns(3);
         Assert.assertEquals(hrSystem.getInternList().size(), 3);
-    }
+        }
 
     @org.junit.jupiter.api.Test
     void TestAddInternToList() {
@@ -74,12 +76,11 @@ public class GameGeneratorsTest {
         Assert.assertEquals(hrSystem.getInternList().size(), 5);
     }
 
-    // TODO: I'm currently not sure how to test this method (I think there're gaps between the implementation of
-    // GameGenerator and HRSystem...Idk, maybe we need a getter for projectList in HRSystem??)
+    // TODO: Enam needs to add a getter for projectList in HRSystem.
     @org.junit.jupiter.api.Test
     void TestGenerateProjects() throws FileNotFoundException {
-        gameGenerators.generateProjects(2);
-        Assert.asserEquals(hrSystem.);
+        gameGenerators.generateProjects(3);
+        Assert.assertEquals(hrSystem.getProjectList().size(), 3);
     }
 
     @org.junit.jupiter.api.Test

@@ -1,0 +1,3 @@
+Leadership: 0.90
+Confidence: 0.90
+Responsible : 0.85
