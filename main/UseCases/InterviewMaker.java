@@ -15,7 +15,7 @@ public class InterviewMaker {
 
     /**
      * The constructor makes a new InterviewMaker for the current phase, and stores attributes to be used in
-     * Controllers.InterviewLevel.
+     * Controllers.InterviewLevel..
      */
     public InterviewMaker(HRSystem currentHRSystem){
         // this.currentHiredIntern = new HiredIntern();
