@@ -44,6 +44,13 @@ STEP 2: Interview level
 
 InterviewMaker ----> ??? Please can Camille and Enam work on this to show how ResponseTree and InterviewMaker work together for interview level and all classes it interacts with (GameManager, etc) 
 
+During the Interview portion of the game, a UseCases.InterviewMaker is created which initializes an HRSystem as well as an
+Entities.InterviewIntern needed to run the Interview. ControllersPresenters.InterviewLevel oversees the creation of the initial InterviewMaker,
+ensuring that no part of CLEAN architecture is violated. The interview level begins by ControllersPresenters.InterviewLevel
+displaying a prompt asking Player to choose who they would like to interview initially, indicating the start of an interview. The Player's response is then recorded and updated in the HRSystem created by UseCases.InterviewMaker.
+After selecting a specific Entities.InterviewIntern, the InterviewIntern's questions associated with their unique responsetree from ResponseTreeMaker
+are outputted, 
+
 Step 3: Assign Interns to Project 
 - describe how the projects are run (first two months only), skillcomp, etc 
 
