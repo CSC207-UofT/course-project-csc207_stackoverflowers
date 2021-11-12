@@ -1,3 +1,5 @@
+package UseCases;
+
 import UseCases.ResponseTree;
 import UseCases.ResponseTreeMaker;
 import Entities.InterviewIntern;

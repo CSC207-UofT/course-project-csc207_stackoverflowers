@@ -53,8 +53,6 @@ Step 4: Check monthly report
 - The report format:
   Here is your report for the end of " + month 
 
-  This is an intermediate report of this ongoing project.
-
   Project name: xxx 
 
   Project progress: an integer
