@@ -1,8 +1,6 @@
 package UseCases;
-import Entities.Exceptions;
-import Entities.GamePrompts;
-import Entities.HiredIntern;
-import Entities.Intern;
+import Entities.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -35,6 +33,7 @@ public class FinalReportMaker implements ReportMaker {
                 bakeInterns(internNames) + "\n" +
                 bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
     }
+
     private ArrayList<HashMap<String, Integer>> getHiredInternsSkills(ArrayList<HiredIntern> hiredInternList) {
         //Makes an arrayList full of internSkills.
         ArrayList<HashMap<String, Integer>> internCompatabilityList  = new ArrayList<>();
@@ -100,7 +99,7 @@ public class FinalReportMaker implements ReportMaker {
 
     @Override
     public String getInternsInfo(){
-        return GamePrompts.INTERN_INFO_HEADER + currentHRSystem.getInternNames(true);
+        return GamePrompts.INTERN_INFO_HEADER + currentHRSystem.getHiredInternNames();
     }
 
     @Override
