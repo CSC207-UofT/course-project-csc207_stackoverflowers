@@ -9,9 +9,7 @@ import java.util.ArrayList;
 
 public class InterviewMaker {
 
-    // private HiredIntern currentHiredIntern; (may not need this in interviewmaker)
     private InterviewIntern currentInterviewIntern;
-    // private GamePrompts prompt ;
     private final HRSystem currentHRSystem ;
 
 
