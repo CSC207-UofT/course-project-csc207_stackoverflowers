@@ -26,7 +26,7 @@ public class GameGeneratorsTest {
             e.printStackTrace();
         }
     }
-        privateField.setAccessible(true); //  turn off the access checks for this particular Field instance, for reflection only.
+//        privateField.setAccessible(true); //  turn off the access checks for this particular Field instance, for reflection only.
 
 //        public final void setAccessible(boolean flag) throws SecurityException {
 //            privateField.setAccessible(flag);

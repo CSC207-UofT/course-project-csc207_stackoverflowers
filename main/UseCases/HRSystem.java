@@ -140,9 +140,9 @@ public class HRSystem implements Serializable {
      * This method gets only the names of all interns separated by "|".
      * @return a String of all intern names
      */
-    public String getInternNames() {
+    public String getHiredInternsNames() {
         StringBuilder res = new StringBuilder();
-        for (Intern i : this.internList) {
+        for (Intern i : this.hiredInternList) {
             res.append(i.getInternName());
             res.append("|");
         }

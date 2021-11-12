@@ -3,7 +3,6 @@ import Entities.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 
 public class MonthReportMaker implements ReportMaker {
     private final GamePrompts prompts;
@@ -40,7 +39,7 @@ public class MonthReportMaker implements ReportMaker {
      */
     @Override
     public String makeReportBody(int projectProgress, int currentMonth) {
-        String internNames = currentHRSystem.getInternNames();
+        String internNames = currentHRSystem.getHiredInternsNames();
 
         ArrayList<Project> projList = currentHRSystem.getProject(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();

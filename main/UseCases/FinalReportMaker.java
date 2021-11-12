@@ -1,5 +1,4 @@
 package UseCases;
-import java.lang.reflect.Array;
 import Entities.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,7 +26,7 @@ public class FinalReportMaker implements ReportMaker {
     //这个格式和其他那两个差不多，但别忘了这是最后的project，所以只有一个intern（见mary在discord上发的照片）
     @Override
     public String makeReportBody(int projectProgress, int currentMonth) {
-        String internNames = currentHRSystem.getInternNames();
+        String internNames = currentHRSystem.getHiredInternsNames();
 
         ArrayList<Project> projList = currentHRSystem.getProject(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();

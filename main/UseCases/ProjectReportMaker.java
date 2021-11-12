@@ -42,7 +42,7 @@ public class ProjectReportMaker implements ReportMaker{
     */
     @Override
     public String makeReportBody(int projectProgress, int currentMonth) {
-        String internNames = currentHRSystem.getInternNames();
+        String internNames = currentHRSystem.getHiredInternsNames();
 
         ArrayList<Project> projList = currentHRSystem.getProject(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();
