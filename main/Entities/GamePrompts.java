@@ -11,7 +11,7 @@ public class GamePrompts implements Serializable {
     - if class gets too long, maybe consider creating another prompt class
      */
 
-    public static final String REPORT_HEADER = "Here is your final project report!" + "\n";
+    public static final String REPORT_HEADER = "Here is your project report for month " ;
 
     public static final String PROJECT_NAME_HEADER = "Project name: ";
 
