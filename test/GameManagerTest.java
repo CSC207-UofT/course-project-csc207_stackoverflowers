@@ -1,15 +1,14 @@
 import ControllersPresenters.GameManager;
 import Entities.Exceptions;
 import Entities.GamePrompts;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import java.io.*;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class GameManagerTest {
     GameManager gameManager;
 
-    @BeforeAll
+    @Before
     public void setUp() throws Exception {
         gameManager = new GameManager();
         gameManager.firstPrompt("Maggie"); //Set the saved name

@@ -4,16 +4,15 @@ import Entities.Intern;
 import Entities.Project;
 import UseCases.GameGenerators;
 import UseCases.HRSystem;
-import org.junit.jupiter.api.Test;
+
 
 import java.lang.reflect.Field;
 import java.util.*;
 import java.io.FileNotFoundException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.lang.reflect.Method;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class GameGeneratorsTest {

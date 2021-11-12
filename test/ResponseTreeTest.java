@@ -1,8 +1,9 @@
 import UseCases.ResponseTree;
 import java.util.ArrayList;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 public class ResponseTreeTest {
 
