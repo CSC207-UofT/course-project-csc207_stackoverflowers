@@ -1,4 +1,3 @@
-package UseCases;
 
 import Entities.HiredIntern;
 import Entities.Intern;
