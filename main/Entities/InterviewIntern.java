@@ -11,7 +11,7 @@ public class InterviewIntern extends Intern{
 
     private String interviewInternName;
     private int interviewInternAge;
-    private HashMap<String, Integer> interviewInternSkills;
+    private HashMap<String, Double> interviewInternSkills;
     private ResponseTree<ArrayList<String>> responseTree;
 
     /**

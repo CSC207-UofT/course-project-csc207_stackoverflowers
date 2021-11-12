@@ -18,8 +18,14 @@ public class ProjectReportMaker implements ReportMaker{
     }
     @Override
     public String makeReportHeader(int month) {
-        return GamePrompts.REPORT_HEADER + month + "\n";
+        return "Here is your report for the end of " + month + "\n";
     }
+
+    @Override
+    public String makeReportIntro() {
+        return "This is an end report of this completed project." + "\n";
+    }
+
 
     /*
     project reportBody format
@@ -36,7 +42,7 @@ public class ProjectReportMaker implements ReportMaker{
     */
     @Override
     public String makeReportBody(int projectProgress, int currentMonth) {
-       String internNames = currentHRSystem.getInternNames();
+        String internNames = currentHRSystem.getInternNames();
 
         ArrayList<Project> projList = currentHRSystem.getProject(currentMonth);
         HashMap<String, Integer> projectCompatibilityList = new HashMap<>();
@@ -45,9 +51,10 @@ public class ProjectReportMaker implements ReportMaker{
         }
         ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
         return bakeProjectName(currentHRSystem.getProjectName(currentMonth)) + "\n" +
-                bakeProgress(projectProgress)+"\n"+
+                bakeProgress(projectProgress) + "\n" +
                 bakeInterns(internNames) + "\n" +
                 bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);}
+    }
 
     private ArrayList<HashMap<String, Double>> getHiredInternsSkills(ArrayList<HiredIntern> hiredInternList) {
         //Makes an arrayList full of internSkills.

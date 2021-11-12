@@ -19,6 +19,7 @@ public interface ReportMaker {
      *
      * @return correctly formatted intro for the report based on the current phase (month)
      */
+    String makeReportIntro ();
 
 
     /**
