@@ -1,4 +1,5 @@
 package ControllersPresenters;
+//TODO: Remove Intern and Project and HRSystem, as a Controller it shouldn't touch them
 import Entities.Exceptions;
 import UseCases.HRSystem;
 import Entities.Intern;
@@ -44,6 +45,8 @@ public class ReportLevel extends Level{
     }
 
     public String getOutputString(String input) throws Exception {
+        //TODO: remember, last project does not have a upgrade period, you need to implement that
+        // takes in the player's input and then uses the needed method to be used for the output
         if (levelStarted()){
             getIntoLevel();
             return getReport();
@@ -65,7 +68,7 @@ public class ReportLevel extends Level{
             return checkUpgradingInfo(currentMonth);
         }
         if (input.contains("" +
-                "assign intern to upgrade")) {
+                "assign intern to project")) {
             return assignInternToUpgrade(input);
         }
         else{throw new Exception(Exceptions.INVALID_COMMAND);}
@@ -77,7 +80,7 @@ public class ReportLevel extends Level{
      */
     public String getReport() {
         String header = currentReportMaker.makeReportHeader(currentMonth);
-        String intro = "";
+        String intro = currentReportMaker.makeReportIntro();
         String body = currentReportMaker.makeReportBody(currentMonth, projectProgress);
         String end = currentReportMaker.makeReportConclusion();
         return currentReportPresenter.displayOutput(header, intro, body, end);
@@ -86,12 +89,13 @@ public class ReportLevel extends Level{
         return currentReportMaker.getInternsInfo();
     }
 
-
     private String checkProjectInfo() {
         return currentReportMaker.getProjectInfo(currentMonth);
     }
 
     private String endPrompt(int currentMonth){
+        //TODO: As of now, I'm using Mary's gameprompt, after knowing what super intern is, you are gona potentially
+        // add your own prompt aswell.
         return currentReportMaker.endOfMonthPrompt(currentMonth);
     }
 
@@ -107,9 +111,5 @@ public class ReportLevel extends Level{
 
     private boolean finishedUpgrading(int currentMonth){
         return currentReportMaker.checkUpgraded(currentMonth);
-    }
-
-    public ReportMaker getCurrentReportMaker(){
-        return currentReportMaker;
     }
 }

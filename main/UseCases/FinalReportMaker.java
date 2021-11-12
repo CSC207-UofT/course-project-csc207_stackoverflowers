@@ -3,6 +3,9 @@ import Entities.Exceptions;
 import Entities.GamePrompts;
 import Entities.HiredIntern;
 import Entities.Intern;
+import Entities.Project;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,9 +20,15 @@ public class FinalReportMaker implements ReportMaker {
     }
     @Override
     public String makeReportHeader(int month) {
-        return GamePrompts.REPORT_HEADER + month + '\n';
+        return GamePrompts.REPORT_HEADER;
     }
 
+    @Override
+    public String makeReportIntro() {
+        return null;
+    }
+
+    //这个格式和其他那两个差不多，但别忘了这是最后的project，所以只有一个intern（见mary在discord上发的照片）
     @Override
     public String makeReportBody(int projectProgress, int currentMonth) {
         String internNames = currentHRSystem.getInternNames();
@@ -109,8 +118,10 @@ public class FinalReportMaker implements ReportMaker {
     }
 
     @Override
-    public String assignInternToUpgrade(String internName){
-        return Exceptions.INTERN_UPGRADING_FAILURE;
+    public String assignInternToUpgrade(String internName) throws Exception {
+        boolean success = currentHRSystem.assignInternToUpgrade(internName);
+        if (!success){throw new Exception(Exceptions.INTERN_UPGRADING_FAILURE);}
+        return GamePrompts.INTERN_UPGRADING_SUCCESS;
     }
 
     @Override

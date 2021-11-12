@@ -3,8 +3,11 @@ import Entities.Exceptions;
 import Entities.GamePrompts;
 import Entities.HiredIntern;
 import Entities.Intern;
+import Entities.Project;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 public class MonthReportMaker implements ReportMaker {
     private final GamePrompts prompts;
@@ -17,8 +20,16 @@ public class MonthReportMaker implements ReportMaker {
     }
     @Override
     public String makeReportHeader(int month) {
-        return GamePrompts.REPORT_HEADER + month + '\n';
+        return "Here is your report for the end of " + month + "\n";
     }
+
+
+    @Override
+    public String makeReportIntro() {
+
+        return "This is an intermediate report of this ongoing project." + "\n";
+    }
+
 
     /* format for the reportBody
     Project name: xxx (need to access project.projectName)
@@ -71,23 +82,17 @@ public class MonthReportMaker implements ReportMaker {
     }
 
     @Override
-    public String bakeInternsPerformances (String internNames,
-                                           ArrayList<HashMap<String, Integer>>  internSkills,
-                                           HashMap<String, Integer> projectSkill) {
+    public String bakeInternsPerformances (String internNames, ArrayList<HashMap<String, Integer>>  internSkills, HashMap<String, Integer> projectSkill) {
         StringBuilder returnLine = new StringBuilder(GamePrompts.INTERN_PERFORMANCE_HEADER + internNames + "\n");
         String[] internNamesList = internNames.split("|");
         for (int i = 0; i != internNamesList.length; i+=1) {
-            returnLine.append("     - ")
-                    .append(internNamesList[i])
-                    .append(": ").append(calculateInternPerformance(internSkills.get(i), projectSkill))
-                    .append("\n");
+            returnLine.append("     - ").append(internNamesList[i]).append(": ").append(calculateInternPerformance(internSkills.get(i), projectSkill)).append("\n");
         }
         return returnLine.toString();
     }
 
     @Override
-    public int calculateInternPerformance(HashMap<String, Integer> internSkills,
-                                          HashMap<String, Integer> projectSkill) {
+    public int calculateInternPerformance(HashMap<String, Integer> internSkills, HashMap<String, Integer> projectSkill) {
         int result = 0;
         ArrayList<Double> effectiveSkills = new ArrayList<Double>();
         for (String key : internSkills.keySet()) {
@@ -119,8 +124,7 @@ public class MonthReportMaker implements ReportMaker {
 
     @Override
     public String getInternsInfo(){
-        return
-                GamePrompts.INTERN_INFO_HEADER + currentHRSystem.getInternNames(true);
+        return GamePrompts.INTERN_INFO_HEADER + currentHRSystem.getInternNames(true);
     }
 
     @Override
@@ -141,7 +145,7 @@ public class MonthReportMaker implements ReportMaker {
 
     @Override
     public boolean checkUpgraded(int currentMonth) {
-        //returns true if the skill is maxed for the intern
+        //returns true if all interns have been assigned to a project
         return currentHRSystem.internUpgraded(currentMonth);
     }
 }
