@@ -47,7 +47,7 @@ and upon hiring, HRSystem updates the list of HiredInterns by adding the newly h
 the Player now interviews the next intern from the InterviewInternList until all interns have been interviewed. Then, Entities.GamePrompts signifies the end
 of an interview by outputting an end of interview prompt. 
 
-STEP 3: Assign Interns to Project
+STEP 3: Month level (Assign Interns to Project)
 
 In the first two months (month is the time unit we use in this game; each month is considered as a level), 2 projects
 will be generated per month which the player assigns interns to (so in total 4 projects will be generated). Controller.

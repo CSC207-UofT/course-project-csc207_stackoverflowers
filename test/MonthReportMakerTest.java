@@ -6,10 +6,9 @@ import Entities.Project;
 import UseCases.HRSystem;
 import UseCases.MonthReportMaker;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,9 +54,8 @@ public class MonthReportMakerTest {
         assertEquals(actual, expected);
     }
 
-    @Nested
     class TestDuringProject {
-        @BeforeEach
+        @Before
         public void setUp() throws Exception {
             //Set tup the hrSystem so that it has some interns and projects in it.
             HRSystem hrSystem = new HRSystem();
@@ -134,21 +132,21 @@ public class MonthReportMakerTest {
         private ArrayList<Intern> makeInterns() {
             //A helper function that sets up the interns in HRSystem for the test.
             //Setting up two Hired interns
-            HashMap<String, Integer> marySkills = new HashMap<>();
-            marySkills.put("Efficiency", 100);
+            HashMap<String, Double> marySkills = new HashMap<>();
+            marySkills.put("Efficiency", 100.0);
             Intern Mary = new HiredIntern("Mary", 19, marySkills);
 
-            HashMap<String, Integer> maggieSkills = new HashMap<>();
-            maggieSkills.put("Responsible", 87);
+            HashMap<String, Double> maggieSkills = new HashMap<>();
+            maggieSkills.put("Responsible", 87.0);
             Intern Maggie = new HiredIntern("Maggie", 20, maggieSkills);
 
-            HashMap<String, Integer> rubySkills = new HashMap<>();
-            rubySkills.put("Communication", 66);
+            HashMap<String, Double> rubySkills = new HashMap<>();
+            rubySkills.put("Communication", 66.0);
             Intern Ruby = new HiredIntern("Ruby", 21, rubySkills);
 
             //Also add a interviewIntern that shouldn't be used anywhere during month:
-            HashMap<String, Integer> bobSkills = new HashMap<>();
-            bobSkills.put("Flexibility", 50);
+            HashMap<String, Double> bobSkills = new HashMap<>();
+            bobSkills.put("Flexibility", 50.0);
             Intern Bob = new HiredIntern("Bob", 60, bobSkills);
             //Make a new list of interns to put in HRSystem to update:
             ArrayList<Intern> interns = new ArrayList<>();

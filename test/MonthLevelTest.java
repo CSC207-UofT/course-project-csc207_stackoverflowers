@@ -2,12 +2,9 @@ import ControllersPresenters.MonthLevel;
 import Entities.*;
 import UseCases.HRSystem;
 import UseCases.MonthMaker;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,9 +32,8 @@ public class MonthLevelTest {
     }
 
 
-    @Nested
     class TestDuringProject {
-        @BeforeEach
+        @Before
         public void setUp() throws Exception {
             //Set tup the hrSystem so that it has some interns and projects in it.
             HRSystem hrSystem = new HRSystem();

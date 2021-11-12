@@ -1,21 +1,21 @@
 import Entities.*;
 import UseCases.HRSystem;
 import UseCases.MonthMaker;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MonthMakerTest {
     MonthMaker monthMaker;
     HRSystem hrSystem;
 
-    @BeforeAll
+    @Before
     public void setup() throws FileNotFoundException {
         hrSystem = new HRSystem();
         hrSystem.updatePlayerName("Wahaha");
