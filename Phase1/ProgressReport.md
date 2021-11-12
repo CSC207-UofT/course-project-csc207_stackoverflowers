@@ -4,7 +4,7 @@
 ###First Meeting Oct22
 Once Phase0 ended, we had a group meeting on Oct22 to discuss the following, and started on work.
 
-1. Meeting and deciding on how to deal with Mickaels comments. (Who will be in charge of fixing what)
+1. Meeting and deciding on how to deal with Mickael's comments. (Who will be in charge of fixing what)
     - Yijia: Fixing errors and warnings in part of the code.
     - Farzana: Fixing the specification of the project.
     - Enam: Dealing with Intern so that it could be open to extensions: to respond to Micheal's employee suggestion.
@@ -87,14 +87,18 @@ Here was the progress so far:
 - Camille:
     - Classes in charge of:
         - GameMaker
-        - InternResponseTreeMaker?
+        - ResponseTreeMaker
+        - ResponseTree
     - Progress so far:
         - Design a new class to represent the tree object
         - Figure out how to parse through tree to get interactive response from player
+        - Finished most TODOs in ResponseTree, ResponseTreeMaker, GameMaker
+        - Finished javadocs for each method
     - Things need to do:
-        - figure out internResponseTreeFactory and how it related to generating interns
+        - Figure out ResponseTreeMaker and how it related to generating interns
+        - Implement the classes
+        - Tests
         - CLEAN
-        - tests
 
 - Enam:
     - Classes in charge of:
