@@ -36,14 +36,14 @@ public class MonthLevel extends Level {
             return currentMonthMaker.confirmChoice();
         }
 
-        if (Objects.equals(input.trim(), "check project info")){
+        if (Objects.equals(input.strip(), "check project info")){
             return checkProjectInfo(); //the same should happen for checkInternInfo, assignInternToProject(),
             // removeInternFromProject and other commands!! (If too many if statements, USE DESIGN PATTERN TO REFACTOR?)
         }
-        if (Objects.equals(input.trim(), "check interns info")){
+        if (Objects.equals(input.strip(), "check interns info")){
             return checkInternsInfo();
         }
-        if (Objects.equals(input.trim(), "check assign")){
+        if (Objects.equals(input.strip(), "check assign")){
             return checkAssigningInfo();
         }
         if (input.contains("assign intern to project")) {
