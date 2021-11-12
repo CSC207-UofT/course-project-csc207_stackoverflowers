@@ -24,8 +24,8 @@ public class ResponseTreeMaker {
      * @return ResponseTree of the intern's possible dialogue.
      */
     public ResponseTree<ArrayList<String>> generateInternResponses() throws FileNotFoundException {
-        ArrayList<String> questions = generateDialogueList("treeConvoTextFiles/questions.txt");
-        ArrayList<String> answers = generateDialogueList("treeConvoTextFiles/answers.txt");
+        ArrayList<String> questions = generateDialogueList("Resources/questions.txt");
+        ArrayList<String> answers = generateDialogueList("Resources/answers.txt");
         ArrayList<ArrayList<String>> dataList = generateTreeDataList(questions, answers);
 
         //constructing tree nodes manually; will change to a loop/recursion for phase 2
