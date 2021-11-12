@@ -110,15 +110,15 @@ public class GameGenerators implements Serializable {
      * Helper method for generateInterns.
      * Creates a HashMap with three random skills and their random respective percentages
      * @param skillList an ArrayList of skills.
-     * @return a HashMap of Skills and the percentage of the skill
+     * @return a HashMap of Skills and the score (0.00 - 1.00) of the skill
      */
     private HashMap<String, Double> generateUniqueSkillMap(ArrayList<String> skillList){
         Random random = new Random();
-        HashMap<String, Integer> skillMap = new HashMap<>();
+        HashMap<String, Double> skillMap = new HashMap<>();
         while (skillMap.size() < 3) {
             String skill = skillList.get(random.nextInt(skillList.size()));
             if (!skillMap.containsKey(skill)) {
-                skillMap.put(skill, random.nextInt((int) 2.00)); //原来是100
+                skillMap.put(skill, 2.00 * random.nextDouble());
             }
         }
         return skillMap;
