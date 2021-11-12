@@ -11,10 +11,10 @@ public class SPhase {
     all of this will be in the main method !!
 
      */
-    public static void main(String[] args) {
-        GameManager currentGame = null;
+    public static void main(String[] args) throws Exception {
+        GameManager currentGame = new GameManager();
         try {
-            currentGame = new GameManager();
+           currentGame = new GameManager();
         }catch (Exception e){
             System.out.println(e.getMessage());
         }

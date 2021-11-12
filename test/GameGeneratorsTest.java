@@ -63,7 +63,7 @@ public class GameGeneratorsTest {
         gameGenerators.generateInterns(3);
         assertEquals(hrSystem.getInternList().size(), 3);
         }
-
+    /*
     @Test
     void TestAddInternToList() {
         HashMap<String, Double> MagSkillSets = (HashMap<String, Double>) Map.of("Responsible", 90.0, "Observant",
@@ -76,6 +76,8 @@ public class GameGeneratorsTest {
         gameGenerators.addInternToList(internList);
         assertEquals(hrSystem.getInternList().size(), 5);
     }
+    */
+
 
     // TODO: Enam needs to add a getter for projectList in HRSystem.
 //    @Test

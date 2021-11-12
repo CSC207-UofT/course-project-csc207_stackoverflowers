@@ -29,8 +29,8 @@ public class GameGenerators implements Serializable {
      * @param numInterns the number of interns that will be generated.
      */
     public void generateInterns(int numInterns) throws FileNotFoundException {
-        ArrayList<String> nameList = generateInfo("UseCases/names.txt");
-        ArrayList<String> skillList = generateInfo("UseCases/skills.txt");
+        ArrayList<String> nameList = generateInfo("Resources/names.txt");
+        ArrayList<String> skillList = generateInfo("Resources/skills.txt");
         Random random = new Random();
         ArrayList<Intern> internList = new ArrayList<>();
         for (int i = 1; i <= numInterns; i++) {
