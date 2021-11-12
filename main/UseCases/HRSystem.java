@@ -256,17 +256,13 @@ public class HRSystem implements Serializable {
         // get the projects for the month
         ArrayList<Project> monthlyProjList = this.monthToProject.get(currentMonth);
         StringBuilder res = new StringBuilder();
-
         for (Project proj : monthlyProjList) {
-
             //append each project from the project list for the current month to res
             res.append(proj.getName());
-
             //append the interns associated to that project to res
             res.append(" Interns in project: ");
             res.append(projectToInterns.get(proj));
         }
-
         return res.toString();
 
     }
@@ -487,9 +483,7 @@ public class HRSystem implements Serializable {
             }
         }
         return assigned;
-
     }
-
 
     //TODO: finish this new method
     public boolean internUpgraded(int currentMonth) {
