@@ -54,6 +54,9 @@ public class GamePrompts implements Serializable {
 
     public static final String NEXT_CANDIDATE = "Would you like to move on to the next candidate?";
 
+    public static final String END_OF_INTERVIEW_PROMPT = "Congratulations! You have successfully completed interviewing all " +
+            "interns. You may now proceed to the next level of the game.";
+
 
     // not all of the project prompts will be used, the projectgenerator will output a list and choose 4 projects
     // for the game from all the prompts here

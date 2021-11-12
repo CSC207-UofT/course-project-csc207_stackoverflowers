@@ -9,6 +9,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+@SuppressWarnings("DuplicatedCode")
 public class FinalReportMaker implements ReportMaker {
     private final GamePrompts prompts;
     private final HRSystem currentHRSystem;
@@ -38,15 +39,16 @@ public class FinalReportMaker implements ReportMaker {
         for (Project proj : projList) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
-        ArrayList<HashMap<String, Integer>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
+        ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
         return bakeProjectName(currentHRSystem.getProjectName(currentMonth)) + "\n" +
                 bakeProgress(projectProgress)+"\n"+
                 bakeInterns(internNames) + "\n" +
                 bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
     }
-    private ArrayList<HashMap<String, Integer>> getHiredInternsSkills(ArrayList<HiredIntern> hiredInternList) {
+
+    private ArrayList<HashMap<String, Double>> getHiredInternsSkills(ArrayList<HiredIntern> hiredInternList) {
         //Makes an arrayList full of internSkills.
-        ArrayList<HashMap<String, Integer>> internCompatabilityList  = new ArrayList<>();
+        ArrayList<HashMap<String, Double>> internCompatabilityList  = new ArrayList<>();
         for (Intern i : hiredInternList){
             internCompatabilityList.add(i.getInternSkills());
         }
@@ -68,7 +70,7 @@ public class FinalReportMaker implements ReportMaker {
     }
 
     @Override
-    public String bakeInternsPerformances (String internNames, ArrayList<HashMap<String, Integer>>  internSkills, HashMap<String, Integer> projectSkill) {
+    public String bakeInternsPerformances (String internNames, ArrayList<HashMap<String, Double>>  internSkills, HashMap<String, Integer> projectSkill) {
         StringBuilder returnLine = new StringBuilder(GamePrompts.INTERN_PERFORMANCE_HEADER + internNames + "\n");
         String[] internNamesList = internNames.split("|");
         for (int i = 0; i != internNamesList.length; i+=1) {
@@ -78,11 +80,11 @@ public class FinalReportMaker implements ReportMaker {
     }
 
     @Override
-    public int calculateInternPerformance(HashMap<String, Integer> internSkills, HashMap<String, Integer> projectSkill) {
+    public int calculateInternPerformance(HashMap<String, Double> internSkills, HashMap<String, Integer> projectSkill) {
         int result = 0;
         ArrayList<Double> effectiveSkills = new ArrayList<Double>();
         for (String key : internSkills.keySet()) {
-            int internSkill = internSkills.get(key);
+            double internSkill = internSkills.get(key);
             double compatibility = projectSkill.get(key);
             effectiveSkills.add(internSkill* compatibility);
         }

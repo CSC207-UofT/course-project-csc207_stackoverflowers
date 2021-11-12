@@ -1,26 +1,30 @@
 package ControllersPresenters;
 
+import Entities.InterviewIntern;
 import UseCases.HRSystem;
+import UseCases.InterviewMaker;
 // import ControllersPresenters.InterviewPresenter;
 
-public class InterviewLevel extends Level{
+public class InterviewLevel<InterviewPresenter> extends Level{
 
-    //TODO: Declare private instance attributes for InterviewMaker, InterviewPresenter and playerInput
-    /*
-     * private InterviewMaker currentInterviewMaker;
-     * private InterviewPresenter currentInterviewPresenter;
-     * private String playerInput;
-     */
+     private InterviewMaker currentInterviewMaker;
+     //private InterviewPresenter currentInterviewPresenter;
+     //private String playerInput;
+    // InterviewIntern currentInterviewInter
     private final HRSystem currentHRSystem;
-    //TODO: Initialize the constructor
+
     /**
      * The constructor makes a new InterviewLevel for the current phase, and stores an
      * InterviewMaker to use it when needed.
      * @param currentHRSystem
      */
     public InterviewLevel(HRSystem currentHRSystem){
+    //InterviewMaker currentInterviewMaker, InterviewPresenter currentInterviewPresenter, String playerInput)
         endLevel(); //Just for testing purposes, delete when actually implementing.
         this.currentHRSystem = currentHRSystem;
+        this.currentInterviewMaker = new InterviewMaker(currentHRSystem);
+        // this.currentInterviewPresenter = currentInterviewPresenter;
+        // this.playerInput = playerInput;
     }
 
     //TODO: Implement method getStartOfInterviewPrompt
@@ -31,7 +35,7 @@ public class InterviewLevel extends Level{
      * Get the Interns choiceOptions from UseCases.InterviewMaker
      */
     public void getChoiceOptions(){
-
+        return current
     }
 
 
@@ -96,4 +100,6 @@ public class InterviewLevel extends Level{
     public void updateLevelStatus(){
         endLevel();//Method in Level that can be used since we can't access the levelStatus as an private instance.
     }
+
+    //TODO: Time for end prompt
 }

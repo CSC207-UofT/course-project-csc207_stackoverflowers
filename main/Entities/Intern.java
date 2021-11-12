@@ -11,7 +11,7 @@ abstract public class Intern{
     */
     private final String internName;
     private final int internAge;
-    private final HashMap<String, Integer> internSkills;
+    private final HashMap<String, Double> internSkills;
 
     /**
      * Construct an Entities.Intern, giving them the given internName,
@@ -21,7 +21,7 @@ abstract public class Intern{
      * @param internAge The age of this Entities.Intern
      * @param internSkills A map of skills where the key is the name of the skill and the value is the percentage.
      */
-    public Intern(String internName, int internAge, HashMap<String, Integer> internSkills) {
+    public Intern(String internName, int internAge, HashMap<String, Double> internSkills) {
         this.internName = internName;
         this.internAge = internAge;
         this.internSkills = internSkills;
@@ -46,7 +46,7 @@ abstract public class Intern{
     /**
      * Return the skills of this Entities.Intern
      */
-    public HashMap<String, Integer> getInternSkills() {
+    public HashMap<String, Double> getInternSkills() {
 
         return this.internSkills;
     }
@@ -59,7 +59,7 @@ abstract public class Intern{
         StringBuilder skills =  new StringBuilder();
 
         for (String skill : this.internSkills.keySet()) {
-            int percentage = this.internSkills.get(skill);
+            Double percentage = this.internSkills.get(skill);
             skills.append(skill).append(" (").append(percentage).append(")");
         }
 
