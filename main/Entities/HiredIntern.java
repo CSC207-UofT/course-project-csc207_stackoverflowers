@@ -10,7 +10,7 @@ public class  HiredIntern extends Intern {
 
     private String hiredInternName;
     private int hiredInternAge;
-    private HashMap<String, Double> hiredInternSkills;
+    private HashMap<String, Integer> hiredInternSkills;
 
     /**
      * Construct a hiredIntern, giving them the given hiredInternName,
@@ -19,7 +19,7 @@ public class  HiredIntern extends Intern {
      * @param hiredInternAge    The age of this Entities.Intern
      * @param hiredInternSkills A map of skills where the key is the name of the skill and the value is the percentage.
      */
-    public HiredIntern(String hiredInternName, int hiredInternAge, HashMap<String, Integer> hiredInternSkills) {
+    public HiredIntern(String hiredInternName, int hiredInternAge, HashMap<String, Double> hiredInternSkills) {
         super(hiredInternName, hiredInternAge, hiredInternSkills);
     }
 

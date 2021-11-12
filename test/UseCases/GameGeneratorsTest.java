@@ -10,6 +10,8 @@ import java.util.*;
 
 import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
+
+import static org.junit.Assert.assertEquals;
 // import java.lang.reflect.Method;
 
 
@@ -65,15 +67,15 @@ public class GameGeneratorsTest {
 
     @org.junit.jupiter.api.Test
     void TestAddInternToList() {
-        HashMap<String, Double> MagSkillSets = (HashMap<String, Double>) Map.of("Responsible", 0.90, "Observant",
-                0.80, "Communication", 0.70);
+        HashMap<String, Integer> MagSkillSets = (HashMap<String, Integer>) Map.of("Responsible", 90, "Observant",
+                80, "Communication", 70);
         Intern mag = new HiredIntern("Maggie", 20, MagSkillSets);
-        HashMap<String, Double> FarzSkillSets = (HashMap<String, Double>) Map.of("Leadership", 0.90, "Patient",
-                0.80, "Teamwork", 0.70);
+        HashMap<String, Integer> FarzSkillSets = (HashMap<String, Integer>) Map.of("Leadership", 90, "Patient",
+                80, "Teamwork", 70);
         Intern farz = new HiredIntern("Farzana", 20, FarzSkillSets);
         ArrayList<Intern> internList = (ArrayList<Intern>) List.of(mag, farz);
         gameGenerators.addInternToList(internList);
-        Assert.assertEquals(hrSystem.getInternList().size(), 5);
+        assertEquals(hrSystem.getInternList().size(), 5);
     }
 
     // TODO: Enam needs to add a getter for projectList in HRSystem.
