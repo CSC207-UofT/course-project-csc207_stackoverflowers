@@ -16,8 +16,7 @@ abstract public class Intern{
     /**
      * Construct an Entities.Intern, giving them the given internName,
      * internAge, and internMoney.
-     *
-     * @param internName The name of this Entities.Intern
+     *  @param internName The name of this Entities.Intern
      * @param internAge The age of this Entities.Intern
      * @param internSkills A map of skills where the key is the name of the skill and the value is the percentage.
      */
@@ -47,7 +46,6 @@ abstract public class Intern{
      * Return the skills of this Entities.Intern
      */
     public HashMap<String, Integer> getInternSkills() {
-
         return this.internSkills;
     }
 

@@ -12,7 +12,7 @@ public class Project {
      * name: the name of this project. Note the name has to be the same as the same the PROJECT_NAME constants in GamePrompts.
      * description: the description of this project
      * length: the length of this project, which is 2 (months) for regular projects and 1 (month) for final projects
-     * teamSize: the number of interns required to finish this project. By default, team size is 3, however,
+     * teamSize: the number of interns required to finish this project. By default, team size is b/n 2 - 6, however,
      for the final project, team size is 1
      * skillsCompatibilities: a dictionary that maps a skill with a number b/n 0.00 and 1.00, which indicates the skill's
       compatability with this project (so the higher the percentage associated with a particular skill, the more this project

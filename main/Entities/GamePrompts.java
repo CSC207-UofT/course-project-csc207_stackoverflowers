@@ -269,8 +269,8 @@ public class GamePrompts implements Serializable {
             "Creators:" + "\n" + "Mary Yijia Li\n" +
             "Farzana Rahman\n" +
             "Maggie Huang" +
-            "Jizhong (Jacob) Lyu\n" +
-            "Camille Marie Alve\n" +
+            "Jacob Li\n" +
+            "Camille Alve\n" +
             "Enam Hermon.\n";
     //TODO: modify END_PROMPT so it includes credits?
 }
