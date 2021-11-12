@@ -1,5 +1,3 @@
-package ControllersPresenters;
-
 import ControllersPresenters.ReportLevel;
 import Entities.*;
 import UseCases.*;

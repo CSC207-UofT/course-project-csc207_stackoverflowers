@@ -1,5 +1,3 @@
-package UseCases;
-
 import ControllersPresenters.ReportLevel;
 import Entities.GamePrompts;
 import Entities.HiredIntern;

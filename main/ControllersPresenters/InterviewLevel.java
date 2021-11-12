@@ -35,7 +35,7 @@ public class InterviewLevel<InterviewPresenter> extends Level{
      * Get the Interns choiceOptions from UseCases.InterviewMaker
      */
     public void getChoiceOptions(){
-        return current
+
     }
 
 
