@@ -13,10 +13,10 @@ public class ResponseTreeMakerTest {
 
     @Test
     public void TestGenerateInternResponses() throws FileNotFoundException {
-        HashMap<String, Double> skills = new HashMap<>();
-        skills.put("Confidence", 50.0);
-        skills.put("Teamwork", 50.0);
-        skills.put("Flexibility", 50.0);
+        HashMap<String, Integer> skills = new HashMap<>();
+        skills.put("Confidence", 50);
+        skills.put("Teamwork", 50);
+        skills.put("Flexibility", 50);
         InterviewIntern intern = new InterviewIntern("Camille", 20, skills);
         ResponseTreeMaker rtm = new ResponseTreeMaker(intern);
         ResponseTree<ArrayList<String>> respTree = rtm.generateInternResponses();
@@ -25,10 +25,10 @@ public class ResponseTreeMakerTest {
 
     @Test
     public void TestAssignResponseToIntern() throws FileNotFoundException {
-        HashMap<String, Double> skills = new HashMap<>();
-        skills.put("Confidence", 50.0);
-        skills.put("Teamwork", 50.0);
-        skills.put("Flexibility", 50.0);
+        HashMap<String, Integer> skills = new HashMap<>();
+        skills.put("Confidence", 50);
+        skills.put("Teamwork", 50);
+        skills.put("Flexibility", 50);
         InterviewIntern intern = new InterviewIntern("Camille", 20, skills);
         ResponseTreeMaker rtm = new ResponseTreeMaker(intern);
         ResponseTree<ArrayList<String>> respTree = rtm.generateInternResponses();

@@ -50,7 +50,7 @@ public class GameManager {
             case Start:
                 return firstPrompt(playerInput);
             case Interview:
-                return ((InterviewLevel) currentLevel).getInterviewOutput();
+                return ((InterviewLevel) currentLevel).getInterviewOutput(playerInput);
             case Month:
             case FinalMonth:
                 return ((MonthLevel) currentLevel).getOutputString(playerInput);

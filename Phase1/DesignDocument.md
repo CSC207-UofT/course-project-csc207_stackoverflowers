@@ -35,14 +35,17 @@ to make each intern into a string, and format that. Then, UseCases.GameMaker col
 
 STEP 2: Interview level 
 
-InterviewMaker ----> ??? Please can Camille and Enam work on this to show how ResponseTree and InterviewMaker work together for interview level and all classes it interacts with (GameManager, etc) 
-
 During the Interview portion of the game, a UseCases.InterviewMaker is created which initializes an HRSystem as well as an
 Entities.InterviewIntern needed to run the Interview. ControllersPresenters.InterviewLevel oversees the creation of the initial InterviewMaker,
 ensuring that no part of CLEAN architecture is violated. The interview level begins by ControllersPresenters.InterviewLevel
 displaying a prompt asking Player to choose who they would like to interview initially, indicating the start of an interview. The Player's response is then recorded and updated in the HRSystem created by UseCases.InterviewMaker.
-After selecting a specific Entities.InterviewIntern, the InterviewIntern's questions associated with their unique responsetree from ResponseTreeMaker
-are outputted, 
+After selecting a specific Entities.InterviewIntern, the InterviewIntern's questions associated with their unique response tree from ResponseTreeMaker
+are outputted, allowing player to choose which question to ask the Entities.InterviewIntern. The InterviewIntern responds by HRSystem obtaining
+the InterviewIntern's corresponding response for the question from the response tree in ResponseTreeMaker (which has been assigned to each intern in
+Entities.Intern). The player is then prompted to input "yes" if they wish to hire the InterviewIntern or "no" otherwise. This is recorded
+and upon hiring, HRSystem updates the list of HiredInterns by adding the newly hired intern. After confirming a Player's decision to hire an intern,
+the Player now interviews the next intern from the InterviewInternList until all interns have been interviewed. Then, Entities.GamePrompts signifies the end
+of an interview by outputting an end of interview prompt. 
 
 Step 3: Assign Interns to Project 
 - describe how the projects are run (first two months only), skillcomp, etc 
@@ -68,7 +71,6 @@ Step 4: Check monthly report
 
 
 ## Design Patterns
-Has your group used design patterns in appropriate places in the code? Identified and described any patterns that could be applied in future with more time?
 
 1. FACTORY DESIGN PATTERN 
 
@@ -86,7 +88,7 @@ a separate factory class ReportFactory that is responsible for only evaluating p
 
 3. OBSERVER DESIGN PATTERN 
 - We also kind of got inspiration from the Observer Design pattern, as our Abstract Class Level will change statuses, and those statuses need to be reported to GameManager. Right now we are making GameManager check each time if the status of the currentLevel has changed, so that it fits more into the Observer design pattern. 
-ADD TO THIS!!!!
+
 
 4. TEMPLATE DESIGN PATTERN 
 
@@ -96,12 +98,6 @@ Upon design of the code, we realized there is a need for distinction between two
 Thus, Intern was abstracted, implementing the invariant methods, leaving variant methods to be implemented by the unique characteristics of the subclasses HiredIntern and InterviewIntern. 
 In this way, Intern is our template that can be extended in the instance where a new type of Intern needs to be defined with its own unique behaviours.
 This was implemented after completion of Phase 0, during planning for new classes to be implemented in Phase 1.
-
-
-
-Have you clearly indicated where the pattern was used and possibly pointed out which Pull Request it was implemented in?
-Be careful that there aren't any obvious places a design pattern should have been applied that your group forgot to mention.
-
 
 
 ## Use of GitHub Features, Code Style and Documentation
