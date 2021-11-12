@@ -45,7 +45,7 @@ the InterviewIntern's corresponding response for the question from the response 
 Entities.Intern). The player is then prompted to input "yes" if they wish to hire the InterviewIntern or "no" otherwise. This is recorded
 and upon hiring, HRSystem updates the list of HiredInterns by adding the newly hired intern. After confirming a Player's decision to hire an intern,
 the Player now interviews the next intern from the InterviewInternList until all interns have been interviewed. Then, Entities.GamePrompts signifies the end
-of an interview, outputting an end of interview prompt. 
+of an interview by outputting an end of interview prompt. 
 
 Step 3: Assign Interns to Project 
 - describe how the projects are run (first two months only), skillcomp, etc 
