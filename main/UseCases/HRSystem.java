@@ -386,7 +386,7 @@ public class HRSystem implements Serializable {
         return options;
 
     }
-
+    
     public void updatePlayerInternResponseChoice(Object option){
         this.playerInternResponseChoice = option;
     }
