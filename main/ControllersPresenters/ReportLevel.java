@@ -9,6 +9,7 @@ import UseCases.ReportMaker;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Random;
 
 public class ReportLevel extends Level{
 
@@ -78,6 +79,7 @@ public class ReportLevel extends Level{
         String intro = currentReportMaker.makeReportIntro();
         String body = currentReportMaker.makeReportBody(currentMonth, projectProgress);
         String end = currentReportMaker.makeReportConclusion();
+        //TODO: String upgradePrompt = currentReportMaker.makeUpgradePrompt(generateRandomSkill());
         return currentReportPresenter.displayOutput(header, intro, body, end);
         //TODO: Need to add another String behind end, where a method generates a random point to upgrade,
         // then the report presenter should prompt the user about this upgrade point that needs to be assigned to a
@@ -85,8 +87,27 @@ public class ReportLevel extends Level{
     }
 
     private String generateRandomSkill(){
-        //TODO: Make a method that generates a random skill point to upgrade from a list of skills in GamePrompts
-        return "generatedSkill";
+        ArrayList<String> skillList = new ArrayList<>(){
+            {
+                add(GamePrompts.SKILL1);
+                add(GamePrompts.SKILL2);
+                add(GamePrompts.SKILL3);
+                add(GamePrompts.SKILL4);
+                add(GamePrompts.SKILL5);
+                add(GamePrompts.SKILL6);
+                add(GamePrompts.SKILL7);
+                add(GamePrompts.SKILL8);
+                add(GamePrompts.SKILL9);
+                add(GamePrompts.SKILL10);
+                add(GamePrompts.SKILL11);
+                add(GamePrompts.SKILL12);
+                add(GamePrompts.SKILL13);
+            }
+        };
+        Random r = new Random();
+        int randomitem = r.nextInt(skillList.size());
+        String generatedSkill = skillList.get(randomitem);
+        return generatedSkill;
     }
     private String checkInternsInfo() {
         return currentReportMaker.getInternsInfo();
