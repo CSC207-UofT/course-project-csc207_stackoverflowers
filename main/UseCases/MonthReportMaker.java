@@ -112,6 +112,7 @@ public class MonthReportMaker implements ReportMaker {
         return prompts.REPORT_CONCLUSION;
     }
 
+
     @Override
     public String endOfMonthPrompt( int currentMonth) {
         if (currentMonth == HRSystem.FINAL_MONTH){return GamePrompts.END_OF_FINAL_MONTH_PROMPT;}
