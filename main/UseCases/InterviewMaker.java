@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class InterviewMaker {
 
     // private HiredIntern currentHiredIntern; (may not need this in interviewmaker)
-    private final InterviewIntern currentInterviewIntern ;
+    private final InterviewIntern currentInterviewIntern ; //update interviewIntern
     // private GamePrompts prompt ;
     private final HRSystem currentHRSystem ;
 
@@ -18,10 +18,11 @@ public class InterviewMaker {
     /**
      * The constructor makes a new InterviewMaker for the current phase, and stores attributes to be used in
      * Controllers.InterviewLevel.
-     */    public InterviewMaker(HiredIntern currentHiredIntern, InterviewIntern currentInterviewIntern,
-                          HRSystem currentHRSystem){
-        // this.currentHiredIntern = currentHiredIntern;
-        this.currentInterviewIntern = currentInterviewIntern;
+     */
+    public InterviewMaker(HRSystem currentHRSystem){
+        // this.currentHiredIntern = new HiredIntern();
+        this.currentInterviewIntern = new InterviewIntern("", 0,
+                "":"");
         this.currentHRSystem = currentHRSystem;
 
     }
@@ -42,6 +43,7 @@ public class InterviewMaker {
      */
     //need response tree structure from generateInternResponse in gameMaker (is it an individual
     // response at a time or an entire tree produced?)
+    // make choiceOptions an attribute
     public String ChoiceOptions(InterviewIntern intern){
         return "ChoiceOptions is not implemented yet";
     }
@@ -52,6 +54,7 @@ public class InterviewMaker {
      * This method allows player to choose from the choices in ChoiceOptions and stores the choice
      */
     //where are we storing this?? in HRSystem ?
+    //storePlayerChoice attribute -> where would it be?
     public void storePlayerChoice(String options){
 
     }
