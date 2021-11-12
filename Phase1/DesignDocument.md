@@ -71,7 +71,6 @@ Step 4: Check monthly report
 
 
 ## Design Patterns
-Has your group used design patterns in appropriate places in the code? Identified and described any patterns that could be applied in future with more time?
 
 1. FACTORY DESIGN PATTERN 
 
@@ -89,7 +88,7 @@ a separate factory class ReportFactory that is responsible for only evaluating p
 
 3. OBSERVER DESIGN PATTERN 
 - We also kind of got inspiration from the Observer Design pattern, as our Abstract Class Level will change statuses, and those statuses need to be reported to GameManager. Right now we are making GameManager check each time if the status of the currentLevel has changed, so that it fits more into the Observer design pattern. 
-ADD TO THIS!!!!
+
 
 4. TEMPLATE DESIGN PATTERN 
 
@@ -99,12 +98,6 @@ Upon design of the code, we realized there is a need for distinction between two
 Thus, Intern was abstracted, implementing the invariant methods, leaving variant methods to be implemented by the unique characteristics of the subclasses HiredIntern and InterviewIntern. 
 In this way, Intern is our template that can be extended in the instance where a new type of Intern needs to be defined with its own unique behaviours.
 This was implemented after completion of Phase 0, during planning for new classes to be implemented in Phase 1.
-
-
-
-Have you clearly indicated where the pattern was used and possibly pointed out which Pull Request it was implemented in?
-Be careful that there aren't any obvious places a design pattern should have been applied that your group forgot to mention.
-
 
 
 ## Use of GitHub Features, Code Style and Documentation
