@@ -58,32 +58,32 @@ Here was the progress so far:
         - Tests
         - Exceptions = how return correct error message to player
         - Levels -> abstract to children
-- Farzana: 
-  - Progress so far:
-    - Writing out all prompts in GamePrompts
-    - Wrtiting all descriptions for our 'projects' in the game 
-    - Created UseCase class GameGenerator and added new methods to it. 
-    - Worked on SkillCompatibility in class Project with Maggie. 
-    - Worked on class Project 
-    - Working on some methods in GameMaker tht correspond to class Project
-    - Writing up other descriptions for our games (projects, final projects, conversations)
-    - Working on all needed txt files (for generating projects and interns)
-    - Worked on GameGeneratorsTest
-    - Wrote up the specification
-    - Factory Method Design Pattern in design document 
-    - Step 1 of Scenario Walkthrough in design document 
-    - Helped Camille with SOLID principles 
-- Maggie:
-  - Progress so far:
-    - Writing out all prompts in GamePrompts
-    - Wrtiting all descriptions for our 'projects' in the game
-    - Worked on SkillCompatibility in class Project with Maggie. 
-    - Worked on class Project  
-    - Writing up other descriptions for our games (projects, final projects, conversations)
-    - Working on all needed txt files (for generating projects and interns)
-    - Worked on GameGeneratorsTest
-    - Wrote Step 3 of scenario walkthrough in design document 
-- Jacob:
+Farzana: 
+- Progress so far:
+       - Writing out all prompts in GamePrompts
+       - Wrtiting all descriptions for our 'projects' in the game 
+       - Created UseCase class GameGenerator and added new methods to it. 
+       - Worked on SkillCompatibility in class Project with Maggie. 
+       - Worked on class Project 
+       - Working on some methods in GameMaker tht correspond to class Project
+       - Writing up other descriptions for our games (projects, final projects, conversations)
+       - Working on all needed txt files (for generating projects and interns)
+       - Worked on GameGeneratorsTest
+       - Wrote up the specification
+       - Factory Method Design Pattern in design document 
+       - Step 1 of Scenario Walkthrough in design document 
+       - Helped Camille with SOLID principles 
+Maggie:
+- Progress so far:
+       - Writing out all prompts in GamePrompts
+       - Wrtiting all descriptions for our 'projects' in the game
+       - Worked on SkillCompatibility in class Project with Maggie. 
+       - Worked on class Project  
+       - Writing up other descriptions for our games (projects, final projects, conversations)
+       - Working on all needed txt files (for generating projects and interns)
+       - Worked on GameGeneratorsTest
+       - Wrote Step 3 of scenario walkthrough in design document 
+Jacob:
     - Classes in charge of:
         - all reportMakers
         - monthPresenter
@@ -102,15 +102,11 @@ Here was the progress so far:
         - ResponseTreeMaker
     - Progress so far:
         - Design a new class to represent the tree object
-        - Figure out how to parse through tree to get interactive response from player.
-        - Finished all TODOs
-        - Finished javadocs
-        - Implemented some methods in GameMaker
+        - Figure out how to parse through tree to get interactive response from player
     - Things need to do:
         - figure out internResponseTreeFactory and how it related to generating interns
-        - finish implementing all classes
-        - write question/answer text files to generate the response tree
-        - write tests for ResponseTree and ResponseTreeMaker
+        - CLEAN
+        - tests
 
 - Enam:
     - Classes in charge of:
