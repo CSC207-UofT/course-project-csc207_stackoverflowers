@@ -55,7 +55,7 @@ public class GameGeneratorsTest {
 //        Assert.assertEquals(result.size);
 //    }
 
-// TODO: These tests might need to be modified after HRSystem's implementation is completed. Hhaha
+// TODO: These tests might need to be modified after HRSystem's implementation is completed.
 
     @org.junit.jupiter.api.Test
     void TestGenerateInterns() throws FileNotFoundException {
@@ -76,16 +76,16 @@ public class GameGeneratorsTest {
         Assert.assertEquals(hrSystem.getInternList().size(), 5);
     }
 
-    // TODO: I'm currently not sure how to test this method (I think there're gaps between the implementation of
-    // GameGenerator and HRSystem...Idk, maybe we need a getter for projectList in HRSystem??)
+    // TODO: Enam needs to add a getter for projectList in HRSystem.
     @org.junit.jupiter.api.Test
     void TestGenerateProjects() throws FileNotFoundException {
         gameGenerators.generateProjects(3);
+        Assert.assertEquals(hrSystem.getProjectList().size(), 3);
     }
 
     @org.junit.jupiter.api.Test
     void TestGenerateFinalProject() throws FileNotFoundException {
-        Project finalProject = new Project(GamePrompts.PROJECT1_NAME);
+        gameGenerators.generateFinalProject();
         Assert.assertEquals(hrSystem.getProject(HRSystem.FINAL_MONTH).size(), 1);
         Assert.assertTrue(hrSystem.getProject(HRSystem.FINAL_MONTH).get(0).isFinal());
     }
