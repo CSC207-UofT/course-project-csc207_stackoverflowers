@@ -1,8 +1,8 @@
 import ControllersPresenters.ReportLevel;
 import Entities.*;
 import UseCases.*;
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 
@@ -11,30 +11,29 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ReportLevelTest {
-
     ReportLevel reportLevel;
     HRSystem hrSystem;
 
-    @Test(timeout = 100)
+    @Test
     public void testReportSetup() {
         for (int num = 1; num != 7; num++) {
             reportLevel = new ReportLevel(num, hrSystem);
             if (num == 1 || num == 3 || num == 5) {
-                Assertions.assertEquals(new MonthReportMaker(hrSystem), reportLevel.getCurrentReportMaker());
+                assertEquals(new MonthReportMaker(hrSystem), reportLevel.getCurrentReportMaker());
             } else if (num == 2 || num == 4) {
-                Assertions.assertEquals(new ProjectReportMaker(hrSystem), reportLevel.getCurrentReportMaker());
+                assertEquals(new ProjectReportMaker(hrSystem), reportLevel.getCurrentReportMaker());
             } else {
-                Assertions.assertEquals(new FinalReportMaker(hrSystem), reportLevel.getCurrentReportMaker());
+                assertEquals(new FinalReportMaker(hrSystem), reportLevel.getCurrentReportMaker());
             }
         }
     }
 
-    @Test(timeout = 100)
+    @Test
     public void testEndPrompt() throws Exception {
         reportLevel = new ReportLevel(1, hrSystem);
         String actual = reportLevel.getOutputString("confirm all decisions");
         String expected = reportLevel.getCurrentReportMaker().endOfMonthPrompt(1);
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
     @Nested
@@ -49,15 +48,15 @@ public class ReportLevelTest {
             reportLevel.getOutputString("stuff");//Gets the first output so that now it can make stuff go.
         }
 
-        @Test(timeout = 100)
+        @Test
         public void testFinishedUpgradeMatch() throws Exception {
             reportLevel = new ReportLevel(1, hrSystem);
             String actual = reportLevel.getOutputString("assign intern to upgrade Mary");
             String expected = reportLevel.getCurrentReportMaker().assignInternToUpgrade("Mary");
-            Assertions.assertEquals(actual, expected);
+            assertEquals(actual, expected);
         }
 
-        @Test(timeout = 100)
+        @Test
         public void testFinishedUpgradeFail() throws Exception {
             reportLevel = new ReportLevel(1, hrSystem);
             reportLevel.getCurrentReportMaker().assignInternToUpgrade("Mary");
@@ -65,33 +64,33 @@ public class ReportLevelTest {
         }
     }
 
-    @Test(timeout = 100)
+    @Test
     public void testFinishedUpgradeSuccess() throws Exception {
         String actual = reportLevel.getOutputString("assign intern to upgrade Bob");
         String expected = GamePrompts.INTERN_UPGRADING_SUCCESS;
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
-    @Test(timeout = 100)
+    @Test
     public void testCheckProjects() throws Exception {
         String actual = reportLevel.getOutputString("check project info");
         String expected = reportLevel.getCurrentReportMaker().getProjectInfo(1);
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
-    @Test(timeout = 100)
+    @Test
     public void testCheckInterns() throws Exception {
         String actual = reportLevel.getOutputString("check interns info");
         String expected = reportLevel.getCurrentReportMaker().getInternsInfo();
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
-    @Test(timeout = 100)
+    @Test
     public void testAssignUpgradeFail() {
         try {
             reportLevel.getOutputString("assign intern to project Mary");
         } catch (Exception e) {
-            Assertions.assertEquals(e.getMessage(), Exceptions.INVALID_COMMAND);
+            assertEquals(e.getMessage(), Exceptions.INVALID_COMMAND);
         }
     }
 

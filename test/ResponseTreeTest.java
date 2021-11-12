@@ -1,13 +1,12 @@
 import UseCases.ResponseTree;
 import java.util.ArrayList;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ResponseTreeTest {
 
-    @Test(timeout = 1000)
+    @Test
     public void TestIsRoot() {
         ArrayList<String> data = new ArrayList<>();
         data.add("Hello");
@@ -15,7 +14,7 @@ public class ResponseTreeTest {
         assertTrue(tree.isRoot());
     }
 
-    @Test(timeout = 1000)
+    @Test
     public void TestIsRootFalse() {
         ArrayList<String> data1 = new ArrayList<>();
         data1.add("Hello");
@@ -27,7 +26,7 @@ public class ResponseTreeTest {
         assertFalse(tree2.isRoot());
     }
 
-    @Test(timeout = 1000)
+    @Test
     public void TestIsLeaf() {
         ArrayList<String> data1 = new ArrayList<>();
         data1.add("Hello");
@@ -40,7 +39,7 @@ public class ResponseTreeTest {
         assertFalse(tree1.isLeaf());
     }
 
-    @Test(timeout = 1000)
+    @Test
     public void TestGetData() {
         ArrayList<String> data = new ArrayList<>();
         data.add("Hello");
@@ -48,7 +47,7 @@ public class ResponseTreeTest {
         assertEquals(data, tree.getData());
     }
 
-    @Test(timeout = 1000)
+    @Test
     public void TestAddChild() {
         ArrayList<String> data1 = new ArrayList<>();
         data1.add("Hello");
@@ -60,7 +59,7 @@ public class ResponseTreeTest {
         assertTrue(tree1.getChildren().contains(tree2));
     }
 
-    @Test(timeout = 1000)
+    @Test
     public void TestGetSize() {
         ArrayList<String> data1 = new ArrayList<>();
         data1.add("Hello");

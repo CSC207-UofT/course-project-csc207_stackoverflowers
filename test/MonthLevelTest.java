@@ -2,10 +2,11 @@ import ControllersPresenters.MonthLevel;
 import Entities.*;
 import UseCases.HRSystem;
 import UseCases.MonthMaker;
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -17,20 +18,20 @@ public class MonthLevelTest {
     HRSystem hrSystem;
     MonthMaker monthMaker;
 
-    @Test(timeout = 100)
+    @Test
     public void testStartOfMonthPrompt() throws Exception {
         monthLevel = new MonthLevel(1, hrSystem);
         String actual = monthLevel.getOutputString("Yup");
         String expected = monthMaker.startOfMonthPrompt();
-        Assertions.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
-    @Test(timeout = 100)
+    @Test
     public void testEndPrompt() throws Exception {
         monthLevel = new MonthLevel(1, hrSystem);
         String actual = monthLevel.getOutputString("confirm all decisions");
         String expected = monthMaker.endOfMonthPrompt();
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
 
@@ -47,73 +48,73 @@ public class MonthLevelTest {
             monthLevel.getOutputString("yo");//Gets the first output so that now it can make stuff go.
         }
 
-        @Test(timeout = 100)
+        @Test
         public void testInvalidCommand() {
             try {
                 monthLevel.getOutputString("checj assign");
             } catch (Exception e) {
-                Assertions.assertEquals(e.getMessage(), Exceptions.INVALID_COMMAND);
+                assertEquals(e.getMessage(), Exceptions.INVALID_COMMAND);
             }
         }
 
-        @Test(timeout = 100)
+        @Test
         public void testCheckAssign() throws Exception {
             String actual = monthLevel.getOutputString("check assign");
             String expected = monthMaker.getAssigningInfo();
-            Assertions.assertEquals(actual, expected);
+            assertEquals(actual, expected);
         }
 
-        @Test(timeout = 100)
+        @Test
         public void testCheckInterns() throws Exception {
             String actual = monthLevel.getOutputString("check interns info");
             String expected = monthMaker.getInternsInfo();
-            Assertions.assertEquals(actual, expected);
+            assertEquals(actual, expected);
         }
 
-        @Test(timeout = 100)
+        @Test
         public void testCheckProjects() throws Exception {
             String actual = monthLevel.getOutputString("check project info");
             String expected = monthMaker.getProjectInfo();
-            Assertions.assertEquals(actual, expected);
+            assertEquals(actual, expected);
         }
 
-        @Test(timeout = 100)
+        @Test
         public void testAssignInternToProjectInvalidCommand() {
             try {
                 monthLevel.getOutputString("assign intern to project");
             } catch (Exception e) {
-                Assertions.assertEquals(e.getMessage(), Exceptions.INVALID_COMMAND);
+                assertEquals(e.getMessage(), Exceptions.INVALID_COMMAND);
             }
         }
 
-        @Test(timeout = 100)
+        @Test
         public void testAssignInternToProjectFail() {
             try {
                 monthLevel.getOutputString("assign intern to project Mary ");
             } catch (Exception e) {
-                Assertions.assertEquals(e.getMessage(), Exceptions.INVALID_COMMAND);
+                assertEquals(e.getMessage(), Exceptions.INVALID_COMMAND);
             }
         }
 
-        @Test(timeout = 100)
+        @Test
         public void testRemoveInternFromProjectInvalidCommand() {
             try {
                 monthLevel.getOutputString("remove intern from project");
             } catch (Exception e) {
-                Assertions.assertEquals(e.getMessage(), Exceptions.INVALID_COMMAND);
+                assertEquals(e.getMessage(), Exceptions.INVALID_COMMAND);
             }
         }
 
-        @Test(timeout = 100)
+        @Test
         public void testRemoveInternFromProjectInvalidCommand2() {
             try {
                 monthLevel.getOutputString("remove intern from project Bob Logo Design");
             } catch (Exception e) {
-                Assertions.assertEquals(e.getMessage(), Exceptions.INVALID_COMMAND);
+                assertEquals(e.getMessage(), Exceptions.INVALID_COMMAND);
             }
         }
 
-        @Test(timeout = 1000)
+        @Test
         public void testConfirmDecisions() throws Exception {
             //Test that prompt asking to confirm decisions will actually appear
             // if all Hiredinterns have been assigned to a project.
@@ -122,7 +123,7 @@ public class MonthLevelTest {
             hrSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
             String actual = monthLevel.getOutputString("huh");
             String expected = monthMaker.confirmChoice();
-            Assertions.assertEquals(actual, expected);
+            assertEquals(actual, expected);
         }
 
         private ArrayList<Project> makeProjects() throws FileNotFoundException {

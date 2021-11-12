@@ -112,4 +112,8 @@ public class ReportLevel extends Level{
     private boolean finishedUpgrading(int currentMonth){
         return currentReportMaker.checkUpgraded(currentMonth);
     }
+
+    public ReportMaker getCurrentReportMaker(){
+        return currentReportMaker;
+    }
 }

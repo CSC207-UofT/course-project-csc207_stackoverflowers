@@ -5,11 +5,11 @@ import Entities.Intern;
 import Entities.Project;
 import UseCases.HRSystem;
 import UseCases.MonthReportMaker;
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
-
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,39 +20,39 @@ public class MonthReportMakerTest {
     HRSystem hrSystem;
     MonthReportMaker reportMaker;
 
-    @Test(timeout = 100)
+    @Test
     public void testMakeReportHeader(){
         String actual = reportMaker.makeReportHeader(1);
         String expected = GamePrompts.REPORT_HEADER + 1 + '\n';
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
-    @Test(timeout = 100)
+    @Test
     public void testBakeProjectName(){
         String actual = reportMaker.bakeProjectName("a name");
         String expected = GamePrompts.PROJECT_NAME_HEADER + "a name";
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
-    @Test(timeout = 100)
+    @Test
     public void testBakeProgress(){
         String actual = reportMaker.bakeProgress(1);
         String expected = GamePrompts.PROJECT_PROGRESS_HEADER + 1;
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
-    @Test(timeout = 100)
+    @Test
     public void testEndOfMonthPromptNotFinal(){
         String actual = reportMaker.endOfMonthPrompt(1);
         String expected = GamePrompts.END_OF_MONTH_PROMPT;
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
-    @Test(timeout = 100)
+    @Test
     public void testEndOfMonthPromptFinal(){
         String actual = reportMaker.endOfMonthPrompt(6);
         String expected = GamePrompts.END_OF_FINAL_MONTH_PROMPT;
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
     @Nested
@@ -67,11 +67,11 @@ public class MonthReportMakerTest {
             reportLevel.getOutputString("stuff");//Gets the first output so that now it can make stuff go.
         }
 
-        @Test(timeout = 100)
+        @Test
         public void testCheckUpgradedTrue(){
             boolean actual = reportMaker.checkUpgraded(1);
             boolean expected = hrSystem.internUpgraded(1);
-            Assertions.assertEquals(actual, expected);
+            assertEquals(actual, expected);
         }
 
 //        @Test(timeout = 100)
