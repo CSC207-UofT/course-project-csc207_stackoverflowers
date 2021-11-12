@@ -25,7 +25,7 @@ public class HRSystem implements Serializable {
 
     private final ArrayList<HiredIntern> hiredInternList;
 
-    private final ArrayList<InterviewIntern> interviewInternList;
+    private ArrayList<InterviewIntern> interviewInternList;
 
     private final ArrayList<Project> projectList;
 
@@ -87,8 +87,8 @@ public class HRSystem implements Serializable {
      * This method updates the list of Entities.Intern
      * @param interns the ArrayList of Entities.Intern to add to the current list of interns.
      */
-    public void updateInternList(ArrayList<Intern> interns) {
-        this.internList.addAll(interns);
+    public void updateInternList(ArrayList<InterviewIntern> interns) {
+        this.interviewInternList = interns;
     }
 
     /**
@@ -182,9 +182,9 @@ public class HRSystem implements Serializable {
      * This method gets a String representation of all intern info.
      * @return a String of intern information for every intern in internList
      */
-    public String makeInternsToString() {
+    public String makeInterviewInternsToString() {
         StringBuilder res = new StringBuilder();
-        for (Intern i : this.internList) {
+        for (Intern i : this.interviewInternList) {
             res.append(i.internToString());
         }
         return res.toString();

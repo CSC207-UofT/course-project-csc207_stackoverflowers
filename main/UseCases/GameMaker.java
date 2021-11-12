@@ -39,7 +39,7 @@ public class GameMaker implements Serializable {
      *
      * @param newInterns A list of interns constructed in the UseCases.GameMaker constructor
      */
-    public void addInternToList(ArrayList<Intern> newInterns){
+    public void addInternToList(ArrayList<InterviewIntern> newInterns){
         this.currentHRSystem.updateInternList(newInterns);
     }
 
@@ -63,7 +63,7 @@ public class GameMaker implements Serializable {
         re += GamePrompts.FIRST_PROMPT_BEFORE_NAME;
         re += playerInput;
         re += GamePrompts.FIRST_PROMPT_AFTER_NAME;
-        re += this.currentHRSystem.makeInternsToString();
+        re += this.currentHRSystem.makeInterviewInternsToString();
         re += GamePrompts.ASK_FOR_INTERVIEWEE_NAME;
         return re;
     }

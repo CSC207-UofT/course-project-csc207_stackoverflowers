@@ -76,7 +76,7 @@ public class GameManager {
     }
 
     private String universalCommand(String playerInput) throws Exception {
-    if(playerInput.strip() =="save") {
+    if(playerInput.trim() =="save") {
         return currentGameMaker.save(currentMonth);
     }if(playerInput == "quit"){
         currentStatus = statusOfGame.End;

@@ -48,13 +48,13 @@ public interface ReportMaker {
 
 
     int calculateInternPerformance(HashMap<String, Double> internSkills,
-                                   HashMap<String, Integer> projectSkill);
+                                   HashMap<String, Float> projectSkill);
 
 
 
     String bakeInternsPerformances (String internNames,
                                            ArrayList<HashMap<String, Double>>  internSkills,
-                                           HashMap<String, Integer> projectSkill);
+                                           HashMap<String, Float> projectSkill);
 
 
     String endOfMonthPrompt(int currentMonth);
