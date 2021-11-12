@@ -2,11 +2,8 @@ package UseCases;
 import Entities.Exceptions;
 import Entities.GamePrompts;
 import Entities.Intern;
-import Entities.Project;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 
 public class MonthReportMaker implements ReportMaker {
     private final GamePrompts prompts;

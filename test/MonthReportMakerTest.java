@@ -5,7 +5,6 @@ import Entities.Intern;
 import Entities.Project;
 import UseCases.HRSystem;
 import UseCases.MonthReportMaker;
-import UseCases.ReportMaker;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,35 +21,35 @@ public class MonthReportMakerTest {
     MonthReportMaker reportMaker;
 
     @Test(timeout = 100)
-    public void testMakeReoprtHeader() throws Exception {
+    public void testMakeReportHeader(){
         String actual = reportMaker.makeReportHeader(1);
         String expected = GamePrompts.REPORT_HEADER + 1 + '\n';
         Assertions.assertEquals(actual, expected);
     }
 
     @Test(timeout = 100)
-    public void testBakeProjectName() throws Exception {
+    public void testBakeProjectName(){
         String actual = reportMaker.bakeProjectName("a name");
         String expected = GamePrompts.PROJECT_NAME_HEADER + "a name";
         Assertions.assertEquals(actual, expected);
     }
 
     @Test(timeout = 100)
-    public void testBakeProgress() throws Exception {
+    public void testBakeProgress(){
         String actual = reportMaker.bakeProgress(1);
         String expected = GamePrompts.PROJECT_PROGRESS_HEADER + 1;
         Assertions.assertEquals(actual, expected);
     }
 
     @Test(timeout = 100)
-    public void testEndOfMonthPromptNotFinal() throws Exception {
+    public void testEndOfMonthPromptNotFinal(){
         String actual = reportMaker.endOfMonthPrompt(1);
         String expected = GamePrompts.END_OF_MONTH_PROMPT;
         Assertions.assertEquals(actual, expected);
     }
 
     @Test(timeout = 100)
-    public void testEndOfMonthPromptFinal() throws Exception {
+    public void testEndOfMonthPromptFinal(){
         String actual = reportMaker.endOfMonthPrompt(6);
         String expected = GamePrompts.END_OF_FINAL_MONTH_PROMPT;
         Assertions.assertEquals(actual, expected);
@@ -69,17 +68,15 @@ public class MonthReportMakerTest {
         }
 
         @Test(timeout = 100)
-        public void testCheckUpgradedTrue() throws Exception {
+        public void testCheckUpgradedTrue(){
             boolean actual = reportMaker.checkUpgraded(1);
             boolean expected = hrSystem.internUpgraded(1);
             Assertions.assertEquals(actual, expected);
         }
-//
+
 //        @Test(timeout = 100)
 //        public void testGetUpgradingInfo() throws Exception {
-//            String actual = reportMaker.endOfMonthPrompt(6);
-//            String expected = GamePrompts.END_OF_FINAL_MONTH_PROMPT;
-//            Assertions.assertEquals(actual, expected);
+//
 //        }
 //
 //        @Test(timeout = 100)
