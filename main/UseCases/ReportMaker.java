@@ -1,10 +1,5 @@
 package UseCases;
 
-import Entities.Exceptions;
-import Entities.GamePrompts;
-import Entities.Intern;
-import Entities.Project;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -55,13 +50,13 @@ public interface ReportMaker {
 
 
 
-    int calculateInternPerformance(HashMap<String, Integer> internSkills,
+    int calculateInternPerformance(HashMap<String, Double> internSkills,
                                    HashMap<String, Integer> projectSkill);
 
 
 
     String bakeInternsPerformances (String internNames,
-                                           ArrayList<HashMap<String, Integer>>  internSkills,
+                                           ArrayList<HashMap<String, Double>>  internSkills,
                                            HashMap<String, Integer> projectSkill);
 
 
