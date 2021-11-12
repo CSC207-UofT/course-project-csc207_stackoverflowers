@@ -50,7 +50,7 @@ public class HRSystemTest {
 
     @Test(timeout = 1000)
     public void TestMakeInterviewInternsToString(){
-        String expected = "Name: Enam; age: 21; skills: Teamwork (80.5)";
+        String expected = "Name: Enam; age: 21; skills: Teamwork (80.5)\n";
         assertEquals(expected, system.makeInterviewInternsToString());
     }
 

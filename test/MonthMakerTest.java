@@ -96,6 +96,7 @@ public class MonthMakerTest {
 
     @Test
     public void testCheckAllInternsAssigned(){
+        monthMaker = new MonthMaker(hrSystem, 1);
         hrSystem.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
         hrSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
         hrSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
