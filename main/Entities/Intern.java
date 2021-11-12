@@ -47,7 +47,6 @@ abstract public class Intern{
      * Return the skills of this Entities.Intern
      */
     public HashMap<String, Double> getInternSkills() {
-
         return this.internSkills;
     }
 

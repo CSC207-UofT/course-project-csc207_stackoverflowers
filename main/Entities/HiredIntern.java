@@ -8,7 +8,7 @@ public class  HiredIntern extends Intern {
 
     private String hiredInternName;
     private int hiredInternAge;
-    private HashMap<String, Double> hiredInternSkills;
+    private HashMap<String, Integer> hiredInternSkills;
 
     /**
      * Construct a hiredIntern, giving them the given hiredInternName,
