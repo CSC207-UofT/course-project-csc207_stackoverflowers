@@ -5,7 +5,7 @@ import Entities.Project;
 import UseCases.GameGenerators;
 import UseCases.HRSystem;
 
-
+import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 import java.util.*;
 import java.io.FileNotFoundException;
@@ -26,9 +26,14 @@ public class GameGeneratorsTest {
             e.printStackTrace();
         }
     }
-//        privateField.setAccessible(true); // Set the accessibility as true
-    HRSystem hrSystem;
+        privateField.setAccessible(true); //  turn off the access checks for this particular Field instance, for reflection only.
 
+//        public final void setAccessible(boolean flag) throws SecurityException {
+//            privateField.setAccessible(flag);
+//        }
+//        privateField.setAccessible(true);
+
+    HRSystem hrSystem;
     {
         try {
             hrSystem = (HRSystem) privateField.get(gameGenerators); // Store the value of private field in variable
@@ -59,13 +64,13 @@ public class GameGeneratorsTest {
 // TODO: These tests might need to be modified after HRSystem's implementation is completed.
 
     @Test
-    void TestGenerateInterns() throws FileNotFoundException {
+    public void TestGenerateInterns() throws FileNotFoundException {
         gameGenerators.generateInterns(3);
         assertEquals(hrSystem.getInternList().size(), 3);
         }
     /*
     @Test
-    void TestAddInternToList() {
+    public void TestAddInternToList() {
         HashMap<String, Double> MagSkillSets = (HashMap<String, Double>) Map.of("Responsible", 90.0, "Observant",
                 80.0, "Communication", 70.0);
         Intern mag = new HiredIntern("Maggie", 20, MagSkillSets);
@@ -87,7 +92,7 @@ public class GameGeneratorsTest {
 //    }
 
     @Test
-    void TestGenerateFinalProject() throws FileNotFoundException {
+    public void TestGenerateFinalProject() throws FileNotFoundException {
         gameGenerators.generateFinalProject();
         assertEquals(hrSystem.getProject(HRSystem.FINAL_MONTH).size(), 1);
         assertTrue(hrSystem.getProject(HRSystem.FINAL_MONTH).get(0).isFinal());
