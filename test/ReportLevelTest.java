@@ -35,32 +35,32 @@ public class ReportLevelTest {
         assertEquals(actual, expected);
     }
 
-    class TestDuringProject {
-        @Before
-        public void setUp() throws Exception {
-            //Set tup the hrSystem so that it has some interns and projects in it.
-            HRSystem hrSystem = new HRSystem();
-            hrSystem.updateInternList(makeInterns());
-            hrSystem.updateProjectList(makeProjects());
-            reportLevel = new ReportLevel(1, hrSystem);
-            reportLevel.getOutputString("stuff");//Gets the first output so that now it can make stuff go.
-        }
-
-        @Test
-        public void testFinishedUpgradeMatch() throws Exception {
-            reportLevel = new ReportLevel(1, hrSystem);
-            String actual = reportLevel.getOutputString("assign intern to upgrade Mary");
-            String expected = reportLevel.getCurrentReportMaker().assignInternToUpgrade("Mary");
-            assertEquals(actual, expected);
-        }
-
-        @Test
-        public void testFinishedUpgradeFail() throws Exception {
-            reportLevel = new ReportLevel(1, hrSystem);
-            reportLevel.getCurrentReportMaker().assignInternToUpgrade("Mary");
-            throw new Exception(Exceptions.INTERN_UPGRADING_FAILURE);
-        }
+    public void setUp() throws Exception {
+        //Set tup the hrSystem so that it has some interns and projects in it.
+        HRSystem hrSystem = new HRSystem();
+        hrSystem.updateInternList(makeInterns());
+        hrSystem.updateProjectList(makeProjects());
+        reportLevel = new ReportLevel(1, hrSystem);
+        reportLevel.getOutputString("stuff");//Gets the first output so that now it can make stuff go.
     }
+
+    @Test
+    public void testFinishedUpgradeMatch() throws Exception {
+        setUp();
+        reportLevel = new ReportLevel(1, hrSystem);
+        String actual = reportLevel.getOutputString("assign intern to upgrade Mary");
+        String expected = reportLevel.getCurrentReportMaker().assignInternToUpgrade("Mary");
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void testFinishedUpgradeFail() throws Exception {
+        setUp();
+        reportLevel = new ReportLevel(1, hrSystem);
+        reportLevel.getCurrentReportMaker().assignInternToUpgrade("Mary");
+        throw new Exception(Exceptions.INTERN_UPGRADING_FAILURE);
+    }
+
 
     @Test
     public void testFinishedUpgradeSuccess() throws Exception {
