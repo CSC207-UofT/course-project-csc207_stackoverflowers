@@ -102,7 +102,7 @@ Here was the progress so far:
         - ResponseTreeMaker
     - Progress so far:
         - Design a new class to represent the tree object
-        - Figure out how to parse through tree to get interactive response from player
+        - Figure out how to parse through tree to get interactive response from player.
     - Things need to do:
         - figure out internResponseTreeFactory and how it related to generating interns
         - CLEAN
