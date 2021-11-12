@@ -15,7 +15,7 @@ public class InterviewMaker {
 
     /**
      * The constructor makes a new InterviewMaker for the current phase, and stores attributes to be used in
-     * Controllers.InterviewLevel..
+     * Controllers.InterviewLevel.
      */
     public InterviewMaker(HRSystem currentHRSystem){
         // this.currentHiredIntern = new HiredIntern();
@@ -46,13 +46,13 @@ public class InterviewMaker {
      * This method takes in this interviewIntern from UseCases.HRSystem and return the intern's first choices that
      * the player can choose.
      */
-    public String ChoiceOptions(InterviewIntern intern){
-        return this.currentHRSystem.choicesToString(intern);
+    public String ChoiceOptions(){
+        return this.currentHRSystem.choicesToString();
     }
 
 
-    public ArrayList<Object> getChoiceOptions(InterviewIntern intern){
-        return this.currentHRSystem.getChoices(intern);
+    public String getChoiceOptions(){
+        return this.currentHRSystem.choicesToString();
     }
 
     public String choicePrompt(String playerInput){
@@ -61,11 +61,10 @@ public class InterviewMaker {
 
     /**
      * This method allows player to choose from the choices in ChoiceOptions and stores the choice
+     * @return
      */
-    //where are we storing this?? in HRSystem ?
-    //storePlayerChoice attribute -> where would it be?
-    public void storePlayerChoice(Object options){
-        this.currentHRSystem.getPlayerInternResponseChoice(options);
+    public Object storePlayerChoice(Object options){
+        return this.currentHRSystem.getPlayerInternResponseChoice(options);
     }
 
 
@@ -84,9 +83,8 @@ public class InterviewMaker {
      * This method prompts the player if they would like to hire this intern and stores the response
      * @param playerInput the player's response to the Hiring Prompt.
      */
-    public void internToHire(String playerInput){
-        System.out.println(GamePrompts.HIRE_INTERN);
-        currentHRSystem.updatePlayerResponse(playerInput);
+    public String internToHire(String playerInput){
+        return GamePrompts.HIRE_INTERN + currentHRSystem.updatePlayerResponse(playerInput);
     }
 
 

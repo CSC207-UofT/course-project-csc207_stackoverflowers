@@ -310,8 +310,8 @@ public class HRSystem implements Serializable {
      * This method updates the players choice to hire an intern or not.
      * @param res a String representation of the current Player's choice.
      */
-    public void updatePlayerResponse(String res){
-        this.playerResponse = res;
+    public String updatePlayerResponse(String res){
+        return this.playerResponse = res;
     }
 
     /**
@@ -361,8 +361,11 @@ public class HRSystem implements Serializable {
         return this.playerInternChoice;
     }
 
-    public String choicesToString(InterviewIntern intern){
-        ArrayList<ResponseTree> questionChoices = new ArrayList<>(intern.getResponseTree().getChildren());
+    public String choicesToString(){
+        ArrayList<ResponseTree> questionChoices = new ArrayList<ResponseTree>();
+        for (InterviewIntern intern : interviewInternList){
+            questionChoices.addAll(intern.getResponseTree().getChildren());
+        }
         StringBuilder res = new StringBuilder();
 
         for ( ResponseTree choice : questionChoices){
@@ -374,6 +377,7 @@ public class HRSystem implements Serializable {
 
     public ArrayList<Object> getChoices(InterviewIntern intern){
         ArrayList<ResponseTree> questionChoices = new ArrayList<>(intern.getResponseTree().getChildren());
+
         ArrayList<Object> options = new ArrayList<>();
 
         for (ResponseTree choice : questionChoices){
