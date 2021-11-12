@@ -58,7 +58,7 @@ Here was the progress so far:
         - Tests
         - Exceptions = how return correct error message to player
         - Levels -> abstract to children
-Farzana: 
+- Farzana: 
 - Progress so far:
        - Writing out all prompts in GamePrompts
        - Wrtiting all descriptions for our 'projects' in the game 
@@ -73,7 +73,7 @@ Farzana:
        - Factory Method Design Pattern in design document 
        - Step 1 of Scenario Walkthrough in design document 
        - Helped Camille with SOLID principles 
-Maggie:
+- Maggie:
 - Progress so far:
        - Writing out all prompts in GamePrompts
        - Wrtiting all descriptions for our 'projects' in the game
@@ -83,7 +83,7 @@ Maggie:
        - Working on all needed txt files (for generating projects and interns)
        - Worked on GameGeneratorsTest
        - Wrote Step 3 of scenario walkthrough in design document 
-Jacob:
+- Jacob:
     - Classes in charge of:
         - all reportMakers
         - monthPresenter
