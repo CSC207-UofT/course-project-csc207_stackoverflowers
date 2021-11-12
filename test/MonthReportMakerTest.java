@@ -18,9 +18,17 @@ public class MonthReportMakerTest {
     ReportLevel reportLevel;
     HRSystem hrSystem;
     MonthReportMaker reportMaker;
+    @Before
+    public void setup() throws FileNotFoundException {
+        HRSystem hrSystem = new HRSystem();
+        hrSystem.updateInternList(makeInterns());
+        hrSystem.updateProjectList(makeProjects());
+        reportMaker = new MonthReportMaker(hrSystem);
+    }
 
     @Test
-    public void testMakeReportHeader(){
+    public void testMakeReportHeader() {
+
         String actual = reportMaker.makeReportHeader(1);
         String expected = GamePrompts.REPORT_HEADER + 1 + '\n';
         assertEquals(actual, expected);
@@ -66,7 +74,7 @@ public class MonthReportMakerTest {
         }
 
         @Test
-        public void testCheckUpgradedTrue(){
+        public void testCheckUpgradedTrue() {
             boolean actual = reportMaker.checkUpgraded(1);
             boolean expected = hrSystem.internUpgraded(1);
             assertEquals(actual, expected);
@@ -119,6 +127,7 @@ public class MonthReportMakerTest {
 //            String expected = GamePrompts.REPORT_HEADER + 1 + '\n';
 //            Assertions.assertEquals(actual, expected);
 //        }
+    }
 
         private ArrayList<Project> makeProjects() throws FileNotFoundException {
             //A helper function that sets up the Projects in HRSystem for the test.
@@ -128,6 +137,7 @@ public class MonthReportMakerTest {
             projects.add(project1);
             return projects;
         }
+
 
         private ArrayList<Intern> makeInterns() {
             //A helper function that sets up the interns in HRSystem for the test.
@@ -156,5 +166,5 @@ public class MonthReportMakerTest {
             interns.add(Bob);
             return interns;
         }
-    }
+
 }
