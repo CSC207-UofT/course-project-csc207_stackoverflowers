@@ -1,9 +1,10 @@
 
 import Entities.GamePrompts;
 import UseCases.GameMaker;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import java.io.*;
 
 
@@ -11,7 +12,7 @@ import java.io.*;
 
 public class GameMakerTest {
     GameMaker gameMaker;
-    @BeforeAll
+    @Before
     public void setUp() {
          gameMaker = new GameMaker();
          gameMaker.firstPrompt("Maggie");//To update the player's name
