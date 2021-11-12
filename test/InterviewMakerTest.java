@@ -41,8 +41,8 @@ public class InterviewMakerTest {
 
         @Test(timeout = 1000)
         public void TestChoicePrompt(){
-            playerInput = "yes";
-            String expected = make.choicePrompt("That's great. Why don't you tell me a little about yourself?",);
+            String playerInput = "yes";
+            String expected = make.choicePrompt("That's great. Why don't you tell me a little about yourself?");
             String actual = GamePrompts.PLAYER_CHOICE;
             assertEquals(expected, actual);
         }
