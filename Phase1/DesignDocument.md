@@ -47,11 +47,17 @@ and upon hiring, HRSystem updates the list of HiredInterns by adding the newly h
 the Player now interviews the next intern from the InterviewInternList until all interns have been interviewed. Then, Entities.GamePrompts signifies the end
 of an interview by outputting an end of interview prompt. 
 
-Step 3: Assign Interns to Project 
-- describe how the projects are run (first two months only), skillcomp, etc 
+STEP 3: Assign Interns to Project
 
+In the first two months (month is the time unit we use in this game; each month is considered as a level), 2 projects
+will be generated per month which the player assigns interns to (so in total 4 projects will be generated). Controller.
+MonthLevel will get the status of the current month (start, during, end), and asks UseCase.MonthMaker to randomly
+generate two projects. Each project has a name, description, length (2 months), team size (3 interns), and skills compatibility.
+Skills compatibility is a hashmap that maps a skill with a number b/n 0.00 and 1.00, which indicates the skill's
+compatability with this project (so the higher the percentage associated with a particular skill, the more this project
+requires this skill)
 
-Step 4: Check monthly report
+STEP 4: Check monthly report
 - There is a report for every month in game. MonthlyReportMaker is used as the reportMaker when the currentMonth is 1,3 or 5. This is determined by the java logic (month < 6 & month % 2 == 1). ProjectReportMaker is used as the reportMaker when the currentMonth is 2 or 4. This is determined by java logic (month < 4 & month % 2 == 0).  FinallReportMaker is used as the reportMaker when the currentMonth is 6. All versions of reportMakers helps ReportLevel generate Strings and other variables in different situations. ReportLevel's getOutPutString is called in getOutPut in GameManager. The report is shown when function is called, and upon seeing the report, player's next input until finishedUpgrading(currentMonth) is true are considered as commands to ReportLevel. 
 - The report format:
   Here is your report for the end of " + month 
@@ -76,9 +82,9 @@ Step 4: Check monthly report
 
 We used the factory design pattern using GameManger to evaluate the player's response and the interface class ReportMaker that is implemented by the ProjectReportMaker, FinalReportMaker and MonthReportMaker subclasses. We created an interface class ReportMaker and let the concrete classes MonthReportMaker, 
 FinalReportMaker and ProjectReportMaker implement this interface. The interface holds the virtual constructor that defines the general description of the methods needed in each subclass (makeReportHeader(), makeReportIntro() etc.) and the subclasses holds the other requirements needed for example MonthReportMaker show progress of each month in the game whereas ProjectReportMaker will show the outcome of the project in each level. GameManager then instantiates the concrete 
-classes and it can get a report object by checking the player’s input. So if a player wanted to check the month report, GameManager simply outputs the month report  it without having to reach into the specific MonthReportMaker class. This was implemented as soon as Phase 0 was over, when DQ1 was due. 
+classes, and it can get a report object by checking the player’s input. So if a player wanted to check the month report, GameManager simply outputs the month report  it without having to reach into the specific MonthReportMaker class. This was implemented as soon as Phase 0 was over, when DQ1 was due. 
 
-Currently GameManager is responsible for instantiating many classes and is the sole class that evaluates the player's inputs. In the future, we would like to create
+Currently, GameManager is responsible for instantiating many classes and is the sole class that evaluates the player's inputs. In the future, we would like to create
 a separate factory class ReportFactory that is responsible for only evaluating player inputs regarding the reports. 
 
 
