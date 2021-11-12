@@ -1,3 +1,5 @@
+package UseCases;
+
 import Entities.GamePrompts;
 import UseCases.GameMaker;
 import org.junit.Before;
