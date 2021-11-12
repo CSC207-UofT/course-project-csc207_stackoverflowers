@@ -1,11 +1,7 @@
 package UseCases;
 
-import Entities.Exceptions;
-import Entities.GamePrompts;
-import Entities.Intern;
-import Entities.Project;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 
 //An interface class that shows all common methods used to make reports:
 public interface ReportMaker {
@@ -23,18 +19,15 @@ public interface ReportMaker {
      *
      * @return correctly formatted intro for the report based on the current phase (month)
      */
+    String makeReportIntro ();
 
 
     /**
      * Make a body for the report corresponding to the current phase (month) the player is in
-     *
-     * @param projectName // do we need to parameter?
      * @param projectProgress an int between 0 and 10 that indicates how well the project is going
-     * @param interns the list of interns that were assigned to the project of which this Reportmaker is trying to make a report
-     * @param project the project of which this Reportmaker is trying to make a report
      * @return correctly formatted body for the report based on the current phase (month)
      */
-    String makeReportBody (String projectName, int projectProgress, ArrayList<Intern> interns, Project project);
+    String makeReportBody(int projectProgress, int currentMonth);
 
 
     /**
@@ -54,16 +47,18 @@ public interface ReportMaker {
 
 
 
-    String bakeInterns (ArrayList<Intern> interns);
+    String bakeInterns (String internNames);
 
 
 
-    int calculateInternPerformance (Intern intern, Project project);
+    int calculateInternPerformance(HashMap<String, Double> internSkills,
+                                   HashMap<String, Integer> projectSkill);
 
 
 
-    String bakeInternsPerformances (ArrayList<Intern> interns, Project project);
-
+    String bakeInternsPerformances (String internNames,
+                                           ArrayList<HashMap<String, Double>>  internSkills,
+                                           HashMap<String, Integer> projectSkill);
 
 
     String endOfMonthPrompt(int currentMonth);

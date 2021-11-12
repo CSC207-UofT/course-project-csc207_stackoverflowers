@@ -11,7 +11,7 @@ public class GamePrompts implements Serializable {
     - if class gets too long, maybe consider creating another prompt class
      */
 
-    public static final String REPORT_HEADER = "Here is your project report for month " ;
+    public static final String REPORT_HEADER = "Here is your final project report!" + "\n";
 
     public static final String PROJECT_NAME_HEADER = "Project name: ";
 
@@ -53,6 +53,9 @@ public class GamePrompts implements Serializable {
 
 
     public static final String NEXT_CANDIDATE = "Would you like to move on to the next candidate?";
+
+    public static final String END_OF_INTERVIEW_PROMPT = "Congratulations! You have successfully completed interviewing all " +
+            "interns. You may now proceed to the next level of the game.";
 
 
     // not all of the project prompts will be used, the projectgenerator will output a list and choose 4 projects
@@ -114,20 +117,6 @@ public class GamePrompts implements Serializable {
     public static final String FINAL_PROJECT1_NAME = "Software Engineering";
     public static final String FINAL_PROJECT2_NAME = "Machine Learning & AI Research Assistant";
     public static final String FINAL_PROJECT3_NAME = "COVID-19 Tracking System Update";
-
-    public static final String SKILL1 ="Confidence";
-    public static final String SKILL2 ="Teamwork";
-    public static final String SKILL3 ="Leadership";
-    public static final String SKILL4 ="Efficiency";
-    public static final String SKILL5 ="Endurance";
-    public static final String SKILL6 ="Flexibility";
-    public static final String SKILL7 ="Observant";
-    public static final String SKILL8 ="Communication";
-    public static final String SKILL9 ="Responsible";
-    public static final String SKILL10 ="Creativity";
-    public static final String SKILL11 ="Artistic";
-    public static final String SKILL12 ="Patience";
-    public static final String SKILL13 ="Analytical";
 
     public static final String PROJECT1_DESCRIPTION = "Our company wishes to rebrand itself this upcoming Winter, our first step in rebranding our company is to create a new logo\n" +
             "that will encourage more employees to apply to work here and will emulate trust amongst our clients\n" +
