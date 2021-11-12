@@ -64,7 +64,7 @@ public class MonthReportMakerTest {
         public void setUp() throws Exception {
             //Set tup the hrSystem so that it has some interns and projects in it.
             HRSystem hrSystem = new HRSystem();
-            hrSystem.updateInternList(makeInterns());
+            hrSystem.updateHiredInternList(makeInterns());
             hrSystem.updateProjectList(makeProjects());
             reportLevel = new ReportLevel(1, hrSystem);
             reportLevel.getOutputString("stuff");//Gets the first output so that now it can make stuff go.
@@ -136,27 +136,27 @@ public class MonthReportMakerTest {
         }
 
 
-        private ArrayList<Intern> makeInterns() {
+        private ArrayList<HiredIntern> makeInterns() {
             //A helper function that sets up the interns in HRSystem for the test.
             //Setting up two Hired interns
             HashMap<String, Double> marySkills = new HashMap<>();
             marySkills.put("Efficiency", 100.0);
-            Intern Mary = new HiredIntern("Mary", 19, marySkills);
+            HiredIntern Mary = new HiredIntern("Mary", 19, marySkills);
 
             HashMap<String, Double> maggieSkills = new HashMap<>();
             maggieSkills.put("Responsible", 87.0);
-            Intern Maggie = new HiredIntern("Maggie", 20, maggieSkills);
+            HiredIntern Maggie = new HiredIntern("Maggie", 20, maggieSkills);
 
             HashMap<String, Double> rubySkills = new HashMap<>();
             rubySkills.put("Communication", 66.0);
-            Intern Ruby = new HiredIntern("Ruby", 21, rubySkills);
+            HiredIntern Ruby = new HiredIntern("Ruby", 21, rubySkills);
 
             //Also add a interviewIntern that shouldn't be used anywhere during month:
             HashMap<String, Double> bobSkills = new HashMap<>();
             bobSkills.put("Flexibility", 50.0);
-            Intern Bob = new HiredIntern("Bob", 60, bobSkills);
+            HiredIntern Bob = new HiredIntern("Bob", 60, bobSkills);
             //Make a new list of interns to put in HRSystem to update:
-            ArrayList<Intern> interns = new ArrayList<>();
+            ArrayList<HiredIntern> interns = new ArrayList<>();
             interns.add(Mary);
             interns.add(Maggie);
             interns.add(Ruby);
