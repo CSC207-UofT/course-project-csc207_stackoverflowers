@@ -7,7 +7,6 @@ import Entities.Project;
 
 import java.io.Serializable;
 import java.util.*;
-import java.util.function.BiConsumer;
 
 /* add the new interns to a list of new employees that the player can access with their skills
 UseCases.HRSystem would extend Entities.Intern class?
@@ -26,7 +25,7 @@ public class HRSystem implements Serializable {
 
     private final ArrayList<HiredIntern> hiredInternList;
 
-    private final ArrayList<InterviewIntern> interviewInternList;
+    private ArrayList<InterviewIntern> interviewInternList;
 
     private final ArrayList<Project> projectList;
 
@@ -35,11 +34,15 @@ public class HRSystem implements Serializable {
     // stores the month as a key and a list of projects for that month as a value
 
     private final HashMap<Project, ArrayList<HiredIntern>> projectToInterns;
+
+    private Object playerInternResponseChoice;
     // stores a project as a key and a list of HiredInterns assigned to that project as a value
 
     private String playerName;
 
     private String playerResponse;
+
+    private InterviewIntern playerInternChoice;
 
 
     /**
@@ -84,8 +87,8 @@ public class HRSystem implements Serializable {
      * This method updates the list of Entities.Intern
      * @param interns the ArrayList of Entities.Intern to add to the current list of interns.
      */
-    public void updateInternList(ArrayList<Intern> interns) {
-        this.internList.addAll(interns);
+    public void updateInternList(ArrayList<InterviewIntern> interns) {
+        this.interviewInternList = interns;
     }
 
     /**
@@ -179,9 +182,9 @@ public class HRSystem implements Serializable {
      * This method gets a String representation of all intern info.
      * @return a String of intern information for every intern in internList
      */
-    public String makeInternsToString() {
+    public String makeInterviewInternsToString() {
         StringBuilder res = new StringBuilder();
-        for (Intern i : this.internList) {
+        for (Intern i : this.interviewInternList) {
             res.append(i.internToString());
         }
         return res.toString();
@@ -237,14 +240,17 @@ public class HRSystem implements Serializable {
         return this.monthToProject.get(currentMonth);
     }
 
+
+    public ArrayList<Project> getProjectList(){
+        return this.projectList;
+    }
+
     /**
      * This method returns a String representation of each project in Entities.Project and the assigned interns
      * from Entities.HiredInterns per a given month.
      * @param currentMonth an Integer representation for the current month in the current game.
      * @return a String representing each project and the assigned interns to a project.
      */
-    //which code picked depends on GameMakers interpretation of a project list(is it a list of Project with all its
-    // attributes or only a list of project names)?
     public String makeAssignmentToString(int currentMonth) {
 
         // get the projects for the month
@@ -263,43 +269,27 @@ public class HRSystem implements Serializable {
 
         return res.toString();
 
-        /*
-        for (Project proj : monthlyProjList) {
-            for (Project p : projectToInterns.keySet()){
-                append each project from project list for that month to res.
-                res.append(proj.getName());
-
-                append the interns for the projects associated with currentMonth to res.
-                res.append(" Interns in project: ");
-                if (proj.equals(p)) {
-                    res.append(projectToInterns.get(p));
-                }
-            }
-        }
-        */
-
-        /*
-        a method that takes all the assigning so far and returns the List of projects and interns assigned to it.
-        StringBuilder result = new StringBuilder();
-        for (Project p : projectToInterns){
-            result.append(p.getName());
-            result.append("    Interns in project: ");
-            //finish this method so that it displays all project names and the intern names that are
-            // assigned to this project.}
-        return result.toString();
-        */
     }
 
 
-    //TODO: finish new method
+    /**
+     * This method displays the Entities.Intern current skill point in String format.
+     * @param currentMonth the given month that an intern skill is being checked.
+     * @return a String representation of the Entities.Intern upgraded skills point.
+     */
+    //not sure how to finish this method? what exactly is the upgrade we're asking for? ask Jacob, same with other two
+    // upgrade methods
     public String makeUpgradeToString(int currentMonth) {
         //a method that takes the upgrade and returns a list of skills point the intern have now.
+        ArrayList<Project> monthlyProjList = this.monthToProject.get(currentMonth);
         StringBuilder result = new StringBuilder();
-        for (Project p : projectList){
+        for (Project p : monthlyProjList){
             result.append(p.getName());
             result.append("    Interns in project: ");
+            this.monthToProject.get(p);
             //TODO: finish this method so that it displays a list of skills point the intern have now
         }
+
         return result.toString();
     }
 
@@ -324,8 +314,8 @@ public class HRSystem implements Serializable {
      * This method updates the players choice to hire an intern or not.
      * @param res a String representation of the current Player's choice.
      */
-    public void updatePlayerResponse(String res){
-        this.playerResponse = res;
+    public String updatePlayerResponse(String res){
+        return this.playerResponse = res;
     }
 
     /**
@@ -365,6 +355,64 @@ public class HRSystem implements Serializable {
     public Boolean isHired(Intern intern){
         return this.hiredInternList.contains((HiredIntern) intern);
     }
+
+
+    public void updatePlayerInternChoice(InterviewIntern chosenIntern){
+        this.playerInternChoice = chosenIntern;
+    }
+
+    public InterviewIntern getPlayerInternChoice(){
+        return this.playerInternChoice;
+    }
+
+    public String choicesToString(){
+        ArrayList<ResponseTree> questionChoices = new ArrayList<ResponseTree>();
+        for (InterviewIntern intern : interviewInternList){
+            questionChoices.addAll(intern.getResponseTree().getChildren());
+        }
+        StringBuilder res = new StringBuilder();
+
+        for ( ResponseTree choice : questionChoices){
+            res.append(choice.getChildren().get(0));
+        }
+
+        return res.toString();
+    }
+
+    public ArrayList<Object> getChoices(InterviewIntern intern){
+        ArrayList<ResponseTree> questionChoices = new ArrayList<>(intern.getResponseTree().getChildren());
+
+        ArrayList<Object> options = new ArrayList<>();
+
+        for (ResponseTree choice : questionChoices){
+            options.add(choice.getChildren().get(0));
+        }
+        return options;
+
+    }
+    
+    public void updatePlayerInternResponseChoice(Object option){
+        this.playerInternResponseChoice = option;
+    }
+
+    public Object getPlayerInternResponseChoice(Object object){
+        return this.playerInternResponseChoice;
+    }
+
+    public String getInternChoiceResponse(Object playerChoice, InterviewIntern intern){
+
+        ArrayList<ResponseTree> questionChoices = new ArrayList<>(intern.getResponseTree().getChildren());
+        StringBuilder res = new StringBuilder();
+
+        for ( ResponseTree choice : questionChoices){
+            if (choice.getChildren().get(0).equals(playerChoice)){
+                res.append(choice.getChildren().get(1));
+            }
+        }
+
+        return res.toString();
+    }
+
 
     /**
      * This method assigns a given Entities.Intern to a given Entities.Project.

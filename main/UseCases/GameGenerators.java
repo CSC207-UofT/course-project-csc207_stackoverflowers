@@ -20,7 +20,7 @@ public class GameGenerators implements Serializable {
      * Add the list of interns to UseCases.HRSystem.
      * @param newInterns A list of interns constructed in the UseCases.GameMaker constructor
      */
-    public void addInternToList(ArrayList<Intern> newInterns){
+    public void addInternToList(ArrayList<InterviewIntern> newInterns){
         this.currentHRSystem.updateInternList(newInterns);
     }
 
@@ -29,16 +29,16 @@ public class GameGenerators implements Serializable {
      * @param numInterns the number of interns that will be generated.
      */
     public void generateInterns(int numInterns) throws FileNotFoundException {
-        ArrayList<String> nameList = generateInfo("UseCases/names.txt");
-        ArrayList<String> skillList = generateInfo("UseCases/skills.txt");
+        ArrayList<String> nameList = generateInfo("Resources/names.txt");
+        ArrayList<String> skillList = generateInfo("Resources/skills.txt");
         Random random = new Random();
-        ArrayList<Intern> internList = new ArrayList<>();
+        ArrayList<InterviewIntern> internList = new ArrayList<>();
         for (int i = 1; i <= numInterns; i++) {
             String name = nameList.get(random.nextInt(nameList.size()));
             nameList.remove(name);
             HashMap<String, Double> skillMap = generateUniqueSkillMap(skillList);
             int age = random.nextInt(45) + 20;
-            Intern interviewee = new InterviewIntern(name, age, skillMap);
+            InterviewIntern interviewee = new InterviewIntern(name, age, skillMap);
             internList.add(interviewee);
         }
         addInternToList(internList);

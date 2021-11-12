@@ -3,6 +3,7 @@ import Entities.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 public class MonthReportMaker implements ReportMaker {
     private final GamePrompts prompts;
@@ -15,8 +16,16 @@ public class MonthReportMaker implements ReportMaker {
     }
     @Override
     public String makeReportHeader(int month) {
-        return GamePrompts.REPORT_HEADER + month + '\n';
+        return "Here is your report for the end of " + month + "\n";
     }
+
+
+    @Override
+    public String makeReportIntro() {
+
+        return "This is an intermediate report of this ongoing project." + "\n";
+    }
+
 
     /* format for the reportBody
     Project name: xxx (need to access project.projectName)
@@ -34,20 +43,20 @@ public class MonthReportMaker implements ReportMaker {
         String internNames = currentHRSystem.getInternNames();
 
         ArrayList<Project> projList = currentHRSystem.getProject(currentMonth);
-        HashMap<String, Integer> projectCompatibilityList = new HashMap<>();
+        HashMap<String, Float> projectCompatibilityList = new HashMap<>();
         for (Project proj : projList) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
-        ArrayList<HashMap<String, Integer>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
+        ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
         return bakeProjectName(currentHRSystem.getProjectName(currentMonth)) + "\n" +
                 bakeProgress(projectProgress) + "\n" +
                 bakeInterns(internNames) + "\n" +
                 bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
     }
 
-    private ArrayList<HashMap<String, Integer>> getHiredInternsSkills(ArrayList<HiredIntern> hiredInternList) {
+    private ArrayList<HashMap<String, Double>> getHiredInternsSkills(ArrayList<HiredIntern> hiredInternList) {
         //Makes an arrayList full of internSkills.
-        ArrayList<HashMap<String, Integer>> internCompatabilityList  = new ArrayList<>();
+        ArrayList<HashMap<String, Double>> internCompatabilityList  = new ArrayList<>();
         for (Intern i : hiredInternList){
             internCompatabilityList.add(i.getInternSkills());
         }
@@ -71,26 +80,24 @@ public class MonthReportMaker implements ReportMaker {
 
     @Override
     public String bakeInternsPerformances (String internNames,
-                                           ArrayList<HashMap<String, Integer>>  internSkills,
-                                           HashMap<String, Integer> projectSkill) {
+                                           ArrayList<HashMap<String, Double>>  internSkills,
+                                           HashMap<String, Float> projectSkill) {
         StringBuilder returnLine = new StringBuilder(GamePrompts.INTERN_PERFORMANCE_HEADER + internNames + "\n");
         String[] internNamesList = internNames.split("|");
         for (int i = 0; i != internNamesList.length; i+=1) {
-            returnLine.append("     - ")
-                    .append(internNamesList[i])
-                    .append(": ").append(calculateInternPerformance(internSkills.get(i), projectSkill))
-                    .append("\n");
+            returnLine.append("     - ").append(internNamesList[i]).append(": ").append(calculateInternPerformance(internSkills.get(i), projectSkill)).append("\n");
         }
         return returnLine.toString();
     }
 
     @Override
-    public int calculateInternPerformance(HashMap<String, Integer> internSkills,
-                                          HashMap<String, Integer> projectSkill) {
+    public int calculateInternPerformance(HashMap<String, Double> internSkills,
+                                          HashMap<String, Float> projectSkill) {
+
         int result = 0;
         ArrayList<Double> effectiveSkills = new ArrayList<Double>();
         for (String key : internSkills.keySet()) {
-            int internSkill = internSkills.get(key);
+            double internSkill = internSkills.get(key);
             double compatibility = projectSkill.get(key);
             effectiveSkills.add(internSkill* compatibility);
         }
@@ -105,6 +112,7 @@ public class MonthReportMaker implements ReportMaker {
         return prompts.REPORT_CONCLUSION;
     }
 
+
     @Override
     public String endOfMonthPrompt( int currentMonth) {
         if (currentMonth == HRSystem.FINAL_MONTH){return GamePrompts.END_OF_FINAL_MONTH_PROMPT;}
@@ -118,8 +126,7 @@ public class MonthReportMaker implements ReportMaker {
 
     @Override
     public String getInternsInfo(){
-        return
-                GamePrompts.INTERN_INFO_HEADER + currentHRSystem.getHiredInternNames();
+        return GamePrompts.INTERN_INFO_HEADER + currentHRSystem.getHiredInternNames();
     }
 
     @Override
@@ -140,7 +147,7 @@ public class MonthReportMaker implements ReportMaker {
 
     @Override
     public boolean checkUpgraded(int currentMonth) {
-        //returns true if the skill is maxed for the intern
+        //returns true if all interns have been assigned to a project
         return currentHRSystem.internUpgraded(currentMonth);
     }
 }

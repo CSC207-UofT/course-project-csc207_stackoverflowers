@@ -26,7 +26,7 @@ public class Project {
     private final String description;
     private final int length;
     private int teamSize;
-    private HashMap<String, Integer> skillsCompatibilities;
+    private HashMap<String, Float> skillsCompatibilities;
     private boolean isFinal;
     private HashMap<String, String[]> nameToDscpPromptFile;
 
@@ -62,17 +62,17 @@ public class Project {
      */
     private void initializeNameToDscpPromptFile() {
         HashMap<String, String[]> map = new HashMap<>();
-        map.put(GamePrompts.PROJECT1_NAME, new String[]{GamePrompts.PROJECT1_DESCRIPTION, GamePrompts.PROJECT1_PROMPT, "proj1comp.txt"});
-        map.put(GamePrompts.PROJECT2_NAME, new String[]{GamePrompts.PROJECT2_DESCRIPTION, GamePrompts.PROJECT2_PROMPT, "proj2comp.txt"});
-        map.put(GamePrompts.PROJECT3_NAME, new String[]{GamePrompts.PROJECT3_DESCRIPTION, GamePrompts.PROJECT3_PROMPT, "proj3comp.txt"});
-        map.put(GamePrompts.PROJECT4_NAME, new String[]{GamePrompts.PROJECT4_DESCRIPTION, GamePrompts.PROJECT4_PROMPT, "proj4comp.txt"});
-        map.put(GamePrompts.PROJECT5_NAME, new String[]{GamePrompts.PROJECT5_DESCRIPTION, GamePrompts.PROJECT5_PROMPT, "proj5comp.txt"});
-        map.put(GamePrompts.PROJECT6_NAME, new String[]{GamePrompts.PROJECT6_DESCRIPTION, GamePrompts.PROJECT6_PROMPT, "proj6comp.txt"});
-        map.put(GamePrompts.PROJECT7_NAME, new String[]{GamePrompts.PROJECT7_DESCRIPTION, GamePrompts.PROJECT7_PROMPT, "proj7comp.txt"});
-        map.put(GamePrompts.PROJECT8_NAME, new String[]{GamePrompts.PROJECT8_DESCRIPTION, GamePrompts.PROJECT8_PROMPT, "proj8comp.txt"});
-        map.put(GamePrompts.FINAL_PROJECT1_NAME, new String[]{GamePrompts.FINAL_PROJECT1_DESCRIPTION, GamePrompts.FINAL_PROJECT1_PROMPT, "finalproj1comp.txt"});
-        map.put(GamePrompts.FINAL_PROJECT2_NAME, new String[]{GamePrompts.FINAL_PROJECT2_DESCRIPTION, GamePrompts.FINAL_PROJECT2_PROMPT, "finalproj2comp.txt"});
-        map.put(GamePrompts.FINAL_PROJECT3_NAME, new String[]{GamePrompts.FINAL_PROJECT3_DESCRIPTION, GamePrompts.FINAL_PROJECT3_PROMPT, "finalproj3comp.txt"});
+        map.put(GamePrompts.PROJECT1_NAME, new String[]{GamePrompts.PROJECT1_DESCRIPTION, GamePrompts.PROJECT1_PROMPT, "Resources/proj1comp.txt"});
+        map.put(GamePrompts.PROJECT2_NAME, new String[]{GamePrompts.PROJECT2_DESCRIPTION, GamePrompts.PROJECT2_PROMPT, "Resources/proj2comp.txt"});
+        map.put(GamePrompts.PROJECT3_NAME, new String[]{GamePrompts.PROJECT3_DESCRIPTION, GamePrompts.PROJECT3_PROMPT, "Resources/proj3comp.txt"});
+        map.put(GamePrompts.PROJECT4_NAME, new String[]{GamePrompts.PROJECT4_DESCRIPTION, GamePrompts.PROJECT4_PROMPT, "Resources/proj4comp.txt"});
+        map.put(GamePrompts.PROJECT5_NAME, new String[]{GamePrompts.PROJECT5_DESCRIPTION, GamePrompts.PROJECT5_PROMPT, "Resources/proj5comp.txt"});
+        map.put(GamePrompts.PROJECT6_NAME, new String[]{GamePrompts.PROJECT6_DESCRIPTION, GamePrompts.PROJECT6_PROMPT, "Resources/proj6comp.txt"});
+        map.put(GamePrompts.PROJECT7_NAME, new String[]{GamePrompts.PROJECT7_DESCRIPTION, GamePrompts.PROJECT7_PROMPT, "Resources/proj7comp.txt"});
+        map.put(GamePrompts.PROJECT8_NAME, new String[]{GamePrompts.PROJECT8_DESCRIPTION, GamePrompts.PROJECT8_PROMPT, "Resources/proj8comp.txt"});
+        map.put(GamePrompts.FINAL_PROJECT1_NAME, new String[]{GamePrompts.FINAL_PROJECT1_DESCRIPTION, GamePrompts.FINAL_PROJECT1_PROMPT, "Resources/finalproj1comp.txt"});
+        map.put(GamePrompts.FINAL_PROJECT2_NAME, new String[]{GamePrompts.FINAL_PROJECT2_DESCRIPTION, GamePrompts.FINAL_PROJECT2_PROMPT, "Resources/finalproj2comp.txt"});
+        map.put(GamePrompts.FINAL_PROJECT3_NAME, new String[]{GamePrompts.FINAL_PROJECT3_DESCRIPTION, GamePrompts.FINAL_PROJECT3_PROMPT, "Resources/finalproj3comp.txt"});
         this.nameToDscpPromptFile = map;
     }
 
@@ -80,13 +80,13 @@ public class Project {
      * A helper method that reads the skillsCompatibilities files and initializes </skillsCompatibilities>  in the constructor.
      */
     private void initializeSkillsCompatibilities(String file_name) throws FileNotFoundException {
-        HashMap<String, Integer> map = new HashMap<>();
+        HashMap<String, Float> map = new HashMap<>();
         File file = new File(file_name);
         Scanner myReader = new Scanner(file);
         while (myReader.hasNextLine()) {
             String line = myReader.nextLine();
             String skill = line.split(": ")[0];
-            Integer score = Integer.valueOf(line.split(": ")[1]);
+            Float score = Float.valueOf(line.split(":")[1]);
             map.put(skill, score); }
         this.skillsCompatibilities = map;
     }
@@ -130,7 +130,7 @@ public class Project {
         return teamSize;
     }
 
-    public HashMap<String, Integer> getSkillsCompatibilities() {
+    public HashMap<String, Float> getSkillsCompatibilities() {
         return skillsCompatibilities;
     }
 }

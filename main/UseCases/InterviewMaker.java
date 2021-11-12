@@ -9,9 +9,8 @@ import java.util.ArrayList;
 
 public class InterviewMaker {
 
+    private InterviewIntern currentInterviewIntern;
     // private HiredIntern currentHiredIntern; (may not need this in interviewmaker)
-    private InterviewIntern currentInterviewIntern ; //update interviewIntern
-    // private GamePrompts prompt ;
     private final HRSystem currentHRSystem ;
 
 
@@ -21,7 +20,6 @@ public class InterviewMaker {
      */
     public InterviewMaker(HRSystem currentHRSystem){
         // this.currentHiredIntern = new HiredIntern();
-        //this.currentInterviewIntern = new InterviewIntern("", 0,)
         this.currentHRSystem = currentHRSystem;
 
     }
@@ -35,38 +33,49 @@ public class InterviewMaker {
         return GamePrompts.ASK_FOR_INTERVIEWEE_NAME + getInterviewInternInfo();
     }
 
-    //TODO: Implement method ChoiceOptions
+    /**
+     * This method stores the Entities.InterviewIntern a player has decided to interview.
+     * @param chosenIntern the Interview Intern chosen as a player input.
+     */
+    public void updatePlayerInternChoice(InterviewIntern chosenIntern){
+        this.currentHRSystem.updatePlayerInternChoice(chosenIntern);
+        this.currentInterviewIntern = currentHRSystem.getPlayerInternChoice();
+    }
+
+
     /**
      * This method takes in this interviewIntern from UseCases.HRSystem and return the intern's first choices that
      * the player can choose.
      */
-    //need response tree structure from generateInternResponse in gameMaker (is it an individual
-    // response at a time or an entire tree produced?)
-    // make choiceOptions an attribute
-    public String ChoiceOptions(InterviewIntern intern){
-        return "ChoiceOptions is not implemented yet";
+    public String ChoiceOptions(){
+        return this.currentHRSystem.choicesToString();
     }
 
 
-    //TODO: Implement method storePlayerChoice
+    public String getChoiceOptions(){
+        return this.currentHRSystem.choicesToString();
+    }
+
+    public String choicePrompt(String playerInput){
+        return GamePrompts.PLAYER_CHOICE;
+    }
+
     /**
      * This method allows player to choose from the choices in ChoiceOptions and stores the choice
+     * @return
      */
-    //where are we storing this?? in HRSystem ?
-    //storePlayerChoice attribute -> where would it be?
-    public void storePlayerChoice(String options){
-
+    public Object storePlayerChoice(Object options){
+        return this.currentHRSystem.getPlayerInternResponseChoice(options);
     }
 
 
-    // TODO: Implement method internChoiceResponse
     /**
      * This method takes in the Player's choice from method playerChoice and returns the interviewIntern's
      * corresponding response from the response tree in GameMaker.
      */
     // needs structure of the response tree?
-    public String internChoiceResponse(String playerChoice){
-        return "a String of the players choice from response tree";
+    public String internChoiceResponse(Object playerChoice, InterviewIntern intern){
+        return this.currentHRSystem.getInternChoiceResponse(playerChoice, intern);
     }
 
 
@@ -75,9 +84,8 @@ public class InterviewMaker {
      * This method prompts the player if they would like to hire this intern and stores the response
      * @param playerInput the player's response to the Hiring Prompt.
      */
-    public void internToHire(String playerInput){
-        System.out.println(GamePrompts.HIRE_INTERN);
-        currentHRSystem.updatePlayerResponse(playerInput);
+    public String internToHire(String playerInput){
+        return GamePrompts.HIRE_INTERN + currentHRSystem.updatePlayerResponse(playerInput);
     }
 
 
@@ -98,6 +106,16 @@ public class InterviewMaker {
     }
 
 
+    public String hireInternPrompt(String playerInput){
+        String res = "";
+        if (this.currentHRSystem.getPlayerResponse().equals("yes")){
+            res += GamePrompts.HIRE_INTERN;
+            res += playerInput;
+            res += GamePrompts.CONFIRM_HIRING;
+        }
+        return res;
+    }
+
     /**
      * If the player responds "yes" to hire this interviewIntern, make this interviewIntern a hiredIntern and add this
      * HiredIntern to the list of hired interns.
@@ -117,11 +135,7 @@ public class InterviewMaker {
     }
 
     public String endOfInterviewPrompt(){
-        //how are we checking if the interview has ended bc only thing to check it rn is it InterviewLevel and that
-        // doesnt follow clean?
-        // make prompt to show interview end in GamePrompts
-        //TODO: finish this method
-        return "prompt has not been made yet";
+        return GamePrompts.END_OF_INTERVIEW_PROMPT;
     }
 
 

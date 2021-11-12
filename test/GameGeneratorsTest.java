@@ -1,23 +1,24 @@
-package UseCases;
-
+import Entities.GamePrompts;
 import Entities.HiredIntern;
 import Entities.Intern;
+import Entities.Project;
+import UseCases.GameGenerators;
+import UseCases.HRSystem;
 
-import org.testng.Assert;
-import java.util.*;
-
-import java.io.FileNotFoundException;
+import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
+import java.util.*;
+import java.io.FileNotFoundException;
 
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-// import java.lang.reflect.Method;
+import static org.junit.Assert.assertTrue;
 
 
 public class GameGeneratorsTest {
     GameGenerators gameGenerators = new GameGenerators();
 
     Field privateField;
-
     {
         try {
             privateField = GameGenerators.class.getDeclaredField("currentHRSystem"); // Create Field object
@@ -25,9 +26,14 @@ public class GameGeneratorsTest {
             e.printStackTrace();
         }
     }
-        privateField.setAccessible(true); // Set the accessibility as true
-    HRSystem hrSystem;
+        privateField.setAccessible(true); //  turn off the access checks for this particular Field instance, for reflection only.
 
+//        public final void setAccessible(boolean flag) throws SecurityException {
+//            privateField.setAccessible(flag);
+//        }
+//        privateField.setAccessible(true);
+
+    HRSystem hrSystem;
     {
         try {
             hrSystem = (HRSystem) privateField.get(gameGenerators); // Store the value of private field in variable
@@ -57,36 +63,38 @@ public class GameGeneratorsTest {
 
 // TODO: These tests might need to be modified after HRSystem's implementation is completed.
 
-    @org.junit.jupiter.api.Test
-    void TestGenerateInterns() throws FileNotFoundException {
+    @Test
+    public void TestGenerateInterns() throws FileNotFoundException {
         gameGenerators.generateInterns(3);
-        Assert.assertEquals(hrSystem.getInternList().size(), 3);
+        assertEquals(hrSystem.getInternList().size(), 3);
         }
-
-    @org.junit.jupiter.api.Test
-    void TestAddInternToList() {
-        HashMap<String, Double> MagSkillSets = (HashMap<String, Double>) Map.of("Responsible", 0.90, "Observant",
-                0.80, "Communication", 0.70);
+    /*
+    @Test
+    public void TestAddInternToList() {
+        HashMap<String, Double> MagSkillSets = (HashMap<String, Double>) Map.of("Responsible", 90.0, "Observant",
+                80.0, "Communication", 70.0);
         Intern mag = new HiredIntern("Maggie", 20, MagSkillSets);
-        HashMap<String, Double> FarzSkillSets = (HashMap<String, Double>) Map.of("Leadership", 0.90, "Patient",
-                0.80, "Teamwork", 0.70);
+        HashMap<String, Double> FarzSkillSets = (HashMap<String, Double>) Map.of("Leadership", 90.0, "Patient",
+                80.0, "Teamwork", 70.0);
         Intern farz = new HiredIntern("Farzana", 20, FarzSkillSets);
         ArrayList<Intern> internList = (ArrayList<Intern>) List.of(mag, farz);
         gameGenerators.addInternToList(internList);
         assertEquals(hrSystem.getInternList().size(), 5);
     }
+    */
+
 
     // TODO: Enam needs to add a getter for projectList in HRSystem.
-    @org.junit.jupiter.api.Test
-    void TestGenerateProjects() throws FileNotFoundException {
-        gameGenerators.generateProjects(3);
-        Assert.assertEquals(hrSystem.getProjectList().size(), 3);
-    }
+//    @Test
+//    void TestGenerateProjects() throws FileNotFoundException {
+//        gameGenerators.generateProjects(3);
+//        assertEquals(hrSystem.getProjectList().size(), 3);
+//    }
 
-    @org.junit.jupiter.api.Test
-    void TestGenerateFinalProject() throws FileNotFoundException {
+    @Test
+    public void TestGenerateFinalProject() throws FileNotFoundException {
         gameGenerators.generateFinalProject();
-        Assert.assertEquals(hrSystem.getProject(HRSystem.FINAL_MONTH).size(), 1);
-        Assert.assertTrue(hrSystem.getProject(HRSystem.FINAL_MONTH).get(0).isFinal());
+        assertEquals(hrSystem.getProject(HRSystem.FINAL_MONTH).size(), 1);
+        assertTrue(hrSystem.getProject(HRSystem.FINAL_MONTH).get(0).isFinal());
     }
 }

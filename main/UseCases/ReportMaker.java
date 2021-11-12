@@ -1,10 +1,5 @@
 package UseCases;
 
-import Entities.Exceptions;
-import Entities.GamePrompts;
-import Entities.Intern;
-import Entities.Project;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -24,6 +19,7 @@ public interface ReportMaker {
      *
      * @return correctly formatted intro for the report based on the current phase (month)
      */
+    String makeReportIntro ();
 
 
     /**
@@ -41,11 +37,7 @@ public interface ReportMaker {
      */
     String makeReportConclusion();
 
-
-    // Hi Jacob, I'm not sure what these "back" methods do. Do you mind writing out the java docs for them yourself?
     String bakeProjectName (String projectName);
-
-
 
     String bakeProgress (int projectProgress);
 
@@ -55,14 +47,14 @@ public interface ReportMaker {
 
 
 
-    int calculateInternPerformance(HashMap<String, Integer> internSkills,
-                                   HashMap<String, Integer> projectSkill);
+    int calculateInternPerformance(HashMap<String, Double> internSkills,
+                                   HashMap<String, Float> projectSkill);
 
 
 
     String bakeInternsPerformances (String internNames,
-                                           ArrayList<HashMap<String, Integer>>  internSkills,
-                                           HashMap<String, Integer> projectSkill);
+                                           ArrayList<HashMap<String, Double>>  internSkills,
+                                           HashMap<String, Float> projectSkill);
 
 
     String endOfMonthPrompt(int currentMonth);
