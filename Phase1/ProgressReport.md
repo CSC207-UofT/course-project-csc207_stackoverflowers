@@ -124,3 +124,8 @@ Jacob:
 After that meeting, we set on wrapping up everything and to have a final meeting on Nov 8. During the few days, a lot of work was finished and there were multiple calls between group members. We also used branches, pull requests, and issues to aid us in organizing our code.
 ## Meeting Nov8
 During the last meeting, we set the final deadline to be Nov 10. All code will be written, tested, and we would have a final walk-through of the program using SPhase.
+## Deadline pushed back 
+- many issues with pull requests, merging and repository.
+- one member did not have access to WIFI so that pushed back our deadline 
+- many of the members suffered from issues with the repository and updating the main branch would not work. 
+- When we would reclone our repository this would cause even more issues so this pushed our deadline further. 
