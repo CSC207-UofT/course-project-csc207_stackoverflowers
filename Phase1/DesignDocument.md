@@ -8,7 +8,7 @@ If you found that something in your design wasn't good, tell us about that too!
 Pretending part of your design is good — when you know it isn't — can potentially hurt your mark significantly!
 Acknowledging bad design can earn you marks and demonstrates understanding — especially if you discuss how you could fix it if you had more time!
 
-SINGLE REPONSIBILITY PRINCIPLE: 
+SINGLE RESPONSIBILITY PRINCIPLE: 
 
 OPEN/CLOSED PRINCIPLE: 
 
@@ -44,11 +44,17 @@ STEP 2: Interview level
 
 InterviewMaker ----> ??? Please can Camille and Enam work on this to show how ResponseTree and InterviewMaker work together for interview level and all classes it interacts with (GameManager, etc) 
 
-Step 3: Assign Interns to Project 
-- describe how the projects are run (first two months only), skillcomp, etc 
+STEP 3: Assign Interns to Project 
 
+In the first two months (month is the time unit we use in this game; each month is considered as a level), 2 projects 
+will be generated per month which the player assigns interns to (so in total 4 projects will be generated). Controller.
+MonthLevel will get the status of the current month (start, during, end), and asks UseCase.MonthMaker to randomly 
+generate two projects. Each project has a name, description, length (2 months), team size (3 interns), and skills compatibility.
+Skills compatibility is a hashmap that maps a skill with a number b/n 0.00 and 1.00, which indicates the skill's
+compatability with this project (so the higher the percentage associated with a particular skill, the more this project
+requires this skill)
 
-Step 4: Check monthly report
+STEP 4: Check monthly report
 - There is a report for every month in game. MonthlyReportMaker is used as the reportMaker when the currentMonth is 1,3 or 5. This is determined by the java logic (month < 6 & month % 2 == 1). ProjectReportMaker is used as the reportMaker when the currentMonth is 2 or 4. This is determined by java logic (month < 4 & month % 2 == 0).  FinallReportMaker is used as the reportMaker when the currentMonth is 6. All versions of reportMakers helps ReportLevel generate Strings and other variables in different situations. ReportLevel's getOutPutString is called in getOutPut in GameManager. The report is shown when function is called, and upon seeing the report, player's next input until finishedUpgrading(currentMonth) is true are considered as commands to ReportLevel. 
 - The report format:
   Here is your report for the end of " + month 

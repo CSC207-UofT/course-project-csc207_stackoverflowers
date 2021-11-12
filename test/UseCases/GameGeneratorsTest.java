@@ -1,9 +1,7 @@
 package UseCases;
 
-import Entities.GamePrompts;
 import Entities.HiredIntern;
 import Entities.Intern;
-import Entities.Project;
 
 import org.testng.Assert;
 import java.util.*;
@@ -67,11 +65,11 @@ public class GameGeneratorsTest {
 
     @org.junit.jupiter.api.Test
     void TestAddInternToList() {
-        HashMap<String, Integer> MagSkillSets = (HashMap<String, Integer>) Map.of("Responsible", 90, "Observant",
-                80, "Communication", 70);
+        HashMap<String, Double> MagSkillSets = (HashMap<String, Double>) Map.of("Responsible", 0.90, "Observant",
+                0.80, "Communication", 0.70);
         Intern mag = new HiredIntern("Maggie", 20, MagSkillSets);
-        HashMap<String, Integer> FarzSkillSets = (HashMap<String, Integer>) Map.of("Leadership", 90, "Patient",
-                80, "Teamwork", 70);
+        HashMap<String, Double> FarzSkillSets = (HashMap<String, Double>) Map.of("Leadership", 0.90, "Patient",
+                0.80, "Teamwork", 0.70);
         Intern farz = new HiredIntern("Farzana", 20, FarzSkillSets);
         ArrayList<Intern> internList = (ArrayList<Intern>) List.of(mag, farz);
         gameGenerators.addInternToList(internList);
