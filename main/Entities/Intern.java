@@ -11,7 +11,7 @@ abstract public class Intern{
     */
     private final String internName;
     private final int internAge;
-    private final HashMap<String, Double> internSkills;
+    private HashMap<String, Double> internSkills;
 
     /**
      * Construct an Entities.Intern, giving them the given internName,
@@ -59,7 +59,7 @@ abstract public class Intern{
         StringBuilder skills =  new StringBuilder();
 
         for (String skill : this.internSkills.keySet()) {
-            Double percentage = this.internSkills.get(skill);
+            double percentage = this.internSkills.get(skill);
             skills.append(skill).append(" (").append(percentage).append(")");
         }
 

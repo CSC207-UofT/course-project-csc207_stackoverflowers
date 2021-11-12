@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class InterviewMaker {
 
     private InterviewIntern currentInterviewIntern;
+    // private HiredIntern currentHiredIntern; (may not need this in interviewmaker)
     private final HRSystem currentHRSystem ;
 
 

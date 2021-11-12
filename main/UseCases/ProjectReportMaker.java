@@ -49,13 +49,11 @@ public class ProjectReportMaker implements ReportMaker{
         for (Project proj : projList) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
-
         ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
         return bakeProjectName(currentHRSystem.getProjectName(currentMonth)) + "\n" +
                 bakeProgress(projectProgress) + "\n" +
                 bakeInterns(internNames) + "\n" +
-                bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
-
+                bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);}
     }
 
     private ArrayList<HashMap<String, Double>> getHiredInternsSkills(ArrayList<HiredIntern> hiredInternList) {
@@ -122,7 +120,7 @@ public class ProjectReportMaker implements ReportMaker{
 
     @Override
     public String getInternsInfo(){
-        return GamePrompts.INTERN_INFO_HEADER + currentHRSystem.getInternNames(true);
+        return GamePrompts.INTERN_INFO_HEADER + currentHRSystem.getHiredInternNames();
     }
 
     @Override
