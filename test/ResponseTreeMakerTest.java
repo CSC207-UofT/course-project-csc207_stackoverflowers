@@ -1,4 +1,3 @@
-package UseCases;
 
 import UseCases.ResponseTree;
 import UseCases.ResponseTreeMaker;
