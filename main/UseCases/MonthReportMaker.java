@@ -43,7 +43,7 @@ public class MonthReportMaker implements ReportMaker {
         String internNames = currentHRSystem.getInternNames();
 
         ArrayList<Project> projList = currentHRSystem.getProject(currentMonth);
-        HashMap<String, Integer> projectCompatibilityList = new HashMap<>();
+        HashMap<String, Float> projectCompatibilityList = new HashMap<>();
         for (Project proj : projList) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
@@ -81,7 +81,7 @@ public class MonthReportMaker implements ReportMaker {
     @Override
     public String bakeInternsPerformances (String internNames,
                                            ArrayList<HashMap<String, Double>>  internSkills,
-                                           HashMap<String, Integer> projectSkill) {
+                                           HashMap<String, Float> projectSkill) {
         StringBuilder returnLine = new StringBuilder(GamePrompts.INTERN_PERFORMANCE_HEADER + internNames + "\n");
         String[] internNamesList = internNames.split("|");
         for (int i = 0; i != internNamesList.length; i+=1) {
@@ -92,7 +92,7 @@ public class MonthReportMaker implements ReportMaker {
 
     @Override
     public int calculateInternPerformance(HashMap<String, Double> internSkills,
-                                          HashMap<String, Integer> projectSkill) {
+                                          HashMap<String, Float> projectSkill) {
 
         int result = 0;
         ArrayList<Double> effectiveSkills = new ArrayList<Double>();

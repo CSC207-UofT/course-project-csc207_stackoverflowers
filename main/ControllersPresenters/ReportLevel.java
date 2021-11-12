@@ -85,6 +85,7 @@ public class ReportLevel extends Level{
         // then the report presenter should prompt the user about this upgrade point that needs to be assigned to a
         // intern with that upgrade point still not maxed out.
     }
+    /*
 
     private String generateRandomSkill(){
         ArrayList<String> skillList = new ArrayList<>(){
@@ -109,6 +110,8 @@ public class ReportLevel extends Level{
         String generatedSkill = skillList.get(randomitem);
         return generatedSkill;
     }
+
+     */
     private String checkInternsInfo() {
         return currentReportMaker.getInternsInfo();
     }

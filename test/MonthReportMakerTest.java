@@ -1,8 +1,5 @@
 import ControllersPresenters.ReportLevel;
-import Entities.GamePrompts;
-import Entities.HiredIntern;
-import Entities.Intern;
-import Entities.Project;
+import Entities.*;
 import UseCases.HRSystem;
 import UseCases.MonthReportMaker;
 
@@ -21,7 +18,7 @@ public class MonthReportMakerTest {
     @Before
     public void setup() throws FileNotFoundException {
         HRSystem hrSystem = new HRSystem();
-        hrSystem.updateInternList(makeInterns());
+        hrSystem.updateHiredInternList(makeInterns());
         hrSystem.updateProjectList(makeProjects());
         reportMaker = new MonthReportMaker(hrSystem);
     }

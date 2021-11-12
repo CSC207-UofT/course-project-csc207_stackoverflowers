@@ -54,7 +54,7 @@ public class MonthLevelTest {
     public void testInvalidCommand() throws Exception {
         setUp();
         try {
-            monthLevel.getOutputString("checj assign");
+            monthLevel.getOutputString("check assign");
         } catch (Exception e) {
             assertEquals(e.getMessage(), Exceptions.INVALID_COMMAND);
         }

@@ -26,7 +26,7 @@ public class Project {
     private final String description;
     private final int length;
     private int teamSize;
-    private HashMap<String, Integer> skillsCompatibilities;
+    private HashMap<String, Float> skillsCompatibilities;
     private boolean isFinal;
     private HashMap<String, String[]> nameToDscpPromptFile;
 
@@ -80,13 +80,13 @@ public class Project {
      * A helper method that reads the skillsCompatibilities files and initializes </skillsCompatibilities>  in the constructor.
      */
     private void initializeSkillsCompatibilities(String file_name) throws FileNotFoundException {
-        HashMap<String, Integer> map = new HashMap<>();
+        HashMap<String, Float> map = new HashMap<>();
         File file = new File(file_name);
         Scanner myReader = new Scanner(file);
         while (myReader.hasNextLine()) {
             String line = myReader.nextLine();
             String skill = line.split(": ")[0];
-            Integer score = Integer.valueOf(line.split(": ")[1]);
+            Float score = Float.valueOf(line.split(":")[1]);
             map.put(skill, score); }
         this.skillsCompatibilities = map;
     }
@@ -130,7 +130,7 @@ public class Project {
         return teamSize;
     }
 
-    public HashMap<String, Integer> getSkillsCompatibilities() {
+    public HashMap<String, Float> getSkillsCompatibilities() {
         return skillsCompatibilities;
     }
 }
