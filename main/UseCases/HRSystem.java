@@ -241,6 +241,10 @@ public class HRSystem implements Serializable {
     }
 
 
+    public ArrayList<Project> getProjectList(){
+        return this.projectList;
+    }
+
     /**
      * This method returns a String representation of each project in Entities.Project and the assigned interns
      * from Entities.HiredInterns per a given month.
