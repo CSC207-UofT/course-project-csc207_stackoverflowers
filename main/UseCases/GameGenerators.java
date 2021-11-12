@@ -13,7 +13,6 @@ public class GameGenerators implements Serializable {
     private final HRSystem currentHRSystem;
     //HHHHH
 
-
     public GameGenerators(){
         this.currentHRSystem = new HRSystem();
     }
@@ -38,7 +37,7 @@ public class GameGenerators implements Serializable {
         for (int i = 1; i <= numInterns; i++) {
             String name = nameList.get(random.nextInt(nameList.size()));
             nameList.remove(name);
-            HashMap<String, Integer> skillMap = generateUniqueSkillMap(skillList);
+            HashMap<String, Double> skillMap = generateUniqueSkillMap(skillList);
             int age = random.nextInt(45) + 20;
             Intern interviewee = new InterviewIntern(name, age, skillMap);
             internList.add(interviewee);
@@ -93,7 +92,7 @@ public class GameGenerators implements Serializable {
     }
 
     /**
-     * Helper function for generateInterns.
+     * Helper method for generateInterns.
      * Converts a text file into an ArrayList, line by line.
      * @param fileName the name of the file that is going to be converted
      * @return an ArrayList of Entities.Intern names or Entities.Intern skills
@@ -112,15 +111,15 @@ public class GameGenerators implements Serializable {
      * Helper method for generateInterns.
      * Creates a HashMap with three random skills and their random respective percentages
      * @param skillList an ArrayList of skills.
-     * @return a HashMap of Skills and the percentage of the skill
+     * @return a HashMap of Skills and the score (0.00 - 1.00) of the skill
      */
-    private HashMap<String, Integer> generateUniqueSkillMap(ArrayList<String> skillList){
+    private HashMap<String, Double> generateUniqueSkillMap(ArrayList<String> skillList){
         Random random = new Random();
-        HashMap<String, Integer> skillMap = new HashMap<>();
+        HashMap<String, Double> skillMap = new HashMap<>();
         while (skillMap.size() < 3) {
             String skill = skillList.get(random.nextInt(skillList.size()));
             if (!skillMap.containsKey(skill)) {
-                skillMap.put(skill, random.nextInt(101));
+                skillMap.put(skill, 2.00 * random.nextDouble());
             }
         }
         return skillMap;

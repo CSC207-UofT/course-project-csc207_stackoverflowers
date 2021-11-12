@@ -48,10 +48,24 @@ Step 3: Assign Interns to Project
 - describe how the projects are run (first two months only), skillcomp, etc 
 
 
-Step 4: Check monthly report 
-- describe how montly report is made and how it is displayed (interaction with GameManager when player wants to check monthly report) 
+Step 4: Check monthly report
+- There is a report for every month in game. MonthlyReportMaker is used as the reportMaker when the currentMonth is 1,3 or 5. This is determined by the java logic (month < 6 & month % 2 == 1). ProjectReportMaker is used as the reportMaker when the currentMonth is 2 or 4. This is determined by java logic (month < 4 & month % 2 == 0).  FinallReportMaker is used as the reportMaker when the currentMonth is 6. All versions of reportMakers helps ReportLevel generate Strings and other variables in different situations. ReportLevel's getOutPutString is called in getOutPut in GameManager. The report is shown when function is called, and upon seeing the report, player's next input until finishedUpgrading(currentMonth) is true are considered as commands to ReportLevel. 
+- The report format:
+  Here is your report for the end of " + month 
 
+  This is an intermediate report of this ongoing project.
 
+  Project name: xxx 
+
+  Project progress: an integer
+
+  Assigned interns: hhh|yyy|zzz 
+
+  Interns performances:
+    - hhh: (int)
+    - yyy: (int)
+    - zzz: (int)
+  That's all! Have a good day manager. :)
 
 
 
@@ -70,7 +84,7 @@ a separate factory class ReportFactory that is responsible for only evaluating p
 
 2. BUILDER PATTERN DESIGN 
 
-- Also for ReportMaker's, we used the design pattern Builder, as they are three different builders(ReportMakers) that have build a report using the same structure. Using The Builder pattern, we are able to assemble each component of the Report in ReportMaker, so that the ReportLevel only needs to generally ask the currentReportMaker for a report, instead of using a bunch of if- statements each time. (Jacob you can edit this if this is not what you want)
+- Also for ReportMaker's, we used the design pattern Builder, as they are three different builders(ReportMakers) that have build a report using the same structure. Using The Builder pattern, we are able to assemble each component of the Report in ReportMaker, so that the ReportLevel only needs to generally ask the currentReportMaker for a report, instead of using a bunch of if- statements each time. 
 
 3. OBSERVER DESIGN PATTERN 
 - We also kind of got inspiration from the Observer Design pattern, as our Abstract Class Level will change statuses, and those statuses need to be reported to GameManager. Right now we are making GameManager check each time if the status of the currentLevel has changed, so that it fits more into the Observer design pattern. 
