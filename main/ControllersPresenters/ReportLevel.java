@@ -1,10 +1,7 @@
 package ControllersPresenters;
-//TODO: Remove Intern and Project and HRSystem, as a Controller it shouldn't touch them
 import Entities.Exceptions;
+import Entities.GamePrompts;
 import UseCases.HRSystem;
-import Entities.Intern;
-import Entities.Project;
-
 import UseCases.FinalReportMaker;
 import UseCases.MonthReportMaker;
 import UseCases.ProjectReportMaker;
@@ -26,7 +23,7 @@ public class ReportLevel extends Level{
      * that's corresponding to this current phase.
      *
      * @param month A month in this game
-     * @param currentHRSystem
+     * @param currentHRSystem The HRSystem currently used to get intern and project info.
      */
     public ReportLevel(int month, HRSystem currentHRSystem) {
         if (month < 6 & month % 2 == 1) {
@@ -45,8 +42,6 @@ public class ReportLevel extends Level{
     }
 
     public String getOutputString(String input) throws Exception {
-        //TODO: remember, last project does not have a upgrade period, you need to implement that
-        // takes in the player's input and then uses the needed method to be used for the output
         if (levelStarted()){
             getIntoLevel();
             return getReport();
@@ -84,6 +79,14 @@ public class ReportLevel extends Level{
         String body = currentReportMaker.makeReportBody(currentMonth, projectProgress);
         String end = currentReportMaker.makeReportConclusion();
         return currentReportPresenter.displayOutput(header, intro, body, end);
+        //TODO: Need to add another String behind end, where a method generates a random point to upgrade,
+        // then the report presenter should prompt the user about this upgrade point that needs to be assigned to a
+        // intern with that upgrade point still not maxed out.
+    }
+
+    private String generateRandomSkill(){
+        //TODO: Make a method that generates a random skill point to upgrade from a list of skills in GamePrompts
+        return "generatedSkill";
     }
     private String checkInternsInfo() {
         return currentReportMaker.getInternsInfo();
@@ -94,8 +97,6 @@ public class ReportLevel extends Level{
     }
 
     private String endPrompt(int currentMonth){
-        //TODO: As of now, I'm using Mary's gameprompt, after knowing what super intern is, you are gona potentially
-        // add your own prompt aswell.
         return currentReportMaker.endOfMonthPrompt(currentMonth);
     }
 
