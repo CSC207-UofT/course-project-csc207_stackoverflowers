@@ -1,7 +1,7 @@
-#Progress report for group StackOverflowers:
+# Progress report for group StackOverflowers:
 
-##Overview
-###First Meeting Oct22
+## Overview
+### First Meeting Oct22
 Once Phase0 ended, we had a group meeting on Oct22 to discuss the following, and started on work.
 
 1. Meeting and deciding on how to deal with Mickaels comments. (Who will be in charge of fixing what)
@@ -58,21 +58,32 @@ Here was the progress so far:
         - Tests
         - Exceptions = how return correct error message to player
         - Levels -> abstract to children
-- Farzana and Maggie:
-    - Progress so far:
-        - Writing out all prompts in GamePrompts
-        - Working on some methods in GameMaker tht correspond to class Project
-        - Writing up the descriptions for our games (projects, final projects, conversations
-        - Working on all needed txt files (for generating projects and interns)
-        - Writing Javadoc for classes
-    - Questions:
-        - Currently Maggie and I are working on the skills compatibility needed to calculate the project and final project scores.
-          We have decided to make a hashmap for each project for the skills compatibility.
-          For example: if project 1 has a skill list of artistic, creative and teamwork, it’s skill compatibility hashmap will look something like this : {creative:0.7, artistic: 0.76, teamwork: 0.8, other skills: 0.9}, and so on.
-          HOWEVER, we will have to attach the correct hashmap required for the game somewhere meaning if in the game we have projects proj1, proj2, proj5, proj7 (from projectgenerator), where do we initialise to say to use hashmap skillcompatibility1 , skillcomp2, skillcomp5 and skillcomp7?
-        - Also where are we implementing the method to calculate the score for our projects and who is calculating it? They would need to know about skillcomp map!
-
-- Jacob:
+Farzana: 
+- Progress so far:
+       - Writing out all prompts in GamePrompts
+       - Wrtiting all descriptions for our 'projects' in the game 
+       - Created UseCase class GameGenerator and added new methods to it. 
+       - Worked on SkillCompatibility in class Project with Maggie. 
+       - Worked on class Project 
+       - Working on some methods in GameMaker tht correspond to class Project
+       - Writing up other descriptions for our games (projects, final projects, conversations)
+       - Working on all needed txt files (for generating projects and interns)
+       - Worked on GameGeneratorsTest
+       - Wrote up the specification
+       - Factory Method Design Pattern in design document 
+       - Step 1 of Scenario Walkthrough in design document 
+       - Helped Camille with SOLID principles 
+Maggie:
+- Progress so far:
+       - Writing out all prompts in GamePrompts
+       - Wrtiting all descriptions for our 'projects' in the game
+       - Worked on SkillCompatibility in class Project with Maggie. 
+       - Worked on class Project  
+       - Writing up other descriptions for our games (projects, final projects, conversations)
+       - Working on all needed txt files (for generating projects and interns)
+       - Worked on GameGeneratorsTest
+       - Wrote Step 3 of scenario walkthrough in design document 
+Jacob:
     - Classes in charge of:
         - all reportMakers
         - monthPresenter
@@ -87,7 +98,8 @@ Here was the progress so far:
 - Camille:
     - Classes in charge of:
         - GameMaker
-        - InternResponseTreeMaker?
+        - ResponseTree
+        - ResponseTreeMaker
     - Progress so far:
         - Design a new class to represent the tree object
         - Figure out how to parse through tree to get interactive response from player
@@ -110,5 +122,5 @@ Here was the progress so far:
         - test all related tests
 
 After that meeting, we set on wrapping up everything and to have a final meeting on Nov 8. During the few days, a lot of work was finished and there were multiple calls between group members. We also used branches, pull requests, and issues to aid us in organizing our code.
-##Meeting Nov8
+## Meeting Nov8
 During the last meeting, we set the final deadline to be Nov 10. All code will be written, tested, and we would have a final walk-through of the program using SPhase.
