@@ -5,13 +5,13 @@ import Entities.InterviewIntern;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ResponseTreeMakerTest {
 
-    @Test(timeout = 1000)
+    @Test
     public void TestGenerateInternResponses() throws FileNotFoundException {
         HashMap<String, Double> skills = new HashMap<>();
         skills.put("Confidence", 50.0);
@@ -23,7 +23,7 @@ public class ResponseTreeMakerTest {
         assertEquals(15, respTree.getSize());
     }
 
-    @Test(timeout = 1000)
+    @Test
     public void TestAssignResponseToIntern() throws FileNotFoundException {
         HashMap<String, Double> skills = new HashMap<>();
         skills.put("Confidence", 50.0);

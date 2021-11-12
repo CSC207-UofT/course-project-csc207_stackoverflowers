@@ -4,13 +4,15 @@ import Entities.Intern;
 import Entities.Project;
 import UseCases.GameGenerators;
 import UseCases.HRSystem;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
 import java.util.*;
 import java.io.FileNotFoundException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.lang.reflect.Method;
 
 
@@ -57,13 +59,13 @@ public class GameGeneratorsTest {
 
 // TODO: These tests might need to be modified after HRSystem's implementation is completed.
 
-    @org.junit.jupiter.api.Test
+    @Test
     void TestGenerateInterns() throws FileNotFoundException {
         gameGenerators.generateInterns(3);
-        Assertions.assertEquals(hrSystem.getInternList().size(), 3);
+        assertEquals(hrSystem.getInternList().size(), 3);
         }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void TestAddInternToList() {
         HashMap<String, Double> MagSkillSets = (HashMap<String, Double>) Map.of("Responsible", 90.0, "Observant",
                 80.0, "Communication", 70.0);
@@ -73,20 +75,20 @@ public class GameGeneratorsTest {
         Intern farz = new HiredIntern("Farzana", 20, FarzSkillSets);
         ArrayList<Intern> internList = (ArrayList<Intern>) List.of(mag, farz);
         gameGenerators.addInternToList(internList);
-        Assertions.assertEquals(hrSystem.getInternList().size(), 5);
+        assertEquals(hrSystem.getInternList().size(), 5);
     }
 
     // TODO: Enam needs to add a getter for projectList in HRSystem.
-    @org.junit.jupiter.api.Test
-    void TestGenerateProjects() throws FileNotFoundException {
-        gameGenerators.generateProjects(3);
-        Assertions.assertEquals(hrSystem.getProjectList().size(), 3);
-    }
+//    @Test
+//    void TestGenerateProjects() throws FileNotFoundException {
+//        gameGenerators.generateProjects(3);
+//        assertEquals(hrSystem.getProjectList().size(), 3);
+//    }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void TestGenerateFinalProject() throws FileNotFoundException {
         gameGenerators.generateFinalProject();
-        Assertions.assertEquals(hrSystem.getProject(HRSystem.FINAL_MONTH).size(), 1);
-        Assertions.assertTrue(hrSystem.getProject(HRSystem.FINAL_MONTH).get(0).isFinal());
+        assertEquals(hrSystem.getProject(HRSystem.FINAL_MONTH).size(), 1);
+        assertTrue(hrSystem.getProject(HRSystem.FINAL_MONTH).get(0).isFinal());
     }
 }

@@ -1,21 +1,21 @@
 import Entities.*;
 import UseCases.HRSystem;
 import UseCases.MonthMaker;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MonthMakerTest {
     MonthMaker monthMaker;
     HRSystem hrSystem;
 
-    @Before
+    @BeforeAll
     public void setup() throws FileNotFoundException {
         hrSystem = new HRSystem();
         hrSystem.updatePlayerName("Wahaha");
@@ -24,16 +24,16 @@ public class MonthMakerTest {
 
     }
 
-    @Test(timeout = 100)
+    @Test
     public void testStartOfMonthPromptFinalMonth(){
         monthMaker = new MonthMaker(hrSystem, 5);
         String actual = monthMaker.startOfMonthPrompt();
         String expected = GamePrompts.FINAL_MONTH_PROMPT_BEFORE_PROJECT + monthMaker.getProjectInfo() +
                 GamePrompts.FINAL_MONTH_PROMPT_AFTER_PROJECT;
-        Assertions.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
-    @Test(timeout = 100)
+    @Test
     public void testStartOfMonthPromptNotFinalMonth(){
         monthMaker = new MonthMaker(hrSystem, 1);
         String actual = monthMaker.startOfMonthPrompt();
@@ -42,26 +42,26 @@ public class MonthMakerTest {
                 GamePrompts.START_OF_MONTH_PROMPT_AFTER_NAME +
                 monthMaker.getProjectInfo() +
                 GamePrompts.START_OF_MONTH_PROMPT_AFTER_PROJECTS;
-        Assertions.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
-    @Test(timeout = 100)
+    @Test
     public void testEndOfMonthPromptFinalMonth(){
         monthMaker = new MonthMaker(hrSystem, 5);
         String actual = monthMaker.endOfMonthPrompt();
         String expected = GamePrompts.END_OF_FINAL_MONTH_PROMPT;
-        Assertions.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
-    @Test(timeout = 100)
+    @Test
     public void testEndOfMonthPromptNotFinalMonth(){
         monthMaker = new MonthMaker(hrSystem, 3);
         String actual = monthMaker.endOfMonthPrompt();
         String expected = GamePrompts.END_OF_MONTH_PROMPT;
-        Assertions.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
-    @Test(timeout = 1000)
+    @Test
     public void testAssignInternToProjectFailure(){
         monthMaker = new MonthMaker(hrSystem, 1);
         try {
@@ -71,7 +71,7 @@ public class MonthMakerTest {
         }
     }
 
-    @Test(timeout = 1000)
+    @Test
     public void testAssignInternToProjectFailure2(){
         monthMaker = new MonthMaker(hrSystem, 1);
         try {
@@ -82,7 +82,7 @@ public class MonthMakerTest {
         }
     }
 
-    @Test(timeout = 500)
+    @Test
     public void testRemoveInternFromProjectFailure(){
         monthMaker = new MonthMaker(hrSystem, 1);
         try {
@@ -94,7 +94,7 @@ public class MonthMakerTest {
         }
     }
 
-    @Test(timeout = 500)
+    @Test
     public void testCheckAllInternsAssigned(){
         hrSystem.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
         hrSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
@@ -102,7 +102,7 @@ public class MonthMakerTest {
         assertTrue(monthMaker.checkAllInternsAssigned());
     }
 
-    @Test(timeout = 500)
+    @Test
     public void testGetAssigningInfo(){
         monthMaker = new MonthMaker(hrSystem, 1);
         String actual = monthMaker.getAssigningInfo();
