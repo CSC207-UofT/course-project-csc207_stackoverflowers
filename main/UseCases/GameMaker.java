@@ -34,14 +34,6 @@ public class GameMaker implements Serializable {
     public static ArrayList<String> getUniversalCommands(){return universalCommands;}
 
     public int getCurrentMonth(){return currentMonth;}
-    /**
-     * Add the list of interns to UseCases.HRSystem.
-     *
-     * @param newInterns A list of interns constructed in the UseCases.GameMaker constructor
-     */
-    public void addInternToList(ArrayList<InterviewIntern> newInterns){
-        this.currentHRSystem.updateInternList(newInterns);
-    }
 
 
     //TODO: this method below is never used. Can I delete it?

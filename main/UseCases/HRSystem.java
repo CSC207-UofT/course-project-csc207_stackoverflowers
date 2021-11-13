@@ -23,7 +23,7 @@ public class HRSystem implements Serializable {
 
     private final ArrayList<Intern> internList;
 
-    private final ArrayList<HiredIntern> hiredInternList;
+    private ArrayList<HiredIntern> hiredInternList;
 
     private ArrayList<InterviewIntern> interviewInternList;
 
