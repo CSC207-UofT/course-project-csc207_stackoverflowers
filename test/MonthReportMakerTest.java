@@ -37,8 +37,8 @@ public class MonthReportMakerTest {
         String expected = GamePrompts.PROJECT_NAME_HEADER + "a name";
         assertEquals(actual, expected);
     }
-
     /*
+
     @Test
     public void testBakeProgress(){
         String actual = reportMaker.bakeProgress(1);
@@ -46,8 +46,8 @@ public class MonthReportMakerTest {
         assertEquals(actual, expected);
     }
 
-
      */
+
     @Test
     public void testEndOfMonthPromptNotFinal(){
         String actual = reportMaker.endOfMonthPrompt(1);
@@ -129,42 +129,42 @@ public class MonthReportMakerTest {
 //        }
     }
 
-        private ArrayList<Project> makeProjects() throws FileNotFoundException {
-            //A helper function that sets up the Projects in HRSystem for the test.
-            //Only one project for the first month.
-            Project project1 = new Project(GamePrompts.PROJECT1_NAME);
-            ArrayList<Project> projects = new ArrayList<>();
-            projects.add(project1);
-            return projects;
-        }
+    private ArrayList<Project> makeProjects() throws FileNotFoundException {
+        //A helper function that sets up the Projects in HRSystem for the test.
+        //Only one project for the first month.
+        Project project1 = new Project(GamePrompts.PROJECT1_NAME);
+        ArrayList<Project> projects = new ArrayList<>();
+        projects.add(project1);
+        return projects;
+    }
 
 
-        private ArrayList<HiredIntern> makeInterns() {
-            //A helper function that sets up the interns in HRSystem for the test.
-            //Setting up two Hired interns
-            HashMap<String, Double> marySkills = new HashMap<>();
-            marySkills.put("Efficiency", 100.0);
-            HiredIntern Mary = new HiredIntern("Mary", 19, marySkills);
+    private ArrayList<HiredIntern> makeInterns() {
+        //A helper function that sets up the interns in HRSystem for the test.
+        //Setting up two Hired interns
+        HashMap<String, Double> marySkills = new HashMap<>();
+        marySkills.put("Efficiency", 100.0);
+        HiredIntern Mary = new HiredIntern("Mary", 19, marySkills);
 
-            HashMap<String, Double> maggieSkills = new HashMap<>();
-            maggieSkills.put("Responsible", 87.0);
-            HiredIntern Maggie = new HiredIntern("Maggie", 20, maggieSkills);
+        HashMap<String, Double> maggieSkills = new HashMap<>();
+        maggieSkills.put("Responsible", 87.0);
+        HiredIntern Maggie = new HiredIntern("Maggie", 20, maggieSkills);
 
-            HashMap<String, Double> rubySkills = new HashMap<>();
-            rubySkills.put("Communication", 66.0);
-            HiredIntern Ruby = new HiredIntern("Ruby", 21, rubySkills);
+        HashMap<String, Double> rubySkills = new HashMap<>();
+        rubySkills.put("Communication", 66.0);
+        HiredIntern Ruby = new HiredIntern("Ruby", 21, rubySkills);
 
-            //Also add a interviewIntern that shouldn't be used anywhere during month:
-            HashMap<String, Double> bobSkills = new HashMap<>();
-            bobSkills.put("Flexibility", 50.0);
-            HiredIntern Bob = new HiredIntern("Bob", 60, bobSkills);
-            //Make a new list of interns to put in HRSystem to update:
-            ArrayList<HiredIntern> interns = new ArrayList<>();
-            interns.add(Mary);
-            interns.add(Maggie);
-            interns.add(Ruby);
-            interns.add(Bob);
-            return interns;
-        }
+        //Also add a interviewIntern that shouldn't be used anywhere during month:
+        HashMap<String, Double> bobSkills = new HashMap<>();
+        bobSkills.put("Flexibility", 50.0);
+        HiredIntern Bob = new HiredIntern("Bob", 60, bobSkills);
+        //Make a new list of interns to put in HRSystem to update:
+        ArrayList<HiredIntern> interns = new ArrayList<>();
+        interns.add(Mary);
+        interns.add(Maggie);
+        interns.add(Ruby);
+        interns.add(Bob);
+        return interns;
+    }
 
 }
