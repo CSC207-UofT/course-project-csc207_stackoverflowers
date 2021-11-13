@@ -12,10 +12,6 @@ public abstract class Level {
         currentStatus = levelStatus.START;
     }
 
-    public levelStatus getCurrentStatus() {
-        return currentStatus;
-    }
-
     public void getIntoLevel() {currentStatus = levelStatus.DURING;}
 
     public void endLevel(){

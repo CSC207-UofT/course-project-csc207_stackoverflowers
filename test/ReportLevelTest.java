@@ -1,7 +1,6 @@
 import ControllersPresenters.ReportLevel;
 import Entities.*;
 import UseCases.*;
-import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
@@ -49,7 +48,7 @@ public class ReportLevelTest {
         setUp();
         reportLevel = new ReportLevel(1, hrSystem);
         String actual = reportLevel.getOutputString("assign intern to upgrade Mary");
-        String expected = reportLevel.getCurrentReportMaker().assignInternToUpgrade("Mary");
+        String expected = reportLevel.getCurrentReportMaker().upgradeIntern("Mary");
         assertEquals(actual, expected);
     }
 
@@ -57,7 +56,7 @@ public class ReportLevelTest {
     public void testFinishedUpgradeFail() throws Exception {
         setUp();
         reportLevel = new ReportLevel(1, hrSystem);
-        reportLevel.getCurrentReportMaker().assignInternToUpgrade("Mary");
+        reportLevel.getCurrentReportMaker().upgradeIntern("Mary");
         throw new Exception(Exceptions.INTERN_UPGRADING_FAILURE);
     }
 

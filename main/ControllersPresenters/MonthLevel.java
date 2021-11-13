@@ -68,7 +68,7 @@ public class MonthLevel extends Level {
     private ArrayList<String> parseForAssigning(String input) throws Exception {
         //helper method that parses the string so that it returns the intern and project involved.
         List<String> inputs = Arrays.asList((input.split(" ")));
-        if (inputs.size()< 3 || inputs.size() > 10){
+        if (inputs.size()<= 4 || inputs.size() > 10){
             throw new Exception(Exceptions.INVALID_COMMAND);
         }
         String intern = inputs.get(4);
