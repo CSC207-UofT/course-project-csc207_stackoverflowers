@@ -30,20 +30,28 @@ public class InterviewLevel extends Level{
             getIntoLevel();
             return getStartOfInterviewPrompt();
         }
-        if (Objects.equals(input, currentInterviewMaker.storePlayerChoice(input))) {
-            return currentInterviewMaker.getChoiceOptions();
-        }
-
-        if (Objects.equals(input, "yes") || (Objects.equals(input, "no"))){
-            return this.getHiringResponse(input);
-
-        }
         if (levelEnded()){
             return getEndOfInterviewPrompt();
         }
-        else{
-            throw new Exception(Exceptions.INVALID_COMMAND);
+        if (currentInterviewMaker.getChoiceOptions().contains(input)) {
+            //check if this is the last thing the intern says
+            //if it's not:
+                // return the corresponding interviewee's next response and next choice options to the player
+            //if it is:
+                //return the interviewee's final response, and prompt player to make hiring decision.
+                //this.getHiringResponse(input);
         }
+        if (Objects.equals(input, "yes") || (Objects.equals(input, "no"))){
+            //hired the intern/ or not
+            //return "successfully/ don't hired intern"
+            //check if there are any interns left to interview haveInterviewsLeft()
+            // if yes: update the current interviewing intern, then also add the next interviewee's next sentenct to output
+            // if no: endLevel() and return hired successful or not
+            currentInterviewMaker.hireIntern();//the actual hiring
+
+        }
+        //If you never change the level status how will it EVER get to end. huh????
+        throw new Exception(Exceptions.INVALID_COMMAND);
     }
 
     /**
@@ -69,9 +77,7 @@ public class InterviewLevel extends Level{
      * from internToHire in UseCases.InterviewMaker
      */
     public String getHiringResponse(String input){
-        String[] inputs = input.split("");
-        String res = inputs[2];
-        return currentInterviewMaker.internToHire(res);
+        return currentInterviewMaker.internToHire(input);
     }
 
 

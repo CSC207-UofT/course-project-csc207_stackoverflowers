@@ -21,7 +21,7 @@ public class GameGenerators implements Serializable {
      * @param newInterns A list of interns constructed in the UseCases.GameMaker constructor
      */
     public void addInternToList(ArrayList<InterviewIntern> newInterns){
-        this.currentHRSystem.updateInternList(newInterns);
+        this.currentHRSystem.updateInterviewInternList(newInterns);
     }
 
     /**

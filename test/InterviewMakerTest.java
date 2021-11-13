@@ -1,16 +1,11 @@
 import Entities.GamePrompts;
-import Entities.InterviewIntern;
-import Entities.HiredIntern;
 import UseCases.HRSystem;
 
 import UseCases.InterviewMaker;
-import UseCases.MonthMaker;
 import org.junit.Before;
 import org.junit.Test;
 
 
-import java.io.Serializable;
-import java.util.*;
 import static org.junit.Assert.*;
 
 
@@ -27,7 +22,7 @@ public class InterviewMakerTest {
         @Test(timeout = 1000)
         public void TestStartOfInterviewPrompt(){
             String actual = make.startOfInterviewPrompt();
-            String expected = GamePrompts.ASK_FOR_INTERVIEWEE_NAME + make.getInterviewInternInfo();
+            String expected = GamePrompts.START_INTERVIEW_PROMPT + make.getInterviewInternInfo();
             assertEquals(expected, actual);
         }
 
