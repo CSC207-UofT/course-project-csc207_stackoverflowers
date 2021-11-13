@@ -27,7 +27,7 @@ will be updated to reflect the player’s choices.
 In the second level of the game, after the player has hired 6 interns from the list of 10 provided, the player will then be able to assign interns to projects 
 based off of the intern's skills and the skills required to complete the projects. 
 
-Each project runs for approximately 2 months in our game, and note that month therefore is just a unit of time we are using.
+Each project runs for 2 months in our game, and note that month therefore is just a unit of time we are using.
 Level two will run for a total of 4 months with a total of 4 projects in which 2 projects will be shown to player in the beginning of month 1 and 
 2 more projects will be shown to player at the beginning of month 3.
 At those times, the player will be able to assign, remove a certain intern from the project, check their assignments so far, and also check interns and projects info.

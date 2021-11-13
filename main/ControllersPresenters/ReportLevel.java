@@ -73,7 +73,7 @@ public class ReportLevel extends Level{
     public String getReport() {
         String header = currentReportMaker.makeReportHeader(currentMonth);
         String intro = currentReportMaker.makeReportIntro();
-        String body = currentReportMaker.makeReportBody(projectProgress, currentMonth);
+        String body = currentReportMaker.makeReportBody(currentMonth);
         String end = currentReportMaker.makeReportConclusion();
         //TODO: String upgradePrompt = currentReportMaker.makeUpgradePrompt(generateRandomSkill());
         return currentReportPresenter.displayOutput(header, intro, body, end);

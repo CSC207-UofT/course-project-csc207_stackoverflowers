@@ -26,7 +26,7 @@ public class FinalReportMaker implements ReportMaker {
 
     //这个格式和其他那两个差不多，但别忘了这是最后的project，所以只有一个intern（见mary在discord上发的照片）
     @Override
-    public String makeReportBody(int projectProgress, int currentMonth) {
+    public String makeReportBody( int currentMonth) {
         String internNames = currentHRSystem.getHiredInternsNames();
 
         List<Project> projList = currentHRSystem.getProjects(currentMonth);
@@ -35,8 +35,7 @@ public class FinalReportMaker implements ReportMaker {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
         ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
-        return bakeProjectName(currentHRSystem.getProjectNames(currentMonth)) + "\n" +
-                bakeProgress(projectProgress)+"\n"+
+        return bakeProjectName(currentHRSystem.getProjectName(currentMonth)) + "\n" +
                 bakeInterns(internNames) + "\n" +
                 bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
     }
@@ -52,11 +51,6 @@ public class FinalReportMaker implements ReportMaker {
     @Override
     public String bakeProjectName(String projectName) {
         return GamePrompts.PROJECT_NAME_HEADER + projectName;
-    }
-
-    @Override
-    public String bakeProgress(int projectProgress) {
-        return GamePrompts.PROJECT_PROGRESS_HEADER + projectProgress;
     }
 
     @Override
@@ -128,6 +122,7 @@ public class FinalReportMaker implements ReportMaker {
 
     @Override
     public boolean checkUpgraded(int currentMonth) {
+        //returns true if all interns have been assigned to a project
         return currentHRSystem.internUpgraded(currentMonth);
     }
 }

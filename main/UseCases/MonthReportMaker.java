@@ -39,7 +39,7 @@ public class MonthReportMaker implements ReportMaker {
         - zzz: poor, could be potentially fired
      */
     @Override
-    public String makeReportBody(int projectProgress, int currentMonth) {
+    public String makeReportBody( int currentMonth) {
         String internNames = currentHRSystem.getHiredInternsNames();
 
         List<Project> projList = currentHRSystem.getProjects(currentMonth);
@@ -49,7 +49,6 @@ public class MonthReportMaker implements ReportMaker {
         }
         ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
         return bakeProjectName(currentHRSystem.getProjectNames(currentMonth)) + "\n" +
-                bakeProgress(projectProgress) + "\n" +
                 bakeInterns(internNames) + "\n" +
                 bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
     }
@@ -66,11 +65,6 @@ public class MonthReportMaker implements ReportMaker {
     @Override
     public String bakeProjectName(String projectName) {
         return GamePrompts.PROJECT_NAME_HEADER + projectName;
-    }
-
-    @Override
-    public String bakeProgress(int projectProgress) {
-        return GamePrompts.PROJECT_PROGRESS_HEADER + projectProgress;
     }
 
     @Override
