@@ -125,7 +125,7 @@ public class MonthReportMaker implements ReportMaker {
 
     @Override
     public String getInternsInfo(){
-        return GamePrompts.INTERN_INFO_HEADER + currentHRSystem.getHiredInternNames();
+        return GamePrompts.INTERN_INFO_HEADER + currentHRSystem.getHiredInternsNames();
     }
 
     @Override

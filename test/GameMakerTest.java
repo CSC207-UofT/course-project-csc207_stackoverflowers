@@ -52,7 +52,7 @@ public class GameMakerTest {
         gameMaker.save(3);
         GameMaker copy = gameMaker.load(gameMaker.getCurrentHRSystem().getPlayerName());
         assertEquals(gameMaker.getCurrentHRSystem().getPlayerName(), copy.getCurrentHRSystem().getPlayerName());
-        assertEquals(gameMaker.getCurrentHRSystem().getInternList(), copy.getCurrentHRSystem().getInternList());
+        assertEquals(gameMaker.getCurrentHRSystem().getInterviewInternList(), copy.getCurrentHRSystem().getInterviewInternList());
     }
 
 

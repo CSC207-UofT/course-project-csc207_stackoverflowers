@@ -8,9 +8,9 @@ public class SPhase {
     - waits for input and passes it off to the ControllersPresenters.GameManager (controller),
     - print the output received from the ControllersPresenters.GameManager
     all of this will be in the main method !!
-     */ 
+     */
     public static void main(String[] args) throws Exception {
-        GameManager currentGame = new GameManager();
+        GameManager currentGame = null;
         try {
            currentGame = new GameManager();
         }catch (Exception e){
@@ -27,7 +27,7 @@ public class SPhase {
                 System.out.println(output);
             }
             catch (Exception e){
-                System.out.println(e.getMessage());
+                System.out.println(e);
             }
         }
     }
