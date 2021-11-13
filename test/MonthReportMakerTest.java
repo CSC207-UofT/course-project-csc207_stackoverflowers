@@ -38,6 +38,7 @@ public class MonthReportMakerTest {
         assertEquals(actual, expected);
     }
 
+    /*
     @Test
     public void testBakeProgress(){
         String actual = reportMaker.bakeProgress(1);
@@ -45,6 +46,8 @@ public class MonthReportMakerTest {
         assertEquals(actual, expected);
     }
 
+
+     */
     @Test
     public void testEndOfMonthPromptNotFinal(){
         String actual = reportMaker.endOfMonthPrompt(1);
