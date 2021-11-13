@@ -24,10 +24,9 @@ public interface ReportMaker {
 
     /**
      * Make a body for the report corresponding to the current phase (month) the player is in
-     * @param projectProgress an int between 0 and 10 that indicates how well the project is going
      * @return correctly formatted body for the report based on the current phase (month)
      */
-    String makeReportBody(int projectProgress, int currentMonth);
+    String makeReportBody( int currentMonth);
 
 
     /**
@@ -38,8 +37,6 @@ public interface ReportMaker {
     String makeReportConclusion();
 
     String bakeProjectName (String projectName);
-
-    String bakeProgress (int projectProgress);
 
 
 
