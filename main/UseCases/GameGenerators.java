@@ -118,7 +118,7 @@ public class GameGenerators implements Serializable {
         while (skillMap.size() < 3) {
             String skill = skillList.get(random.nextInt(skillList.size()));
             if (!skillMap.containsKey(skill)) {
-                skillMap.put(skill, 2.00 * random.nextDouble());
+                skillMap.put(skill, 100.00 * random.nextDouble());
             }
         }
         return skillMap;
