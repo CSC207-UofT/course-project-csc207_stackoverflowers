@@ -1,7 +1,7 @@
 package ControllersPresenters;
 
 import Entities.Exceptions;
-import Entities.InterviewIntern;
+import Entities.GamePrompts;
 import UseCases.HRSystem;
 import UseCases.InterviewMaker;
 
@@ -34,6 +34,20 @@ public class InterviewLevel extends Level{
             return getEndOfInterviewPrompt();
         }
         if (currentInterviewMaker.getChoiceOptions().contains(input)) {
+            //if choiceOptions is not the last thing the intern says, i.e. has already said response:
+            if (this.currentInterviewMaker.hasSaidResponse){
+                // GamePrompts.HIRE_INTERN;
+                // this.currentInterviewMaker;
+            }
+            //if choiceOptions is the last thing the intern says, i.e. is yet to say response:
+            if (! this.currentInterviewMaker.hasSaidResponse){
+                return GamePrompts.INTERN_RESPONSE_PROMPT +
+                        currentInterviewMaker.displayInternChoiceResponse(input) +
+                        GamePrompts.NEXT_CHOICE_PROMPT +
+                        currentInterviewMaker.getChoiceOptions();
+            }
+
+
             //check if this is the last thing the intern says
             //if it's not:
                 // return the corresponding interviewee's next response and next choice options to the player
@@ -47,7 +61,14 @@ public class InterviewLevel extends Level{
             //check if there are any interns left to interview haveInterviewsLeft()
             // if yes: update the current interviewing intern, then also add the next interviewee's next sentenct to output
             // if no: endLevel() and return hired successful or not
+
+             /*
+             if (res.equals(currentInterviewMaker.displayInternChoiceResponse(input))){
+                 currentInterviewMaker.updateInterviewIntern();
+            }
             currentInterviewMaker.hireIntern();//the actual hiring
+
+              */
         }
         //If you never change the level status how will it EVER get to end. huh????
         throw new Exception(Exceptions.INVALID_COMMAND);

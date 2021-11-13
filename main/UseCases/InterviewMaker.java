@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class InterviewMaker {
 
+    public boolean hasSaidResponse;
     private InterviewIntern currentInterviewIntern;
     // private HiredIntern currentHiredIntern; (may not need this in interviewmaker)
     private final HRSystem currentHRSystem ;
@@ -21,6 +22,7 @@ public class InterviewMaker {
     public InterviewMaker(HRSystem currentHRSystem){
         // this.currentHiredIntern = new HiredIntern();
         this.currentHRSystem = currentHRSystem;
+        this.hasSaidResponse = false;
 
     }
 
@@ -29,9 +31,8 @@ public class InterviewMaker {
      * @return a String representation of the interview prompt and possible intern names.
      */
     public String startOfInterviewPrompt(){
-        //condition to check if interview has started? need in interview level?
-        //The first sentence the interviewee says
-        //the options the player can choose.
+        //This returns the InterviewInterns name, age and skill information as well as the first
+        // choices a player must choose.
         return GamePrompts.START_INTERVIEW_PROMPT + getInterviewInternInfo();
     }
 
@@ -41,7 +42,8 @@ public class InterviewMaker {
      */
     public void updatePlayerInternChoice(InterviewIntern chosenIntern){
         this.currentHRSystem.updatePlayerInternChoice(chosenIntern);
-        this.currentInterviewIntern = currentHRSystem.getPlayerInternChoice();
+        //TODO: change currentInterviewIntern to the first intern in interviewee list
+        this.currentInterviewIntern = currentHRSystem.getInterviewInternList().get(0);
     }
 
 
@@ -72,8 +74,9 @@ public class InterviewMaker {
      * corresponding response from the response tree in GameMaker.
      */
     // needs structure of the response tree?
-    public String internChoiceResponse(Object playerChoice, InterviewIntern intern){
-        return this.currentHRSystem.getInternChoiceResponse(playerChoice, intern);
+    public String displayInternChoiceResponse(String input){
+        this.hasSaidResponse = true;
+        return this.currentHRSystem.getInternChoiceResponse(input);
     }
 
 
@@ -120,11 +123,29 @@ public class InterviewMaker {
      * @return a String representation of the interviewIntern info.
      */
     public String getInterviewInternInfo(){
-        return currentHRSystem.getInterviewInternNames();
+        StringBuilder res = new StringBuilder();
+
+        ResponseTree<ArrayList<String>> responseTree = this.currentInterviewIntern.getResponseTree();
+        for (ResponseTree<ArrayList<String>> response : responseTree.getChildren()){
+            // if the response tree is a root, display the interns initial response(i.e. name, age & skill info).
+            if (response.isRoot()){
+                res.append(response.getData());
+            }
+            res.append(" ");
+            if (! response.isRoot()){
+                String[] qA = response.getData().get(0).split(",");
+                res.append(qA[0]);
+            }
+        }
+        return res.toString();
     }
 
     public String endOfInterviewPrompt(){
         return GamePrompts.END_OF_INTERVIEW_PROMPT;
+    }
+
+    //TODO: Do this new method to update the interview intern to the next intern in the list
+    public void updateInterviewIntern() {
     }
 
 

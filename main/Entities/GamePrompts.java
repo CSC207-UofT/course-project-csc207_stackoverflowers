@@ -39,6 +39,10 @@ public class GamePrompts implements Serializable {
     public static final String START_INTERVIEW_PROMPT = "Let's start the interview with the first contestant. Type anything to continue.";
     //see usage in firstPrompt
 
+    public static final String INTERN_RESPONSE_PROMPT = "The current Intern under review has the following response for you to consider:\n";
+
+    public static final String NEXT_CHOICE_PROMPT = "Please select the next question to ask ";
+
     public static final String INFORM_QUIT_GAME = "You have quit your game, and you progress has been saved to a file " +
             "with the player name you've used. Type anything to see credits and quit. Player name: ";
 

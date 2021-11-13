@@ -342,18 +342,20 @@ public class HRSystem implements Serializable {
     }
 
     public String choicesToString() {
-        ArrayList<ResponseTree> questionChoices = new ArrayList<>();
-        for (InterviewIntern intern : interviewInternList) {
-            questionChoices.addAll(intern.getResponseTree().getChildren());
-        }
         StringBuilder res = new StringBuilder();
 
-        for (ResponseTree choice : questionChoices) {
-            res.append(choice.getChildren().get(0));
+        for (InterviewIntern intern : interviewInternList) {
+            ResponseTree<ArrayList<String>> responseTree = intern.getResponseTree();
+            for (ResponseTree<ArrayList<String>> response : responseTree.getChildren()){
+                String[] qA = response.getData().get(0).split(",");
+                res.append(qA[0]);
+            }
         }
 
         return res.toString();
+
     }
+
     //TODO: delete this method if it is not used.
     public ArrayList<Object> getChoices(InterviewIntern intern) {
         ArrayList<ResponseTree> questionChoices = new ArrayList<>(intern.getResponseTree().getChildren());
@@ -375,7 +377,10 @@ public class HRSystem implements Serializable {
         return this.playerInternResponseChoice;
     }
 
-    public String getInternChoiceResponse(Object playerChoice, InterviewIntern intern) {
+
+    public String getInternChoiceResponse(String input) {
+        //TODO: Update this method, for each intern in interviewInternList the input based on that intern
+        /*
         ArrayList<ResponseTree> questionChoices = new ArrayList<>(intern.getResponseTree().getChildren());
         StringBuilder res = new StringBuilder();
 
@@ -385,6 +390,9 @@ public class HRSystem implements Serializable {
             }
         }
         return res.toString();
+
+         */
+        return "string to come";
     }
 
 
