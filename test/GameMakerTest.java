@@ -23,7 +23,7 @@ public class GameMakerTest {
     @Test
     public void TestFirstPrompt() {
         String expectedResult = GamePrompts.FIRST_PROMPT_BEFORE_NAME + "Maggie" + GamePrompts.FIRST_PROMPT_AFTER_NAME +
-                gameMaker.getCurrentHRSystem().makeInterviewInternsToString() + GamePrompts.ASK_FOR_INTERVIEWEE_NAME;
+                gameMaker.getCurrentHRSystem().makeInterviewInternsToString() + GamePrompts.START_INTERVIEW_PROMPT;
         assertEquals(expectedResult, gameMaker.firstPrompt("Maggie"));
     }
 

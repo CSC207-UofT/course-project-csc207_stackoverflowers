@@ -30,7 +30,9 @@ public class InterviewMaker {
      */
     public String startOfInterviewPrompt(){
         //condition to check if interview has started? need in interview level?
-        return GamePrompts.ASK_FOR_INTERVIEWEE_NAME + getInterviewInternInfo();
+        //The first sentence the interviewee says
+        //the options the player can choose.
+        return GamePrompts.START_INTERVIEW_PROMPT + getInterviewInternInfo();
     }
 
     /**
@@ -47,10 +49,6 @@ public class InterviewMaker {
      * This method takes in this interviewIntern from UseCases.HRSystem and return the intern's first choices that
      * the player can choose.
      */
-    public String ChoiceOptions(){
-        return this.currentHRSystem.choicesToString();
-    }
-
 
     public String getChoiceOptions(){
         return this.currentHRSystem.choicesToString();
@@ -94,15 +92,6 @@ public class InterviewMaker {
      */
     public ArrayList<HiredIntern> getHiredInternList(){
         return currentHRSystem.getHiredInternList();
-    }
-
-
-    /**
-     * Add a new hiredIntern to the list of hiredInterns
-     * @param hiredInternList the list of Entities.HiredIntern to be added
-     */
-    public void updateHiredInternList(ArrayList<HiredIntern> hiredInternList){
-        currentHRSystem.updateHiredInternList(hiredInternList);
     }
 
 

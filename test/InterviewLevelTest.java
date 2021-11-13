@@ -7,8 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-import java.io.Serializable;
-import java.util.*;
 import static org.junit.Assert.*;
 
 public class InterviewLevelTest {
@@ -27,7 +25,7 @@ public class InterviewLevelTest {
     @Test(timeout = 1000)
     public void TestGetStartOfInterviewPrompt(){
         String actual = lev.getStartOfInterviewPrompt();
-        String expected = GamePrompts.ASK_FOR_INTERVIEWEE_NAME + make.getInterviewInternInfo();
+        String expected = GamePrompts.START_INTERVIEW_PROMPT + make.getInterviewInternInfo();
         assertEquals(expected, actual);
     }
 

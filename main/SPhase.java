@@ -4,13 +4,11 @@ import Entities.GamePrompts;
 import java.util.Scanner;
 public class SPhase {
     /* This is the user interface (similar to the J-shell from week 2)
-    //TODO:
     - should only have a main method for beginning the game
     - waits for input and passes it off to the ControllersPresenters.GameManager (controller),
     - print the output received from the ControllersPresenters.GameManager
     all of this will be in the main method !!
-
-     */
+     */ 
     public static void main(String[] args) throws Exception {
         GameManager currentGame = new GameManager();
         try {

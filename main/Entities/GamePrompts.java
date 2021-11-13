@@ -36,11 +36,11 @@ public class GamePrompts implements Serializable {
                                                          "Your job is to hire some interns and then... Here is a brief view of the interviewee list. \n" +
                                                          "Take a glance and let's start the interview! \n";
 
-    public static final String ASK_FOR_INTERVIEWEE_NAME = "Now, which potential would you like to interview first?";
+    public static final String START_INTERVIEW_PROMPT = "Let's start the interview with the first contestant. Type anything to continue.";
     //see usage in firstPrompt
 
     public static final String INFORM_QUIT_GAME = "You have quit your game, and you progress has been saved to a file " +
-            "with the player name you've used. Player name:";
+            "with the player name you've used. Type anything to see credits and quit. Player name: ";
 
     public static final String HIRE_INTERN = "Would you like to hire this intern?";
 

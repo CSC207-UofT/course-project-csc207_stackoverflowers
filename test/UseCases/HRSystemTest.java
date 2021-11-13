@@ -17,7 +17,7 @@ public class HRSystemTest {
     @Before
     public void setUp(){
         system = new HRSystem();
-        system.updateInternList(makeInterviewInterns());
+        system.updateInterviewInternList(makeInterviewInterns());
         system.updatePlayerName("Richard");
         system.updateHiredInternList(makeHiredInters());
     }
