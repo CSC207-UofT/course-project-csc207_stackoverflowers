@@ -52,24 +52,42 @@ public class InterviewLevel extends Level{
             //return "successfully/ don't hired intern"
             if (Objects.equals(input, "yes")){
                 this.currentInterviewMaker.hireIntern();
-                return GamePrompts.HIRED_INTERN;
+                //check if there are any interns left to interview haveInterviewsLeft()
+                //if there are more interns to interview, update the current interviewing intern, prompt the player from the
+                // next interviewee's output
+                if (this.currentInterviewMaker.haveInterviewsLeft()){
+                    this.currentInterviewMaker.updateInterviewIntern();
+                    return GamePrompts.HIRED_INTERN + GamePrompts.NEXT_INTERVIEW_INTERN_PROMPT +
+                            this.currentInterviewMaker.getInterviewInternInfo();
+                }
+                // if there are no more interns to interview, endLevel() and return hired successful or not and the
+                // names of all interns they have hired in this interview period.
+                if(! this.currentInterviewMaker.haveInterviewsLeft()){
+                    updateLevelStatus();
+                    return GamePrompts.HIRED_INTERN + GamePrompts.CHOSEN_INTERNS_TO_HIRE +
+                            this.currentInterviewMaker.getHiredInternString();
+                }
+
             }
             if (Objects.equals(input, "no")){
-                return GamePrompts.NOT_HIRED_INTERN;
+                //check if there are any interns left to interview haveInterviewsLeft()
+                //if there are more interns to interview, update the current interviewing intern, prompt the player from the
+                // next interviewee's output
+                if (this.currentInterviewMaker.haveInterviewsLeft()){
+                    this.currentInterviewMaker.updateInterviewIntern();
+                    return GamePrompts.NOT_HIRED_INTERN + GamePrompts.NEXT_INTERVIEW_INTERN_PROMPT +
+                            this.currentInterviewMaker.getInterviewInternInfo();
+                }
+                // if there are no more interns to interview, endLevel() and return hired successful or not and the
+                // names of all interns they have hired in this interview period.
+                if(! this.currentInterviewMaker.haveInterviewsLeft()){
+                    updateLevelStatus();
+                    return GamePrompts.NOT_HIRED_INTERN + GamePrompts.CHOSEN_INTERNS_TO_HIRE +
+                            this.currentInterviewMaker.getHiredInternString();
+                }
             }
 
-            //check if there are any interns left to interview haveInterviewsLeft()
-            //if there are more interns to interview, update the current interviewing intern, prompt the player from the
-            // next interviewee's output
-            if (this.currentInterviewMaker.haveInterviewsLeft()){
-                this.currentInterviewMaker.updateInterviewIntern();
-                return GamePrompts.NEXT_INTERVIEW_INTERN_PROMPT + this.currentInterviewMaker.getInterviewInternInfo();
-            }
-            // if there are no more interns to interview, endLevel() and return hired successful or not
-            if(! this.currentInterviewMaker.haveInterviewsLeft()){
-                updateLevelStatus();
-                return GamePrompts.CHOSEN_INTERNS_TO_HIRE + this.currentInterviewMaker.getHiredInternString();
-            }
+
 
         }
         throw new Exception(Exceptions.INVALID_COMMAND);
