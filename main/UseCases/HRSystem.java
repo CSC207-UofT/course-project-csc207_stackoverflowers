@@ -25,10 +25,9 @@ public class HRSystem implements Serializable {
 
     private ArrayList<InterviewIntern> interviewInternList;
 
-    private final ArrayList<Project> projectList;
+    private ArrayList<Project> projectList;
 
-
-    private final HashMap<Integer, ArrayList<Project>> monthToProject;
+    private HashMap<Integer, List<Project>> monthToProject;
     // stores the month as a key and a list of projects for that month as a value
 
     private final HashMap<Project, ArrayList<HiredIntern>> projectToInterns;
@@ -91,37 +90,34 @@ public class HRSystem implements Serializable {
         this.interviewInternList = interviewInterns;
     }
 
-
     /**
      * This method updates the list of Entities.Project
      *
      * @param projects the ArrayList of Entities.Project to be added to the current list of projects.
      */
     public void updateProjectList(ArrayList<Project> projects) {
-        this.projectList.addAll(projects);
+        projectList = projects;
+        makeMonthToProject();//Fills monthToProject with the values needed.
+        makeProjectToIntern();//Fills the projectToIntern with keys but no values yet.
     }
 
-    /**
-     * This method updates the HashMap containing each month as its key and an ArrayList of Entities.Project as a
-     * value pair.
-     *
-     * @param month    the Integer indicating the month of the current game.
-     * @param projects the ArrayList of Entities.Project that is a value of each month in the HashMap.
-     */
-    public void updateMonthToProject(Integer month, ArrayList<Project> projects) {
-        this.monthToProject.put(month, projects);
+    public void makeProjectToIntern(){
+        for (Project p: projectList){
+            projectToInterns.put(p, new ArrayList<>());
+        }
     }
 
-    /**
-     * This method updates the HashMap containing an Entities.Project as a key and has an ArrayList of
-     * Entities.HiredInterns as a value pair.
-     *
-     * @param project      the Entities.Project that is associated with a list of HiredInterns
-     * @param hiredInterns the ArrayList of Entities.HiredInterns that is a value of each project in the HashMap.
-     */
-    public void updateProjectToInterns(Project project, ArrayList<HiredIntern> hiredInterns) {
-        this.projectToInterns.put(project, hiredInterns);
+    public void makeMonthToProject() {
+        HashMap<Integer, List<Project>> monthToProject = new HashMap<>();
+        monthToProject.put(1, projectList.subList(0,2));
+        monthToProject.put(2, projectList.subList(0,2));
+        monthToProject.put(3, projectList.subList(2,4));
+        monthToProject.put(4, projectList.subList(2,4));
+        monthToProject.put(5, projectList.subList(4,4));
+        monthToProject.put(6, projectList.subList(4,4));
+        this.monthToProject = monthToProject;
     }
+
 
     /**
      * This method gets only the names of all interns separated by "|".
@@ -164,7 +160,7 @@ public class HRSystem implements Serializable {
         }
         return res.toString();
     }
-
+    //TODO: delete if the method below is not used.
     /**
      * This method gets a String representation of all Entities.HiredIntern info.
      *
@@ -185,7 +181,7 @@ public class HRSystem implements Serializable {
      * @return a String of project information for all projects done in the given month.
      */
     public String makeProjectsToString(int currentMonth) {
-        ArrayList<Project> monthlyProjList = this.monthToProject.get(currentMonth);
+        List<Project> monthlyProjList = this.monthToProject.get(currentMonth);
         StringBuilder res = new StringBuilder();
         for (Project proj : monthlyProjList) {
             res.append(proj.projectToString());
@@ -199,8 +195,8 @@ public class HRSystem implements Serializable {
      * @param currentMonth an Integer representation for the current month in the current game.
      * @return a String representation of project name for each project in Entities.Project for the given month.
      */
-    public String getProjectName(int currentMonth) {
-        ArrayList<Project> monthlyProjList = this.monthToProject.get(currentMonth);
+    public String getProjectNames(int currentMonth) {
+        List<Project> monthlyProjList = this.monthToProject.get(currentMonth);
         StringBuilder res = new StringBuilder();
         for (Project proj : monthlyProjList) {
             res.append(proj.getName());
@@ -215,13 +211,8 @@ public class HRSystem implements Serializable {
      * @param currentMonth an Integer representation for the current month in the current game.
      * @return an ArrayList of all projects in Entities.Project for the given month.
      */
-    public ArrayList<Project> getProject(int currentMonth) {
+    public List<Project> getProjects(int currentMonth) {
         return this.monthToProject.get(currentMonth);
-    }
-
-
-    public ArrayList<Project> getProjectList() {
-        return this.projectList;
     }
 
     /**
@@ -232,9 +223,8 @@ public class HRSystem implements Serializable {
      * @return a String representing each project and the assigned interns to a project.
      */
     public String makeAssignmentToString(int currentMonth) {
-
         // get the projects for the month
-        ArrayList<Project> monthlyProjList = this.monthToProject.get(currentMonth);
+        List<Project> monthlyProjList = this.monthToProject.get(currentMonth);
         StringBuilder res = new StringBuilder();
         for (Project proj : monthlyProjList) {
             //append each project from the project list for the current month to res
@@ -258,15 +248,16 @@ public class HRSystem implements Serializable {
     // upgrade methods
     public String makeUpgradeToString(int currentMonth) {
         //a method that takes the upgrade and returns a list of skills point the intern have now.
-        ArrayList<Project> monthlyProjList = this.monthToProject.get(currentMonth);
+        List<Project> monthlyProjList = this.monthToProject.get(currentMonth);
         StringBuilder result = new StringBuilder();
         for (Project p : monthlyProjList) {
             result.append(p.getName());
             result.append("    Interns in project: ");
-            this.monthToProject.get(p);
-            //TODO: finish this method so that it displays a list of skills point the intern have now
+            ArrayList<HiredIntern> internsInProject = this.projectToInterns.get(p);
+            for (HiredIntern h :internsInProject){
+                result.append(h.internToString());
+            }
         }
-
         return result.toString();
     }
 
@@ -307,6 +298,7 @@ public class HRSystem implements Serializable {
         return this.playerResponse;
     }
 
+    //TODO: remove this if not used in InterviewLevel.
     /**
      * This method fire's an intern during the interview process or after completion of a project.
      *
@@ -362,7 +354,7 @@ public class HRSystem implements Serializable {
 
         return res.toString();
     }
-
+    //TODO: delete this method if it is not used.
     public ArrayList<Object> getChoices(InterviewIntern intern) {
         ArrayList<ResponseTree> questionChoices = new ArrayList<>(intern.getResponseTree().getChildren());
 
@@ -374,7 +366,7 @@ public class HRSystem implements Serializable {
         return options;
 
     }
-
+    //TODO: delete this method if it is not used.
     public void updatePlayerInternResponseChoice(Object option) {
         this.playerInternResponseChoice = option;
     }
@@ -384,7 +376,6 @@ public class HRSystem implements Serializable {
     }
 
     public String getInternChoiceResponse(Object playerChoice, InterviewIntern intern) {
-
         ArrayList<ResponseTree> questionChoices = new ArrayList<>(intern.getResponseTree().getChildren());
         StringBuilder res = new StringBuilder();
 
@@ -393,7 +384,6 @@ public class HRSystem implements Serializable {
                 res.append(choice.getChildren().get(1));
             }
         }
-
         return res.toString();
     }
 
@@ -409,26 +399,35 @@ public class HRSystem implements Serializable {
     public boolean assignInternToProject(String internName, String projectName) {
         //Should return true if assignment was successful.
         //Else, should poi return false if Intern is already been assigned to another project, or if they are not hired.
-        ArrayList<HiredIntern> inter = new ArrayList<HiredIntern>();
-        for (Intern i : this.hiredInternList) {
-            for (Project p : this.projectList) {
-                if ((i.getInternName().equals(internName)) & (p.getName().equals(projectName))) {
-                    inter.add((HiredIntern) i);
-                    this.projectToInterns.put(p, inter);
-                    return true;
-                }
-                if ((this.projectToInterns.get(p).contains((HiredIntern) i)) || (!(isHired(i)))) {
-                    return false;
-                }
+        HiredIntern beingAssigned = null;
+        for (HiredIntern i : hiredInternList){
+            if (i.getInternName().equals(internName)){
+                beingAssigned = i;
+            }
+        }
+        if (beingAssigned == null){
+            return false;
+        }
+        for (Project p : this.projectList) {
+            if ((p.getName().equals(projectName))) {
+                ArrayList<HiredIntern> internsBefore = projectToInterns.get(p);
+                internsBefore.add(beingAssigned);
+                this.projectToInterns.put(p, internsBefore);
+                return true;
             }
         }
         return false;
     }
 
-    //TODO: finish new method
-    public boolean assignInternToUpgrade(String internName) {
-        //TODO: implement this method
-        //Should return false if Intern's specific skill is already max, or if they do not exist.
+    public boolean upgradeInternSkill(String internName, int currentMonth) {
+        //Now only returns false if an intern doesn't exist.
+        for (HiredIntern i : this.hiredInternList) {
+            if (i.getInternName().equals(internName)){
+                i.updateInternSkills();
+                i.updateUpgraded(currentMonth);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -441,13 +440,13 @@ public class HRSystem implements Serializable {
      * project yet or in another project, or if Intern is not hired.
      */
     public boolean removeInternFromProject(String internName, String projectName) {
-        for (Intern i : this.hiredInternList) {
+        for (HiredIntern i : this.hiredInternList) {
             for (Project p : this.projectList) {
                 if ((i.getInternName().equals(internName)) & (p.getName().equals(projectName))) {
-                    this.projectToInterns.get(p).remove((HiredIntern) i);
+                    this.projectToInterns.get(p).remove(i);
                     return true;
                 }
-                if (!(this.projectToInterns.get(p).contains((HiredIntern) i)) || (!(isHired(i)))) {
+                if (!(this.projectToInterns.get(p).contains(i)) || (!(isHired(i)))) {
                     return false;
                 }
             }
@@ -464,26 +463,25 @@ public class HRSystem implements Serializable {
      * @return true if all Entities.HiredIntern have been assigned and false otherwise.
      */
     public boolean internsAllAssigned(int currentMonth) {
-        ArrayList<Project> monthlyProjList = this.monthToProject.get(currentMonth);
-        boolean assigned = false;
-        for (HiredIntern i : this.hiredInternList) {
-            for (Project proj : monthlyProjList) {
-                if (this.projectToInterns.get(proj).contains(i)) {
-                    assigned = true;
-                }
+        List<Project> monthlyProjList = this.monthToProject.get(currentMonth);
+        for (Project p : monthlyProjList){
+            if (p.getTeamSize() != projectToInterns.get(p).size()){
+                return false;
             }
         }
-        return assigned;
+        return true;
     }
 
-    //TODO: finish this new method
     public boolean internUpgraded(int currentMonth) {
-        //a method that checks if a intern have been upgraded.
-        // returns true when a intern have been upgraded.
-        //TODO: implement this method
+        for(HiredIntern i: hiredInternList){
+            if (i.getUpgradedIn() == currentMonth){
+                return true;
+            }
+        }
+        //a method that checks if an intern have been upgraded for this current month.
+        // returns true when a intern has been upgraded for this month.
         return false;
     }
-
 
     /**
      * This method adds the chosen final project to the current game's Entities.Project list.

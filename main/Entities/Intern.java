@@ -13,6 +13,7 @@ abstract public class Intern implements Serializable {
     private final String internName;
     private final int internAge;
     private HashMap<String, Double> internSkills;
+    private int upgradedIn;
 
     /**
      * Construct an Entities.Intern, giving them the given internName,
@@ -26,13 +27,13 @@ abstract public class Intern implements Serializable {
         this.internName = internName;
         this.internAge = internAge;
         this.internSkills = internSkills;
+        upgradedIn = 0;
     }
 
     /**
      * Return the name of this Entities.Intern
      */
     public String getInternName() {
-
         return this.internName;
     }
 
@@ -40,8 +41,11 @@ abstract public class Intern implements Serializable {
      * Return the age of this Entities.Intern
      */
     public int getInternAge() {
-
         return this.internAge;
+    }
+
+    public int getUpgradedIn() {
+        return upgradedIn;
     }
 
     /**
@@ -68,4 +72,9 @@ abstract public class Intern implements Serializable {
 
     }
 
+    public abstract void updateInternSkills();
+
+    public void updateUpgraded(int currentMonth){
+        upgradedIn = currentMonth;
+    };
 }

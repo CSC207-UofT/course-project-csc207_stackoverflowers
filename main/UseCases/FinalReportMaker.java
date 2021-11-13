@@ -2,6 +2,7 @@ package UseCases;
 import Entities.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @SuppressWarnings("DuplicatedCode")
 public class FinalReportMaker implements ReportMaker {
@@ -28,13 +29,13 @@ public class FinalReportMaker implements ReportMaker {
     public String makeReportBody( int currentMonth) {
         String internNames = currentHRSystem.getHiredInternsNames();
 
-        ArrayList<Project> projList = currentHRSystem.getProject(currentMonth);
+        List<Project> projList = currentHRSystem.getProjects(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();
         for (Project proj : projList) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
         ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
-        return bakeProjectName(currentHRSystem.getProjectName(currentMonth)) + "\n" +
+        return bakeProjectName(currentHRSystem.getProjectNames(currentMonth)) + "\n" +
                 bakeInterns(internNames) + "\n" +
                 bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
     }
@@ -70,7 +71,7 @@ public class FinalReportMaker implements ReportMaker {
     @Override
     public int calculateInternPerformance(HashMap<String, Double> internSkills, HashMap<String, Float> projectSkill) {
         int result = 0;
-        ArrayList<Double> effectiveSkills = new ArrayList<Double>();
+        ArrayList<Double> effectiveSkills = new ArrayList<>();
         for (String key : internSkills.keySet()) {
             double internSkill = internSkills.get(key);
             double compatibility = projectSkill.get(key);
@@ -108,8 +109,8 @@ public class FinalReportMaker implements ReportMaker {
     }
 
     @Override
-    public String assignInternToUpgrade(String internName) throws Exception {
-        boolean success = currentHRSystem.assignInternToUpgrade(internName);
+    public String upgradeIntern(String internName, int currentMonth) throws Exception {
+        boolean success = currentHRSystem.upgradeInternSkill(internName, currentMonth);
         if (!success){throw new Exception(Exceptions.INTERN_UPGRADING_FAILURE);}
         return GamePrompts.INTERN_UPGRADING_SUCCESS;
     }

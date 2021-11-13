@@ -62,7 +62,7 @@ public interface ReportMaker {
 
     String getProjectInfo(int currentMonth);
 
-    String assignInternToUpgrade(String internName) throws Exception;
+    String upgradeIntern(String internName, int currentMonth) throws Exception;
 
     String getUpgradingInfo(int currentMonth);
 
