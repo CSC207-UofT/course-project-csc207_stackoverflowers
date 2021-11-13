@@ -1,6 +1,5 @@
 package ControllersPresenters;
 import Entities.Exceptions;
-import Entities.GamePrompts;
 import UseCases.HRSystem;
 import UseCases.FinalReportMaker;
 import UseCases.MonthReportMaker;
@@ -123,8 +122,8 @@ public class ReportLevel extends Level{
 
     private String assignInternToUpgrade(String input) throws Exception {
         String[] inputs = input.split(" ");
-        String intern = inputs[3];
-        return currentReportMaker.assignInternToUpgrade(intern);
+        String intern = inputs[1];
+        return currentReportMaker.upgradeIntern(intern);
     }
 
     private String checkUpgradingInfo(int currentMonth) {

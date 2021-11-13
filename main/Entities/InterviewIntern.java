@@ -28,6 +28,9 @@ public class InterviewIntern extends Intern implements Serializable {
         super(interviewInternName, interviewInternAge, interviewInternSkills);
     }
 
+    @Override
+    public void updateInternSkills() {}
+
     public void setResponseTree(ResponseTree<ArrayList<String>> responseTree) { this.responseTree = responseTree; }
 
     public ResponseTree<ArrayList<String>> getResponseTree() { return this.responseTree; }

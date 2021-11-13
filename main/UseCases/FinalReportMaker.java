@@ -2,6 +2,7 @@ package UseCases;
 import Entities.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @SuppressWarnings("DuplicatedCode")
 public class FinalReportMaker implements ReportMaker {
@@ -28,13 +29,13 @@ public class FinalReportMaker implements ReportMaker {
     public String makeReportBody(int projectProgress, int currentMonth) {
         String internNames = currentHRSystem.getHiredInternsNames();
 
-        ArrayList<Project> projList = currentHRSystem.getProject(currentMonth);
+        List<Project> projList = currentHRSystem.getProjects(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();
         for (Project proj : projList) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
         ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
-        return bakeProjectName(currentHRSystem.getProjectName(currentMonth)) + "\n" +
+        return bakeProjectName(currentHRSystem.getProjectNames(currentMonth)) + "\n" +
                 bakeProgress(projectProgress)+"\n"+
                 bakeInterns(internNames) + "\n" +
                 bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
@@ -114,8 +115,8 @@ public class FinalReportMaker implements ReportMaker {
     }
 
     @Override
-    public String assignInternToUpgrade(String internName) throws Exception {
-        boolean success = currentHRSystem.assignInternToUpgrade(internName);
+    public String upgradeIntern(String internName) throws Exception {
+        boolean success = currentHRSystem.upgradeInternSkill(internName);
         if (!success){throw new Exception(Exceptions.INTERN_UPGRADING_FAILURE);}
         return GamePrompts.INTERN_UPGRADING_SUCCESS;
     }
@@ -127,7 +128,6 @@ public class FinalReportMaker implements ReportMaker {
 
     @Override
     public boolean checkUpgraded(int currentMonth) {
-        //returns true if all interns have been assigned to a project
         return currentHRSystem.internUpgraded(currentMonth);
     }
 }

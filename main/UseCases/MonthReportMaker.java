@@ -3,6 +3,7 @@ import Entities.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MonthReportMaker implements ReportMaker {
     private final GamePrompts prompts;
@@ -41,13 +42,13 @@ public class MonthReportMaker implements ReportMaker {
     public String makeReportBody(int projectProgress, int currentMonth) {
         String internNames = currentHRSystem.getHiredInternsNames();
 
-        ArrayList<Project> projList = currentHRSystem.getProject(currentMonth);
+        List<Project> projList = currentHRSystem.getProjects(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();
         for (Project proj : projList) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
         ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
-        return bakeProjectName(currentHRSystem.getProjectName(currentMonth)) + "\n" +
+        return bakeProjectName(currentHRSystem.getProjectNames(currentMonth)) + "\n" +
                 bakeProgress(projectProgress) + "\n" +
                 bakeInterns(internNames) + "\n" +
                 bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
@@ -133,8 +134,8 @@ public class MonthReportMaker implements ReportMaker {
         return GamePrompts.PROJECT_NAME_HEADER + currentHRSystem.makeProjectsToString(currentMonth);
     }
 
-    public String assignInternToUpgrade(String internName) throws Exception {
-        boolean success = currentHRSystem.assignInternToUpgrade(internName);
+    public String upgradeIntern(String internName) throws Exception {
+        boolean success = currentHRSystem.upgradeInternSkill(internName);
         if (!success){throw new Exception(Exceptions.INTERN_UPGRADING_FAILURE);}
         return GamePrompts.INTERN_UPGRADING_SUCCESS;
     }
