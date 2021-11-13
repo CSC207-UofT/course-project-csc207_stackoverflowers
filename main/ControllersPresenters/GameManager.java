@@ -4,6 +4,8 @@ import Entities.Exceptions;
 import UseCases.GameGenerators;
 import UseCases.GameMaker;
 
+import java.util.Objects;
+
 public class GameManager {
     /* this class is the controller class for the entire game. It starts the game , waits for input etc
     for reference check JShell and JShellState in week 2 resources on quercus
@@ -41,7 +43,7 @@ public class GameManager {
     public String getOutput(String playerInput) throws Exception {
         //This method checks the current status  of the game, and then asks for the desired
         // output from that phase.
-        if (GameMaker.getUniversalCommands().contains(playerInput)){
+        if (GameMaker.getUniversalCommands().contains(playerInput.split(" ")[0])) {
             return universalCommand(playerInput);
         }
         statusOfGame statusBefore = currentStatus;
@@ -76,31 +78,37 @@ public class GameManager {
     }
 
     private String universalCommand(String playerInput) throws Exception {
-    if(playerInput.strip() =="save") {
-        return currentGameMaker.save(currentMonth);
-    }if(playerInput == "quit"){
-        currentStatus = statusOfGame.End;
-        return currentGameMaker.quit(currentMonth);
-    }if(playerInput.split("")[0] == ("load")){
-    if (currentStatus == statusOfGame.Start) {
-        //Only load a new game if the current input has just started.
-            String[] loads = playerInput.split(" ");
-            currentGameMaker = currentGameMaker.load(loads[1]);
-            currentMonth = currentGameMaker.getCurrentMonth();
-        } else {
-            throw new Exception("Load only permitted at start of the game");
+        if (Objects.equals(playerInput.strip(), "save")) {
+            return currentGameMaker.save(currentMonth);
         }
-    }
-    throw new Exception(Exceptions.UNIVERSAL_COMMAND_NOT_FOUND);
+        if (playerInput.strip().equals("quit")) {
+            currentStatus = statusOfGame.End;
+            return currentGameMaker.quit(currentMonth);
+        }
+        if (Objects.equals(playerInput.split(" ")[0], "load")) {
+            if (currentStatus == statusOfGame.Start) {
+                //Only load a new game if the current input has just started.
+                try {
+                    currentGameMaker = currentGameMaker.load(playerInput.split(" ")[1]);
+                }catch (Exception e){
+                    throw new Exception("Can't find file to load");
+                }
+                currentMonth = currentGameMaker.getCurrentMonth();
+                return getOutput(currentGameMaker.getCurrentHRSystem().getPlayerName());
+            } else {
+                throw new Exception("Load only permitted at start of the game");
+            }
+        }
+        throw new Exception(Exceptions.UNIVERSAL_COMMAND_NOT_FOUND);
     }
 
     private void updateStatus() {
-        if (currentStatus == statusOfGame.Start){
-                currentStatus = statusOfGame.Interview;
-                currentLevel = new InterviewLevel(currentGameMaker.getCurrentHRSystem());
+        if (currentStatus == statusOfGame.Start) {
+            currentStatus = statusOfGame.Interview;
+            currentLevel = new InterviewLevel(currentGameMaker.getCurrentHRSystem());
         }
-        if (currentLevel.levelEnded()){
-            switch (currentStatus){
+        if (currentLevel.levelEnded()) {
+            switch (currentStatus) {
                 case Interview:
                     currentStatus = statusOfGame.Month;
                     currentLevel = new MonthLevel(currentMonth, currentGameMaker.getCurrentHRSystem());
@@ -111,10 +119,9 @@ public class GameManager {
                     break;
                 case Report:
                     currentMonth++;
-                    if (currentMonth < 4){
+                    if (currentMonth < 4) {
                         currentStatus = statusOfGame.Month;
-                    }
-                    else{
+                    } else {
                         currentStatus = statusOfGame.FinalMonth;
                     }
                     break;

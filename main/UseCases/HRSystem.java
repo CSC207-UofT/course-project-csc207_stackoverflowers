@@ -172,7 +172,6 @@ public class HRSystem implements Serializable {
         for (InterviewIntern i : this.interviewInternList) {
             result.append(i.getInternName());
             result.append("|");
-
         }
         return result.toString();
     }
@@ -386,7 +385,6 @@ public class HRSystem implements Serializable {
         return options;
 
     }
-    
     public void updatePlayerInternResponseChoice(Object option){
         this.playerInternResponseChoice = option;
     }
