@@ -35,7 +35,7 @@ public class FinalReportMaker implements ReportMaker {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
         ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
-        return bakeProjectName(currentHRSystem.getProjectName(currentMonth)) + "\n" +
+        return bakeProjectName(currentHRSystem.getProjectNames(currentMonth)) + "\n" +
                 bakeInterns(internNames) + "\n" +
                 bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
     }
@@ -71,7 +71,7 @@ public class FinalReportMaker implements ReportMaker {
     @Override
     public int calculateInternPerformance(HashMap<String, Double> internSkills, HashMap<String, Float> projectSkill) {
         int result = 0;
-        ArrayList<Double> effectiveSkills = new ArrayList<Double>();
+        ArrayList<Double> effectiveSkills = new ArrayList<>();
         for (String key : internSkills.keySet()) {
             double internSkill = internSkills.get(key);
             double compatibility = projectSkill.get(key);

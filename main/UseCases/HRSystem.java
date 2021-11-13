@@ -103,7 +103,7 @@ public class HRSystem implements Serializable {
 
     public void makeProjectToIntern(){
         for (Project p: projectList){
-            projectToInterns.put(p, new ArrayList<HiredIntern>());
+            projectToInterns.put(p, new ArrayList<>());
         }
     }
 
@@ -160,7 +160,7 @@ public class HRSystem implements Serializable {
         }
         return res.toString();
     }
-
+    //TODO: delete if the method below is not used.
     /**
      * This method gets a String representation of all Entities.HiredIntern info.
      *
@@ -298,6 +298,7 @@ public class HRSystem implements Serializable {
         return this.playerResponse;
     }
 
+    //TODO: remove this if not used in InterviewLevel.
     /**
      * This method fire's an intern during the interview process or after completion of a project.
      *
@@ -353,7 +354,7 @@ public class HRSystem implements Serializable {
 
         return res.toString();
     }
-
+    //TODO: delete this method if it is not used.
     public ArrayList<Object> getChoices(InterviewIntern intern) {
         ArrayList<ResponseTree> questionChoices = new ArrayList<>(intern.getResponseTree().getChildren());
 
@@ -365,7 +366,7 @@ public class HRSystem implements Serializable {
         return options;
 
     }
-
+    //TODO: delete this method if it is not used.
     public void updatePlayerInternResponseChoice(Object option) {
         this.playerInternResponseChoice = option;
     }
@@ -481,7 +482,6 @@ public class HRSystem implements Serializable {
         // returns true when a intern has been upgraded for this month.
         return false;
     }
-
 
     /**
      * This method adds the chosen final project to the current game's Entities.Project list.
