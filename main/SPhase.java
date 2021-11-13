@@ -27,7 +27,7 @@ public class SPhase {
                 System.out.println(output);
             }
             catch (Exception e){
-                System.out.println(e);
+                System.out.println(e.toString());
             }
         }
     }
