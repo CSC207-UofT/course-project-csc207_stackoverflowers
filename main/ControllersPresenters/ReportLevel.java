@@ -7,9 +7,7 @@ import UseCases.MonthReportMaker;
 import UseCases.ProjectReportMaker;
 import UseCases.ReportMaker;
 
-import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Random;
 
 public class ReportLevel extends Level{
 
@@ -63,8 +61,7 @@ public class ReportLevel extends Level{
         if (Objects.equals(input, "check assign")){
             return checkUpgradingInfo(currentMonth);
         }
-        if (input.contains("" +
-                "assign intern to project")) {
+        if (input.contains("upgrade")) {
             return assignInternToUpgrade(input);
         }
         else{throw new Exception(Exceptions.INVALID_COMMAND);}
@@ -77,7 +74,7 @@ public class ReportLevel extends Level{
     public String getReport() {
         String header = currentReportMaker.makeReportHeader(currentMonth);
         String intro = currentReportMaker.makeReportIntro();
-        String body = currentReportMaker.makeReportBody(currentMonth, projectProgress);
+        String body = currentReportMaker.makeReportBody(projectProgress, currentMonth);
         String end = currentReportMaker.makeReportConclusion();
         //TODO: String upgradePrompt = currentReportMaker.makeUpgradePrompt(generateRandomSkill());
         return currentReportPresenter.displayOutput(header, intro, body, end);
