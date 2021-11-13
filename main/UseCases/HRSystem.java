@@ -418,12 +418,12 @@ public class HRSystem implements Serializable {
         return false;
     }
 
-    public boolean upgradeInternSkill(String internName) {
+    public boolean upgradeInternSkill(String internName, int currentMonth) {
         //Now only returns false if an intern doesn't exist.
         for (HiredIntern i : this.hiredInternList) {
             if (i.getInternName().equals(internName)){
                 i.updateInternSkills();
-                i.updateUpgraded();
+                i.updateUpgraded(currentMonth);
                 return true;
             }
         }
@@ -471,10 +471,14 @@ public class HRSystem implements Serializable {
         return true;
     }
 
-    //TODO: finish this new method
     public boolean internUpgraded(int currentMonth) {
-        //a method that checks if an intern have been upgraded.
-        // returns true when a intern has been upgraded.
+        for(HiredIntern i: hiredInternList){
+            if (i.getUpgradedIn() == currentMonth){
+                return true;
+            }
+        }
+        //a method that checks if an intern have been upgraded for this current month.
+        // returns true when a intern has been upgraded for this month.
         return false;
     }
 

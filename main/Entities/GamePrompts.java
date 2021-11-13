@@ -290,5 +290,4 @@ public class GamePrompts implements Serializable {
             "Jizhong (Jacob) Lyu\n" +
             "Camille Marie Alve\n" +
             "Enam Hermon.\n";
-    //TODO: modify END_PROMPT so it includes credits?
 }

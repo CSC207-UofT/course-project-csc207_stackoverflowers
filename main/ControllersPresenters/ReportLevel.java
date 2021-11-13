@@ -123,7 +123,7 @@ public class ReportLevel extends Level{
     private String assignInternToUpgrade(String input) throws Exception {
         String[] inputs = input.split(" ");
         String intern = inputs[1];
-        return currentReportMaker.upgradeIntern(intern);
+        return currentReportMaker.upgradeIntern(intern, currentMonth);
     }
 
     private String checkUpgradingInfo(int currentMonth) {

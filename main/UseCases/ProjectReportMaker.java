@@ -130,8 +130,8 @@ public class ProjectReportMaker implements ReportMaker{
     }
 
     @Override
-    public String upgradeIntern(String internName) throws Exception {
-        boolean success = currentHRSystem.upgradeInternSkill(internName);
+    public String upgradeIntern(String internName, int currentMonth) throws Exception {
+        boolean success = currentHRSystem.upgradeInternSkill(internName, currentMonth);
         if (!success){throw new Exception(Exceptions.INTERN_UPGRADING_FAILURE);}
         return GamePrompts.INTERN_UPGRADING_SUCCESS;
     }

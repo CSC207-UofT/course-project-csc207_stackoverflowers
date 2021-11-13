@@ -48,7 +48,7 @@ public class ReportLevelTest {
         setUp();
         reportLevel = new ReportLevel(1, hrSystem);
         String actual = reportLevel.getOutputString("assign intern to upgrade Mary");
-        String expected = reportLevel.getCurrentReportMaker().upgradeIntern("Mary");
+        String expected = reportLevel.getCurrentReportMaker().upgradeIntern("Mary",1);
         assertEquals(actual, expected);
     }
 
@@ -56,7 +56,7 @@ public class ReportLevelTest {
     public void testFinishedUpgradeFail() throws Exception {
         setUp();
         reportLevel = new ReportLevel(1, hrSystem);
-        reportLevel.getCurrentReportMaker().upgradeIntern("Mary");
+        reportLevel.getCurrentReportMaker().upgradeIntern("Mary",1);
         throw new Exception(Exceptions.INTERN_UPGRADING_FAILURE);
     }
 
