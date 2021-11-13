@@ -54,31 +54,6 @@ public class GameMaker implements Serializable {
         return GamePrompts.END_PROMPT;
     }
 
-    /**
-     * A helper method for creating an intern. (ONLY FOR DEMO)
-
-     private Intern helperMakeInternOneSkill(String name, int age, String skillName, int skillLevel){
-        HashMap<String, Integer> skills = new HashMap<>();
-        skills.put(skillName, skillLevel);
-        return new InterviewIntern(name, age, skills);
-        }
-     */
-    // TODO: method generateInternResponses() (Generates a tree of the intern's possible responses)
-    // TODO: change return type; may also change this into a separate class later
-    /**
-     * This method will generate a tree of the intern's possible responses.
-     * Their responses will be based on the intern's attributes (ex. skills, age)
-     */
-    public void generateInternResponses() {
-
-    }
-    // TODO: method assignResponseToIntern() (Assigns response trees for each intern)
-    /**
-     * This method will assign one of the responses from our response trees to an intern
-     */
-    public void assignResponseToIntern(){
-
-    }
 
     /**
      * Saves the current state of the game under a file that is the player's name.
