@@ -37,6 +37,7 @@ public class MonthReportMakerTest {
         String expected = GamePrompts.PROJECT_NAME_HEADER + "a name";
         assertEquals(actual, expected);
     }
+    /*
 
     @Test
     public void testBakeProgress(){
@@ -44,6 +45,8 @@ public class MonthReportMakerTest {
         String expected = GamePrompts.PROJECT_PROGRESS_HEADER + 1;
         assertEquals(actual, expected);
     }
+
+     */
 
     @Test
     public void testEndOfMonthPromptNotFinal(){
