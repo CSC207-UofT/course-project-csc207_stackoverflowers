@@ -1,9 +1,10 @@
 package Entities;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 
-abstract public class Intern{
+abstract public class Intern implements Serializable {
     /* the constructor method get skills (private) -> returns the skills of the interns from a text file -> (create text file)
     we need to store the new interns to input into the UseCases.HRSystem -> method generateInternFile
     - method getInternInfo
@@ -60,7 +61,7 @@ abstract public class Intern{
 
         for (String skill : this.internSkills.keySet()) {
             double percentage = this.internSkills.get(skill);
-            skills.append(skill).append(" (").append(percentage).append(")");
+            skills.append(skill).append(": (").append(percentage).append(") ");
         }
 
         return info + skills + "\n";

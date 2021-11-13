@@ -1,8 +1,9 @@
 package Entities;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class  HiredIntern extends Intern {
+public class  HiredIntern extends Intern implements Serializable {
     // class is for an Entities.Intern that has passed the interview and is hired.
     // hired intern will be able to take part in projects, have update_skill method and can get fired.
 

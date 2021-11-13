@@ -27,17 +27,13 @@ public class GameManager {
 
     public GameManager() throws Exception {
         this.currentGameMaker = new GameMaker();
-        GameGenerators currentGameGenerators = new GameGenerators();
+        GameGenerators currentGameGenerators = new GameGenerators(currentGameMaker.getCurrentHRSystem());
         this.currentStatus = statusOfGame.Start;
         //ask GameMaker to generate the Interns and Projects needed for the current game.
-        try {
-            currentGameGenerators.generateInterns(10);
-            currentGameGenerators.generateProjects(4);
-            currentGameGenerators.generateFinalProject();
-        } finally {
-            isRunning = true;
-
-        }
+        currentGameGenerators.generateInterns(10);
+        currentGameGenerators.generateProjects(4);
+        currentGameGenerators.generateFinalProject();
+        isRunning = true;
     }
 
     public String getOutput(String playerInput) throws Exception {

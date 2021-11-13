@@ -9,7 +9,6 @@ import java.util.*;
 
 public class GameMaker implements Serializable {
     private final HRSystem currentHRSystem;
-    private final GamePrompts prompts;
     private int currentMonth;
     private static ArrayList<String> universalCommands = null;
     /*
@@ -24,7 +23,6 @@ public class GameMaker implements Serializable {
      */
     public GameMaker() {
         this.currentHRSystem = new HRSystem();
-        this.prompts = new GamePrompts();
         universalCommands = new ArrayList<>(Arrays.asList("save", "quit", "load"));
     }
 
@@ -35,14 +33,6 @@ public class GameMaker implements Serializable {
 
     public int getCurrentMonth(){return currentMonth;}
 
-
-    //TODO: this method below is never used. Can I delete it?
-    /**
-     * Return a list of interns.
-     */
-    public List<Intern> returnNewInterns() {
-        return this.currentHRSystem.getInternList();
-    }
 
     /**
      * Return the first display prompt after the player enters their name.
