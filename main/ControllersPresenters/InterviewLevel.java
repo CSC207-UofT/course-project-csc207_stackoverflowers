@@ -18,7 +18,6 @@ public class InterviewLevel extends Level{
      * @param currentHRSystem the HRsystem being used by InterviewMaker.
      */
     public InterviewLevel(HRSystem currentHRSystem){
-        endLevel();
         this.currentInterviewMaker = new InterviewMaker(currentHRSystem);
     }
 
@@ -27,7 +26,6 @@ public class InterviewLevel extends Level{
      * step of the interview process, asking InterviewPresenter to format this output using the formatInterview method.
      */
     public String getInterviewOutput(String input) throws Exception{
-
         if (levelStarted()){
             getIntoLevel();
             return getStartOfInterviewPrompt();

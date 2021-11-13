@@ -279,6 +279,7 @@ public class GamePrompts implements Serializable {
 
     //See usage in MonthMaker
     public static final String INTERN_REMOVING_SUCCESS = "The intern was successfully removed from the project specified.";
+    public static final String FIRST_PROMPT_AFTER_INTERNS = "Type anything to begin the interviewing process!";
 
     public final String REPORT_CONCLUSION = "That's all! Have a good day manager. :)";
 

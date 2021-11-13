@@ -64,7 +64,7 @@ public class GameMaker implements Serializable {
         re += playerInput;
         re += GamePrompts.FIRST_PROMPT_AFTER_NAME;
         re += this.currentHRSystem.makeInterviewInternsToString();
-        re += GamePrompts.ASK_FOR_INTERVIEWEE_NAME;
+        re += GamePrompts.FIRST_PROMPT_AFTER_INTERNS;
         return re;
     }
 
