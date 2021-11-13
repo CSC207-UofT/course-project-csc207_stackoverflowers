@@ -2,10 +2,11 @@ package Entities;
 
 import UseCases.ResponseTree;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class InterviewIntern extends Intern{
+public class InterviewIntern extends Intern implements Serializable {
     // this is an intern class for new Interns to the company, partaking in Interviews
     // these are the type of Entities.Intern in IntervieweeList
 

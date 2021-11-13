@@ -1,4 +1,7 @@
 package Entities;
+
+import java.io.Serializable;
+
 /*
 This class will hold all the exception messages needed in the Game.
  */

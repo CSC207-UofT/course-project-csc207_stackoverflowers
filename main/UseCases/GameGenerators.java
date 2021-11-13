@@ -12,15 +12,15 @@ import java.util.*;
 public class GameGenerators implements Serializable {
     private final HRSystem currentHRSystem;
 
-    public GameGenerators(){
-        this.currentHRSystem = new HRSystem();
+    public GameGenerators(HRSystem currentHRSystem){
+        this.currentHRSystem = currentHRSystem;
     }
 
     /**
      * Add the list of interns to UseCases.HRSystem.
      * @param newInterns A list of interns constructed in the UseCases.GameMaker constructor
      */
-    public void addInternToList(ArrayList<InterviewIntern> newInterns){
+    private void addInternToList(ArrayList<InterviewIntern> newInterns){
         this.currentHRSystem.updateInterviewInternList(newInterns);
     }
 

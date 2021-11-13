@@ -1,12 +1,13 @@
 package Entities;
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
 import java.io.File;  // Import the File class
 import java.util.Scanner; // Import the Scanner class to read text files
 
 // The project in this game.
-public class Project {
+public class Project implements Serializable {
     /*
     Instance variables:
      * name: the name of this project. Note the name has to be the same as the same the PROJECT_NAME constants in GamePrompts.

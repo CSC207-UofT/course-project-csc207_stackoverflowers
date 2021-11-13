@@ -48,7 +48,6 @@ public class InterviewLevel extends Level{
             // if yes: update the current interviewing intern, then also add the next interviewee's next sentenct to output
             // if no: endLevel() and return hired successful or not
             currentInterviewMaker.hireIntern();//the actual hiring
-
         }
         //If you never change the level status how will it EVER get to end. huh????
         throw new Exception(Exceptions.INVALID_COMMAND);
