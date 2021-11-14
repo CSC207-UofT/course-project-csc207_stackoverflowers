@@ -40,7 +40,7 @@ public class MonthReportMaker implements ReportMaker {
      */
     @Override
     public String makeReportBody( int currentMonth) {
-        String internNames = currentHRSystem.getHiredInternsNames();
+        ArrayList<HiredIntern> interns = currentHRSystem.getHiredInternList();
 
         List<Project> projList = currentHRSystem.getProjects(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();
@@ -49,8 +49,8 @@ public class MonthReportMaker implements ReportMaker {
         }
         ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
         return bakeProjectName(currentHRSystem.getProjectNames(currentMonth)) + "\n" +
-                bakeInterns(internNames) + "\n" +
-                bakeInternsPerformances(internNames, internsSkills, projectCompatibilityList);
+                bakeInterns(currentHRSystem.getHiredInternsNames()) + "\n" +
+                bakeInternsPerformances(interns, projectCompatibilityList);
     }
 
     private ArrayList<HashMap<String, Double>> getHiredInternsSkills(ArrayList<HiredIntern> hiredInternList) {
@@ -73,13 +73,11 @@ public class MonthReportMaker implements ReportMaker {
     }
 
     @Override
-    public String bakeInternsPerformances (String internNames,
-                                           ArrayList<HashMap<String, Double>>  internSkills,
-                                           HashMap<String, Float> projectSkill) {
-        StringBuilder returnLine = new StringBuilder(GamePrompts.INTERN_PERFORMANCE_HEADER + internNames + "\n");
-        String[] internNamesList = internNames.split("|");
-        for (int i = 0; i != internNamesList.length; i+=1) {
-            returnLine.append("     - ").append(internNamesList[i]).append(": ").append(calculateInternPerformance(internSkills.get(i), projectSkill)).append("\n");
+    public String bakeInternsPerformances (ArrayList<HiredIntern> interns, HashMap<String, Float> projectSkill) {
+        StringBuilder returnLine = new StringBuilder(GamePrompts.INTERN_PERFORMANCE_HEADER + currentHRSystem.getHiredInternsNames() + "\n");
+        String[] internNamesList = currentHRSystem.getHiredInternsNames().split("|");
+        for (int i = 0; i != interns.size(); i+=1) {
+            returnLine.append("     - ").append(internNamesList[i]).append(": ").append(calculateInternPerformance(interns.get(i).getInternSkills(), projectSkill)).append("\n");
         }
         return returnLine.toString();
     }
