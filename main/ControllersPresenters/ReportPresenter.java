@@ -17,11 +17,12 @@ public class ReportPresenter implements Presenter {
      * @param body the body of the report
      * @param end the conclusion of the report
      */
-    public String displayOutput (String header, String intro, String body, String end){
+    public String displayOutput (String header, String intro, String body, String end, String upgrade){
         return (header + "\n" +
                 "Intro:" + intro + "\n" +
                 body + "\n" +
-                end);
+                end + "\n" +
+                upgrade);
     }
 
 

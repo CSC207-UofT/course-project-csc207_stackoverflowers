@@ -368,12 +368,24 @@ public class HRSystem implements Serializable {
      * @param currentMonth doc
      * @return doc
      */
-    public boolean upgradeInternSkill(String internName, int currentMonth) {
+    public boolean upgradeInternSkill(String internName, int currentMonth, String skillToUpgrade) {
         //Now only returns false if an intern doesn't exist.
         for (HiredIntern i : this.hiredInternList) {
             if (i.getInternName().equals(internName)){
+                if (!checkSkillSpace(skillToUpgrade, internName)){
+                    return false;
+                }
                 i.updateInternSkills();
                 i.updateUpgraded(currentMonth);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkSkillSpace(String skillToUpgrade,String internName) {
+        for (HiredIntern i : this.hiredInternList) {
+            if (i.getInternName().equals(internName) & i.getInternSkills().get(skillToUpgrade) < 100){
                 return true;
             }
         }
