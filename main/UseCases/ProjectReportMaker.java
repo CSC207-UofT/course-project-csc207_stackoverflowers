@@ -105,9 +105,10 @@ public class ProjectReportMaker implements ReportMaker{
         return prompts.REPORT_CONCLUSION;
     }
 
-    public String endOfMonthPrompt(int currentMonth) {
-        if (currentMonth == HRSystem.FINAL_MONTH){return GamePrompts.END_OF_FINAL_MONTH_PROMPT;}
-        else{return GamePrompts.END_OF_MONTH_PROMPT;}
+    @Override
+    public String endOfMonthPrompt( int currentMonth) {
+        if (currentMonth == HRSystem.FINAL_MONTH){return GamePrompts.END_OF_FINAL_MONTH_REPORT_PROMPT;}
+        else{return GamePrompts.END_OF_MONTH_REPORT_PROMPT;}
     }
 
     public String confirmChoice(int currentMonth) {
