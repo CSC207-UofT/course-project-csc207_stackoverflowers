@@ -1,5 +1,7 @@
 package UseCases;
 
+import Entities.HiredIntern;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -49,9 +51,7 @@ public interface ReportMaker {
 
 
 
-    String bakeInternsPerformances (String internNames,
-                                           ArrayList<HashMap<String, Double>>  internSkills,
-                                           HashMap<String, Float> projectSkill);
+    String bakeInternsPerformances (ArrayList<HiredIntern> interns, HashMap<String, Float> projectSkill);
 
 
     String endOfMonthPrompt(int currentMonth);
