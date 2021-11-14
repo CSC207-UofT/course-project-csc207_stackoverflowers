@@ -109,6 +109,5 @@ We found that this way of organizing code helped us be aware of dependencies: as
 
 ## Functionality
 Our code tries the best to match the description and walk-through that we've first settled on. However, we were a little ambitious about adding Covid related features into the code, which will not be included for now.
-Demo your program's functionality to your TA or make a short video!
 I believe that the functionality of our code is sufficcient, since we decided to implement variations of Levels (Final months and Final reports), and also have an interactive conversation tree. Although our player's choice of input may be limited compared to others, our group's aim is to follow CLEAN and find means to collaborate well to make what we have written not only work, but also presentable. We focused on the structure, and also focused on the ability to extend and present a not-intimidating structure.
 Our code has implemented the save and load function. We also have the command quit, and since now we do not ask for confirmation to quit, we are basically saving and quitting at the same time for quit.
