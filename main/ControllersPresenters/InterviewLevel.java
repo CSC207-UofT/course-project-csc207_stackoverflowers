@@ -33,19 +33,20 @@ public class InterviewLevel extends Level{
             return getEndOfInterviewPrompt();
         }
         if (currentInterviewMaker.getChoiceOptions().contains(input)) {
-            //if the current InterviewIntern has not yet said their last response:
-            if (! this.currentInterviewMaker.checkInternsLastResponse(input)){
-                return GamePrompts.INTERN_RESPONSE_PROMPT +
-                        currentInterviewMaker.displayInternChoiceResponse(input) +
-                        GamePrompts.NEXT_CHOICE_PROMPT +
-                        currentInterviewMaker.getChoiceOptions();
-            }
-
             //if the current InterviewIntern has said their last response (i.e. at the end of the interview):
-            if (this.currentInterviewMaker.checkInternsLastResponse(input)){
-                return GamePrompts.HIRE_INTERN + this.currentInterviewMaker.internToHire(input);
+            StringBuilder res = new StringBuilder();
+            String internsResponse = currentInterviewMaker.displayInternChoiceResponse(input);
+            res.append(GamePrompts.INTERN_RESPONSE_PROMPT);
+            res.append(internsResponse);
+            currentInterviewMaker.updateInternTree(0);
+            if (!this.currentInterviewMaker.checkInternsLastResponse()){
+                res.append(GamePrompts.NEXT_CHOICE_PROMPT);
+                res.append(currentInterviewMaker.getChoiceOptions());
             }
-
+            else{
+                res.append(GamePrompts.HIRE_INTERN);
+            }
+            return res.toString();
         }
         if (Objects.equals(input, "yes") || (Objects.equals(input, "no"))){
             //hired the intern/ or not
@@ -67,7 +68,6 @@ public class InterviewLevel extends Level{
                     return GamePrompts.HIRED_INTERN + GamePrompts.CHOSEN_INTERNS_TO_HIRE +
                             this.currentInterviewMaker.getHiredInternString();
                 }
-
             }
             if (Objects.equals(input, "no")){
                 //check if there are any interns left to interview haveInterviewsLeft()
@@ -86,9 +86,6 @@ public class InterviewLevel extends Level{
                             this.currentInterviewMaker.getHiredInternString();
                 }
             }
-
-
-
         }
         throw new Exception(Exceptions.INVALID_COMMAND);
     }

@@ -11,7 +11,6 @@ import static org.junit.Assert.*;
 
 public class InterviewMakerTest {
 
-
         InterviewMaker make;
 
         @Before
@@ -26,13 +25,13 @@ public class InterviewMakerTest {
             assertEquals(expected, actual);
         }
 
-        @Test(timeout = 1000)
-        public void TestGetChoiceOptions(){
-            String expected = make.getChoiceOptions();
-            HRSystem sys = new HRSystem();
-            String actual = sys.choicesToString();
-            assertEquals(expected, actual);
-        }
+//        @Test(timeout = 1000)
+//        public void TestGetChoiceOptions(){
+//            String expected = make.getChoiceOptions();
+//            HRSystem sys = new HRSystem();
+//            String actual = sys.choicesToString();
+//            assertEquals(expected, actual);
+//        }
 
         @Test(timeout = 1000)
         public void TestChoicePrompt(){

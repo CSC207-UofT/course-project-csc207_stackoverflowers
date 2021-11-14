@@ -27,7 +27,6 @@ public class InterviewIntern extends Intern implements Serializable {
                            HashMap<String, Double> interviewInternSkills){
         super(interviewInternName, interviewInternAge, interviewInternSkills);
     }
-
     @Override
     public void updateInternSkills() {}
 
