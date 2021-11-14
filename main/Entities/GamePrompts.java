@@ -29,7 +29,12 @@ public class GamePrompts implements Serializable {
             "please enter your name.\n" +
             "To load an already existing game under your name, please type 'load <name>'.";
 
+    public static final String MAKE_UPGRADE_PROMPT_FINAL_MONTH = "This is the final month, no upgrade available.";
+
+    public static final String MAKE_UPGRADE_PROMPT_MONTH = " is the skill you can upgrade this month, who do you want to give this skill to?";
+
     public static final String FIRST_PROMPT_BEFORE_NAME = "Welcome! My friend ";
+
 
     public static final String FIRST_PROMPT_AFTER_NAME = """
             , you have just been hired as a new manager.\s

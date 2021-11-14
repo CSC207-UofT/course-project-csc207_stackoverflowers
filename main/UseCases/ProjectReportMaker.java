@@ -124,8 +124,8 @@ public class ProjectReportMaker implements ReportMaker{
     }
 
     @Override
-    public String upgradeIntern(String internName, int currentMonth) throws Exception {
-        boolean success = currentHRSystem.upgradeInternSkill(internName, currentMonth);
+    public String upgradeIntern(String internName, int currentMonth, String randomSkillThisMonth) throws Exception {
+        boolean success = currentHRSystem.upgradeInternSkill(internName, currentMonth,randomSkillThisMonth);
         if (!success){throw new Exception(Exceptions.INTERN_UPGRADING_FAILURE);}
         return GamePrompts.INTERN_UPGRADING_SUCCESS;
     }
@@ -139,5 +139,10 @@ public class ProjectReportMaker implements ReportMaker{
     public boolean checkUpgraded(int currentMonth) {
         //returns true if all interns have been assigned to a project
         return currentHRSystem.internUpgraded(currentMonth);
+    }
+
+    @Override
+    public String makeUpgradePrompt(String skillName) {
+        return skillName + GamePrompts.MAKE_UPGRADE_PROMPT_MONTH;
     }
 }

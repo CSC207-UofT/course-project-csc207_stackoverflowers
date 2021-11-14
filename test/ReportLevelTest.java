@@ -46,24 +46,29 @@ public class ReportLevelTest {
     @Test
     public void testFinishedUpgradeMatch() throws Exception {
         setUp();
+        String randomSkillThisMonth = "Flexibility";
         reportLevel = new ReportLevel(1, hrSystem);
         String actual = reportLevel.getOutputString("assign intern to upgrade Mary");
-        String expected = reportLevel.getCurrentReportMaker().upgradeIntern("Mary",1);
+        String expected = reportLevel.getCurrentReportMaker().upgradeIntern("Mary",1, randomSkillThisMonth);
         assertEquals(actual, expected);
     }
 
     @Test
     public void testFinishedUpgradeFail() throws Exception {
         setUp();
+        String randomSkillThisMonth = "Efficiency";
         reportLevel = new ReportLevel(1, hrSystem);
-        reportLevel.getCurrentReportMaker().upgradeIntern("Mary",1);
+        reportLevel.getCurrentReportMaker().upgradeIntern("Mary",1, randomSkillThisMonth);
         throw new Exception(Exceptions.INTERN_UPGRADING_FAILURE);
     }
 
 
     @Test
     public void testFinishedUpgradeSuccess() throws Exception {
-        String actual = reportLevel.getOutputString("assign intern to upgrade Bob");
+        setUp();
+        String randomSkillThisMonth = "Communication";
+        reportLevel = new ReportLevel(1, hrSystem);
+        String actual = reportLevel.getCurrentReportMaker().upgradeIntern("Ruby",1, randomSkillThisMonth);
         String expected = GamePrompts.INTERN_UPGRADING_SUCCESS;
         assertEquals(actual, expected);
     }

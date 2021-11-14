@@ -62,9 +62,11 @@ public interface ReportMaker {
 
     String getProjectInfo(int currentMonth);
 
-    String upgradeIntern(String internName, int currentMonth) throws Exception;
+    String upgradeIntern(String internName, int currentMonth, String randomSkillThisMonth) throws Exception;
 
     String getUpgradingInfo(int currentMonth);
 
     boolean checkUpgraded(int currentMonth);
+
+    String makeUpgradePrompt(String skillName);
 }

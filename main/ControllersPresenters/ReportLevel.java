@@ -1,11 +1,13 @@
 package ControllersPresenters;
 import Entities.Exceptions;
+import Entities.GamePrompts;
 import UseCases.HRSystem;
 import UseCases.FinalReportMaker;
 import UseCases.MonthReportMaker;
 import UseCases.ProjectReportMaker;
 import UseCases.ReportMaker;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
@@ -13,9 +15,10 @@ public class ReportLevel extends Level{
 
     private ReportMaker currentReportMaker;
     private ReportPresenter currentReportPresenter;
-    private final HRSystem currentHRsystem;
     private int currentMonth;
-    private int projectProgress;
+    String randomSkillThisMonth = generateRandomSkill();
+    String upgradePrompt = currentReportMaker.makeUpgradePrompt(randomSkillThisMonth);
+
 
     /**
      * Create a ReportLevel object, which then creates a ReportMaker (stored as instance variable)
@@ -36,7 +39,6 @@ public class ReportLevel extends Level{
             //this is for the end of month 6
             currentReportMaker = new FinalReportMaker(currentHRSystem);
         }
-        currentHRsystem = currentHRSystem;
         currentMonth = month;
     }
 
@@ -62,6 +64,7 @@ public class ReportLevel extends Level{
             return checkUpgradingInfo(currentMonth);
         }
         if (input.contains("upgrade")) {
+            //Add randomSkillThisMonth parameter to assignInternToUpgrade
             return assignInternToUpgrade(input);
         }
         else{throw new Exception(Exceptions.INVALID_COMMAND);}
@@ -76,13 +79,9 @@ public class ReportLevel extends Level{
         String intro = currentReportMaker.makeReportIntro();
         String body = currentReportMaker.makeReportBody(currentMonth);
         String end = currentReportMaker.makeReportConclusion();
-        //TODO: String upgradePrompt = currentReportMaker.makeUpgradePrompt(generateRandomSkill());
-        return currentReportPresenter.displayOutput(header, intro, body, end);
-        //TODO: Need to add another String behind end, where a method generates a random point to upgrade,
-        // then the report presenter should prompt the user about this upgrade point that needs to be assigned to a
-        // intern with that upgrade point still not maxed out.
+
+        return currentReportPresenter.displayOutput(header, intro, body, end, upgradePrompt);
     }
-    /*
 
     private String generateRandomSkill(){
         ArrayList<String> skillList = new ArrayList<>(){
@@ -103,12 +102,10 @@ public class ReportLevel extends Level{
             }
         };
         Random r = new Random();
-        int randomitem = r.nextInt(skillList.size());
-        String generatedSkill = skillList.get(randomitem);
-        return generatedSkill;
+        int randomItem = r.nextInt(skillList.size());
+        return skillList.get(randomItem);
     }
 
-     */
     private String checkInternsInfo() {
         return currentReportMaker.getInternsInfo();
     }
@@ -124,7 +121,7 @@ public class ReportLevel extends Level{
     private String assignInternToUpgrade(String input) throws Exception {
         String[] inputs = input.split(" ");
         String intern = inputs[1];
-        return currentReportMaker.upgradeIntern(intern, currentMonth);
+        return currentReportMaker.upgradeIntern(intern, currentMonth, randomSkillThisMonth);
     }
 
     private String checkUpgradingInfo(int currentMonth) {
