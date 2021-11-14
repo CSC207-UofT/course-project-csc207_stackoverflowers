@@ -132,14 +132,11 @@ public class InterviewMaker {
      * @param input the player's input that checks if the intern's response to the input is the last response
      * @return true if this is the last response and false otherwise.
      */
-    public Boolean checkInternsLastResponse(String input){
-        ArrayList<ResponseTree<ArrayList<String>>> res = this.currentInterviewIntern.getResponseTree().getChildren();
-        for ( ResponseTree<ArrayList<String>> response : res){
-            // if this response is a leaf (the last response) and the intern's response contains this last response
-            if ((response.isLeaf()) & this.displayInternChoiceResponse(input).contains(response.toString())){
-                this.interviewedInterns.add(this.currentInterviewIntern.getInternName());
-                return true;
-            }
+    public Boolean checkInternsLastResponse() {
+        // if this response is a leaf (the last response) and the intern's response contains this last response
+        if (currentInterviewIntern.getResponseTree().isLeaf() ) {
+            this.interviewedInterns.add(this.currentInterviewIntern.getInternName());
+            return true;
         }
         return false;
     }

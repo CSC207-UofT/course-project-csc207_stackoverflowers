@@ -68,15 +68,8 @@ public class  ResponseTreeMaker {
      */
     private ResponseTree<ArrayList<String>> generateTreeRoot() {
         ArrayList<String> rootData = new ArrayList<>();
-        String response = "Hello! My name is " + this.intern.getInternName() + ", I am "
-                + this.intern.getInternName() + " years old and my skills include [skill1], [skill2] and skill[3].";
-        StringBuilder skills = new StringBuilder();
-        for (String skill : this.intern.getInternSkills().keySet()) {
-            skills.append(skill);
-            skills.append(", ");
-        }
-        String finalResponse = response + skills;
-        rootData.add(finalResponse);
+        String response = "Hello! This is my resume:\n" + this.intern.internToString();
+        rootData.add(response);
         return new ResponseTree<>(rootData);
     }
 
@@ -116,6 +109,7 @@ public class  ResponseTreeMaker {
      * This method will assign a ResponseTree to an intern.
      */
     public void assignResponseToIntern(ResponseTree<ArrayList<String>> resTree) {
+
         this.intern.setResponseTree(resTree);
     }
 }

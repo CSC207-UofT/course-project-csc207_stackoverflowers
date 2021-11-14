@@ -7,6 +7,7 @@ import Entities.Project;
 
 import java.io.Serializable;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class GameGenerators implements Serializable {
@@ -39,6 +40,8 @@ public class GameGenerators implements Serializable {
             HashMap<String, Double> skillMap = generateUniqueSkillMap(skillList);
             int age = random.nextInt(45) + 20;
             InterviewIntern interviewee = new InterviewIntern(name, age, skillMap);
+            ResponseTreeMaker forThisIntern = new ResponseTreeMaker(interviewee);
+            forThisIntern.assignResponseToIntern();
             internList.add(interviewee);
         }
         addInternToList(internList);

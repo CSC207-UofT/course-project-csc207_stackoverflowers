@@ -1,5 +1,7 @@
 package Entities;
 
+import UseCases.ResponseTree;
+
 import java.io.Serializable;
 import java.util.HashMap;
 

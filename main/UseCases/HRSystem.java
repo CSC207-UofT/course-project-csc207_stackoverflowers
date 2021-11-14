@@ -303,15 +303,11 @@ public class HRSystem implements Serializable {
 
     public String choicesToString() {
         StringBuilder res = new StringBuilder();
-
-        for (InterviewIntern intern : interviewInternList) {
-            ResponseTree<ArrayList<String>> responseTree = intern.getResponseTree();
-            for (ResponseTree<ArrayList<String>> response : responseTree.getChildren()){
-                String[] qA = response.getData().get(0).split(",");
-                res.append(qA[0]);
-            }
+        for (ResponseTree<ArrayList<String>> children: intern.getResponseTree().getChildren()){
+            String qA = (String) children.getData().get(0);
+            res.append(qA);
+            res.append("\n");
         }
-
         return res.toString();
 
     }
