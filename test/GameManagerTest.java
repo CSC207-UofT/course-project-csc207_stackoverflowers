@@ -14,12 +14,12 @@ public class GameManagerTest {
     @Before
     public void setUp() throws Exception {
         gameManager = new GameManager();
-        gameManager.firstPrompt("Maggie"); //Set the saved name
+
     }
 
     @Test
     public void testSaveGameFail() throws Exception {
-        try{
+        try{gameManager.firstPrompt("Maggie"); //Set the saved name
         gameManager.getOutput("save M");}
         catch(Exception e){
             String actual = e.toString();
@@ -31,8 +31,14 @@ public class GameManagerTest {
 
     @Test
     public void testSaveGameSuccess() throws Exception {
+        gameManager.firstPrompt("Maggie"); //Set the saved name
         String actual = gameManager.getOutput("save");
         String expected = GamePrompts.GAME_SAVED_SUCCESSFUL;
+    }
+
+    @Test
+    public void testLoad() throws Exception{
+        gameManager.getOutput("load haha");
     }
 
 //    @Test

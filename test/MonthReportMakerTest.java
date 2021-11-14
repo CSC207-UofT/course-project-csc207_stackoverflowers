@@ -24,15 +24,16 @@ public class MonthReportMakerTest {
     }
 
     @Test
-    public void testMakeReportHeader() {
-
+    public void testMakeReportHeader() throws FileNotFoundException {
+        setup();
         String actual = reportMaker.makeReportHeader(1);
         String expected = GamePrompts.REPORT_HEADER + 1 + '\n';
         assertEquals(actual, expected);
     }
 
     @Test
-    public void testBakeProjectName(){
+    public void testBakeProjectName() throws FileNotFoundException {
+        setup();
         String actual = reportMaker.bakeProjectName("a name");
         String expected = GamePrompts.PROJECT_NAME_HEADER + "a name";
         assertEquals(actual, expected);
@@ -49,16 +50,18 @@ public class MonthReportMakerTest {
      */
 
     @Test
-    public void testEndOfMonthPromptNotFinal(){
+    public void testEndOfMonthPromptNotFinal() throws FileNotFoundException {
+        setup();
         String actual = reportMaker.endOfMonthPrompt(1);
-        String expected = GamePrompts.END_OF_MONTH_PROMPT;
+        String expected = GamePrompts.END_OF_MONTH_REPORT_PROMPT;
         assertEquals(actual, expected);
     }
 
     @Test
-    public void testEndOfMonthPromptFinal(){
+    public void testEndOfMonthPromptFinal() throws FileNotFoundException {
+        setup();
         String actual = reportMaker.endOfMonthPrompt(6);
-        String expected = GamePrompts.END_OF_FINAL_MONTH_PROMPT;
+        String expected = GamePrompts.END_OF_MONTH_REPORT_PROMPT;
         assertEquals(actual, expected);
     }
 
@@ -69,8 +72,7 @@ public class MonthReportMakerTest {
             HRSystem hrSystem = new HRSystem();
             hrSystem.updateHiredInternList(makeInterns());
             hrSystem.updateProjectList(makeProjects());
-            reportLevel = new ReportLevel(1, hrSystem);
-            reportLevel.getOutputString("stuff");//Gets the first output so that now it can make stuff go.
+            reportMaker = new MonthReportMaker(hrSystem);
         }
 
         @Test
@@ -133,8 +135,16 @@ public class MonthReportMakerTest {
         //A helper function that sets up the Projects in HRSystem for the test.
         //Only one project for the first month.
         Project project1 = new Project(GamePrompts.PROJECT1_NAME);
+        Project project2 = new Project(GamePrompts.PROJECT2_NAME);
+        Project project3 = new Project(GamePrompts.PROJECT3_NAME);
+        Project project4 = new Project(GamePrompts.PROJECT4_NAME);
+        Project project5 = new Project(GamePrompts.PROJECT5_NAME);
         ArrayList<Project> projects = new ArrayList<>();
         projects.add(project1);
+        projects.add(project2);
+        projects.add(project3);
+        projects.add(project4);
+        projects.add(project5);
         return projects;
     }
 

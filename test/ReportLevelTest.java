@@ -52,6 +52,7 @@ public class ReportLevelTest {
         setUp();
         String randomSkillThisMonth = "Flexibility";
         reportLevel = new ReportLevel(1, hrSystem);
+        reportLevel.getOutputString("haha");
         String actual = reportLevel.getOutputString("assign intern to upgrade Mary");
         String expected = reportLevel.getCurrentReportMaker().upgradeIntern("Mary",1, randomSkillThisMonth);
         assertEquals(actual, expected);
@@ -79,6 +80,7 @@ public class ReportLevelTest {
 
     @Test
     public void testCheckProjects() throws Exception {
+        setUp();
         String actual = reportLevel.getOutputString("check project info");
         String expected = reportLevel.getCurrentReportMaker().getProjectInfo(1);
         assertEquals(actual, expected);
@@ -86,13 +88,15 @@ public class ReportLevelTest {
 
     @Test
     public void testCheckInterns() throws Exception {
+        setUp();
         String actual = reportLevel.getOutputString("check interns info");
         String expected = reportLevel.getCurrentReportMaker().getInternsInfo();
         assertEquals(actual, expected);
     }
 
     @Test
-    public void testAssignUpgradeFail() {
+    public void testAssignUpgradeFail() throws Exception {
+        setUp();
         try {
             reportLevel.getOutputString("assign intern to project Mary");
         } catch (Exception e) {

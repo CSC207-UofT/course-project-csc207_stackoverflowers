@@ -64,7 +64,7 @@ public class ReportLevel extends Level{
         if (Objects.equals(input, "check assign")){
             return checkUpgradingInfo(currentMonth);
         }
-        if (input.contains("upgrade")) {
+        if (input.contains("assign intern to upgrade")) {
             //Add randomSkillThisMonth parameter to assignInternToUpgrade
             return assignInternToUpgrade(input);
         }
@@ -121,7 +121,7 @@ public class ReportLevel extends Level{
 
     private String assignInternToUpgrade(String input) throws Exception {
         String[] inputs = input.split(" ");
-        String intern = inputs[1];
+        String intern = inputs[4];
         return currentReportMaker.upgradeIntern(intern, currentMonth, randomSkillThisMonth);
     }
 

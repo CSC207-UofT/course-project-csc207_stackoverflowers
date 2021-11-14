@@ -19,7 +19,7 @@ public class ProjectReportMaker implements ReportMaker{
     }
     @Override
     public String makeReportHeader(int month) {
-        return "Here is your report for the end of " + month + "\n";
+        return GamePrompts.REPORT_HEADER + month + "\n";
     }
 
     @Override

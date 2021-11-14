@@ -59,7 +59,7 @@ public class GameMaker implements Serializable {
      * Saves the current state of the game under a file that is the player's name.
      */
     private void saveGame(String name) throws IOException {
-        FileOutputStream fileOut = new FileOutputStream(name);
+        FileOutputStream fileOut = new FileOutputStream("Resources/" + name);
         ObjectOutputStream out = new ObjectOutputStream(fileOut);
         out.writeObject(this);
         out.close();
