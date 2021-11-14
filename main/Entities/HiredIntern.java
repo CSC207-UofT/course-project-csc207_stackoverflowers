@@ -2,6 +2,7 @@ package Entities;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Set;
 
 public class  HiredIntern extends Intern implements Serializable {
@@ -25,16 +26,14 @@ public class  HiredIntern extends Intern implements Serializable {
     }
 
     @Override
-    public void updateInternSkills() {
+    public void updateInternSkills(String skillToUpgrade) {
         //for now, it updates the first skills of the intern.
         Set<String> keys = getInternSkills().keySet();
-        int i = 0;
         for (String k : keys){
-            if (i == 0){
+            if (Objects.equals(k, skillToUpgrade)){
                 //Setting the first skill in the internSkills to be upgraded.
                 getInternSkills().put(k, getInternSkills().get(k)+ 0.5);
             }
-            i ++;
         }
     }
 

@@ -16,7 +16,7 @@ public class FinalReportMaker implements ReportMaker {
     }
     @Override
     public String makeReportHeader(int month) {
-        return GamePrompts.REPORT_HEADER;
+        return GamePrompts.REPORT_HEADER + month + "\n";
     }
 
     @Override

@@ -73,7 +73,7 @@ abstract public class Intern implements Serializable {
 
     }
 
-    public abstract void updateInternSkills();
+    public abstract void updateInternSkills(String skilToUpgrade);
 
     public void updateUpgraded(int currentMonth){
         upgradedIn = currentMonth;

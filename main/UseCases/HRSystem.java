@@ -375,7 +375,7 @@ public class HRSystem implements Serializable {
                 if (!checkSkillSpace(skillToUpgrade, internName)){
                     return false;
                 }
-                i.updateInternSkills();
+                i.updateInternSkills(skillToUpgrade);
                 i.updateUpgraded(currentMonth);
                 return true;
             }
@@ -386,12 +386,12 @@ public class HRSystem implements Serializable {
     private boolean checkSkillSpace(String skillToUpgrade,String internName) {
         for (HiredIntern i : this.hiredInternList) {
             if (i.getInternName().equals(internName) & i.getInternSkills().keySet().contains(skillToUpgrade)){
-                if (i.getInternSkills().get(skillToUpgrade) < 100) {
-                    return true;
+                if (i.getInternSkills().get(skillToUpgrade) >= 100) {
+                    return false;
                 }
             }
         }
-        return false;
+        return true;
     }
 
     /**
