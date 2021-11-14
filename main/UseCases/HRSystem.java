@@ -27,7 +27,7 @@ public class HRSystem implements Serializable {
 
     private ArrayList<Project> projectList;
 
-    private HashMap<Integer, List<Project>> monthToProject;
+    private HashMap<Integer, ArrayList<Project>> monthToProject;
     // stores the month as a key and a list of projects for that month as a value
 
     private final HashMap<Project, ArrayList<HiredIntern>> projectToInterns;
@@ -98,20 +98,23 @@ public class HRSystem implements Serializable {
         makeProjectToIntern();//Fills the projectToIntern with keys but no values yet.
     }
 
-    public void makeProjectToIntern(){
+    private void makeProjectToIntern(){
         for (Project p: projectList){
             projectToInterns.put(p, new ArrayList<>());
         }
     }
 
-    public void makeMonthToProject() {
-        HashMap<Integer, List<Project>> monthToProject = new HashMap<>();
-        monthToProject.put(1, projectList.subList(0,2));
-        monthToProject.put(2, projectList.subList(0,2));
-        monthToProject.put(3, projectList.subList(2,4));
-        monthToProject.put(4, projectList.subList(2,4));
-        monthToProject.put(5, projectList.subList(4,4));
-        monthToProject.put(6, projectList.subList(4,4));
+    private void makeMonthToProject() {
+        HashMap<Integer, ArrayList<Project>> monthToProject = new HashMap<>();
+        ArrayList<Project> month1and2 = new ArrayList<>(projectList.subList(0, 2));
+        ArrayList<Project> month3and4 = new ArrayList<>(projectList.subList(2, 4));
+        ArrayList<Project> month5and6 = new ArrayList<>(projectList.subList(4, 4));
+        monthToProject.put(1, month1and2);
+        monthToProject.put(2, month1and2);
+        monthToProject.put(3, month3and4);
+        monthToProject.put(4, month3and4);
+        monthToProject.put(5, month5and6);
+        monthToProject.put(6, month5and6);
         this.monthToProject = monthToProject;
     }
 
@@ -167,6 +170,7 @@ public class HRSystem implements Serializable {
         List<Project> monthlyProjList = this.monthToProject.get(currentMonth);
         StringBuilder res = new StringBuilder();
         for (Project proj : monthlyProjList) {
+            res.append("\n");
             res.append(proj.projectToString());
         }
         return res.toString();

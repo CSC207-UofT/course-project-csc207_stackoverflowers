@@ -76,15 +76,14 @@ public class GamePrompts implements Serializable {
     public static final String START_OF_MONTH_PROMPT_BEFORE_NAME = "Welcome to the start of the month. \n " +
             "Your job for this month, " ;
 
-    public static final String START_OF_MONTH_PROMPT_AFTER_NAME = "is to manage some new projects. \n " +
-            "Below is a list of projects that you will need to assign certain interns to:";
+    public static final String START_OF_MONTH_PROMPT_AFTER_NAME = " , is to manage some new projects. \n ";
 
     public static final String START_OF_MONTH_PROMPT_AFTER_PROJECTS = "Here are a list of commands you can do:\n" +
                                                                       "assign intern to project <Intern Name> <Project Name>\n" +
                                                                       "\n" +
                                                                       "remove intern from project <Intern Name> <Project Name>\n" +
                                                                       "\n" +
-                                                                      "check intern info\n" +
+                                                                      "check interns info\n" +
                                                                       "\n" +
                                                                       "check project info\n";
 

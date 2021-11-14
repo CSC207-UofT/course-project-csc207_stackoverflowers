@@ -1,8 +1,9 @@
 package UseCases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ResponseTree<T> {
+public class ResponseTree<T> implements Serializable {
     /*
     A ResponseTree stores all the questions the player can ask and the Intern's respective responses during an interview.
     The data is stored in an ArrayList of strings, formatted as [Question, Answer].
