@@ -105,11 +105,17 @@ public class  ResponseTreeMaker {
         return treeData;
     }
 
+        /*
     /**
      * This method will assign a ResponseTree to an intern.
-     */
     public void assignResponseToIntern(ResponseTree<ArrayList<String>> resTree) {
 
         this.intern.setResponseTree(resTree);
     }
+    */
+
+    public void assignResponseToIntern() throws FileNotFoundException {
+        intern.setResponseTree(generateInternResponses());
+    }
+
 }

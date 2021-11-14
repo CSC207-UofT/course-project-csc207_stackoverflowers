@@ -266,8 +266,8 @@ public class HRSystem implements Serializable {
      *
      * @param res a String representation of the current Player's choice.
      */
-    public String updatePlayerResponse(String res) {
-        return this.playerResponse = res;
+    public void updatePlayerResponse(String res) {
+        this.playerResponse = res;
     }
 
     /**
@@ -286,7 +286,9 @@ public class HRSystem implements Serializable {
      * @param intern the Entities.Intern to be hired.
      */
     public void hireIntern(Intern intern) {
-        this.hiredInternList.add((HiredIntern) intern);
+        HiredIntern hiredVersion = new HiredIntern(intern.getInternName(), intern.getInternAge(),
+                intern.getInternSkills());
+        this.hiredInternList.add(hiredVersion);
     }
 
 
