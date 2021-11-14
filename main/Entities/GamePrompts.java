@@ -77,7 +77,7 @@ public class GamePrompts implements Serializable {
             "interns. You may now proceed to the next level of the game.";
 
 
-    // not all of the project prompts will be used, the projectgenerator will output a list and choose 4 projects
+    // not all the project prompts will be used, the projectgenerator will output a list and choose 4 projects
     // for the game from all the prompts here
 
     public static final String START_OF_MONTH_PROMPT_BEFORE_NAME = "Welcome to the start of the month. \n " +
