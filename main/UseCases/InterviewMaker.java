@@ -65,8 +65,7 @@ public class InterviewMaker {
      * @param playerInput the player's response to the Hiring Prompt.
      */
     public String internToHire(String playerInput){
-        return  GamePrompts.TO_HIRE_PROMPT + currentHRSystem.updatePlayerResponse(playerInput)
-                + GamePrompts.CONFIRM_HIRING + currentHRSystem.updatePlayerResponse(playerInput);
+        return  GamePrompts.TO_HIRE_PROMPT ;
     }
 
 
@@ -97,15 +96,16 @@ public class InterviewMaker {
         StringBuilder res = new StringBuilder();
 
         ResponseTree<ArrayList<String>> responseTree = this.currentInterviewIntern.getResponseTree();
+        res.append(responseTree.getData());
+
+        res.append("These are your options to ask the intern, please enter the question you wish to ask \n");
         for (ResponseTree<ArrayList<String>> response : responseTree.getChildren()){
             // if the response tree is a root, display the interns initial response(i.e. name, age & skill info).
-            if (response.isRoot()){
-                res.append(response.getData());
-            }
             res.append(" ");
             if (! response.isRoot()){
-                String[] qA = response.getData().get(0).split(",");
-                res.append(qA[0]);
+                String qA = response.getData().get(0);
+                res.append(qA);
+                res.append("\n");
             }
         }
         return res.toString();

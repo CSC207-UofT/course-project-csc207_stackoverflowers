@@ -41,12 +41,12 @@ public class GamePrompts implements Serializable {
 
     public static final String INTERN_RESPONSE_PROMPT = "The current Intern under review has the following response for you to consider:\n";
 
-    public static final String NEXT_CHOICE_PROMPT = "Please select the next question to ask ";
+    public static final String NEXT_CHOICE_PROMPT = "\n Please type in the next question to ask: \n";
 
     public static final String INFORM_QUIT_GAME = "You have quit your game, and you progress has been saved to a file " +
             "with the player name you've used. Type anything to see credits and quit. Player name: ";
 
-    public static final String HIRE_INTERN = "Would you like to hire this intern?";
+    public static final String HIRE_INTERN = "\nWould you like to hire this intern? Type 'yes' or 'no'";
 
     public static final String TO_HIRE_PROMPT = "Please type 'yes' if you would like to hire this intern and 'no' otherwise";
 
@@ -58,7 +58,7 @@ public class GamePrompts implements Serializable {
 
     public static final String NEXT_INTERVIEW_INTERN_PROMPT = "It is now time to interview the next intern. Please select the first question to ask. ";
 
-    public static final String PLAYER_CHOICE = "Choose from either A or B";
+    public static final String PLAYER_CHOICE = "Please type in the sentence you wish to ask";
 
 
     public static final String CONFIRM_HIRING = "Are you sure you want to hire this intern?";

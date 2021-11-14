@@ -23,6 +23,7 @@ public class ResponseTreeMakerTest {
         assertEquals(15, respTree.getSize());
     }
 
+    /*
     @Test
     public void TestAssignResponseToIntern() throws FileNotFoundException {
         HashMap<String, Double> skills = new HashMap<>();
@@ -35,4 +36,6 @@ public class ResponseTreeMakerTest {
         rtm.assignResponseToIntern(respTree);
         assertEquals(15, intern.getResponseTree().getSize());
     }
+
+     */
 }
