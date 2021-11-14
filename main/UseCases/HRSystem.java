@@ -385,8 +385,10 @@ public class HRSystem implements Serializable {
 
     private boolean checkSkillSpace(String skillToUpgrade,String internName) {
         for (HiredIntern i : this.hiredInternList) {
-            if (i.getInternName().equals(internName) & i.getInternSkills().get(skillToUpgrade) < 100){
-                return true;
+            if (i.getInternName().equals(internName) & i.getInternSkills().keySet().contains(skillToUpgrade)){
+                if (i.getInternSkills().get(skillToUpgrade) < 100) {
+                    return true;
+                }
             }
         }
         return false;

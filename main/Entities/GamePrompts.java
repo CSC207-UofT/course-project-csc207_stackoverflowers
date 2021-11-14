@@ -36,12 +36,10 @@ public class GamePrompts implements Serializable {
     public static final String FIRST_PROMPT_BEFORE_NAME = "Welcome! My friend ";
 
 
-    public static final String FIRST_PROMPT_AFTER_NAME = """
-            , you have just been hired as a new manager.\s
-            You're company has decided to expand the staff for some new and exciting projects.
-            Your job is to hire some interns and then... Here is a brief view of the interviewee list.\s
-            Take a glance and let's start the interview!\s
-            """;
+    public static final String FIRST_PROMPT_AFTER_NAME = ", you have just been hired as a new manager. \n" +
+                                                         "You're company has decided to expand the staff for some new and exciting projects.\n" +
+                                                         "Your job is to hire some interns and then... Here is a brief view of the interviewee list. \n" +
+                                                         "Take a glance and let's start the interview! \n";
 
     public static final String START_INTERVIEW_PROMPT = "Let's start the interview with the first contestant. \n";
     //see usage in firstPrompt
@@ -85,44 +83,35 @@ public class GamePrompts implements Serializable {
 
     public static final String START_OF_MONTH_PROMPT_AFTER_NAME = " , is to manage some new projects. \n ";
 
-    public static final String START_OF_MONTH_PROMPT_AFTER_PROJECTS = """
-            Here are a list of commands you can do:
-            assign intern to project <Intern Name> <Project Name>
+    public static final String START_OF_MONTH_PROMPT_AFTER_PROJECTS = "Here are a list of commands you can do:\n" +
+                                                                      "assign intern to project <Intern Name> <Project Name>\n" +
+                                                                      "\n" +
+                                                                      "remove intern from project <Intern Name> <Project Name>\n" +
+                                                                      "\n" +
+                                                                      "check interns info\n" +
+                                                                      "\n" +
+                                                                      "check project info\n";
 
-            remove intern from project <Intern Name> <Project Name>
+    public static final String CONFIRM_ASSIGNING = "All interns have been assigned to a project, and here is the entire assignment you made so far. If you are sure with your decisions, type 'confirm all decisions'.\n" +
+                                                   "If not, feel free to use the same given commands to modify your decisions.\n";
 
-            check interns info
-
-            check project info
-            """;
-
-    public static final String CONFIRM_ASSIGNING = """
-            All interns have been assigned to a project, and here is the entire assignment you made so far. If you are sure with your decisions, type 'confirm all decisions'.
-            If not, feel free to use the same given commands to modify your decisions.
-            """;
-
-    public static final String END_OF_MONTH_PROMPT = """
-            Now you finished your part of the job, all interns have started working hard on their own.\s
-            The month went by quickly, and now you can view this month's progress!\s
-            type anything to continue and view the report that has been generated...\s""";
+    public static final String END_OF_MONTH_PROMPT = "Now you finished your part of the job, all interns have started working hard on their own. \n" +
+                                                     "The month went by quickly, and now you can view this month's progress! \n" +
+                                                     "type anything to continue and view the report that has been generated... ";
 
 
 
-    public static final String FINAL_MONTH_PROMPT_BEFORE_PROJECT = """
-            Ah, welcome to the last month where you get to assign interns to projects.
-            Your final task is to assign one intern you think has performed well whowill be able to accomplish a bigger project on their own. Here's the project:
-            """;
+    public static final String FINAL_MONTH_PROMPT_BEFORE_PROJECT = "Ah, welcome to the last month where you get to assign interns to projects.\n" +
+                                                                   "Your final task is to assign one intern you think has performed well whowill be able to accomplish a bigger project on their own. Here's the project:\n";
   
-    public static final String FINAL_MONTH_PROMPT_AFTER_PROJECT = """
-            Here are a list of commands you can do:
-            assign intern to project <Intern Name> <Project Name>
-
-            remove intern from project <Intern Name> <Project Name>
-
-            check intern info
-
-            check project info
-            """;
+    public static final String FINAL_MONTH_PROMPT_AFTER_PROJECT = "Here are a list of commands you can do:\n" +
+                                                                  "assign intern to project <Intern Name> <Project Name>\n" +
+                                                                  "\n" +
+                                                                  "remove intern from project <Intern Name> <Project Name>\n" +
+                                                                  "\n" +
+                                                                  "check intern info\n" +
+                                                                  "\n" +
+                                                                  "check project info\n";
 
 
     public static final String END_OF_FINAL_MONTH_PROMPT = "Now you have finished assigning your SUPER intern to the FINAL project." +
@@ -158,36 +147,32 @@ public class GamePrompts implements Serializable {
     public static final String SKILL12 ="Patience";
     public static final String SKILL13 ="Analytical";
 
-    public static final String PROJECT1_DESCRIPTION = """
-            Our company wishes to rebrand itself this upcoming Winter, our first step in rebranding our company is to create a new logo
-            that will encourage more employees to apply to work here and will emulate trust amongst our clients
-            This project requires individuals to be creative, artistic and imaginative
-            The interns will be working with world-renowned graphic designer to create a new logo that represents
-            our company morals, values and overall message. Thus, a clear understanding of how our company operates is required
-            Please ensure that you pick a team where each intern possesses at least one skill that is required to complete this task.""";
+    public static final String PROJECT1_DESCRIPTION = "Our company wishes to rebrand itself this upcoming Winter, our first step in rebranding our company is to create a new logo\n" +
+                                                      "that will encourage more employees to apply to work here and will emulate trust amongst our clients\n" +
+                                                      "This project requires individuals to be creative, artistic and imaginative\n" +
+                                                      "The interns will be working with world-renowned graphic designer to create a new logo that represents\n" +
+                                                      "our company morals, values and overall message. Thus, a clear understanding of how our company operates is required\n" +
+                                                      "Please ensure that you pick a team where each intern possesses at least one skill that is required to complete this task.";
 
-    public static final String PROJECT2_DESCRIPTION = """
-            The software developers in the company all went on vacation and did not fully test the code for a project they were working
-            When they finally returned and tested their project, they realised their code was all riddled with bugs!
-            The interns for this project must work together with the software developers to find the root of the problem and
-            write more tests to exterminate all the bugs!
-            Pick interns that will be able to think quick on their feet and be flexible in accepting the tasks they are assigned.
-            The interns must also be able to work together, support each other and provide assistance to all members assigned to this task to achieve success.""";
+    public static final String PROJECT2_DESCRIPTION = "The software developers in the company all went on vacation and did not fully test the code for a project they were working\n" +
+                                                      "When they finally returned and tested their project, they realised their code was all riddled with bugs!\n" +
+                                                      "The interns for this project must work together with the software developers to find the root of the problem and\n" +
+                                                      "write more tests to exterminate all the bugs!\n" +
+                                                      "Pick interns that will be able to think quick on their feet and be flexible in accepting the tasks they are assigned.\n" +
+                                                      "The interns must also be able to work together, support each other and provide assistance to all members assigned to this task to achieve success.";
 
-    public static final String PROJECT3_DESCRIPTION = """
-            For this project, a client company is asking for assistance in creating, designing and coding new game characters
-            for the launch of their new video game in two months. The interns will be working with the client company's illustrators and 2 senior software engineers
-            from our company to invent original and unique fighting game characters.
-            The interns required for this project must be creative and artistic in their design choices.
-            Since they will also help in coding, they must also be confident in their decisions.""";
+    public static final String PROJECT3_DESCRIPTION = "For this project, a client company is asking for assistance in creating, designing and coding new game characters\n" +
+                                                      "for the launch of their new video game in two months. The interns will be working with the client company's illustrators and 2 senior software engineers\n" +
+                                                      "from our company to invent original and unique fighting game characters.\n" +
+                                                      "The interns required for this project must be creative and artistic in their design choices.\n" +
+                                                      "Since they will also help in coding, they must also be confident in their decisions.";
 
-    public static final String PROJECT4_DESCRIPTION = """
-            Our company runs a Hackathon yearly for aspiring computer science students.
-            Each department must send 3 interns that will lead and mentor a team each in the Hackathon competition.
-            Hackathons are great opportunities to network, build experience and improve one's coding ability. The leaders must be\s
-            able to provide advice to the participants about the Hackathon competition itself and also about their future career paths.
-            Therefore, the interns you choose for this task must have immense leadership skills and confidence in leading their teams,
-            they must also be responsible to a certain extent to ensure they provide adequate advice to their junior aspiring developers.""";
+    public static final String PROJECT4_DESCRIPTION = "Our company runs a Hackathon yearly for aspiring computer science students.\n" +
+                                                      "Each department must send 3 interns that will lead and mentor a team each in the Hackathon competition.\n" +
+                                                      "Hackathons are great opportunities to network, build experience and improve one's coding ability. The leaders must be \n" +
+                                                      "able to provide advice to the participants about the Hackathon competition itself and also about their future career paths.\n" +
+                                                      "Therefore, the interns you choose for this task must have immense leadership skills and confidence in leading their teams,\n" +
+                                                      "they must also be responsible to a certain extent to ensure they provide adequate advice to their junior aspiring developers.";
 
     public static final String PROJECT5_DESCRIPTION = "Protecting consumer data should be a top priority for any organization. " +
             "In this project, the interns will work with the cybersecurity department within the company to ensure the " +
@@ -233,14 +218,13 @@ public class GamePrompts implements Serializable {
             " part of the assistant's responsibilities. The intern will receive step-by-step guidance from industry experts," +
             " and through intensive immersion, they will develop specialized, highly valued skills regarding Machine Learning & AI. ";
 
-    public static final String FINAL_PROJECT3_DESCRIPTION = """
-            Our company's COVID-19 Tracking System needs a huge update! Before we were only
-            able to do a survey to ensure employees were not feeling any of the COVID symptoms, however now we are able to ask for
-            employees to upload their proof of vaccination. The intern assigned to this task must code an interface that is user-friendly
-            so that our employees are able to upload their 'vaccine passports' without any hassle.
-            The company also would like to add a new feature to the Tracking System that allows employees to request work from home
-            whenever they feel any symptoms of a fever or cold. The intern assigned to this project must be efficient in their coding
-            and responsible enough to take on this project by themselves.""";
+    public static final String FINAL_PROJECT3_DESCRIPTION = "Our company's COVID-19 Tracking System needs a huge update! Before we were only\n" +
+                                                            "able to do a survey to ensure employees were not feeling any of the COVID symptoms, however now we are able to ask for\n" +
+                                                            "employees to upload their proof of vaccination. The intern assigned to this task must code an interface that is user-friendly\n" +
+                                                            "so that our employees are able to upload their 'vaccine passports' without any hassle.\n" +
+                                                            "The company also would like to add a new feature to the Tracking System that allows employees to request work from home\n" +
+                                                            "whenever they feel any symptoms of a fever or cold. The intern assigned to this project must be efficient in their coding\n" +
+                                                            "and responsible enough to take on this project by themselves.";
 
     public static final String PROJECT1_PROMPT = "Project Name:" + PROJECT1_NAME + "\n" +
                                                  "Project Description:" + PROJECT1_DESCRIPTION + "\n" +
@@ -312,12 +296,15 @@ public class GamePrompts implements Serializable {
     public static final String INTERN_REMOVING_SUCCESS = "The intern was successfully removed from the project specified.";
     public static final String FIRST_PROMPT_AFTER_INTERNS = "Type anything to begin the interviewing process!";
 
+    public static final String END_OF_MONTH_REPORT_PROMPT = "That is the end of the report.";
+    public static final String END_OF_FINAL_MONTH_REPORT_PROMPT = "That's the end of the final month report.";
+
     public final String REPORT_CONCLUSION = "That's all! Have a good day manager. :)";
 
     public static final String END_PROMPT = "Thank you so much for playing our game.\n" +
             "Creators:" + "\n" + "Mary Yijia Li\n" +
             "Farzana Rahman\n" +
-            "Maggie Huang" +
+            "Maggie Huang\n" +
             "Jizhong (Jacob) Lyu\n" +
             "Camille Marie Alve\n" +
             "Enam Hermon.\n";

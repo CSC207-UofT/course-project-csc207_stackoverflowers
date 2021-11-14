@@ -34,10 +34,9 @@ public class FinalReportMaker implements ReportMaker {
         for (Project proj : projList) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
-        ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
         return bakeProjectName(currentHRSystem.getProjectNames(currentMonth)) + "\n" +
                 bakeInterns(currentHRSystem.getHiredInternsNames()) + "\n" +
-                bakeInternsPerformances(interns, projectCompatibilityList);
+                bakeInternsPerformances(interns,  projectCompatibilityList);
     }
 
     private ArrayList<HashMap<String, Double>> getHiredInternsSkills(ArrayList<HiredIntern> hiredInternList) {
