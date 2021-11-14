@@ -20,7 +20,7 @@ public class ReportLevelTest {
             if (num == 1 || num == 3 || num == 5) {
                 assertTrue( reportLevel.getCurrentReportMaker() instanceof MonthReportMaker);
             } else if (num == 2 || num == 4) {
-                assertEquals(new ProjectReportMaker(hrSystem), reportLevel.getCurrentReportMaker());
+                assertTrue( reportLevel.getCurrentReportMaker() instanceof ProjectReportMaker);
             } else {
                 assertTrue(reportLevel.getCurrentReportMaker() instanceof FinalReportMaker);
             }
@@ -60,11 +60,13 @@ public class ReportLevelTest {
 
     @Test
     public void testFinishedUpgradeFail() throws Exception {
-        setUp();
-        String randomSkillThisMonth = "Efficiency";
-        reportLevel = new ReportLevel(1, hrSystem);
-        reportLevel.getCurrentReportMaker().upgradeIntern("Mary",1, randomSkillThisMonth);
-        throw new Exception(Exceptions.INTERN_UPGRADING_FAILURE);
+        try {
+            setUp();
+            String randomSkillThisMonth = "Efficiency";
+            reportLevel = new ReportLevel(1, hrSystem);
+            reportLevel.getCurrentReportMaker().upgradeIntern("Mary",1, randomSkillThisMonth);
+        }catch (Exception e){
+            assertTrue(e.toString().contains(Exceptions.INTERN_UPGRADING_FAILURE));}
     }
 
 

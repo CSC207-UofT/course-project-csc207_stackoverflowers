@@ -74,7 +74,7 @@ public class MonthReportMaker implements ReportMaker {
     @Override
     public String bakeInternsPerformances (ArrayList<HiredIntern> interns, HashMap<String, Float> projectSkill) {
         StringBuilder returnLine = new StringBuilder(GamePrompts.INTERN_PERFORMANCE_HEADER + currentHRSystem.getHiredInternsNames() + "\n");
-        String[] internNamesList = currentHRSystem.getHiredInternsNames().split("|");
+        String[] internNamesList = currentHRSystem.getHiredInternsNames().split("\\|");
         for (int i = 0; i != interns.size(); i+=1) {
             returnLine.append("     - ").append(internNamesList[i]).append(": ").append(calculateInternPerformance(interns.get(i).getInternSkills(), projectSkill)).append("\n");
         }
