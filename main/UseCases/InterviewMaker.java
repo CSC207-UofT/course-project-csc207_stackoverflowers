@@ -5,13 +5,14 @@ import Entities.InterviewIntern;
 import Entities.HiredIntern;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 
 public class InterviewMaker {
 
     private InterviewIntern currentInterviewIntern;
-    // private HiredIntern currentHiredIntern; (may not need this in interviewmaker)
     private final HRSystem currentHRSystem ;
+    private final ArrayList<String> interviewedInterns;
 
 
     /**
@@ -19,8 +20,9 @@ public class InterviewMaker {
      * Controllers.InterviewLevel.
      */
     public InterviewMaker(HRSystem currentHRSystem){
-        // this.currentHiredIntern = new HiredIntern();
         this.currentHRSystem = currentHRSystem;
+        this.interviewedInterns = new ArrayList<>();
+        this.currentInterviewIntern = currentHRSystem.getInterviewInternList().get(0);
 
     }
 
@@ -29,21 +31,10 @@ public class InterviewMaker {
      * @return a String representation of the interview prompt and possible intern names.
      */
     public String startOfInterviewPrompt(){
-        //condition to check if interview has started? need in interview level?
-        //The first sentence the interviewee says
-        //the options the player can choose.
+        //This returns the InterviewInterns name, age and skill information as well as the first
+        // choices a player must choose.
         return GamePrompts.START_INTERVIEW_PROMPT + getInterviewInternInfo();
     }
-
-    /**
-     * This method stores the Entities.InterviewIntern a player has decided to interview.
-     * @param chosenIntern the Interview Intern chosen as a player input.
-     */
-    public void updatePlayerInternChoice(InterviewIntern chosenIntern){
-        this.currentHRSystem.updatePlayerInternChoice(chosenIntern);
-        this.currentInterviewIntern = currentHRSystem.getPlayerInternChoice();
-    }
-
 
     /**
      * This method takes in this interviewIntern from UseCases.HRSystem and return the intern's first choices that
@@ -58,22 +49,13 @@ public class InterviewMaker {
         return GamePrompts.PLAYER_CHOICE;
     }
 
-    /**
-     * This method allows player to choose from the choices in ChoiceOptions and stores the choice
-     * @return
-     */
-    public Object storePlayerChoice(Object options){
-        return this.currentHRSystem.getPlayerInternResponseChoice(options);
-    }
-
 
     /**
      * This method takes in the Player's choice from method playerChoice and returns the interviewIntern's
      * corresponding response from the response tree in GameMaker.
      */
-    // needs structure of the response tree?
-    public String internChoiceResponse(Object playerChoice, InterviewIntern intern){
-        return this.currentHRSystem.getInternChoiceResponse(playerChoice, intern);
+    public String displayInternChoiceResponse(String input){
+        return this.currentHRSystem.getInternChoiceResponse(input);
     }
 
 
@@ -83,27 +65,19 @@ public class InterviewMaker {
      * @param playerInput the player's response to the Hiring Prompt.
      */
     public String internToHire(String playerInput){
-        return GamePrompts.HIRE_INTERN + currentHRSystem.updatePlayerResponse(playerInput);
+        return  GamePrompts.TO_HIRE_PROMPT + currentHRSystem.updatePlayerResponse(playerInput)
+                + GamePrompts.CONFIRM_HIRING + currentHRSystem.updatePlayerResponse(playerInput);
     }
 
 
     /**
-     * Get the list of hiredInterns from HRSystem
+     * Get the string representation of hiredInterns from HRSystem.
+     * @return a string of hired interns.
      */
-    public ArrayList<HiredIntern> getHiredInternList(){
-        return currentHRSystem.getHiredInternList();
+    public String getHiredInternString(){
+        return currentHRSystem.makeHiredInternsToString();
     }
 
-
-    public String hireInternPrompt(String playerInput){
-        String res = "";
-        if (this.currentHRSystem.getPlayerResponse().equals("yes")){
-            res += GamePrompts.HIRE_INTERN;
-            res += playerInput;
-            res += GamePrompts.CONFIRM_HIRING;
-        }
-        return res;
-    }
 
     /**
      * If the player responds "yes" to hire this interviewIntern, make this interviewIntern a hiredIntern and add this
@@ -111,7 +85,7 @@ public class InterviewMaker {
      */
     public void hireIntern(){
         if (this.currentHRSystem.getPlayerResponse().equals("yes")){
-            currentHRSystem.hireIntern(this.currentInterviewIntern);
+            this.currentHRSystem.hireIntern(this.currentInterviewIntern);
         }
     }
 
@@ -120,13 +94,63 @@ public class InterviewMaker {
      * @return a String representation of the interviewIntern info.
      */
     public String getInterviewInternInfo(){
-        return currentHRSystem.getInterviewInternNames();
+        StringBuilder res = new StringBuilder();
+
+        ResponseTree<ArrayList<String>> responseTree = this.currentInterviewIntern.getResponseTree();
+        for (ResponseTree<ArrayList<String>> response : responseTree.getChildren()){
+            // if the response tree is a root, display the interns initial response(i.e. name, age & skill info).
+            if (response.isRoot()){
+                res.append(response.getData());
+            }
+            res.append(" ");
+            if (! response.isRoot()){
+                String[] qA = response.getData().get(0).split(",");
+                res.append(qA[0]);
+            }
+        }
+        return res.toString();
     }
 
     public String endOfInterviewPrompt(){
         return GamePrompts.END_OF_INTERVIEW_PROMPT;
     }
 
+    /**
+     * This method updates the current interview intern to the next intern in the list that has not yet been interviewed.
+     */
+    public void updateInterviewIntern() {
+        for (InterviewIntern intern : this.currentHRSystem.getInterviewInternList()){
+            if (! this.interviewedInterns.contains(intern.getInternName()))
+                this.currentInterviewIntern = intern;
+        }
+    }
 
+
+    /**
+     * This method checks if the intern's current response is the last response on their response tree
+     * (i.e. at the end of the interview).
+     * @param input the player's input that checks if the intern's response to the input is the last response
+     * @return true if this is the last response and false otherwise.
+     */
+    public Boolean checkInternsLastResponse(String input){
+        ArrayList<ResponseTree<ArrayList<String>>> res = this.currentInterviewIntern.getResponseTree().getChildren();
+        for ( ResponseTree<ArrayList<String>> response : res){
+            // if this response is a leaf (the last response) and the intern's response contains this last response
+            if ((response.isLeaf()) & this.displayInternChoiceResponse(input).contains(response.toString())){
+                this.interviewedInterns.add(this.currentInterviewIntern.getInternName());
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    /**
+     * This method checks if there are any more intern's to interview.
+     * @return true if there are more interns to interview and false otherwise.
+     */
+    public boolean haveInterviewsLeft() {
+        return this.currentHRSystem.getInterviewInternList().size() != this.interviewedInterns.size();
+    }
 }
 

@@ -7,6 +7,7 @@ import UseCases.ProjectReportMaker;
 import UseCases.ReportMaker;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class ReportLevel extends Level{
 

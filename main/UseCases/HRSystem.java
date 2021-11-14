@@ -32,14 +32,11 @@ public class HRSystem implements Serializable {
 
     private final HashMap<Project, ArrayList<HiredIntern>> projectToInterns;
 
-    private Object playerInternResponseChoice;
     // stores a project as a key and a list of HiredInterns assigned to that project as a value
 
     private String playerName;
 
     private String playerResponse;
-
-    private InterviewIntern playerInternChoice;
 
 
     /**
@@ -135,20 +132,6 @@ public class HRSystem implements Serializable {
 
 
     /**
-     * This method gets only the names of all Entities.InterviewInterns separated by "|".
-     *
-     * @return a String of all Entities.InterviewIntern names
-     */
-    public String getInterviewInternNames() {
-        StringBuilder result = new StringBuilder();
-        for (InterviewIntern i : this.interviewInternList) {
-            result.append(i.getInternName());
-            result.append("|");
-        }
-        return result.toString();
-    }
-
-    /**
      * This method gets a String representation of all intern info.
      *
      * @return a String of intern information for every intern in internList
@@ -160,7 +143,7 @@ public class HRSystem implements Serializable {
         }
         return res.toString();
     }
-    //TODO: delete if the method below is not used.
+
     /**
      * This method gets a String representation of all Entities.HiredIntern info.
      *
@@ -244,8 +227,6 @@ public class HRSystem implements Serializable {
      * @param currentMonth the given month that an intern skill is being checked.
      * @return a String representation of the Entities.Intern upgraded skills point.
      */
-    //not sure how to finish this method? what exactly is the upgrade we're asking for? ask Jacob, same with other two
-    // upgrade methods
     public String makeUpgradeToString(int currentMonth) {
         //a method that takes the upgrade and returns a list of skills point the intern have now.
         List<Project> monthlyProjList = this.monthToProject.get(currentMonth);
@@ -298,19 +279,6 @@ public class HRSystem implements Serializable {
         return this.playerResponse;
     }
 
-    //TODO: remove this if not used in InterviewLevel.
-    /**
-     * This method fire's an intern during the interview process or after completion of a project.
-     *
-     * @param intern the Entities.Intern to be fired.
-     */
-    public void fireIntern(Intern intern) {
-        if (intern instanceof HiredIntern) {
-            this.hiredInternList.remove(intern);
-        } else {
-            this.hiredInternList.remove(intern);
-        }
-    }
 
     /**
      * This method hires an intern into the company.
@@ -333,58 +301,41 @@ public class HRSystem implements Serializable {
     }
 
 
-    public void updatePlayerInternChoice(InterviewIntern chosenIntern) {
-        this.playerInternChoice = chosenIntern;
-    }
-
-    public InterviewIntern getPlayerInternChoice() {
-        return this.playerInternChoice;
-    }
-
     public String choicesToString() {
-        ArrayList<ResponseTree> questionChoices = new ArrayList<>();
-        for (InterviewIntern intern : interviewInternList) {
-            questionChoices.addAll(intern.getResponseTree().getChildren());
-        }
         StringBuilder res = new StringBuilder();
 
-        for (ResponseTree choice : questionChoices) {
-            res.append(choice.getChildren().get(0));
+        for (InterviewIntern intern : interviewInternList) {
+            ResponseTree<ArrayList<String>> responseTree = intern.getResponseTree();
+            for (ResponseTree<ArrayList<String>> response : responseTree.getChildren()){
+                String[] qA = response.getData().get(0).split(",");
+                res.append(qA[0]);
+            }
         }
 
         return res.toString();
+
     }
-    //TODO: delete this method if it is not used.
-    public ArrayList<Object> getChoices(InterviewIntern intern) {
-        ArrayList<ResponseTree> questionChoices = new ArrayList<>(intern.getResponseTree().getChildren());
 
-        ArrayList<Object> options = new ArrayList<>();
+    public String getInternChoiceResponse(String input) {
+        //TODO: Update this method, for each intern in interviewInternList the input based on that intern
 
-        for (ResponseTree choice : questionChoices) {
-            options.add(choice.getChildren().get(0));
+        ArrayList<ResponseTree<ArrayList<String>>> questionChoices = new ArrayList<>();
+        for (InterviewIntern intern : this.interviewInternList){
+            for (int i = 0; i < intern.getResponseTree().getChildren().size(); i++) {
+                if (intern.getResponseTree().getChildren().get(i).getData().contains(input)) {
+                    questionChoices.addAll(intern.getResponseTree().getChildren());
+                }
+            }
         }
-        return options;
-
-    }
-    //TODO: delete this method if it is not used.
-    public void updatePlayerInternResponseChoice(Object option) {
-        this.playerInternResponseChoice = option;
-    }
-
-    public Object getPlayerInternResponseChoice(Object object) {
-        return this.playerInternResponseChoice;
-    }
-
-    public String getInternChoiceResponse(Object playerChoice, InterviewIntern intern) {
-        ArrayList<ResponseTree> questionChoices = new ArrayList<>(intern.getResponseTree().getChildren());
         StringBuilder res = new StringBuilder();
 
-        for (ResponseTree choice : questionChoices) {
-            if (choice.getChildren().get(0).equals(playerChoice)) {
+        for (ResponseTree<ArrayList<String>> choice : questionChoices) {
+            if (choice.getChildren().get(0).getData().get(0).equals(this.playerResponse)) {
                 res.append(choice.getChildren().get(1));
             }
         }
         return res.toString();
+
     }
 
 
@@ -419,6 +370,13 @@ public class HRSystem implements Serializable {
         return false;
     }
 
+    //TODO: Ask Jacob for javadoc.
+    /**
+     * Please finish javadoc
+     * @param internName doc
+     * @param currentMonth doc
+     * @return doc
+     */
     public boolean upgradeInternSkill(String internName, int currentMonth) {
         //Now only returns false if an intern doesn't exist.
         for (HiredIntern i : this.hiredInternList) {
@@ -472,6 +430,12 @@ public class HRSystem implements Serializable {
         return true;
     }
 
+    //TODO: ask jacob for javadoc
+    /**
+     * please finish javadoc
+     * @param currentMonth doc
+     * @return doc
+     */
     public boolean internUpgraded(int currentMonth) {
         for(HiredIntern i: hiredInternList){
             if (i.getUpgradedIn() == currentMonth){

@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ResponseTreeMaker {
+public class  ResponseTreeMaker {
     /* This ResponseTreeMaker class is responsible for generating and assigning a response tree
     to an Intern.
      */

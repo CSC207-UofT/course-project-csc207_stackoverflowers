@@ -39,12 +39,24 @@ public class GamePrompts implements Serializable {
     public static final String START_INTERVIEW_PROMPT = "Let's start the interview with the first contestant. Type anything to continue.";
     //see usage in firstPrompt
 
+    public static final String INTERN_RESPONSE_PROMPT = "The current Intern under review has the following response for you to consider:\n";
+
+    public static final String NEXT_CHOICE_PROMPT = "Please select the next question to ask ";
+
     public static final String INFORM_QUIT_GAME = "You have quit your game, and you progress has been saved to a file " +
             "with the player name you've used. Type anything to see credits and quit. Player name: ";
 
     public static final String HIRE_INTERN = "Would you like to hire this intern?";
 
+    public static final String TO_HIRE_PROMPT = "Please type 'yes' if you would like to hire this intern and 'no' otherwise";
+
     public static final String HIRED_INTERN = "Congratulations! You have hired this intern! ";
+
+    public static final String NOT_HIRED_INTERN = "You have chosen not to hire this intern. ";
+
+    public static final String CHOSEN_INTERNS_TO_HIRE = "You have chosen to hire the following interns: ";
+
+    public static final String NEXT_INTERVIEW_INTERN_PROMPT = "It is now time to interview the next intern. Please select the first question to ask. ";
 
     public static final String PLAYER_CHOICE = "Choose from either A or B";
 
