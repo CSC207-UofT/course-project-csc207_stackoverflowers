@@ -42,7 +42,7 @@ public class InterviewMaker {
      */
 
     public String getChoiceOptions(){
-        return this.currentHRSystem.choicesToString();
+        return this.currentHRSystem.choicesToString(currentInterviewIntern);
     }
 
     public String choicePrompt(String playerInput){
@@ -55,7 +55,7 @@ public class InterviewMaker {
      * corresponding response from the response tree in GameMaker.
      */
     public String displayInternChoiceResponse(String input){
-        return this.currentHRSystem.getInternChoiceResponse(input);
+        return this.currentHRSystem.getInternChoiceResponse(input, currentInterviewIntern);
     }
 
 
@@ -83,9 +83,7 @@ public class InterviewMaker {
      * HiredIntern to the list of hired interns.
      */
     public void hireIntern(){
-        if (this.currentHRSystem.getPlayerResponse().equals("yes")){
-            this.currentHRSystem.hireIntern(this.currentInterviewIntern);
-        }
+        this.currentHRSystem.hireIntern(this.currentInterviewIntern);
     }
 
     /**
@@ -94,7 +92,6 @@ public class InterviewMaker {
      */
     public String getInterviewInternInfo(){
         StringBuilder res = new StringBuilder();
-
         ResponseTree<ArrayList<String>> responseTree = this.currentInterviewIntern.getResponseTree();
         res.append(responseTree.getData());
 
@@ -129,7 +126,6 @@ public class InterviewMaker {
     /**
      * This method checks if the intern's current response is the last response on their response tree
      * (i.e. at the end of the interview).
-     * @param input the player's input that checks if the intern's response to the input is the last response
      * @return true if this is the last response and false otherwise.
      */
     public Boolean checkInternsLastResponse() {
@@ -148,6 +144,10 @@ public class InterviewMaker {
      */
     public boolean haveInterviewsLeft() {
         return this.currentHRSystem.getInterviewInternList().size() != this.interviewedInterns.size();
+    }
+
+    public void updateInternTree(int theWanted) {
+        currentInterviewIntern.setResponseTree(currentInterviewIntern.getResponseTree().getChildren().get(theWanted));
     }
 }
 

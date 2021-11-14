@@ -303,7 +303,7 @@ public class HRSystem implements Serializable {
     }
 
 
-    public String choicesToString() {
+    public String choicesToString(InterviewIntern intern) {
         StringBuilder res = new StringBuilder();
         for (ResponseTree<ArrayList<String>> children: intern.getResponseTree().getChildren()){
             String qA = (String) children.getData().get(0);
@@ -311,25 +311,14 @@ public class HRSystem implements Serializable {
             res.append("\n");
         }
         return res.toString();
-
     }
 
-    public String getInternChoiceResponse(String input) {
+    public String getInternChoiceResponse(String input, InterviewIntern intern) {
         //TODO: Update this method, for each intern in interviewInternList the input based on that intern
-
-        ArrayList<ResponseTree<ArrayList<String>>> questionChoices = new ArrayList<>();
-        for (InterviewIntern intern : this.interviewInternList){
-            for (int i = 0; i < intern.getResponseTree().getChildren().size(); i++) {
-                if (intern.getResponseTree().getChildren().get(i).getData().contains(input)) {
-                    questionChoices.addAll(intern.getResponseTree().getChildren());
-                }
-            }
-        }
         StringBuilder res = new StringBuilder();
-
-        for (ResponseTree<ArrayList<String>> choice : questionChoices) {
-            if (choice.getChildren().get(0).getData().get(0).equals(this.playerResponse)) {
-                res.append(choice.getChildren().get(1));
+        for (ResponseTree<ArrayList<String>> children : intern.getResponseTree().getChildren()){
+            if (children.getData().get(0).contains(input)) {
+                res.append(children.getData().get(1));
             }
         }
         return res.toString();

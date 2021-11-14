@@ -22,6 +22,17 @@ public class ResponseTreeMakerTest {
         ResponseTree<ArrayList<String>> respTree = rtm.generateInternResponses();
         assertEquals(15, respTree.getSize());
     }
+    @Test
+    public void  TestGenerateDialogue() throws FileNotFoundException {
+        HashMap<String, Double> skills = new HashMap<>();
+        skills.put("Confidence", 50.0);
+        skills.put("Teamwork", 50.0);
+        skills.put("Flexibility", 50.0);
+        InterviewIntern intern = new InterviewIntern("Camille", 20, skills);
+        ResponseTreeMaker resp = new ResponseTreeMaker(intern);
+        ArrayList<String> questions = resp.generateDialogueList("Resources/questions.txt");
+        assertEquals("Nice to meet you. Why don't you tell me a bit about your experience?", questions.get(1));
+    }
 
     /*
     @Test

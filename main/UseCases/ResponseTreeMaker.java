@@ -79,8 +79,8 @@ public class  ResponseTreeMaker {
      * Will also be used to generate a list of all possible answers
      * @return an Arraylist of Strings containing each question
      */
-    private ArrayList<String> generateDialogueList(String file) throws FileNotFoundException {
-        Scanner scan = new Scanner(new File(file));
+    public ArrayList<String> generateDialogueList(String file) throws FileNotFoundException {
+        Scanner scan = new Scanner(new File(file)).useDelimiter("\n");
         ArrayList<String> infoList = new ArrayList<>();
         while (scan.hasNext()){
             infoList.add(scan.next());
