@@ -17,7 +17,7 @@ public class ReportLevel extends Level{
     private ReportPresenter currentReportPresenter;
     private int currentMonth;
     String randomSkillThisMonth = generateRandomSkill();
-    String upgradePrompt = currentReportMaker.makeUpgradePrompt(randomSkillThisMonth);
+    String upgradePrompt;
 
 
     /**
@@ -25,21 +25,22 @@ public class ReportLevel extends Level{
      * that's corresponding to this current phase.
      *
      * @param month A month in this game
-     * @param currentHRSystem The HRSystem currently used to get intern and project info.
      */
-    public ReportLevel(int month, HRSystem currentHRSystem) {
-        if (month < 6 & month % 2 == 1) {
-            //this is for the end of month 1, 3 ,5
-            currentReportMaker = new MonthReportMaker(currentHRSystem);
+    public ReportLevel(int month, HRSystem hrSystem) {
+        if (month == 1 | month == 3 | month == 5) {
+            currentReportMaker = new MonthReportMaker(hrSystem);
         }
-        if (month < 4 & month % 2 == 0) {
+        if (month == 2 | month == 4) {
             //this is for the end of month 2, 4
-            currentReportMaker = new ProjectReportMaker(currentHRSystem);
-        } else {
+            currentReportMaker = new ProjectReportMaker(hrSystem);
+        } if (month == 6) {
             //this is for the end of month 6
-            currentReportMaker = new FinalReportMaker(currentHRSystem);
+            currentReportMaker = new FinalReportMaker(hrSystem);
         }
         currentMonth = month;
+        upgradePrompt = currentReportMaker.makeUpgradePrompt(randomSkillThisMonth);
+        randomSkillThisMonth = generateRandomSkill();
+        currentReportPresenter = new ReportPresenter();
     }
 
     public String getOutputString(String input) throws Exception {

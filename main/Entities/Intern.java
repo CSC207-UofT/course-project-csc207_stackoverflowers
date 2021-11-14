@@ -54,7 +54,6 @@ abstract public class Intern implements Serializable {
      * Return the skills of this Entities.Intern
      */
     public HashMap<String, Double> getInternSkills() {
-
         return this.internSkills;
     }
 

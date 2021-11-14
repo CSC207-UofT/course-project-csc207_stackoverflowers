@@ -9,9 +9,9 @@ public class MonthReportMaker implements ReportMaker {
     private final GamePrompts prompts;
     private final HRSystem currentHRSystem;
 
-    public MonthReportMaker(HRSystem currentHRSystem){
+    public MonthReportMaker(HRSystem hrSystem){
         this.prompts = new GamePrompts();
-        this.currentHRSystem = currentHRSystem;
+        this.currentHRSystem = hrSystem;
 
     }
     @Override
@@ -107,8 +107,8 @@ public class MonthReportMaker implements ReportMaker {
 
     @Override
     public String endOfMonthPrompt( int currentMonth) {
-        if (currentMonth == HRSystem.FINAL_MONTH){return GamePrompts.END_OF_FINAL_MONTH_PROMPT;}
-        else{return GamePrompts.END_OF_MONTH_PROMPT;}
+        if (currentMonth == HRSystem.FINAL_MONTH){return GamePrompts.END_OF_FINAL_MONTH_REPORT_PROMPT;}
+        else{return GamePrompts.END_OF_MONTH_REPORT_PROMPT;}
     }
 
     @Override
