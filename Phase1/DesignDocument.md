@@ -18,6 +18,8 @@ Is your program consistent with Clean Architecture?
 Show us with something like a CRC model or UML diagram.
 Describe a scenario walk-through and highlight how it demonstrates Clean Architecture.
 
+Mary will show UML diagram produced from intelliJ in lab. 
+
 ## SCENARIO WALKTHROUGH: 
 
 Starting the game -> Interview Level -> Assign interns to projects -> First monthly report 
