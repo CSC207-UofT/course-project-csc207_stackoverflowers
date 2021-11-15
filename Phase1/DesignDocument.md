@@ -47,33 +47,7 @@ and upon hiring, HRSystem updates the list of HiredInterns by adding the newly h
 the Player now interviews the next intern from the InterviewInternList until all interns have been interviewed. Then, Entities.GamePrompts signifies the end
 of an interview by outputting an end of interview prompt. 
 
-STEP 3: Month level (Assign Interns to Project)
-
-In the first two months (month is the time unit we use in this game; each month is considered as a level), 2 projects
-will be generated per month which the player assigns interns to (so in total 4 projects will be generated). Controller.
-MonthLevel will get the status of the current month (start, during, end), and asks UseCase.MonthMaker to randomly
-generate two projects. Each project has a name, description, length (2 months), team size (3 interns), and skills compatibility.
-Skills compatibility is a hashmap that maps a skill with a number b/n 0.00 and 1.00, which indicates the skill's
-compatability with this project (so the higher the percentage associated with a particular skill, the more this project
-requires this skill)
-
-STEP 4: Check monthly report
-- There is a report for every month in game. MonthlyReportMaker is used as the reportMaker when the currentMonth is 1,3 or 5. This is determined by the java logic (month < 6 & month % 2 == 1). ProjectReportMaker is used as the reportMaker when the currentMonth is 2 or 4. This is determined by java logic (month < 4 & month % 2 == 0).  FinallReportMaker is used as the reportMaker when the currentMonth is 6. All versions of reportMakers helps ReportLevel generate Strings and other variables in different situations. ReportLevel's getOutPutString is called in getOutPut in GameManager. The report is shown when function is called, and upon seeing the report, player's next input until finishedUpgrading(currentMonth) is true are considered as commands to ReportLevel. 
-- The report format:
-  Here is your report for the end of " + month 
-
-  Project name: xxx 
-
-  Project progress: an integer
-
-  Assigned interns: hhh|yyy|zzz 
-
-  Interns performances:
-    - hhh: (int)
-    - yyy: (int)
-    - zzz: (int)
-  That's all! Have a good day manager. :)
-
+--- CAMILLE PLS EXPAND ON RESPONSETREE MAKER. 
 
 
 ## Design Patterns
@@ -135,6 +109,5 @@ We found that this way of organizing code helped us be aware of dependencies: as
 
 ## Functionality
 Our code tries the best to match the description and walk-through that we've first settled on. However, we were a little ambitious about adding Covid related features into the code, which will not be included for now.
-Demo your program's functionality to your TA or make a short video!
 I believe that the functionality of our code is sufficcient, since we decided to implement variations of Levels (Final months and Final reports), and also have an interactive conversation tree. Although our player's choice of input may be limited compared to others, our group's aim is to follow CLEAN and find means to collaborate well to make what we have written not only work, but also presentable. We focused on the structure, and also focused on the ability to extend and present a not-intimidating structure.
 Our code has implemented the save and load function. We also have the command quit, and since now we do not ask for confirmation to quit, we are basically saving and quitting at the same time for quit.
