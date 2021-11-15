@@ -4,12 +4,12 @@ import UseCases.HRSystem;
 import UseCases.MonthMaker;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static org.junit.Assert.*;
 
 
 public class MonthLevelTest {
@@ -104,6 +104,17 @@ public class MonthLevelTest {
             monthLevel.getOutputString("assign intern to project Mary ");
         } catch (Exception e) {
             assertTrue(e.toString().contains(Exceptions.INTERN_ASSIGNING_FAILURE));
+        }
+    }
+
+    @Test
+    public void testRemoveInternFromProjectSuccess() throws Exception {
+        setUp();
+        monthLevel.getOutputString("assign intern to project Mary Logo Design");
+        try{
+        monthLevel.getOutputString("remove intern from project Mary Logo Design");}
+        catch(Exception e){
+            assertEquals(e.getMessage(), " ");
         }
     }
 

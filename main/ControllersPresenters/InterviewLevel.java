@@ -42,8 +42,7 @@ public class InterviewLevel extends Level{
             if (!this.currentInterviewMaker.checkInternsLastResponse()){
                 res.append(GamePrompts.NEXT_CHOICE_PROMPT);
                 res.append(currentInterviewMaker.getChoiceOptions());
-            }
-            else{
+            }else{
                 res.append(GamePrompts.HIRE_INTERN);
             }
             return res.toString();
