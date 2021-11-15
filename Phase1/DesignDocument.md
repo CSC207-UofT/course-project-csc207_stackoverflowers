@@ -109,13 +109,12 @@ Is there evidence that your team has refactored code in a meaningful way during 
 ## Are there any obvious code smells still in your code that you missed fixing?
 - Kind of worried about duplicate code
 - GameManager and GameMaker are quite bloated classes: we could work on fixing that
-- We have already created new usecase class GameGenerators that holds all methods used for generating from GameMaker
 - GameManager can be split into sections. Currently, GameManager is the only class that evaluates player input. For example, we can take any methods that are related to reports from GameManager into a new class.
 - A method in ResponseTreeMaker (generateInternResponses) is really long as every tree node was created manually - this will be fixed in Phase 2.
 - There is a duplicate method in GameGenerators and ResponseTreeMaker. Making an interface won't get rid of the duplicate code, and the two classes shouldn't have the same parent class as they don't have much in common other than this duplicate method.
 
 ## Code Organization
-Our code is now organized by the four layers of CLEAN architecture. Since right now there are four main sections of the code, and that the classes are not that much, it is quite easy to find the class wanted based on our naming method. 
+Our code is now organized by the four layers of CLEAN architecture. Since right now there are four main sections of the code, and there aren't many classes, it is quite easy to find the class wanted based on our naming method. 
 We found that this way of organizing code helped us be aware of dependencies: as we could clearly see if we violated the dependency rule by looking at our imports. 
 
 ## Functionality
