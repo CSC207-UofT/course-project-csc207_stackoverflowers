@@ -111,11 +111,8 @@ public class MonthLevelTest {
     public void testRemoveInternFromProjectSuccess() throws Exception {
         setUp();
         monthLevel.getOutputString("assign intern to project Mary Logo Design");
-        try{
-        monthLevel.getOutputString("remove intern from project Mary Logo Design");}
-        catch(Exception e){
-            assertEquals(e.getMessage(), " ");
-        }
+        String actual = monthLevel.getOutputString("remove intern from project Mary Logo Design");
+        String expected = GamePrompts.INTERN_REMOVING_SUCCESS;
     }
 
     @Test

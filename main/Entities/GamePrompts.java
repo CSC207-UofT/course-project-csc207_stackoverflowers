@@ -59,7 +59,7 @@ public class GamePrompts implements Serializable {
 
     public static final String NOT_HIRED_INTERN = "You have chosen not to hire this intern. ";
 
-    public static final String CHOSEN_INTERNS_TO_HIRE = "You have chosen to hire the following interns: ";
+    public static final String CHOSEN_INTERNS_TO_HIRE = "You have chosen to hire the following interns: \n";
 
     public static final String NEXT_INTERVIEW_INTERN_PROMPT = "It is now time to interview the next intern. Please select the first question to ask. ";
 

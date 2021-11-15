@@ -106,7 +106,7 @@ public class HRSystem implements Serializable {
 
     private void makeMonthToProject() {
         HashMap<Integer, ArrayList<Project>> monthToProject = new HashMap<>();
-        ArrayList<Project> month1and2 = new ArrayList<>(projectList.subList(0, 2));
+        ArrayList<Project> month1and2 = new ArrayList<>(projectList.subList(0, 1));
         ArrayList<Project> month3and4 = new ArrayList<>(projectList.subList(2, 4));
         ArrayList<Project> month5and6 = new ArrayList<>(projectList.subList(4, 4));
         monthToProject.put(1, month1and2);
