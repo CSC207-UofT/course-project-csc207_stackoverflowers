@@ -109,21 +109,23 @@ Farzana:
 
 Maggie:
 - Progress so far:
-       - Writing out all prompts in GamePrompts
+       - Helped out with class reportMakers and monthPresenters
 
-       - Wrtiting all descriptions for our 'projects' in the game
-       
-       - Worked on SkillCompatibility in class Project with Maggie.
+       - Writing out prompts in GamePrompts
 
-       - Worked on class Project  
+       - Wrtiting descriptions for our 'projects' in the game
+
+       - Worked on class Project (Worked on SkillCompatibility with Farzana)
       
        - Writing up other descriptions for our games (projects, final projects, conversations)
        
        - Working on all needed txt files (for generating projects and interns)
        
-       - Worked on GameGeneratorsTest
+       - Writing test for GameGenerators
        
        - Wrote Step 3 of scenario walkthrough in design document 
+
+       - Adding javadocs to methods
 
 Jacob:
     - Classes in charge of:
