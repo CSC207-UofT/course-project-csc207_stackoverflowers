@@ -107,12 +107,12 @@ Is there evidence that your team has refactored code in a meaningful way during 
 - During coding there were also small refactors here and there to change method names, parameters, and also extract helper methods to make code more readable. See pull request #3 for GameMaker,  #19 for three ReportMakers, and #21 for MonthLevel.
 
 ## Are there any obvious code smells still in your code that you missed fixing?
-- Kind of worried about duplicate code, 
-- and also GameManager and GameMaker are quite bloated classes: we could work on fixing that.
+- Kind of worried about duplicate code
+- GameManager and GameMaker are quite bloated classes: we could work on fixing that
 - We have already created new usecase class GameGenerators that holds all methods used for generating from GameMaker
-- GameManager can be split into sections as currently, GameManager is the only class evaluating player input. For example we can take any methods that are related to reports from GameManager into a new class.
+- GameManager can be split into sections. Currently, GameManager is the only class that evaluates player input. For example, we can take any methods that are related to reports from GameManager into a new class.
 - A method in ResponseTreeMaker (generateInternResponses) is really long as every tree node was created manually - this will be fixed in Phase 2.
-- There is a duplicate method in GameGenerators and ResponseTreeMaker. Making an interface won't get rid of duplicate code, and the two classes shouldn't have the same parent class as they don't have much in common other than this duplicate method.
+- There is a duplicate method in GameGenerators and ResponseTreeMaker. Making an interface won't get rid of the duplicate code, and the two classes shouldn't have the same parent class as they don't have much in common other than this duplicate method.
 
 ## Code Organization
 Our code is now organized by the four layers of CLEAN architecture. Since right now there are four main sections of the code, and that the classes are not that much, it is quite easy to find the class wanted based on our naming method. 
@@ -120,5 +120,5 @@ We found that this way of organizing code helped us be aware of dependencies: as
 
 ## Functionality
 Our code tries the best to match the description and walk-through that we've first settled on. However, we were a little ambitious about adding Covid related features into the code, which will not be included for now.
-I believe that the functionality of our code is sufficcient, since we decided to implement variations of Levels (Final months and Final reports), and also have an interactive conversation tree. Although our player's choice of input may be limited compared to others, our group's aim is to follow CLEAN and find means to collaborate well to make what we have written not only work, but also presentable. We focused on the structure, and also focused on the ability to extend and present a not-intimidating structure.
-Our code has implemented the save and load function. We also have the command quit, and since now we do not ask for confirmation to quit, we are basically saving and quitting at the same time for quit.
+I believe that the functionality of our code is sufficient, since we decided to implement variations of Levels (Final months and Final reports), and also have an interactive conversation tree. Although our player's choice of input may be limited compared to others, our group's aim is to follow CLEAN architecture and find means to collaborate well to make what we have written not only work, but also presentable. We focused on the structure, and also focused on the ability to extend and present a non-intimidating structure.
+Our code has implemented the save and load function. We also have the command quit, and since now we don't ask for confirmation to quit, we are basically saving and quitting at the same time for quit.
