@@ -40,14 +40,23 @@ Entities.InterviewIntern needed to run the Interview. ControllersPresenters.Inte
 ensuring that no part of CLEAN architecture is violated. The interview level begins by ControllersPresenters.InterviewLevel
 displaying a prompt asking Player to choose who they would like to interview initially, indicating the start of an interview. The Player's response is then recorded and updated in the HRSystem created by UseCases.InterviewMaker.
 After selecting a specific Entities.InterviewIntern, the InterviewIntern's questions associated with their unique response tree from ResponseTreeMaker
-are outputted, allowing player to choose which question to ask the Entities.InterviewIntern. The InterviewIntern responds by HRSystem obtaining
+are outputted, allowing player to choose which question to ask the Entities.InterviewIntern. 
+
+ABOUT RESPONSETREEMAKER: Each InterviewIntern has its own unique ResponseTree, which stores all the possible dialogue during an interview.
+So it shows the questions the Player can ask, and the respective response from the intern. These ResponseTrees are
+generated in the ResponseTreeMaker class. The ResponseTreeMaker takes in an intern and generates a ResponseTree
+based on the intern's attributes. As of now, we've settled on a fixed number of questions and a fixed dialogue, however,
+with this ResponseTree structure, we can easily change the number of questions we can ask an intern during the interview,
+and we can easily add different questions so the dialogue is more diverse.
+
+The InterviewIntern responds by HRSystem obtaining
 the InterviewIntern's corresponding response for the question from the response tree in ResponseTreeMaker (which has been assigned to each intern in
 Entities.Intern). The player is then prompted to input "yes" if they wish to hire the InterviewIntern or "no" otherwise. This is recorded
 and upon hiring, HRSystem updates the list of HiredInterns by adding the newly hired intern. After confirming a Player's decision to hire an intern,
 the Player now interviews the next intern from the InterviewInternList until all interns have been interviewed. Then, Entities.GamePrompts signifies the end
 of an interview by outputting an end of interview prompt. 
 
---- CAMILLE PLS EXPAND ON RESPONSETREE MAKER. 
+
 
 
 ## Design Patterns
