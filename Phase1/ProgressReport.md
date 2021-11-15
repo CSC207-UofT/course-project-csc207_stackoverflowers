@@ -39,24 +39,42 @@ Here was the progress so far:
 - Yijia:
     - Classes in charge of:
         - SPhase
+        
         - GameManager
+        
         - GameMaker
+        
         - Level
+        
         - MonthLevel
+        
         - MonthMaker
+        
         - MonthPresenter
+
     - Progress so far:
+    
         - Finished most TODOs in MonthLevel, MonthMaker and MonthPresenter
+        
         - Figured out how the project will switch from phase to phase
+        
     - Things need to do:
         - Finish Month related stuff
+        
         - Serialization: Figure out how the game will handle "universal commands"(save, quit)
+        
         - Make the whole thing run
+        
         - Exceptions at the highest level(What exceptions and how Phase will display all that)
+        
         - Refactoring (code smells, CLEAN)
+        
     - Things need to coordinate:
+    
         - Tests
+
         - Exceptions = how return correct error message to player
+   
         - Levels -> abstract to children
         
 Farzana: 
