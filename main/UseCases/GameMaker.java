@@ -71,11 +71,10 @@ public class GameMaker implements Serializable {
     
     /**
      * Loads the previous saved state of the game (discuss later, still unsure)
-     * @param playerName the player's name which will become the name of the file the serialized object is saved to.
      * @return returns the loaded GameMaker to GameManager.
      */
-    public GameMaker load(String playerName) throws IOException, ClassNotFoundException {
-        FileInputStream fileIn = new FileInputStream(playerName);
+    public GameMaker load(String name) throws IOException, ClassNotFoundException {
+        FileInputStream fileIn = new FileInputStream("Resources/" + name);
         ObjectInputStream in = new ObjectInputStream(fileIn);
         return (GameMaker) in.readObject();
     }
