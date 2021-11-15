@@ -22,7 +22,7 @@ Mary will show UML diagram produced from intelliJ in lab.
 
 ## SCENARIO WALKTHROUGH: 
 
-Starting the game -> Interview Level -> Assign interns to projects -> First monthly report 
+Starting the game -> Interview Level -> Assign interns to projects
 
 STEP 1: Starting SPhase
 
