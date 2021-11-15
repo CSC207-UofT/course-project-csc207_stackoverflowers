@@ -118,7 +118,6 @@ public class HRSystem implements Serializable {
         this.monthToProject = monthToProject;
     }
 
-
     /**
      * This method gets only the names of all interns separated by "|".
      *
@@ -403,19 +402,17 @@ public class HRSystem implements Serializable {
      * project yet or in another project, or if Intern is not hired.
      */
     public boolean removeInternFromProject(String internName, String projectName) {
-        for (HiredIntern i : this.hiredInternList) {
-            for (Project p : this.projectList) {
-                if ((i.getInternName().equals(internName)) & (p.getName().equals(projectName))) {
-                    this.projectToInterns.get(p).remove(i);
-                    return true;
-                }
-                if (!(this.projectToInterns.get(p).contains(i)) || (!(isHired(i)))) {
-                    return false;
+        for (Project p : this.projectList) {
+            if (p.getName().equals(projectName)) {
+                for (HiredIntern i : this.hiredInternList){
+                    if (i.getInternName().equals(internName)){
+                        this.projectToInterns.get(p).remove(i);
+                        return true;
+                    }
                 }
             }
         }
         return false;
-
     }
 
     /**
