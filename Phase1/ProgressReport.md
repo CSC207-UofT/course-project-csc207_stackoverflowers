@@ -62,18 +62,31 @@ Here was the progress so far:
 Farzana: 
 - Progress so far:
        - Writing out all prompts in GamePrompts
+       
        - Wrtiting all descriptions for our 'projects' in the game 
+       
        - Created UseCase class GameGenerator and added new methods to it. 
+       
        - Worked on SkillCompatibility in class Project with Maggie. 
+       
        - Worked on class Project 
+       
        - Working on some methods in GameMaker tht correspond to class Project
+       
        - Writing up other descriptions for our games (projects, final projects, conversations)
+       
        - Working on all needed txt files (for generating projects and interns)
+       
        - Worked on GameGeneratorsTest
+       
        - Wrote up the specification
+       
        - Factory Method Design Pattern in design document 
+
        - Step 1 of Scenario Walkthrough in design document 
+       
        - Helped Camille with SOLID principles 
+       
        - Worked with Mary and Enam on fixing many errors of our code for scenario walkthrough. 
 
 Maggie:
