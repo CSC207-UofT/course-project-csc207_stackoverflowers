@@ -43,7 +43,6 @@ public class GameManager {
             return universalCommand(playerInput);
         }
         statusOfGame statusBefore = currentStatus;
-        Level levelBefore = currentLevel;
         updateStatus();
         switch (statusBefore) {
             case Start:
@@ -53,7 +52,7 @@ public class GameManager {
             case FinalMonth:
             case Report:
             case FinalReport:
-                return levelBefore.getOutputString(playerInput);
+                return currentLevel.getOutputString(playerInput);
             case End:
                 isRunning = false; //return the last prompt and end the game.
                 return endingPrompt();

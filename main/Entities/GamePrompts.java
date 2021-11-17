@@ -81,7 +81,7 @@ public class GamePrompts implements Serializable {
     public static final String START_OF_MONTH_PROMPT_BEFORE_NAME = "Welcome to the start of the month. \n " +
             "Your job for this month, " ;
 
-    public static final String START_OF_MONTH_PROMPT_AFTER_NAME = " , is to manage some new projects. \n ";
+    public static final String START_OF_MONTH_PROMPT_AFTER_NAME = " , is to manage some new projects. Assign the interns you see fit to the project!\n ";
 
 
     public static final String CONFIRM_ASSIGNING = "All interns have been assigned to a project, and here is the entire assignment you made so far. If you are sure with your decisions, type 'confirm all decisions'.\n" +
@@ -96,13 +96,10 @@ public class GamePrompts implements Serializable {
     public static final String FINAL_MONTH_PROMPT_BEFORE_PROJECT = "Ah, welcome to the last month where you get to assign interns to projects.\n" +
                                                                    "Your final task is to assign one intern you think has performed well whowill be able to accomplish a bigger project on their own. Here's the project:\n";
   
-    public static final String AVAILABLE_COMMANDS_IN_MONTH = "=====\nHere are a list of commands you can do:\n" +
+    public static final String AVAILABLE_COMMANDS_IN_MONTH = "\n=====\n" + "Here are a list of commands you can do:\n" +
                                                                   "assign intern to project <Intern Name> <Project Name>\n" +
-                                                                  "\n" +
                                                                   "remove intern from project <Intern Name> <Project Name>\n" +
-                                                                  "\n" +
-                                                                  "check intern info\n" +
-                                                                  "\n" +
+                                                                  "check interns info\n" +
                                                                   "check project info\n";
 
 
