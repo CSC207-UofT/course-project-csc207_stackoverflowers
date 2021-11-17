@@ -14,7 +14,7 @@ abstract public class Intern implements Serializable {
     */
     private final String internName;
     private final int internAge;
-    private HashMap<String, Double> internSkills;
+    protected HashMap<String, Double> internSkills;
     private int upgradedIn;
 
     /**
@@ -46,6 +46,9 @@ abstract public class Intern implements Serializable {
         return this.internAge;
     }
 
+    /**
+    * Return the month this intern was last upgraded in.
+    */
     public int getUpgradedIn() {
         return upgradedIn;
     }
@@ -73,7 +76,6 @@ abstract public class Intern implements Serializable {
 
     }
 
-    public abstract void updateInternSkills(String skilToUpgrade);
 
     public void updateUpgraded(int currentMonth){
         upgradedIn = currentMonth;
