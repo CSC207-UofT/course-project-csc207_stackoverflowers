@@ -72,10 +72,10 @@ public class GamePrompts implements Serializable {
     public static final String NEXT_CANDIDATE = "Would you like to move on to the next candidate?";
 
     public static final String END_OF_INTERVIEW_PROMPT = "Congratulations! You have successfully completed interviewing all " +
-            "interns. You may now proceed to the next level of the game.";
+            "interns. Type anything to proceed to the next level of the game.";
 
 
-    // not all the project prompts will be used, the projectgenerator will output a list and choose 4 projects
+    // not all the project prompts will be used, the projectGenerator will output a list and choose 4 projects
     // for the game from all the prompts here
 
     public static final String START_OF_MONTH_PROMPT_BEFORE_NAME = "Welcome to the start of the month. \n " +
@@ -83,13 +83,10 @@ public class GamePrompts implements Serializable {
 
     public static final String START_OF_MONTH_PROMPT_AFTER_NAME = " , is to manage some new projects. \n ";
 
-    public static final String START_OF_MONTH_PROMPT_AFTER_PROJECTS = "Here are a list of commands you can do:\n" +
+    public static final String START_OF_MONTH_PROMPT_AFTER_PROJECTS = "\nHere are a list of commands you can do:\n" +
                                                                       "assign intern to project <Intern Name> <Project Name>\n" +
-                                                                      "\n" +
                                                                       "remove intern from project <Intern Name> <Project Name>\n" +
-                                                                      "\n" +
                                                                       "check interns info\n" +
-                                                                      "\n" +
                                                                       "check project info\n";
 
     public static final String CONFIRM_ASSIGNING = "All interns have been assigned to a project, and here is the entire assignment you made so far. If you are sure with your decisions, type 'confirm all decisions'.\n" +
