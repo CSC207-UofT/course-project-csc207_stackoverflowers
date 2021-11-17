@@ -216,7 +216,7 @@ public class HRSystem implements Serializable {
             //append each project from the project list for the current month to res
             res.append(project.getName());
             //append the interns associated to that project to res
-            res.append(" Interns in project: ");
+            res.append("\nInterns in project: \n ");
             for (Intern i: projectToInterns.get(project)){
                 res.append(i.internToString());
             }

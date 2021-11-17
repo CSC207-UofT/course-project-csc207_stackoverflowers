@@ -83,11 +83,6 @@ public class GamePrompts implements Serializable {
 
     public static final String START_OF_MONTH_PROMPT_AFTER_NAME = " , is to manage some new projects. \n ";
 
-    public static final String START_OF_MONTH_PROMPT_AFTER_PROJECTS = "\nHere are a list of commands you can do:\n" +
-                                                                      "assign intern to project <Intern Name> <Project Name>\n" +
-                                                                      "remove intern from project <Intern Name> <Project Name>\n" +
-                                                                      "check interns info\n" +
-                                                                      "check project info\n";
 
     public static final String CONFIRM_ASSIGNING = "All interns have been assigned to a project, and here is the entire assignment you made so far. If you are sure with your decisions, type 'confirm all decisions'.\n" +
                                                    "If not, feel free to use the same given commands to modify your decisions.\n";
@@ -101,7 +96,7 @@ public class GamePrompts implements Serializable {
     public static final String FINAL_MONTH_PROMPT_BEFORE_PROJECT = "Ah, welcome to the last month where you get to assign interns to projects.\n" +
                                                                    "Your final task is to assign one intern you think has performed well whowill be able to accomplish a bigger project on their own. Here's the project:\n";
   
-    public static final String FINAL_MONTH_PROMPT_AFTER_PROJECT = "Here are a list of commands you can do:\n" +
+    public static final String AVAILABLE_COMMANDS_IN_MONTH = "=====\nHere are a list of commands you can do:\n" +
                                                                   "assign intern to project <Intern Name> <Project Name>\n" +
                                                                   "\n" +
                                                                   "remove intern from project <Intern Name> <Project Name>\n" +
@@ -258,7 +253,7 @@ public class GamePrompts implements Serializable {
 
     public static final String PROJECT7_PROMPT = "Project Name:" + PROJECT7_NAME + "\n" +
                                                  "Project Description: " + PROJECT7_DESCRIPTION + "\n" + "\n" +
-                                                 "Length of Project: 2 months \n" +
+                                                  "Length of Project: 2 months \n" +
                                                  "Team Size: 3 \n" +
                                                  "Skills Required: Efficiency, Teamwork, Endurance";
 
