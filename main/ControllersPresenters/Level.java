@@ -20,6 +20,10 @@ public abstract class Level {
 
     public boolean levelStarted(){return currentStatus == levelStatus.START;}
 
+    public String getOutputString(){
+        return null;
+    };
+
     public boolean levelEnded(){
         return currentStatus == levelStatus.END;
     }

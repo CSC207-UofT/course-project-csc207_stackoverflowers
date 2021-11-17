@@ -49,13 +49,11 @@ public class GameManager {
             case Start:
                 return firstPrompt(playerInput);
             case Interview:
-                return ((InterviewLevel) levelBefore).getInterviewOutput(playerInput);
             case Month:
             case FinalMonth:
-                return ((MonthLevel) levelBefore).getOutputString(playerInput);
             case Report:
             case FinalReport:
-                return ((ReportLevel) levelBefore).getReport();
+                return levelBefore.getOutputString();
             case End:
                 isRunning = false; //return the last prompt and end the game.
                 return endingPrompt();
