@@ -210,14 +210,16 @@ public class HRSystem implements Serializable {
      */
     public String makeAssignmentToString(int currentMonth) {
         // get the projects for the month
-        List<Project> monthlyProjList = this.monthToProject.get(currentMonth);
+        List<Project> currentProjects = this.monthToProject.get(currentMonth);
         StringBuilder res = new StringBuilder();
-        for (Project proj : monthlyProjList) {
+        for (Project project : currentProjects) {
             //append each project from the project list for the current month to res
-            res.append(proj.getName());
+            res.append(project.getName());
             //append the interns associated to that project to res
             res.append(" Interns in project: ");
-            res.append(projectToInterns.get(proj));
+            for (Intern i: projectToInterns.get(project)){
+                res.append(i.internToString());
+            }
         }
         return res.toString();
 

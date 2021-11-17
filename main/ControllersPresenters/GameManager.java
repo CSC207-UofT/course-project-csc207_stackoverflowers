@@ -58,7 +58,6 @@ public class GameManager {
                 isRunning = false; //return the last prompt and end the game.
                 return endingPrompt();
         }
-
         throw new Exception(Exceptions.UNIVERSAL_COMMAND_NOT_FOUND);
     }
 
