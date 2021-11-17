@@ -41,7 +41,7 @@ public class MonthMakerTest {
                 "Wahaha" +
                 GamePrompts.START_OF_MONTH_PROMPT_AFTER_NAME +
                 monthMaker.getProjectInfo() +
-                GamePrompts.START_OF_MONTH_PROMPT_AFTER_PROJECTS;
+                GamePrompts.AVAILABLE_COMMANDS_IN_MONTH;
         assertEquals(expected, actual);
     }
 
