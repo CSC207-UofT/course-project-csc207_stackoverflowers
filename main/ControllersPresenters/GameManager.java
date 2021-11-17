@@ -53,7 +53,7 @@ public class GameManager {
             case FinalMonth:
             case Report:
             case FinalReport:
-                return levelBefore.getOutputString();
+                return levelBefore.getOutputString(playerInput);
             case End:
                 isRunning = false; //return the last prompt and end the game.
                 return endingPrompt();
