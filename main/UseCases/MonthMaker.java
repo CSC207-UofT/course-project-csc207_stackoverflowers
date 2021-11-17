@@ -21,10 +21,10 @@ public class MonthMaker {
                     currentHRSystem.getPlayerName() +
                     GamePrompts.START_OF_MONTH_PROMPT_AFTER_NAME +
                     getProjectInfo() +
-                    GamePrompts.START_OF_MONTH_PROMPT_AFTER_PROJECTS;
+                    GamePrompts.AVAILABLE_COMMANDS_IN_MONTH;
         }
         return GamePrompts.FINAL_MONTH_PROMPT_BEFORE_PROJECT + getProjectInfo() +
-                GamePrompts.FINAL_MONTH_PROMPT_AFTER_PROJECT;
+                GamePrompts.AVAILABLE_COMMANDS_IN_MONTH;
     }
 
     public String endOfMonthPrompt() {

@@ -6,6 +6,9 @@ public abstract class Level {
     should be able to fetch that status when asked.
      */
     private levelStatus currentStatus;
+
+    public abstract String getOutputString(String input) throws Exception;
+
     enum levelStatus{START, DURING, END}
 
     public Level(){

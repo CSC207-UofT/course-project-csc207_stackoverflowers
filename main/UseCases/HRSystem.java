@@ -210,14 +210,16 @@ public class HRSystem implements Serializable {
      */
     public String makeAssignmentToString(int currentMonth) {
         // get the projects for the month
-        List<Project> monthlyProjList = this.monthToProject.get(currentMonth);
+        List<Project> currentProjects = this.monthToProject.get(currentMonth);
         StringBuilder res = new StringBuilder();
-        for (Project proj : monthlyProjList) {
+        for (Project project : currentProjects) {
             //append each project from the project list for the current month to res
-            res.append(proj.getName());
+            res.append(project.getName());
             //append the interns associated to that project to res
-            res.append(" Interns in project: ");
-            res.append(projectToInterns.get(proj));
+            res.append("\nInterns in project: \n ");
+            for (Intern i: projectToInterns.get(project)){
+                res.append(i.internToString());
+            }
         }
         return res.toString();
 
@@ -384,7 +386,7 @@ public class HRSystem implements Serializable {
 
     private boolean checkSkillSpace(String skillToUpgrade,String internName) {
         for (HiredIntern i : this.hiredInternList) {
-            if (i.getInternName().equals(internName) & i.getInternSkills().keySet().contains(skillToUpgrade)){
+            if (i.getInternName().equals(internName) & i.getInternSkills().containsKey(skillToUpgrade)){
                 if (i.getInternSkills().get(skillToUpgrade) >= 100) {
                     return false;
                 }

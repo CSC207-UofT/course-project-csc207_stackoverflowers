@@ -29,7 +29,7 @@ public class MonthMakerTest {
         monthMaker = new MonthMaker(hrSystem, 5);
         String actual = monthMaker.startOfMonthPrompt();
         String expected = GamePrompts.FINAL_MONTH_PROMPT_BEFORE_PROJECT + monthMaker.getProjectInfo() +
-                GamePrompts.FINAL_MONTH_PROMPT_AFTER_PROJECT;
+                GamePrompts.AVAILABLE_COMMANDS_IN_MONTH;
         assertEquals(expected, actual);
     }
 
@@ -41,7 +41,7 @@ public class MonthMakerTest {
                 "Wahaha" +
                 GamePrompts.START_OF_MONTH_PROMPT_AFTER_NAME +
                 monthMaker.getProjectInfo() +
-                GamePrompts.START_OF_MONTH_PROMPT_AFTER_PROJECTS;
+                GamePrompts.AVAILABLE_COMMANDS_IN_MONTH;
         assertEquals(expected, actual);
     }
 

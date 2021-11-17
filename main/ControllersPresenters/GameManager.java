@@ -43,24 +43,20 @@ public class GameManager {
             return universalCommand(playerInput);
         }
         statusOfGame statusBefore = currentStatus;
-        Level levelBefore = currentLevel;
         updateStatus();
         switch (statusBefore) {
             case Start:
                 return firstPrompt(playerInput);
             case Interview:
-                return ((InterviewLevel) levelBefore).getInterviewOutput(playerInput);
             case Month:
             case FinalMonth:
-                return ((MonthLevel) levelBefore).getOutputString(playerInput);
             case Report:
             case FinalReport:
-                return ((ReportLevel) levelBefore).getReport();
+                return currentLevel.getOutputString(playerInput);
             case End:
                 isRunning = false; //return the last prompt and end the game.
                 return endingPrompt();
         }
-
         throw new Exception(Exceptions.UNIVERSAL_COMMAND_NOT_FOUND);
     }
 

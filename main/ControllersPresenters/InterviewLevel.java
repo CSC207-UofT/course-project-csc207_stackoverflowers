@@ -24,7 +24,8 @@ public class InterviewLevel extends Level{
      * Takes in the player's input and uses the necessary methods defined above needed for a specific output in each
      * step of the interview process, asking InterviewPresenter to format this output using the formatInterview method.
      */
-    public String getInterviewOutput(String input) throws Exception{
+    @Override
+    public String getOutputString(String input) throws Exception{
         if (levelStarted()){
             getIntoLevel();
             return getStartOfInterviewPrompt();
