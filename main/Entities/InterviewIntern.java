@@ -27,7 +27,7 @@ public class InterviewIntern extends Intern implements Serializable {
                            HashMap<String, Double> interviewInternSkills){
         super(interviewInternName, interviewInternAge, interviewInternSkills);
     }
-    
+
     public void setResponseTree(ResponseTree<ArrayList<String>> responseTree) {
         this.responseTree = responseTree;
     }
