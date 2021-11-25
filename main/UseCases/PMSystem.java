@@ -12,25 +12,27 @@ import java.util.*;
  * A manager class managing all methods pertaining to project, as well as project assignment
  */
 
-//TODO: Add classes containing project information -> done
-//TODO: Specifically check uses of now changed PMSystem classes where used in HRSystem -> done
-
-    //TODO: Add a currentHRSystem to PMSystem and get internlist info from there as opposed to creating a private one
-    // in this class.
-
-    //TODO: Check uses of HRSystem and change to PMSystem where necessary (imports and related problems)
-        //TODO: Issues found so far:
+// Add classes containing project information -> done
+// Specifically check uses of now changed PMSystem classes where used in HRSystem -> done
+//Check uses of HRSystem and change to PMSystem where necessary (imports and related problems) -> done
+// Issues found so far:
         /*
         - MonthMaker, MonthReportMaker, reportLevel might have to take in PMSystem as a parameter as well now
         - Also then have to change the MonthMaker, MonthReportMaker, reportLevel setup in MonthMaker test
          */
+
+    //TODO: Add a currentHRSystem to PMSystem and get internlist info from there as opposed to creating a private one
+    // in this class.
+
+    //TODO: Mary and Jacob should go over the changed test suites bc of added PMSystem when they debug.
 
     //TODO: Check assign intern to project condition if we check whether a project is full b4 assigning
 
 public class PMSystem {
 
 
-    private final ArrayList<HiredIntern> hiredInternList;
+
+    private final HRSystem currentHRSystem;
 
     private ArrayList<Project> projectList;
 
@@ -45,9 +47,9 @@ public class PMSystem {
      * The constructor makes a new PMSystem for the current phase, and stores attributes of intern
      * (both Hired and Interview) and Project to use it when needed.
      */
-    public PMSystem() {
-        this.hiredInternList = new ArrayList<>();
+    public PMSystem(HRSystem currentHRSystem) {
         this.projectList = new ArrayList<>();
+        this.currentHRSystem = currentHRSystem;
         this.monthToProject = new HashMap<>();
         this.projectToInterns = new HashMap<>();
     }
@@ -166,7 +168,7 @@ public class PMSystem {
         //Should return true if assignment was successful.
         //Else, should poi return false if Intern is already been assigned to another project, or if they are not hired.
         HiredIntern beingAssigned = null;
-        for (HiredIntern i : hiredInternList){
+        for (HiredIntern i : this.currentHRSystem.getHiredInternList()){
             if (i.getInternName().equals(internName)){
                 beingAssigned = i;
             }
@@ -197,7 +199,7 @@ public class PMSystem {
     public boolean removeInternFromProject(String internName, String projectName) {
         for (Project p : this.projectList) {
             if (p.getName().equals(projectName)) {
-                for (HiredIntern i : this.hiredInternList){
+                for (HiredIntern i : this.currentHRSystem.getHiredInternList()){
                     if (i.getInternName().equals(internName)){
                         this.projectToInterns.get(p).remove(i);
                         return true;
