@@ -8,6 +8,7 @@ import java.util.List;
 public class FinalReportMaker implements ReportMaker {
     private final GamePrompts prompts;
     private final HRSystem currentHRSystem;
+    private PMSystem currentPMSystem;
 
     public  FinalReportMaker(HRSystem currentHRSystem){
         this.prompts = new GamePrompts();
@@ -29,12 +30,12 @@ public class FinalReportMaker implements ReportMaker {
     public String makeReportBody( int currentMonth) {
         ArrayList<HiredIntern> interns = currentHRSystem.getHiredInternList();
 
-        List<Project> projList = currentHRSystem.getProjects(currentMonth);
+        List<Project> projList = currentPMSystem.getProjects(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();
         for (Project proj : projList) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
-        return bakeProjectName(currentHRSystem.getProjectNames(currentMonth)) + "\n" +
+        return bakeProjectName(currentPMSystem.getProjectNames(currentMonth)) + "\n" +
                 bakeInterns(currentHRSystem.getHiredInternsNames()) + "\n" +
                 bakeInternsPerformances(interns,  projectCompatibilityList);
     }
@@ -95,7 +96,7 @@ public class FinalReportMaker implements ReportMaker {
 
     @Override
     public String confirmChoice(int currentMonth) {
-        return GamePrompts.CONFIRM_ASSIGNING + currentHRSystem.makeAssignmentToString(currentMonth);
+        return GamePrompts.CONFIRM_ASSIGNING + currentPMSystem.makeAssignmentToString(currentMonth);
     }
 
     @Override
@@ -105,7 +106,7 @@ public class FinalReportMaker implements ReportMaker {
 
     @Override
     public String getProjectInfo(int currentMonth) {
-        return GamePrompts.PROJECT_NAME_HEADER + currentHRSystem.makeProjectsToString(currentMonth);
+        return GamePrompts.PROJECT_NAME_HEADER + currentPMSystem.makeProjectsToString(currentMonth);
     }
 
     @Override
@@ -117,7 +118,7 @@ public class FinalReportMaker implements ReportMaker {
 
     @Override
     public String getUpgradingInfo(int currentMonth) {
-        return currentHRSystem.makeUpgradeToString(currentMonth);
+        return currentPMSystem.makeUpgradeToString(currentMonth);
     }
 
     @Override

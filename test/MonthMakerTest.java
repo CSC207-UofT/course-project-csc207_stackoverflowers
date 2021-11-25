@@ -1,6 +1,7 @@
 import Entities.*;
 import UseCases.HRSystem;
 import UseCases.MonthMaker;
+import UseCases.PMSystem;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
@@ -14,13 +15,14 @@ import java.util.HashMap;
 public class MonthMakerTest {
     MonthMaker monthMaker;
     HRSystem hrSystem;
+    PMSystem pmSystem;
 
     @Before
     public void setup() throws FileNotFoundException {
         hrSystem = new HRSystem();
         hrSystem.updatePlayerName("Wahaha");
         hrSystem.updateHiredInternList(makeInterns());
-        hrSystem.updateProjectList(makeProjects()); //Just one project for the first month
+        pmSystem.updateProjectList(makeProjects()); //Just one project for the first month
 
     }
 
@@ -97,9 +99,9 @@ public class MonthMakerTest {
     @Test
     public void testCheckAllInternsAssigned(){
         monthMaker = new MonthMaker(hrSystem, 1);
-        hrSystem.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
-        hrSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
-        hrSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
+        pmSystem.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
+        pmSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
+        pmSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
         assertTrue(monthMaker.checkAllInternsAssigned());
     }
 
@@ -107,7 +109,7 @@ public class MonthMakerTest {
     public void testGetAssigningInfo(){
         monthMaker = new MonthMaker(hrSystem, 1);
         String actual = monthMaker.getAssigningInfo();
-        String expected = hrSystem.makeAssignmentToString(1);
+        String expected = pmSystem.makeAssignmentToString(1);
         assertEquals(expected, actual);
     }
 

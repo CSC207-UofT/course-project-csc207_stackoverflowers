@@ -1,6 +1,7 @@
 import ControllersPresenters.ReportLevel;
 import Entities.*;
 import UseCases.HRSystem;
+import UseCases.PMSystem;
 import UseCases.MonthReportMaker;
 
 import org.junit.Before;
@@ -14,12 +15,13 @@ public class MonthReportMakerTest {
 
     ReportLevel reportLevel;
     HRSystem hrSystem;
+    PMSystem pmSystem;
     MonthReportMaker reportMaker;
     @Before
     public void setup() throws FileNotFoundException {
         HRSystem hrSystem = new HRSystem();
         hrSystem.updateHiredInternList(makeInterns());
-        hrSystem.updateProjectList(makeProjects());
+        pmSystem.updateProjectList(makeProjects());
         reportMaker = new MonthReportMaker(hrSystem);
     }
 
@@ -71,7 +73,7 @@ public class MonthReportMakerTest {
             //Set tup the hrSystem so that it has some interns and projects in it.
             HRSystem hrSystem = new HRSystem();
             hrSystem.updateHiredInternList(makeInterns());
-            hrSystem.updateProjectList(makeProjects());
+            pmSystem.updateProjectList(makeProjects());
             reportMaker = new MonthReportMaker(hrSystem);
         }
 

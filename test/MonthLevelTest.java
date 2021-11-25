@@ -1,6 +1,7 @@
 import ControllersPresenters.MonthLevel;
 import Entities.*;
 import UseCases.HRSystem;
+import UseCases.PMSystem;
 import UseCases.MonthMaker;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,13 +16,14 @@ import static org.junit.Assert.*;
 public class MonthLevelTest {
     MonthLevel monthLevel;
     HRSystem hrSystem;
+    PMSystem pmSystem;
     MonthMaker monthMaker;
 
     @Test
     public void testStartOfMonthPrompt() throws Exception {
         hrSystem = new HRSystem();
         hrSystem.updateHiredInternList(makeInterns());
-        hrSystem.updateProjectList(makeProjects());
+        pmSystem.updateProjectList(makeProjects());
         monthLevel = new MonthLevel(1, hrSystem);
         String actual = monthLevel.getOutputString("Yup");
         monthMaker = new MonthMaker(hrSystem, 1);
@@ -33,7 +35,7 @@ public class MonthLevelTest {
     public void testEndPrompt() throws Exception {
         hrSystem = new HRSystem();
         hrSystem.updateHiredInternList(makeInterns());
-        hrSystem.updateProjectList(makeProjects());
+        pmSystem.updateProjectList(makeProjects());
         monthLevel = new MonthLevel(1, hrSystem);
         monthLevel.getIntoLevel();
         String actual = monthLevel.getOutputString("confirm all decisions");
@@ -47,7 +49,7 @@ public class MonthLevelTest {
         //Set tup the hrSystem so that it has some interns and projects in it.
         this.hrSystem = new HRSystem();
         hrSystem.updateHiredInternList(makeInterns());
-        hrSystem.updateProjectList(makeProjects());
+        pmSystem.updateProjectList(makeProjects());
         monthMaker = new MonthMaker(hrSystem, 1);
         monthLevel = new MonthLevel(1, hrSystem);
         monthLevel.getOutputString("yo");//Gets the first output so that now it can make stuff go.
@@ -140,12 +142,12 @@ public class MonthLevelTest {
         //Test that prompt asking to confirm decisions will actually appear
         // if all Hiredinterns have been assigned to a project.
         setUp();
-        hrSystem.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
-        hrSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
-        hrSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
-        hrSystem.assignInternToProject("Bob", GamePrompts.PROJECT2_NAME);
-        hrSystem.assignInternToProject("Kevin", GamePrompts.PROJECT2_NAME);
-        hrSystem.assignInternToProject("Mike", GamePrompts.PROJECT2_NAME);
+        pmSystem.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
+        pmSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
+        pmSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
+        pmSystem.assignInternToProject("Bob", GamePrompts.PROJECT2_NAME);
+        pmSystem.assignInternToProject("Kevin", GamePrompts.PROJECT2_NAME);
+        pmSystem.assignInternToProject("Mike", GamePrompts.PROJECT2_NAME);
         String actual = monthLevel.getOutputString("huh");
         String expected = monthMaker.confirmChoice();
         assertEquals(expected, actual);

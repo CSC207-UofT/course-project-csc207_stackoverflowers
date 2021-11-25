@@ -12,6 +12,7 @@ import java.util.HashMap;
 public class ReportLevelTest {
     ReportLevel reportLevel;
     HRSystem hrSystem;
+    PMSystem pmSystem;
 
     @Test
     public void testReportSetup() {
@@ -42,7 +43,7 @@ public class ReportLevelTest {
         hrSystem = new HRSystem();
         hrSystem.updatePlayerName("Player1");
         hrSystem.updateHiredInternList(makeInterns());
-        hrSystem.updateProjectList(makeProjects());
+        pmSystem.updateProjectList(makeProjects());
         reportLevel = new ReportLevel(1, hrSystem);
         reportLevel.getOutputString("stuff");//Gets the first output so that now it can make stuff go.
     }

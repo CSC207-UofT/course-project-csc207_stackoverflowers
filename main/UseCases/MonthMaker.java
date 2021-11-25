@@ -7,6 +7,7 @@ public class MonthMaker {
     /* This MonthMaker class is responsible for returning the outputs related to month.
      */
     private final HRSystem currentHRSystem;
+    private PMSystem currentPMSystem;
     private final int currentMonth;
 
     public MonthMaker(HRSystem currentHRSystem, int currentMonth){
@@ -33,7 +34,7 @@ public class MonthMaker {
     }
 
     public String getProjectInfo() {
-        return "Here are the projects that you are responsible for:" + currentHRSystem.makeProjectsToString(currentMonth);
+        return "Here are the projects that you are responsible for:" + currentPMSystem.makeProjectsToString(currentMonth);
     }
 
     public String getInternsInfo(){
@@ -41,13 +42,13 @@ public class MonthMaker {
     }
 
     public String assignInternToProject(String internName, String projectName) throws Exception {
-        boolean success = currentHRSystem.assignInternToProject(internName, projectName);
+        boolean success = currentPMSystem.assignInternToProject(internName, projectName);
         if (!success){throw new Exception(Exceptions.INTERN_ASSIGNING_FAILURE);}
         return GamePrompts.INTERN_ASSIGNING_SUCCESS;
     }
 
     public String removeInternFromProject(String internName, String projectName) throws Exception {
-        boolean success = currentHRSystem.removeInternFromProject(internName, projectName);
+        boolean success = currentPMSystem.removeInternFromProject(internName, projectName);
         if (!success){ throw new Exception(Exceptions.INTERN_REMOVING_FAILURE);}
         return GamePrompts.INTERN_REMOVING_SUCCESS;
     }
