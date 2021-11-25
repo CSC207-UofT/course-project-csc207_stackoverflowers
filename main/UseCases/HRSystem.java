@@ -21,7 +21,7 @@ which formats each single intern into a string)
 public class HRSystem implements Serializable {
     public static final int FINAL_MONTH = 5;
 
-    private ArrayList<HiredIntern> hiredInternList;
+    private final ArrayList<HiredIntern> hiredInternList;
 
     private ArrayList<InterviewIntern> interviewInternList;
 
@@ -181,7 +181,7 @@ public class HRSystem implements Serializable {
     public String choicesToString(InterviewIntern intern) {
         StringBuilder res = new StringBuilder();
         for (ResponseTree<ArrayList<String>> children : intern.getResponseTree().getChildren()) {
-            String qA = (String) children.getData().get(0);
+            String qA = children.getData().get(0);
             res.append(qA);
             res.append("\n");
         }

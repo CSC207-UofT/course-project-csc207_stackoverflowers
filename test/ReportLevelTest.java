@@ -17,7 +17,7 @@ public class ReportLevelTest {
     @Test
     public void testReportSetup() {
         for (int num = 1; num != 7; num++) {
-            reportLevel = new ReportLevel(num, hrSystem);
+            reportLevel = new ReportLevel(num, hrSystem, pmSystem);
             if (num == 1 || num == 3 || num == 5) {
                 assertTrue( reportLevel.getCurrentReportMaker() instanceof MonthReportMaker);
             } else if (num == 2 || num == 4) {
@@ -31,7 +31,7 @@ public class ReportLevelTest {
     @Test
     public void testEndPrompt() throws Exception {
         setUp();
-        reportLevel = new ReportLevel(1, hrSystem);
+        reportLevel = new ReportLevel(1, hrSystem, pmSystem);
         reportLevel.getOutputString("wawa");//Start the level with whatever
         String actual = reportLevel.getOutputString("confirm all decisions");
         String expected = reportLevel.getCurrentReportMaker().endOfMonthPrompt(1);
@@ -44,7 +44,7 @@ public class ReportLevelTest {
         hrSystem.updatePlayerName("Player1");
         hrSystem.updateHiredInternList(makeInterns());
         pmSystem.updateProjectList(makeProjects());
-        reportLevel = new ReportLevel(1, hrSystem);
+        reportLevel = new ReportLevel(1, hrSystem, pmSystem);
         reportLevel.getOutputString("stuff");//Gets the first output so that now it can make stuff go.
     }
 
@@ -52,7 +52,7 @@ public class ReportLevelTest {
     public void testFinishedUpgradeMatch() throws Exception {
         setUp();
         String randomSkillThisMonth = "Flexibility";
-        reportLevel = new ReportLevel(1, hrSystem);
+        reportLevel = new ReportLevel(1, hrSystem, pmSystem);
         reportLevel.getOutputString("haha");
         String actual = reportLevel.getOutputString("assign intern to upgrade Mary");
         String expected = reportLevel.getCurrentReportMaker().upgradeIntern("Mary",1, randomSkillThisMonth);
@@ -64,7 +64,7 @@ public class ReportLevelTest {
         try {
             setUp();
             String randomSkillThisMonth = "Efficiency";
-            reportLevel = new ReportLevel(1, hrSystem);
+            reportLevel = new ReportLevel(1, hrSystem, pmSystem);
             reportLevel.getCurrentReportMaker().upgradeIntern("Mary",1, randomSkillThisMonth);
         }catch (Exception e){
             assertTrue(e.toString().contains(Exceptions.INTERN_UPGRADING_FAILURE));}
@@ -75,7 +75,7 @@ public class ReportLevelTest {
     public void testFinishedUpgradeSuccess() throws Exception {
         setUp();
         String randomSkillThisMonth = "Communication";
-        reportLevel = new ReportLevel(1, hrSystem);
+        reportLevel = new ReportLevel(1, hrSystem, pmSystem);
         String actual = reportLevel.getCurrentReportMaker().upgradeIntern("Ruby",1, randomSkillThisMonth);
         String expected = GamePrompts.INTERN_UPGRADING_SUCCESS;
         assertEquals(actual, expected);

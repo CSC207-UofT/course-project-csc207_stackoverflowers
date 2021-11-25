@@ -10,9 +10,10 @@ public class FinalReportMaker implements ReportMaker {
     private final HRSystem currentHRSystem;
     private PMSystem currentPMSystem;
 
-    public  FinalReportMaker(HRSystem currentHRSystem){
+    public  FinalReportMaker(HRSystem currentHRSystem, PMSystem currentPMSystem){
         this.prompts = new GamePrompts();
         this.currentHRSystem = currentHRSystem;
+        this.currentPMSystem = currentPMSystem;
 
     }
     @Override

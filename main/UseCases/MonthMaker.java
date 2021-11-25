@@ -7,11 +7,12 @@ public class MonthMaker {
     /* This MonthMaker class is responsible for returning the outputs related to month.
      */
     private final HRSystem currentHRSystem;
-    private PMSystem currentPMSystem;
+    private final PMSystem currentPMSystem;
     private final int currentMonth;
 
-    public MonthMaker(HRSystem currentHRSystem, int currentMonth){
+    public MonthMaker(HRSystem currentHRSystem, PMSystem currentPMSystem, int currentMonth){
         this.currentHRSystem = currentHRSystem;
+        this.currentPMSystem = currentPMSystem;
         this.currentMonth = currentMonth;
     }
 
@@ -55,15 +56,15 @@ public class MonthMaker {
 
     public boolean checkAllInternsAssigned() {
         //returns true if all interns have been assigned to a project
-        return currentHRSystem.internsAllAssigned(currentMonth);
+        return currentPMSystem.internsAllAssigned(currentMonth);
     }
 
     public String confirmChoice() {
-        return GamePrompts.CONFIRM_ASSIGNING + currentHRSystem.makeAssignmentToString(currentMonth);
+        return GamePrompts.CONFIRM_ASSIGNING + currentPMSystem.makeAssignmentToString(currentMonth);
     }
 
     public String getAssigningInfo() {
-        return currentHRSystem.makeAssignmentToString(currentMonth);
+        return currentPMSystem.makeAssignmentToString(currentMonth);
     }
 
 

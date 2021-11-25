@@ -22,11 +22,12 @@ public class MonthLevelTest {
     @Test
     public void testStartOfMonthPrompt() throws Exception {
         hrSystem = new HRSystem();
+        pmSystem = new PMSystem();
         hrSystem.updateHiredInternList(makeInterns());
         pmSystem.updateProjectList(makeProjects());
-        monthLevel = new MonthLevel(1, hrSystem);
+        monthLevel = new MonthLevel(1, hrSystem, pmSystem);
         String actual = monthLevel.getOutputString("Yup");
-        monthMaker = new MonthMaker(hrSystem, 1);
+        monthMaker = new MonthMaker(hrSystem, pmSystem,1);
         String expected = monthMaker.startOfMonthPrompt();
         assertEquals(expected, actual);
     }
@@ -36,10 +37,10 @@ public class MonthLevelTest {
         hrSystem = new HRSystem();
         hrSystem.updateHiredInternList(makeInterns());
         pmSystem.updateProjectList(makeProjects());
-        monthLevel = new MonthLevel(1, hrSystem);
+        monthLevel = new MonthLevel(1, hrSystem, pmSystem);
         monthLevel.getIntoLevel();
         String actual = monthLevel.getOutputString("confirm all decisions");
-        monthMaker = new MonthMaker(hrSystem, 1);
+        monthMaker = new MonthMaker(hrSystem, pmSystem,1);
         String expected = monthMaker.endOfMonthPrompt();
         assertEquals(expected, actual);
     }
@@ -50,8 +51,8 @@ public class MonthLevelTest {
         this.hrSystem = new HRSystem();
         hrSystem.updateHiredInternList(makeInterns());
         pmSystem.updateProjectList(makeProjects());
-        monthMaker = new MonthMaker(hrSystem, 1);
-        monthLevel = new MonthLevel(1, hrSystem);
+        monthMaker = new MonthMaker(hrSystem, pmSystem,1);
+        monthLevel = new MonthLevel(1, hrSystem, pmSystem);
         monthLevel.getOutputString("yo");//Gets the first output so that now it can make stuff go.
     }
 

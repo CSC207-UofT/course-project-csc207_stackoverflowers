@@ -2,6 +2,7 @@ package ControllersPresenters;
 
 import Entities.Exceptions;
 import UseCases.HRSystem;
+import UseCases.PMSystem;
 import UseCases.MonthMaker;
 
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ public class MonthLevel extends Level {
     private final MonthMaker currentMonthMaker;
 
     //constructor of this class
-    public MonthLevel(int currentMonth, HRSystem currentHRSystem){
-        currentMonthMaker = new MonthMaker(currentHRSystem, currentMonth);
+    public MonthLevel(int currentMonth, HRSystem currentHRSystem, PMSystem currentPMSystem){
+        currentMonthMaker = new MonthMaker(currentHRSystem,currentPMSystem, currentMonth);
     }
 
     public String getOutputString(String input) throws Exception {

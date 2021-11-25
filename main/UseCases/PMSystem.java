@@ -30,7 +30,7 @@ import java.util.*;
 public class PMSystem {
 
 
-    private ArrayList<HiredIntern> hiredInternList;
+    private final ArrayList<HiredIntern> hiredInternList;
 
     private ArrayList<Project> projectList;
 
@@ -218,7 +218,7 @@ public class PMSystem {
     public void updateFinalProject(ArrayList<Project> finalProjForGame) {
         this.projectList.addAll(finalProjForGame);
     }
-}
+
 
 
     /**
@@ -241,5 +241,24 @@ public class PMSystem {
         }
         return result.toString();
     }
+
+
+    /**
+     * This method checks if all Entities.HiredIntern have been assigned to an Entities.Project per a
+     * given month.
+     *
+     * @param currentMonth the Integer representation of the month being played.
+     * @return true if all Entities.HiredIntern have been assigned and false otherwise.
+     */
+    public boolean internsAllAssigned(int currentMonth) {
+        List<Project> monthlyProjList = this.monthToProject.get(currentMonth);
+        for (Project p : monthlyProjList){
+            if (p.getTeamSize() != projectToInterns.get(p).size()){
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 }

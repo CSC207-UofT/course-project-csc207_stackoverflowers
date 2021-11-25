@@ -9,6 +9,7 @@ import java.util.*;
 
 public class GameMaker implements Serializable {
     private final HRSystem currentHRSystem;
+    private final PMSystem currentPMSystem;
     private int currentMonth;
     private static ArrayList<String> universalCommands = null;
     /*
@@ -23,12 +24,18 @@ public class GameMaker implements Serializable {
      */
     public GameMaker() {
         this.currentHRSystem = new HRSystem();
+        this.currentPMSystem = new PMSystem();
         universalCommands = new ArrayList<>(Arrays.asList("save", "quit", "load"));
     }
 
     public HRSystem getCurrentHRSystem() {
         return currentHRSystem;
     }
+
+    public PMSystem getCurrentPMSystem(){
+        return currentPMSystem;
+    }
+
     public static ArrayList<String> getUniversalCommands(){return universalCommands;}
 
     public int getCurrentMonth(){return currentMonth;}
