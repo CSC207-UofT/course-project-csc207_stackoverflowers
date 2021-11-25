@@ -2,10 +2,8 @@ package UseCases;
 
 import Entities.HiredIntern;
 import Entities.Intern;
-import Entities.InterviewIntern;
 import Entities.Project;
 
-import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -13,7 +11,9 @@ import java.util.*;
  */
 
 // Add classes containing project information -> done
+
 // Specifically check uses of now changed PMSystem classes where used in HRSystem -> done
+
 //Check uses of HRSystem and change to PMSystem where necessary (imports and related problems) -> done
 // Issues found so far:
         /*
@@ -21,8 +21,8 @@ import java.util.*;
         - Also then have to change the MonthMaker, MonthReportMaker, reportLevel setup in MonthMaker test
          */
 
-    //TODO: Add a currentHRSystem to PMSystem and get internlist info from there as opposed to creating a private one
-    // in this class.
+// Add a currentHRSystem to PMSystem and get internlist info from there as opposed to creating a private one
+// in this class. -> done
 
     //TODO: Mary and Jacob should go over the changed test suites bc of added PMSystem when they debug.
 
@@ -176,8 +176,11 @@ public class PMSystem {
         if (beingAssigned == null){
             return false;
         }
+
         for (Project p : this.projectList) {
-            if ((p.getName().equals(projectName))) {
+
+            // check if the interns in projectsToInterns is full according to each projects size
+            if ((p.getName().equals(projectName)) & (this.projectToInterns.get(p).size() != p.getTeamSize()) ) {
                 ArrayList<HiredIntern> internsBefore = projectToInterns.get(p);
                 internsBefore.add(beingAssigned);
                 this.projectToInterns.put(p, internsBefore);
