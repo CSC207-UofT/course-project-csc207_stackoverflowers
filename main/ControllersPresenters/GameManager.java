@@ -27,7 +27,8 @@ public class GameManager {
 
     public GameManager() throws Exception {
         this.currentGameMaker = new GameMaker();
-        GameGenerators currentGameGenerators = new GameGenerators(currentGameMaker.getCurrentHRSystem());
+        GameGenerators currentGameGenerators = new GameGenerators(currentGameMaker.getCurrentHRSystem(),
+                currentGameMaker.getCurrentPMSystem());
         this.currentStatus = statusOfGame.Start;
         //ask GameMaker to generate the Interns and Projects needed for the current game.
         currentGameGenerators.generateInterns(3);

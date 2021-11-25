@@ -22,7 +22,7 @@ public class MonthLevelTest {
     @Test
     public void testStartOfMonthPrompt() throws Exception {
         hrSystem = new HRSystem();
-        pmSystem = new PMSystem();
+        pmSystem = new PMSystem(hrSystem);
         hrSystem.updateHiredInternList(makeInterns());
         pmSystem.updateProjectList(makeProjects());
         monthLevel = new MonthLevel(1, hrSystem, pmSystem);
@@ -35,6 +35,7 @@ public class MonthLevelTest {
     @Test
     public void testEndPrompt() throws Exception {
         hrSystem = new HRSystem();
+        pmSystem = new PMSystem(hrSystem);
         hrSystem.updateHiredInternList(makeInterns());
         pmSystem.updateProjectList(makeProjects());
         monthLevel = new MonthLevel(1, hrSystem, pmSystem);
@@ -49,6 +50,7 @@ public class MonthLevelTest {
     public void setUp() throws Exception {
         //Set tup the hrSystem so that it has some interns and projects in it.
         this.hrSystem = new HRSystem();
+        this.pmSystem = new PMSystem(hrSystem);
         hrSystem.updateHiredInternList(makeInterns());
         pmSystem.updateProjectList(makeProjects());
         monthMaker = new MonthMaker(hrSystem, pmSystem,1);

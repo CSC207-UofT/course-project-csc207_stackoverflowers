@@ -12,10 +12,12 @@ import java.util.*;
 
 public class GameGenerators implements Serializable {
     private final HRSystem currentHRSystem;
-    private PMSystem currentPMSystem;
+    private final PMSystem currentPMSystem;
 
-    public GameGenerators(HRSystem currentHRSystem){
+    public GameGenerators(HRSystem currentHRSystem, PMSystem currentPMSystem){
+
         this.currentHRSystem = currentHRSystem;
+        this.currentPMSystem = currentPMSystem;
     }
 
     /**

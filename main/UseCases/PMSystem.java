@@ -179,7 +179,7 @@ public class PMSystem {
 
         for (Project p : this.projectList) {
 
-            // check if the interns in projectsToInterns is full according to each projects size
+            // check if the interns in projectsToInterns is full according to each project's size
             if ((p.getName().equals(projectName)) & (this.projectToInterns.get(p).size() != p.getTeamSize()) ) {
                 ArrayList<HiredIntern> internsBefore = projectToInterns.get(p);
                 internsBefore.add(beingAssigned);

@@ -24,7 +24,7 @@ public class GameMaker implements Serializable {
      */
     public GameMaker() {
         this.currentHRSystem = new HRSystem();
-        this.currentPMSystem = new PMSystem();
+        this.currentPMSystem = new PMSystem(this.currentHRSystem);
         universalCommands = new ArrayList<>(Arrays.asList("save", "quit", "load"));
     }
 

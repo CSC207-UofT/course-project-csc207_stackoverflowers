@@ -20,7 +20,7 @@ public class MonthMakerTest {
     @Before
     public void setup() throws FileNotFoundException {
         hrSystem = new HRSystem();
-        pmSystem = new PMSystem();
+        pmSystem = new PMSystem(hrSystem);
         hrSystem.updatePlayerName("Wahaha");
         hrSystem.updateHiredInternList(makeInterns());
         pmSystem.updateProjectList(makeProjects()); //Just one project for the first month

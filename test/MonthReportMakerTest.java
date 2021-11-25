@@ -20,7 +20,7 @@ public class MonthReportMakerTest {
     @Before
     public void setup() throws FileNotFoundException {
         HRSystem hrSystem = new HRSystem();
-        PMSystem pmSystem = new PMSystem();
+        PMSystem pmSystem = new PMSystem(hrSystem);
         hrSystem.updateHiredInternList(makeInterns());
         pmSystem.updateProjectList(makeProjects());
         reportMaker = new MonthReportMaker(hrSystem, pmSystem);

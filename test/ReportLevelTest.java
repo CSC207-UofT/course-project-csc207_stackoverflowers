@@ -41,6 +41,7 @@ public class ReportLevelTest {
     public void setUp() throws Exception {
         //Set tup the hrSystem so that it has some interns and projects in it.
         hrSystem = new HRSystem();
+        pmSystem = new PMSystem(hrSystem);
         hrSystem.updatePlayerName("Player1");
         hrSystem.updateHiredInternList(makeInterns());
         pmSystem.updateProjectList(makeProjects());
@@ -55,7 +56,8 @@ public class ReportLevelTest {
         reportLevel = new ReportLevel(1, hrSystem, pmSystem);
         reportLevel.getOutputString("haha");
         String actual = reportLevel.getOutputString("assign intern to upgrade Mary");
-        String expected = reportLevel.getCurrentReportMaker().upgradeIntern("Mary",1, randomSkillThisMonth);
+        String expected = reportLevel.getCurrentReportMaker().upgradeIntern("Mary",1,
+                randomSkillThisMonth);
         assertEquals(actual, expected);
     }
 
@@ -76,7 +78,8 @@ public class ReportLevelTest {
         setUp();
         String randomSkillThisMonth = "Communication";
         reportLevel = new ReportLevel(1, hrSystem, pmSystem);
-        String actual = reportLevel.getCurrentReportMaker().upgradeIntern("Ruby",1, randomSkillThisMonth);
+        String actual = reportLevel.getCurrentReportMaker().upgradeIntern("Ruby",1,
+                randomSkillThisMonth);
         String expected = GamePrompts.INTERN_UPGRADING_SUCCESS;
         assertEquals(actual, expected);
     }
