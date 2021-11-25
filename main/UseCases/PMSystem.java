@@ -4,6 +4,7 @@ import Entities.HiredIntern;
 import Entities.Intern;
 import Entities.Project;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -24,13 +25,12 @@ import java.util.*;
 // Add a currentHRSystem to PMSystem and get internlist info from there as opposed to creating a private one
 // in this class. -> done
 
-    //TODO: Mary and Jacob should go over the changed test suites bc of added PMSystem when they debug.
+// Check assign intern to project condition if we check whether a project is full b4 assigning ->done
 
-    //TODO: Check assign intern to project condition if we check whether a project is full b4 assigning
-
-public class PMSystem {
+// Mary and Jacob should go over the changed test suites bc of added PMSystem when they debug. ->done
 
 
+public class PMSystem implements Serializable {
 
     private final HRSystem currentHRSystem;
 
