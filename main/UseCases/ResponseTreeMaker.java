@@ -5,6 +5,7 @@ import Entities.InterviewIntern;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class  ResponseTreeMaker {
@@ -79,7 +80,7 @@ public class  ResponseTreeMaker {
      * Will also be used to generate a list of all possible answers
      * @return an Arraylist of Strings containing each question
      */
-    private ArrayList<String> generateDialogueList(String file) throws FileNotFoundException {
+    public ArrayList<String> generateDialogueList(String file) throws FileNotFoundException {
         Scanner scan = new Scanner(new File(file)).useDelimiter("\n");
         ArrayList<String> infoList = new ArrayList<>();
         while (scan.hasNext()){
@@ -94,7 +95,7 @@ public class  ResponseTreeMaker {
      * This method will generate an ArrayList of Arraylists of Strings; list of all possible tree data
      * @return an Arraylist in the format of [[Question1, Answer1], [Question2, Answer2], ...]
      */
-    private ArrayList<ArrayList<String>> generateTreeDataList(ArrayList<String> questions, ArrayList<String> answers) {
+    public ArrayList<ArrayList<String>> generateTreeDataList(ArrayList<String> questions, ArrayList<String> answers) {
         ArrayList<ArrayList<String>> treeData = new ArrayList<>();
         for (int i = 0; i < questions.size(); i++) {
             ArrayList<String> innerList = new ArrayList<>();
