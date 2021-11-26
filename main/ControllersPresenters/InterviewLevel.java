@@ -33,7 +33,7 @@ public class InterviewLevel extends Level{
         if (levelEnded()){
             return getEndOfInterviewPrompt();
         }
-        if (currentInterviewMaker.getChoiceOptions().contains(input)) {
+        if (currentInterviewMaker.getChoiceOptions().contains(input) & (! input.isBlank())) {
             //if the current InterviewIntern has said their last response (i.e. at the end of the interview):
             StringBuilder res = new StringBuilder();
             String internsResponse = currentInterviewMaker.displayInternChoiceResponse(input);
@@ -48,7 +48,7 @@ public class InterviewLevel extends Level{
             }
             return res.toString();
         }
-        if (Objects.equals(input, "yes") || (Objects.equals(input, "no"))){
+        if (Objects.equals(input, "yes") || (Objects.equals(input, "no")) & (! input.isBlank())){
             //hired the intern/ or not
             //return "successfully/ don't hired intern"
             if (Objects.equals(input, "yes")){
