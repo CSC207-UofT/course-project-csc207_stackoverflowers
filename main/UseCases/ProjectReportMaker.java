@@ -12,10 +12,12 @@ import java.util.List;
 public class ProjectReportMaker implements ReportMaker{
     private final GamePrompts prompts;
     private final HRSystem currentHRSystem;
+    private final PMSystem currentPMSystem;
 
-    public ProjectReportMaker(HRSystem currentHRSystem){
+    public ProjectReportMaker(HRSystem currentHRSystem, PMSystem currentPMSystem){
         this.prompts = new GamePrompts();
         this.currentHRSystem = currentHRSystem;
+        this.currentPMSystem = currentPMSystem;
     }
     @Override
     public String makeReportHeader(int month) {
@@ -45,13 +47,13 @@ public class ProjectReportMaker implements ReportMaker{
     public String makeReportBody( int currentMonth) {
         ArrayList<HiredIntern> interns = currentHRSystem.getHiredInternList();
 
-        List<Project> projList = currentHRSystem.getProjects(currentMonth);
+        List<Project> projList = currentPMSystem.getProjects(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();
         for (Project proj : projList) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
         ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
-        return bakeProjectName(currentHRSystem.getProjectNames(currentMonth)) + "\n" +
+        return bakeProjectName(currentPMSystem.getProjectNames(currentMonth)) + "\n" +
                 bakeInterns(currentHRSystem.getHiredInternsNames()) + "\n" +
                 bakeInternsPerformances(interns, projectCompatibilityList);
     }
@@ -77,7 +79,8 @@ public class ProjectReportMaker implements ReportMaker{
     }
     @Override
     public String bakeInternsPerformances (ArrayList<HiredIntern> interns, HashMap<String, Float> projectSkill) {
-        StringBuilder returnLine = new StringBuilder(GamePrompts.INTERN_PERFORMANCE_HEADER + currentHRSystem.getHiredInternsNames() + "\n");
+        StringBuilder returnLine = new StringBuilder(GamePrompts.INTERN_PERFORMANCE_HEADER +
+                currentHRSystem.getHiredInternsNames() + "\n");
         String[] internNamesList = currentHRSystem.getHiredInternsNames().split("|");
         for (int i = 0; i != interns.size(); i+=1) {
             returnLine.append("     - ").append(internNamesList[i]).append(": ").append(calculateInternPerformance(interns.get(i).getInternSkills(), projectSkill)).append("\n");
@@ -112,7 +115,7 @@ public class ProjectReportMaker implements ReportMaker{
     }
 
     public String confirmChoice(int currentMonth) {
-        return GamePrompts.CONFIRM_ASSIGNING + currentHRSystem.makeAssignmentToString(currentMonth);
+        return GamePrompts.CONFIRM_ASSIGNING + currentPMSystem.makeAssignmentToString(currentMonth);
     }
 
     @Override
@@ -122,7 +125,7 @@ public class ProjectReportMaker implements ReportMaker{
 
     @Override
     public String getProjectInfo(int currentMonth) {
-        return GamePrompts.PROJECT_PROGRESS_HEADER + currentHRSystem.makeProjectsToString(currentMonth);
+        return GamePrompts.PROJECT_PROGRESS_HEADER + currentPMSystem.makeProjectsToString(currentMonth);
     }
 
     @Override
@@ -134,7 +137,7 @@ public class ProjectReportMaker implements ReportMaker{
 
     @Override
     public String getUpgradingInfo(int currentMonth) {
-        return currentHRSystem.makeUpgradeToString(currentMonth);
+        return currentPMSystem.makeUpgradeToString(currentMonth);
     }
 
     @Override

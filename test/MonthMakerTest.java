@@ -1,6 +1,7 @@
 import Entities.*;
 import UseCases.HRSystem;
 import UseCases.MonthMaker;
+import UseCases.PMSystem;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
@@ -14,19 +15,21 @@ import java.util.HashMap;
 public class MonthMakerTest {
     MonthMaker monthMaker;
     HRSystem hrSystem;
+    PMSystem pmSystem;
 
     @Before
     public void setup() throws FileNotFoundException {
         hrSystem = new HRSystem();
+        pmSystem = new PMSystem(hrSystem);
         hrSystem.updatePlayerName("Wahaha");
         hrSystem.updateHiredInternList(makeInterns());
-        hrSystem.updateProjectList(makeProjects()); //Just one project for the first month
+        pmSystem.updateProjectList(makeProjects()); //Just one project for the first month
 
     }
 
     @Test
     public void testStartOfMonthPromptFinalMonth(){
-        monthMaker = new MonthMaker(hrSystem, 5);
+        monthMaker = new MonthMaker(hrSystem, pmSystem,5);
         String actual = monthMaker.startOfMonthPrompt();
         String expected = GamePrompts.FINAL_MONTH_PROMPT_BEFORE_PROJECT + monthMaker.getProjectInfo() +
                 GamePrompts.AVAILABLE_COMMANDS_IN_MONTH;
@@ -35,7 +38,7 @@ public class MonthMakerTest {
 
     @Test
     public void testStartOfMonthPromptNotFinalMonth(){
-        monthMaker = new MonthMaker(hrSystem, 1);
+        monthMaker = new MonthMaker(hrSystem, pmSystem,1);
         String actual = monthMaker.startOfMonthPrompt();
         String expected = GamePrompts.START_OF_MONTH_PROMPT_BEFORE_NAME + GamePrompts.START_OF_MONTH_PROMPT_BEFORE_NAME +
                 "Wahaha" +
@@ -47,7 +50,7 @@ public class MonthMakerTest {
 
     @Test
     public void testEndOfMonthPromptFinalMonth(){
-        monthMaker = new MonthMaker(hrSystem, 5);
+        monthMaker = new MonthMaker(hrSystem, pmSystem,5);
         String actual = monthMaker.endOfMonthPrompt();
         String expected = GamePrompts.END_OF_FINAL_MONTH_PROMPT;
         assertEquals(expected, actual);
@@ -55,7 +58,7 @@ public class MonthMakerTest {
 
     @Test
     public void testEndOfMonthPromptNotFinalMonth(){
-        monthMaker = new MonthMaker(hrSystem, 3);
+        monthMaker = new MonthMaker(hrSystem, pmSystem,3);
         String actual = monthMaker.endOfMonthPrompt();
         String expected = GamePrompts.END_OF_MONTH_PROMPT;
         assertEquals(expected, actual);
@@ -63,7 +66,7 @@ public class MonthMakerTest {
 
     @Test
     public void testAssignInternToProjectFailure(){
-        monthMaker = new MonthMaker(hrSystem, 1);
+        monthMaker = new MonthMaker(hrSystem, pmSystem,1);
         try {
             monthMaker.assignInternToProject("Mara", GamePrompts.PROJECT1_NAME);
         }catch (Exception e){
@@ -73,7 +76,7 @@ public class MonthMakerTest {
 
     @Test
     public void testAssignInternToProjectFailure2(){
-        monthMaker = new MonthMaker(hrSystem, 1);
+        monthMaker = new MonthMaker(hrSystem, pmSystem,1);
         try {
             monthMaker.assignInternToProject("Bob", GamePrompts.PROJECT1_NAME);
             //Since Bob is not a hired intern, should return failure.
@@ -84,7 +87,7 @@ public class MonthMakerTest {
 
     @Test
     public void testRemoveInternFromProjectFailure(){
-        monthMaker = new MonthMaker(hrSystem, 1);
+        monthMaker = new MonthMaker(hrSystem, pmSystem, 1);
         try {
             monthMaker.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
             monthMaker.removeInternFromProject("Mary", GamePrompts.PROJECT2_NAME);
@@ -96,18 +99,18 @@ public class MonthMakerTest {
 
     @Test
     public void testCheckAllInternsAssigned(){
-        monthMaker = new MonthMaker(hrSystem, 1);
-        hrSystem.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
-        hrSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
-        hrSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
+        monthMaker = new MonthMaker(hrSystem, pmSystem,1);
+        pmSystem.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
+        pmSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
+        pmSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
         assertTrue(monthMaker.checkAllInternsAssigned());
     }
 
     @Test
     public void testGetAssigningInfo(){
-        monthMaker = new MonthMaker(hrSystem, 1);
+        monthMaker = new MonthMaker(hrSystem, pmSystem, 1);
         String actual = monthMaker.getAssigningInfo();
-        String expected = hrSystem.makeAssignmentToString(1);
+        String expected = pmSystem.makeAssignmentToString(1);
         assertEquals(expected, actual);
     }
 

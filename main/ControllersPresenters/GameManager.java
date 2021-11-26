@@ -27,7 +27,8 @@ public class GameManager {
 
     public GameManager() throws Exception {
         this.currentGameMaker = new GameMaker();
-        GameGenerators currentGameGenerators = new GameGenerators(currentGameMaker.getCurrentHRSystem());
+        GameGenerators currentGameGenerators = new GameGenerators(currentGameMaker.getCurrentHRSystem(),
+                currentGameMaker.getCurrentPMSystem());
         this.currentStatus = statusOfGame.Start;
         //ask GameMaker to generate the Interns and Projects needed for the current game.
         currentGameGenerators.generateInterns(3);
@@ -104,11 +105,13 @@ public class GameManager {
             switch (currentStatus) {
                 case Interview:
                     currentStatus = statusOfGame.Month;
-                    currentLevel = new MonthLevel(currentMonth, currentGameMaker.getCurrentHRSystem());
+                    currentLevel = new MonthLevel(currentMonth, currentGameMaker.getCurrentHRSystem(),
+                            currentGameMaker.getCurrentPMSystem());
                     break;
                 case Month:
                     currentStatus = statusOfGame.Report;
-                    currentLevel = new ReportLevel(currentMonth, currentGameMaker.getCurrentHRSystem());
+                    currentLevel = new ReportLevel(currentMonth, currentGameMaker.getCurrentHRSystem(),
+                            currentGameMaker.getCurrentPMSystem());
                     break;
                 case Report:
                     currentMonth++;
@@ -117,7 +120,8 @@ public class GameManager {
                     } else {
                         currentStatus = statusOfGame.FinalMonth;
                     }
-                    currentLevel = new MonthLevel(currentMonth, currentGameMaker.getCurrentHRSystem());
+                    currentLevel = new MonthLevel(currentMonth, currentGameMaker.getCurrentHRSystem(),
+                            currentGameMaker.getCurrentPMSystem());
                     break;
                 case FinalMonth:
                     currentStatus = statusOfGame.FinalReport;

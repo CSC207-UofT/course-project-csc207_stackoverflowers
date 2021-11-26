@@ -8,10 +8,12 @@ import java.util.List;
 public class MonthReportMaker implements ReportMaker {
     private final GamePrompts prompts;
     private final HRSystem currentHRSystem;
+    private final PMSystem currentPMSystem;
 
-    public MonthReportMaker(HRSystem hrSystem){
+    public MonthReportMaker(HRSystem hrSystem, PMSystem pmSystem){
         this.prompts = new GamePrompts();
         this.currentHRSystem = hrSystem;
+        this.currentPMSystem = pmSystem;
 
     }
     @Override
@@ -41,13 +43,13 @@ public class MonthReportMaker implements ReportMaker {
     public String makeReportBody( int currentMonth) {
         ArrayList<HiredIntern> interns = currentHRSystem.getHiredInternList();
 
-        List<Project> projList = currentHRSystem.getProjects(currentMonth);
+        List<Project> projList = currentPMSystem.getProjects(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();
         for (Project proj : projList) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
         ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
-        return bakeProjectName(currentHRSystem.getProjectNames(currentMonth)) + "\n" +
+        return bakeProjectName(currentPMSystem.getProjectNames(currentMonth)) + "\n" +
                 bakeInterns(currentHRSystem.getHiredInternsNames()) + "\n" +
                 bakeInternsPerformances(interns, projectCompatibilityList);
     }
@@ -112,7 +114,7 @@ public class MonthReportMaker implements ReportMaker {
 
     @Override
     public String confirmChoice(int currentMonth) {
-        return GamePrompts.CONFIRM_ASSIGNING + currentHRSystem.makeAssignmentToString(currentMonth);
+        return GamePrompts.CONFIRM_ASSIGNING + currentPMSystem.makeAssignmentToString(currentMonth);
     }
 
     @Override
@@ -122,7 +124,7 @@ public class MonthReportMaker implements ReportMaker {
 
     @Override
     public String getProjectInfo(int currentMonth) {
-        return GamePrompts.PROJECT_NAME_HEADER + currentHRSystem.makeProjectsToString(currentMonth);
+        return GamePrompts.PROJECT_NAME_HEADER + currentPMSystem.makeProjectsToString(currentMonth);
     }
 
     public String upgradeIntern(String internName, int currentMonth, String randomSkillThisMonth) throws Exception {
@@ -133,7 +135,7 @@ public class MonthReportMaker implements ReportMaker {
 
     @Override
     public String getUpgradingInfo(int currentMonth) {
-        return currentHRSystem.makeUpgradeToString(currentMonth);
+        return currentPMSystem.makeUpgradeToString(currentMonth);
     }
 
     @Override

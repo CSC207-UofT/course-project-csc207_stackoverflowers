@@ -12,9 +12,12 @@ import java.util.*;
 
 public class GameGenerators implements Serializable {
     private final HRSystem currentHRSystem;
+    private final PMSystem currentPMSystem;
 
-    public GameGenerators(HRSystem currentHRSystem){
+    public GameGenerators(HRSystem currentHRSystem, PMSystem currentPMSystem){
+
         this.currentHRSystem = currentHRSystem;
+        this.currentPMSystem = currentPMSystem;
     }
 
     /**
@@ -71,7 +74,7 @@ public class GameGenerators implements Serializable {
             Project project = new Project(projName);
             projForGame.add(project);
         }
-        currentHRSystem.updateProjectList(projForGame);
+        currentPMSystem.updateProjectList(projForGame);
     }
 
     /**
@@ -90,7 +93,7 @@ public class GameGenerators implements Serializable {
         finalProjects.remove(finalProjName);
         Project finalProject = new Project(finalProjName);
         finalProjForGame.add(finalProject);
-        currentHRSystem.updateFinalProject(finalProjForGame);
+        currentPMSystem.updateFinalProject(finalProjForGame);
     }
 
     /**

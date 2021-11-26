@@ -2,6 +2,7 @@ package ControllersPresenters;
 import Entities.Exceptions;
 import Entities.GamePrompts;
 import UseCases.HRSystem;
+import UseCases.PMSystem;
 import UseCases.FinalReportMaker;
 import UseCases.MonthReportMaker;
 import UseCases.ProjectReportMaker;
@@ -26,16 +27,16 @@ public class ReportLevel extends Level{
      *
      * @param month A month in this game
      */
-    public ReportLevel(int month, HRSystem hrSystem) {
+    public ReportLevel(int month, HRSystem hrSystem, PMSystem pmSystem) {
         if (month == 1 | month == 3 | month == 5) {
-            currentReportMaker = new MonthReportMaker(hrSystem);
+            currentReportMaker = new MonthReportMaker(hrSystem, pmSystem);
         }
         if (month == 2 | month == 4) {
             //this is for the end of month 2, 4
-            currentReportMaker = new ProjectReportMaker(hrSystem);
+            currentReportMaker = new ProjectReportMaker(hrSystem, pmSystem);
         } if (month == 6) {
             //this is for the end of month 6
-            currentReportMaker = new FinalReportMaker(hrSystem);
+            currentReportMaker = new FinalReportMaker(hrSystem, pmSystem);
         }
         currentMonth = month;
         upgradePrompt = currentReportMaker.makeUpgradePrompt(randomSkillThisMonth);
