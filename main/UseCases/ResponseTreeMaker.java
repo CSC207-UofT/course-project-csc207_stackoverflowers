@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class  ResponseTreeMaker {
+public class ResponseTreeMaker {
     /* This ResponseTreeMaker class is responsible for generating and assigning a response tree
     to an Intern.
      */
@@ -25,10 +25,10 @@ public class  ResponseTreeMaker {
      * @return ResponseTree of the intern's possible dialogue.
      */
     public ResponseTree<ArrayList<String>> generateInternResponses() throws FileNotFoundException {
-        ArrayList<String> questions = generateDialogueList("Resources/questions.txt");
-        ArrayList<String> answers = generateDialogueList("Resources/answers.txt");
-        ArrayList<ArrayList<String>> dataList = generateTreeDataList(questions, answers);
+        HashMap<String, ArrayList<ArrayList<String>>> responseMap = pairSkilltoQuestion();
+        ResponseTree<ArrayList<String>> respTree = this.generateTreeRoot();
 
+        /*
         //constructing tree nodes manually; will change to a loop/recursion for phase 2
         ResponseTree<ArrayList<String>> respTree = this.generateTreeRoot();
         ResponseTree<ArrayList<String>> node1 = new ResponseTree<>(dataList.get(0));
@@ -58,6 +58,8 @@ public class  ResponseTreeMaker {
 
         // returning the tree
         return respTree;
+
+         */
     }
 
     /**
@@ -114,6 +116,27 @@ public class  ResponseTreeMaker {
         this.intern.setResponseTree(resTree);
     }
     */
+
+    public HashMap<String, ArrayList<ArrayList<String>>> pairSkilltoQuestion() throws FileNotFoundException {
+        ArrayList<String> questions = generateDialogueList("Resources/questions.txt");
+        ArrayList<String> answers = generateDialogueList("Resources/answers.txt");
+        ArrayList<String> skillList = generateDialogueList("Resources/corresponding_skills.txt");
+        ArrayList<ArrayList<String>> responseList = generateTreeDataList(questions, answers);
+        HashMap<String, ArrayList<ArrayList<String>>> output = new HashMap<String, ArrayList<ArrayList<String>>>();
+        for (int i = 0; i < skillList.size(); i++) {
+            String skill = skillList.get(i);
+            ArrayList<String> response = responseList.get(i);
+            if (!output.containsKey(skill)) {
+                ArrayList<ArrayList<String>> outerList = new ArrayList<>();
+                outerList.add(response);
+                output.put(skill, outerList);
+            }
+            else {
+                output.get(skill).add(response);
+            }
+        }
+        return output;
+    }
 
     public void assignResponseToIntern() throws FileNotFoundException {
         intern.setResponseTree(generateInternResponses());
