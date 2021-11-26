@@ -1,9 +1,0 @@
-["That's great. Why don't you tell me a little about yourself?", "I graduated from University of Toronto this year so I'm fresh out of university and 
-I am now ready to enter the work force. I have adequate experience in Java and Python and have also practiced graphic design in my free time."]
-["Nice to meet you. Why don't you tell me a bit about your experience?", "I graduated from University of Toronto this year so I'm fresh out of university and 
-I am now ready to enter the work force. I have adequate experience in Java and Python and have also practiced graphic design in my free time."]
-["Why do you want to work for this company?", "I believe that with my skills I will be a great addition to the team. With my graphic design experience I will be able to help with all things related to design."]
-["Why should we hire you?", "I believe that with my skills I will be a great addition to the team. With my graphic design experience I will be able 
-to help with all things related to design."]
-["What are your hobbies?", "I spend my free time studying Artificial Intelligence in depth. I wish to work in the AI industry in the future."]
-["What is your passion in life?", "I spend my free time studying Artificial Intelligence in depth. I wish to work in the AI industry in the future."]
