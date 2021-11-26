@@ -97,26 +97,25 @@ public class InterviewMaker {
         ResponseTree<ArrayList<String>> responseTree = this.currentInterviewIntern.getResponseTree();
         res.append(responseTree.getData());
 
-        res.append("\n\nThese are your options to ask the intern, please enter 'A' or 'B' to ask a question. \n");
+        res.append("\n\nThese are your options to ask the intern, please enter either 'A' or 'B' to ask a question. \n");
+        int optCount = 0;
         for (ResponseTree<ArrayList<String>> response : responseTree.getChildren()){
             // if the response tree is a root, display the interns initial response(i.e. name, age & skill info).
-            int optCount = 0;
+            optCount += 1;
             if (! response.isRoot()){
                 String qA = response.getData().get(0);
-                System.out.println(qA);
-                String[] questions = qA.split("\\?");
-                res.append("A: ");
-                res.append(questions[0]);
-                res.append("\n");
-                res.append("B: ");
-                res.append(questions[1]);
-                res.append("\n");
+                if (optCount == 1){
+                    res.append("A: ");
                 }
+                else{
+                    res.append("B: ");
+                }
+                res.append(qA);
+                res.append("\n");
             }
+        }
         return res.toString();
-
     }
-
 
     public String endOfInterviewPrompt(){
         return GamePrompts.END_OF_INTERVIEW_PROMPT;
