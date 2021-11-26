@@ -22,6 +22,26 @@ public class ResponseTreeMakerTest {
         ResponseTree<ArrayList<String>> respTree = rtm.generateInternResponses();
         assertEquals(15, respTree.getSize());
     }
+
+    /*
+    @Test
+    public void testSkillQuestionPair() throws FileNotFoundException {
+        HashMap<String, Double> s = new HashMap<>();
+        s.put("Confidence", 50.0);
+        s.put("Efficiency", 50.0);
+        s.put("Creativity", 50.0);
+        InterviewIntern intern = new InterviewIntern("Camille", 20, s);
+        ResponseTreeMaker rtm = new ResponseTreeMaker(intern);
+        ArrayList<String> questions = rtm.generateDialogueList("Resources/questions.txt");
+        ArrayList<String> answers = rtm.generateDialogueList("Resources/answers.txt");
+        ArrayList<String> skills = rtm.generateDialogueList("Resources/corresponding_skills.txt");
+        ArrayList<ArrayList<String>> responses = rtm.generateTreeDataList(questions, answers);
+        HashMap<String, ArrayList<ArrayList<String>>> actual = rtm.pairSkilltoQuestion(skills, responses);
+        HashMap<String, ArrayList<ArrayList<String>>> expected = new HashMap<>();
+        assertEquals(actual, expected);
+    }
+
+     */
     //Since this method is private, it doesn't need to be tested.
 //    @Test
 //    public void  TestGenerateDialogue() throws FileNotFoundException {
