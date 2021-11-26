@@ -41,7 +41,7 @@ public class GamePrompts implements Serializable {
                                                          "Your job is to hire some interns and then... Here is a brief view of the interviewee list. \n" +
                                                          "Take a glance and let's start the interview! \n";
 
-    public static final String START_INTERVIEW_PROMPT = "Let's start the interview with the first contestant. \n";
+    public static final String START_INTERVIEW_PROMPT = "Let's start the interview with the first contestant. \n\n";
     //see usage in firstPrompt
 
     public static final String INTERN_RESPONSE_PROMPT = "The current Intern under review has the following response for you to consider:\n";

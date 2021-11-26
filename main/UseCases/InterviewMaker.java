@@ -5,7 +5,9 @@ import Entities.InterviewIntern;
 import Entities.HiredIntern;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 
 public class InterviewMaker {
@@ -95,18 +97,26 @@ public class InterviewMaker {
         ResponseTree<ArrayList<String>> responseTree = this.currentInterviewIntern.getResponseTree();
         res.append(responseTree.getData());
 
-        res.append("These are your options to ask the intern, please enter the question you wish to ask \n");
+        res.append("\n\nThese are your options to ask the intern, please enter 'A' or 'B' to ask a question. \n");
         for (ResponseTree<ArrayList<String>> response : responseTree.getChildren()){
             // if the response tree is a root, display the interns initial response(i.e. name, age & skill info).
-            res.append(" ");
+            int optCount = 0;
             if (! response.isRoot()){
                 String qA = response.getData().get(0);
-                res.append(qA);
+                System.out.println(qA);
+                String[] questions = qA.split("\\?");
+                res.append("A: ");
+                res.append(questions[0]);
                 res.append("\n");
+                res.append("B: ");
+                res.append(questions[1]);
+                res.append("\n");
+                }
             }
-        }
         return res.toString();
+
     }
+
 
     public String endOfInterviewPrompt(){
         return GamePrompts.END_OF_INTERVIEW_PROMPT;

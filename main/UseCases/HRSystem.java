@@ -180,8 +180,16 @@ public class HRSystem implements Serializable {
 
     public String choicesToString(InterviewIntern intern) {
         StringBuilder res = new StringBuilder();
+        int optCount = 0;
         for (ResponseTree<ArrayList<String>> children : intern.getResponseTree().getChildren()) {
             String qA = children.getData().get(0);
+            optCount += 1;
+            if (optCount == 1){
+                res.append("A: ");
+            }
+            else{
+                res.append("B: ");
+            }
             res.append(qA);
             res.append("\n");
         }
