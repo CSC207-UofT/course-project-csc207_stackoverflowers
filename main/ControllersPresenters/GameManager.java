@@ -30,6 +30,7 @@ public class GameManager {
         GameGenerators currentGameGenerators = new GameGenerators(currentGameMaker.getCurrentHRSystem(),
                 currentGameMaker.getCurrentPMSystem());
         this.currentStatus = statusOfGame.Start;
+        this.currentLevel = new StartLevel(currentGameMaker);
         //ask GameMaker to generate the Interns and Projects needed for the current game.
         currentGameGenerators.generateInterns(3);
         currentGameGenerators.generateProjects(4);
@@ -47,7 +48,6 @@ public class GameManager {
         updateStatus();
         switch (statusBefore) {
             case Start:
-                return firstPrompt(playerInput);
             case Interview:
             case Month:
             case FinalMonth:
@@ -59,12 +59,6 @@ public class GameManager {
                 return endingPrompt();
         }
         throw new Exception(Exceptions.UNIVERSAL_COMMAND_NOT_FOUND);
-    }
-
-    public String firstPrompt(String playerInput) {
-        updateStatus();
-        //Prepare by changing the status of the game into the next level.(From start to interview)
-        return this.currentGameMaker.firstPrompt(playerInput);
     }
 
     private String endingPrompt() {
@@ -97,12 +91,12 @@ public class GameManager {
     }
 
     private void updateStatus() {
-        if (currentStatus == statusOfGame.Start) {
-            currentStatus = statusOfGame.Interview;
-            currentLevel = new InterviewLevel(currentGameMaker.getCurrentHRSystem());
-        }
         if (currentLevel.levelEnded()) {
             switch (currentStatus) {
+                case Start:
+                    currentStatus = statusOfGame.Interview;
+                    currentLevel = new InterviewLevel(currentGameMaker.getCurrentHRSystem());
+                    break;
                 case Interview:
                     currentStatus = statusOfGame.Month;
                     currentLevel = new MonthLevel(currentMonth, currentGameMaker.getCurrentHRSystem(),
