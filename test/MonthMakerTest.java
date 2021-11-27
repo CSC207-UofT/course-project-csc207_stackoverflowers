@@ -18,7 +18,7 @@ public class MonthMakerTest {
     PMSystem pmSystem;
 
     @Before
-    public void setup() throws FileNotFoundException {
+    public void setup() throws Exception {
         hrSystem = new HRSystem();
         pmSystem = new PMSystem(hrSystem);
         hrSystem.updatePlayerName("Wahaha");
