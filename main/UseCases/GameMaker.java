@@ -66,7 +66,8 @@ public class GameMaker implements Serializable {
      * Saves the current state of the game under a file that is the player's name.
      */
     private void saveGame(String name) throws IOException {
-        FileOutputStream fileOut = new FileOutputStream("Resources/" + name);
+        String fileName = name + ".hrSimulator";
+        FileOutputStream fileOut = new FileOutputStream("Save/" + fileName);
         ObjectOutputStream out = new ObjectOutputStream(fileOut);
         out.writeObject(this);
         out.close();
@@ -81,7 +82,8 @@ public class GameMaker implements Serializable {
      * @return returns the loaded GameMaker to GameManager.
      */
     public GameMaker load(String name) throws IOException, ClassNotFoundException {
-        FileInputStream fileIn = new FileInputStream("Resources/" + name);
+        String fileName = name + ".hrSimulator";
+        FileInputStream fileIn = new FileInputStream("Save/" + fileName);
         ObjectInputStream in = new ObjectInputStream(fileIn);
         return (GameMaker) in.readObject();
     }
