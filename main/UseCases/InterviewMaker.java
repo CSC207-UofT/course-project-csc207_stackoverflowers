@@ -83,6 +83,7 @@ public class InterviewMaker {
         return currentHRSystem.getInterviewInternList();
     }
 
+    //TODO: remove if not used
     public ArrayList<InterviewIntern> getInterviewInternString(){
         return currentHRSystem.getInterviewInternList();
     }
@@ -99,7 +100,7 @@ public class InterviewMaker {
         this.currentHRSystem.hireIntern(this.currentInterviewIntern);
     }
 
-    //TODO: javadoc
+    //TODO: add javadoc
     public void fireIntern(String intern){
         this.currentHRSystem.fireIntern(intern);
     }
