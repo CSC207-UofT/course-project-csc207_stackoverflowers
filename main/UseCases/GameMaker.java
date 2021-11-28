@@ -38,13 +38,12 @@ public class GameMaker implements Serializable {
 
     public int getCurrentMonth(){return currentMonth;}
 
-
     /**
      * Return the first display prompt after the player enters their name.
      *
      *  @param playerInput the input the player enters (their name)
      */
-    public String firstPrompt(String playerInput){
+    public String firstPrompt(String playerInput) throws Exception {
         this.currentHRSystem.updatePlayerName(playerInput);
         String re = "";
         re += GamePrompts.FIRST_PROMPT_BEFORE_NAME;
@@ -54,6 +53,7 @@ public class GameMaker implements Serializable {
         re += GamePrompts.FIRST_PROMPT_AFTER_INTERNS;
         return re;
     }
+
 
     public String endPrompt() {
         return GamePrompts.END_PROMPT;

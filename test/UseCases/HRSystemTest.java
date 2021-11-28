@@ -16,7 +16,7 @@ public class HRSystemTest {
     HRSystem system;
 
     @Before
-    public void setUp(){
+    public void setUp() throws Exception {
         system = new HRSystem();
         system.updateInterviewInternList(makeInterviewInterns());
         system.updatePlayerName("Richard");
