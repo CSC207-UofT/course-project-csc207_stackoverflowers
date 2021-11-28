@@ -14,4 +14,7 @@ public class Exceptions {
     public static final String INTERN_REMOVING_FAILURE = "The intern could not be removed from the project.";
     public static final String UNIVERSAL_COMMAND_NOT_FOUND = "The command was not a valid universal command.";
     public static final String INVALID_COMMAND = "Sorry, the command you typed is invalid. Please check and try again.";
+    public static final String INVALID_NAME_EMPTY = "Sorry, you entered a empty name. Please try again.";
+    public static final String INVALID_NAME_SPACE = "Sorry, you entered a name with spaces. Please try again.";
+    public static final String INVALID_NAME_CONTENT = "Sorry, you entered a name with invalid contents. Please try again.";
 }

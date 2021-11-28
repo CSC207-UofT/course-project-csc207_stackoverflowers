@@ -1,10 +1,8 @@
 package UseCases;
 
-import Entities.HiredIntern;
-import Entities.Intern;
-import Entities.InterviewIntern;
-import Entities.Project;
+import Entities.*;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
 
@@ -123,7 +121,29 @@ public class HRSystem implements Serializable {
      *
      * @param name the name of a current Player.
      */
-    public void updatePlayerName(String name) {
+    public void updatePlayerName(String name)throws Exception{
+        if (name.isEmpty()){
+            throw new IOException(Exceptions.INVALID_NAME_EMPTY);
+        }else if (name.split(" ").length != 1){
+            throw new IOException(Exceptions.INVALID_NAME_SPACE);
+        }
+        ArrayList<String> notValidCharacters = new ArrayList<>();
+        notValidCharacters.add("\\");
+        notValidCharacters.add("/");
+        notValidCharacters.add(":");
+        notValidCharacters.add(";");
+        notValidCharacters.add("*");
+        notValidCharacters.add("?");
+        notValidCharacters.add("+");
+        notValidCharacters.add("-");
+        notValidCharacters.add("<");
+        notValidCharacters.add(">");
+        for (String character : notValidCharacters){
+            if (name.contains(character)){
+                throw new IOException(Exceptions.INVALID_NAME_CONTENT); //if the name contains any String from
+                // notValidCharacters, raise a invalid name content error
+            }
+        }
         this.playerName = name;
     }
 
