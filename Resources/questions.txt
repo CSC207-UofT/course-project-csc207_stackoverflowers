@@ -8,25 +8,22 @@ What is your passion in life?
 
 
 
-#Endurance
+
 Do you play any team sports?
 How much time a week do you put in for school work?
 How long have you gone without sleep?
 Do you think you can handle coding projects by yourself?
 Do you think you have high endurance
-#Flexibility
 How good are you at adapting to your environment?
 How do you adjust to change you have no control over?
 Describe a problem at university you came across and how you overcame it.
 How do you work with people who have unique personalities
 Do you think you are a flexible person?
-#Observant
 Give an example of when you noticed a conflict in your team and how you resolved it.
 Do you think you can easily notice when a team member is upset?
 What methods do you use to check for bugs in your code?
 What techniques do you use to spot minor errors?
 Do you think you are an observant person?
-#Communication
 Give me an example of you communicating well with your peers.
 What situation do you think you demonstrated your communication skills the best?
 How would you go about trying to persuade a team member to change their opinion on a project?

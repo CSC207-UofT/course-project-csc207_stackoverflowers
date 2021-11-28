@@ -8,34 +8,27 @@ Ever since I was young I have always been interested in gaming, especially rpg g
 
 
 
-#Endurance
-Do you play any team sports?
-How much time a week do you put in for school work?
-How long have you gone without sleep?
-Do you think you can handle coding projects by yourself?
-Do you think you have high endurance
-#Flexibility
-How good are you at adapting to your environment?
-How do you adjust to change you have no control over?
-Describe a problem at university you came across and how you overcame it.
-How do you work with people who have unique personalities
-Do you think you are a flexible person?
-#Observant
-Give an example of when you noticed a conflict in your team and how you resolved it.
-Do you think you can easily notice when a team member is upset?
-What methods do you use to check for bugs in your code?
-What techniques do you use to spot minor errors?
-Do you think you are an observant person?
-#Communication
-Give me an example of you communicating well with your peers.
-What situation do you think you demonstrated your communication skills the best?
-How would you go about trying to persuade a team member to change their opinion on a project?
-Talk about a successful presentation you gave and why you think it did well.
-Do you think you are good at communication?
 
-
-
-
+Yes I played team sports for about 10 years. I mainly played football and volleyball which taught me a lot of patience, teamwork and endurance.
+I try to study minimum 4 hours a day, but usually it turns into 6 to 8.
+I try to do all my work in time, so I have not pulled many all-nighters but the longest was about 48 hours.
+Yes I am confident that I have the motivation and endurance to finish projects independently.
+Yes, I believe I have an adequate level oif endurance compared to most of my peers. I think I can work for longs hours at a time.
+I think I have a good eye for observation and usually can adapt well to my surroundings.
+I'm usually a very tranquil person, and so I have never obsessed about changes in my surroundings.
+I was put in a new group for a project halfway through the semester, so I made sure to set aside extra time to get to know the other members.
+Very well, I think most people have unique personalities, after all it is what makes us... well us! Besides, I wouldn't be fit for this position if I weren't.
+I believe I am adaptable because I am ready to compromise and break patterns, to push myself when my circumstances change.
+There was hostility among team members as they felt that one member was not pulling their weight. So I privately consulted the member to discuss the situation with them.
+Yes, I am uniquely talented in understanding subtle facial expressions and thus, I can quickly react to any ongoing troubles.
+I make sure to write tests as soon as I write any method.What methods do you use to check for bugs in your code?
+I make sure to change my test cases as I go so any changes in my methods is reflected on my test cases, so I can always spot any minor errors.
+Yes I am, I like to be aware of my surroundings, and I can easy spot small changes in the environment in a moments notice.
+There was an altercation between two classmates, and I was able to connect with them and assist them in resolving their issues.
+Two teammates had a very huge argument, and so I talked to both individually to act as a middleman.
+I would try to show them prove and provide them with examples on why I think they are wrong
+I had to make a presentation infant of my class. I think it went well because I prepared and organised my work well and I got positive feedback from my lecturer and class-mates.
+Yes I think I am a good communicator as many of my peers have told me so.
 
 
 
