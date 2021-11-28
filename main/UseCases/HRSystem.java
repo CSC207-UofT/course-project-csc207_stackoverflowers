@@ -200,8 +200,16 @@ public class HRSystem implements Serializable {
 
     public String choicesToString(InterviewIntern intern) {
         StringBuilder res = new StringBuilder();
+        int optCount = 0;
         for (ResponseTree<ArrayList<String>> children : intern.getResponseTree().getChildren()) {
             String qA = children.getData().get(0);
+            optCount += 1;
+            if (optCount == 1){
+                res.append("A: ");
+            }
+            else{
+                res.append("B: ");
+            }
             res.append(qA);
             res.append("\n");
         }
@@ -212,6 +220,9 @@ public class HRSystem implements Serializable {
         //TODO: Update this method, for each intern in interviewInternList the input based on that intern
         StringBuilder res = new StringBuilder();
         for (ResponseTree<ArrayList<String>> children : intern.getResponseTree().getChildren()) {
+            if (input.equals("A")){
+                res.append(children.getData().get(1));
+            }
             if (children.getData().get(0).contains(input)) {
                 res.append(children.getData().get(1));
             }

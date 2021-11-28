@@ -33,6 +33,9 @@ public class InterviewLevel extends Level{
         if (levelEnded()){
             return getEndOfInterviewPrompt();
         }
+        if (Objects.equals(input, "A") & (! input.isBlank())){
+
+        }
         if (currentInterviewMaker.getChoiceOptions().contains(input) & (! input.isBlank())) {
             //if the current InterviewIntern has said their last response (i.e. at the end of the interview):
             StringBuilder res = new StringBuilder();
