@@ -1,6 +1,8 @@
 import ControllersPresenters.GameManager;
+import Entities.Exceptions;
 import Entities.GamePrompts;
 
+import java.io.IOException;
 import java.util.Scanner;
 public class SPhase {
     /* This is the user interface (similar to the J-shell from week 2)
@@ -24,6 +26,14 @@ public class SPhase {
                 assert currentGame != null;
                 String output = currentGame.getOutput(playerInput);
                 System.out.println(output);
+            }
+            catch(IOException e){
+                if (e.getMessage().contains(Exceptions.INVALID_NAME_CONTENT)||
+                        e.getMessage().contains(Exceptions.INVALID_NAME_EMPTY) ||
+                        e.getMessage().contains(Exceptions.INVALID_NAME_SPACE)){
+                    System.out.println(GamePrompts.ASK_FOR_NAME);
+                }
+                System.out.println(e.toString());
             }
             catch (Exception e){
                 System.out.println(e.toString());
