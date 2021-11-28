@@ -79,13 +79,29 @@ public class InterviewMaker {
         return currentHRSystem.makeHiredInternsToString();
     }
 
+    public ArrayList<InterviewIntern> getInterviewInternList(){
+        return currentHRSystem.getInterviewInternList();
+    }
 
+    public ArrayList<InterviewIntern> getInterviewInternString(){
+        return currentHRSystem.getInterviewInternList();
+    }
+
+    //TODO: Add javadoc
+    public ArrayList<HiredIntern> getHiredInternList(){
+        return currentHRSystem.getHiredInternList();
+    }
     /**
      * If the player responds "yes" to hire this interviewIntern, make this interviewIntern a hiredIntern and add this
      * HiredIntern to the list of hired interns.
      */
     public void hireIntern(){
         this.currentHRSystem.hireIntern(this.currentInterviewIntern);
+    }
+
+    //TODO: javadoc
+    public void fireIntern(String intern){
+        this.currentHRSystem.fireIntern(intern);
     }
 
     /**

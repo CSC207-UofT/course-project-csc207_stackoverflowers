@@ -2,6 +2,7 @@ package ControllersPresenters;
 
 import Entities.Exceptions;
 import Entities.GamePrompts;
+import Entities.InterviewIntern;
 import UseCases.HRSystem;
 import UseCases.InterviewMaker;
 
@@ -34,7 +35,8 @@ public class InterviewLevel extends Level{
             return getEndOfInterviewPrompt();
         }
         if (Objects.equals(input, "A") & (! input.isBlank())){
-
+            //TODO: replace with choice 'a' or 'b'
+            return  null;
         }
         if (currentInterviewMaker.getChoiceOptions().contains(input) & (! input.isBlank())) {
             //if the current InterviewIntern has said their last response (i.e. at the end of the interview):
@@ -48,6 +50,7 @@ public class InterviewLevel extends Level{
                 res.append(currentInterviewMaker.getChoiceOptions());
             }else{
                 res.append(GamePrompts.HIRE_INTERN);
+                res.append(GamePrompts.HOW_MANY_HIRED).append(this.currentInterviewMaker.getHiredInternList().size());
             }
             return res.toString();
         }
@@ -55,7 +58,15 @@ public class InterviewLevel extends Level{
             //hired the intern/ or not
             //return "successfully/ don't hired intern"
             if (Objects.equals(input, "yes")){
-                this.currentInterviewMaker.hireIntern();
+                StringBuilder res = new StringBuilder();
+                if (this.currentInterviewMaker.getHiredInternList().size() < 6){
+                    this.currentInterviewMaker.hireIntern();
+                    return GamePrompts.HOW_MANY_HIRED + this.currentInterviewMaker.getHiredInternList().size();
+                }
+                if (this.currentInterviewMaker.getHiredInternList().size() >= 6){
+                    return GamePrompts.TOO_MANY_HIRED + GamePrompts.FIRING_PROMPT +
+                            currentInterviewMaker.getHiredInternString();
+                }
                 //check if there are any interns left to interview haveInterviewsLeft()
                 //if there are more interns to interview, update the current interviewing intern, prompt the player from the
                 // next interviewee's output
@@ -78,7 +89,9 @@ public class InterviewLevel extends Level{
                 // next interviewee's output
                 if (this.currentInterviewMaker.haveInterviewsLeft()){
                     this.currentInterviewMaker.updateInterviewIntern();
-                    return GamePrompts.NOT_HIRED_INTERN + GamePrompts.NEXT_INTERVIEW_INTERN_PROMPT +
+                    return GamePrompts.NOT_HIRED_INTERN + GamePrompts.HOW_MANY_HIRED +
+                            this.currentInterviewMaker.getHiredInternList().size() +
+                            GamePrompts.NEXT_INTERVIEW_INTERN_PROMPT +
                             this.currentInterviewMaker.getInterviewInternInfo();
                 }
                 // if there are no more interns to interview, endLevel() and return hired successful or not and the
@@ -89,6 +102,26 @@ public class InterviewLevel extends Level{
                             this.currentInterviewMaker.getHiredInternString();
                 }
             }
+            // fire an intern that the player chooses
+            int internIndex = -1;
+            for (InterviewIntern intern : currentInterviewMaker.getInterviewInternList()){
+                if (intern.getInternName().equals(input.split(":")[1])){
+                    internIndex = currentInterviewMaker.getInterviewInternList().indexOf(intern);
+                }
+            }
+            if (Objects.equals(input, "fire intern: " +
+                    currentInterviewMaker.getInterviewInternList().get(internIndex).getInternName())){
+                currentInterviewMaker.fireIntern(currentInterviewMaker.getInterviewInternList().get(internIndex).getInternName());
+                return GamePrompts.CONFIRM_FIRING + GamePrompts.HOW_MANY_HIRED +
+                        this.currentInterviewMaker.getHiredInternList().size();
+            }
+            // end the level if the player has already hired 6 interns and decides not to fire any other intern.
+            if (Objects.equals(input, "end interview")){
+                updateLevelStatus();
+                return GamePrompts.CHOSEN_INTERNS_TO_HIRE +
+                        this.currentInterviewMaker.getHiredInternString();
+            }
+
         }
         throw new Exception(Exceptions.INVALID_COMMAND);
     }

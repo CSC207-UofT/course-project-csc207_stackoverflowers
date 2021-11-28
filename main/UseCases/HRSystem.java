@@ -186,6 +186,15 @@ public class HRSystem implements Serializable {
         this.hiredInternList.add(hiredVersion);
     }
 
+    public void fireIntern(String intern){
+        int internIndex = -1;
+        for (HiredIntern i : this.getHiredInternList()){
+            if (i.getInternName().equals(intern)){
+                internIndex = this.getHiredInternList().indexOf(i);
+            }
+        }
+        this.hiredInternList.remove(this.hiredInternList.get(internIndex));
+    }
 
     /**
      * This method returns if an Entities.Intern has been hired to the company.

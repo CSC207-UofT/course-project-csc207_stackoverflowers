@@ -51,7 +51,19 @@ public class GamePrompts implements Serializable {
     public static final String INFORM_QUIT_GAME = "You have quit your game, and you progress has been saved to a file " +
             "with the player name you've used. Type anything to see credits and quit. Player name: ";
 
-    public static final String HIRE_INTERN = "\nWould you like to hire this intern? Type 'yes' or 'no'";
+    public static final String HIRE_INTERN = "\nWould you like to hire this intern? Type 'yes' or 'no'. You are allowed " +
+            "to hire a maximum of 6 interns.";
+
+    public static final String HOW_MANY_HIRED = "\nPlease note you have hired this number of interns so far." +
+            "\nNumber of interns hired: ";
+
+    public static final String TOO_MANY_HIRED = "\nSorry, you have already hired 6 interns. Please fire another intern " +
+            "or end the interviews now.\nType 'fire intern : <intern's name>' to fire an intern or 'end interview' to " +
+            "end the interview process. ";
+
+    public static final String FIRING_PROMPT = "You may fire an intern from the following list of interns you have hired: ";
+
+    public static final String CONFIRM_FIRING = "You have successfully fired this intern.";
 
     public static final String TO_HIRE_PROMPT = "Please type 'yes' if you would like to hire this intern and 'no' otherwise";
 
