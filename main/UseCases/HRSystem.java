@@ -219,14 +219,17 @@ public class HRSystem implements Serializable {
     public String getInternChoiceResponse(String input, InterviewIntern intern) {
         //TODO: Update this method, for each intern in interviewInternList the input based on that intern
         StringBuilder res = new StringBuilder();
-        for (ResponseTree<ArrayList<String>> children : intern.getResponseTree().getChildren()) {
             if (input.equals("A")){
-                res.append(children.getData().get(1));
+                ResponseTree<ArrayList<String>> child = intern.getResponseTree().getChildren().get(0);
+                String response = child.getData().get(1);
+                res.append(response);
             }
-            if (children.getData().get(0).contains(input)) {
-                res.append(children.getData().get(1));
+            if (input.equals("B")){
+                ResponseTree<ArrayList<String>> child = intern.getResponseTree().getChildren().get(1);
+                String response = child.getData().get(1);
+                res.append(response);
             }
-        }
+
         return res.toString();
 
     }
