@@ -23,6 +23,8 @@ public class HRSystem implements Serializable {
 
     private ArrayList<InterviewIntern> interviewInternList;
 
+    private ArrayList<HiredIntern> firedInternList;
+
     private String playerName;
 
     private String playerResponse;
@@ -35,6 +37,7 @@ public class HRSystem implements Serializable {
     public HRSystem() {
         this.hiredInternList = new ArrayList<>();
         this.interviewInternList = new ArrayList<>();
+        this.firedInternList = new ArrayList<>();
     }
 
     /**
@@ -193,8 +196,23 @@ public class HRSystem implements Serializable {
                 internIndex = this.getHiredInternList().indexOf(i);
             }
         }
+        this.firedInternList.add(this.hiredInternList.get(internIndex));
         this.hiredInternList.remove(this.hiredInternList.get(internIndex));
     }
+
+    //todo: add javadoc
+    public ArrayList<HiredIntern> getFiredInternList(){
+        return this.firedInternList;
+    }
+
+    public String firedInternsToString(){
+        StringBuilder result = new StringBuilder();
+        for (HiredIntern i : this.firedInternList) {
+            result.append(i.internToString());
+        }
+        return result.toString();
+    }
+
 
     /**
      * This method returns if an Entities.Intern has been hired to the company.

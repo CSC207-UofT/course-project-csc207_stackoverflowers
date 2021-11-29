@@ -175,5 +175,14 @@ public class InterviewMaker {
     public void updateInternTree(int theWanted) {
         currentInterviewIntern.setResponseTree(currentInterviewIntern.getResponseTree().getChildren().get(theWanted));
     }
+
+    public String getFiredInterns(){
+        return this.currentHRSystem.firedInternsToString();
+    }
+
+    public ArrayList<HiredIntern> getFiredInternList(){
+        return this.currentHRSystem.getFiredInternList();
+    }
+
 }
 
