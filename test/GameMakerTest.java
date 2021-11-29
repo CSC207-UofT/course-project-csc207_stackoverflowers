@@ -15,13 +15,12 @@ public class GameMakerTest {
     @Before
     public void setUp() {
          gameMaker = new GameMaker();
-         gameMaker.firstPrompt("Maggie");//To update the player's name
          gameMaker.setCurrentMonth(3);
     }
     
     // Hi Camille, feel free to change this test as needed. - Maggie
     @Test
-    public void TestFirstPrompt() {
+    public void TestFirstPrompt() throws Exception {
         String expectedResult = GamePrompts.FIRST_PROMPT_BEFORE_NAME + "Maggie" + GamePrompts.FIRST_PROMPT_AFTER_NAME +
                 gameMaker.getCurrentHRSystem().makeInterviewInternsToString() + GamePrompts.START_INTERVIEW_PROMPT;
         assertEquals(expectedResult, gameMaker.firstPrompt("Maggie"));

@@ -60,6 +60,7 @@ public class ResponseTreeMaker {
         return respTree;
 
          */
+        return null; //added this line so the code could compile for now
     }
 
     /**
@@ -76,6 +77,8 @@ public class ResponseTreeMaker {
         return new ResponseTree<>(rootData);
     }
 
+    // TODO: what exactly does this method return? Like either [question, question, question...] or
+    //  [answer, answer, answer...]?
     /**
      * HELPER FOR generateInternResponses
      * This method will generate an Arraylist of Strings; list of all questions
