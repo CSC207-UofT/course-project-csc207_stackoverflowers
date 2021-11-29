@@ -1,13 +1,27 @@
-That's great. Why don't you tell me a little about yourself?
-Nice to meet you. Why don't you tell me a bit about your experience?
-Why do you want to work for this company?
-Why should we hire you?
-What are your hobbies?
-What is your passion in life?
-//
-
-
-
+#Confidence
+Can you describe a time when your work was criticized?
+If I was your supervisor and asked you to do something you disagreed with, what would you do?
+What would your last boss say about you?
+How do you want to improve yourself in the next year?
+What is your greatest strength?
+#Teamwork
+Do you prefer to work by yourself or with others?
+Describes a scenario that you have resolved a conflict between you and your colleagues.
+Tell me about a time you worked well as part of a team.
+What strategies would you use to motivate your team?
+What would you contribute to our team culture?
+#Leadership
+How do you motivate your team?
+What is the most difficult part of being a leader?
+How do you lead through change?
+How do you delegate responsibilities to your team?
+What is a leader’s best asset?
+#Efficiency
+How would you handle a situation if you were required to finish multiple tasks by the end of the day and there was no conceivable way you could finish them?
+What is your work style?
+How do you keep yourself organized?
+Which one is more important: creativity or efficiency?
+What's your ideal work pace?
 #Endurance
 Do you play any team sports?
 How much time a week do you put in for school work?
@@ -32,35 +46,30 @@ What situation do you think you demonstrated your communication skills the best?
 How would you go about trying to persuade a team member to change their opinion on a project?
 Talk about a successful presentation you gave and why you think it did well.
 Do you think you are good at communication?
-
-
-
-
-
 # Responsible
 Can you describe some responsibilities of your previous position?
 If another coworker didn't show up for work, how would you handle their responsibilities besides your own?
 Can you describe a setback you've dealt with and how you handled it?
 How do you manage tasks and timelines with different levels of importance?
 Do you prefer a lot of supervision, or self-management in your daily tasks?
-
 # Creativity
 What does 'innovation' mean to you?
-
+What motivates your creative ideas and creative activity?
+Tell me about a time you had to encourage someone else to be more creative.
+How do you deal with burnout and creative block?
+Give me an example of your creativity.
 # Artistic
 Tell me how you've developed your art career so far.
 How do you collaborate with other artists?
 Describe the best piece of art you've created.
 Describe your dream art project.
 Please explain: do you consider yourself a good artist?
-
 # Patience
 Do you consider yourself a patient person?
 How have you handled a situation involving miscommunication in the workplace?
 Give me an example of a complex process or task you had to explain to another person or group of people.
 We have all had to work with someone who is difficult to get along with. Has this happened to you and how have you handled it?
 Tell me about a time when you had an unexpected event that required you to change your priorities
-
 # Analytical
 Do you always develop a detailed procedure to complete tasks and projects?
 Have you ever been incorrect in your analysis of a situation?
