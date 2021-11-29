@@ -22,31 +22,26 @@ My work style is extremely flexible—working on so many projects requires me to
 I like to plan my daily, weekly, and long-term work projects carefully. But, in reality, things come up at the last minute. Thus, I make sure I can adjust and respond quickly, integrating new priorities into my daily work.
 I've found in my experience that each of these traits is essential in different situations, and that at times, one leads to the other. When my company was facing efficiency challenges, my ability to contribute to creative solution strategies ultimately helped to solve some critical problems. Efficiency is a necessity when working under deadlines or following through on promises of product delivery, but I know that my strong creative side allows me to see problems from angles that are sometimes missed by others.
 I have been praised for my ability to hand in assignments well ahead of schedule. Although I work quickly, I also produce quality work. For example, in my last job, I was responsible for writing our quarterly newsletter. I tended to complete the assignment at least two or three days before the submission deadline, which gave me time to thoroughly proofread my work. Both employers and colleagues had commented on my error-free newsletters.
-#Endurance
-Do you play any team sports?
-How much time a week do you put in for school work?
-How long have you gone without sleep?
-Do you think you can handle coding projects by yourself?
-Do you think you have high endurance
-#Flexibility
-How good are you at adapting to your environment?
-How do you adjust to change you have no control over?
-Describe a problem at university you came across and how you overcame it.
-How do you work with people who have unique personalities
-Do you think you are a flexible person?
-#Observant
-Give an example of when you noticed a conflict in your team and how you resolved it.
-Do you think you can easily notice when a team member is upset?
-What methods do you use to check for bugs in your code?
-What techniques do you use to spot minor errors?
-Do you think you are an observant person?
-#Communication
-Give me an example of you communicating well with your peers.
-What situation do you think you demonstrated your communication skills the best?
-How would you go about trying to persuade a team member to change their opinion on a project?
-Talk about a successful presentation you gave and why you think it did well.
-Do you think you are good at communication?
-# Responsible
+Yes I played team sports for about 10 years. I mainly played football and volleyball which taught me a lot of patience, teamwork and endurance.
+I try to study minimum 4 hours a day, but usually it turns into 6 to 8.
+I try to do all my work in time, so I have not pulled many all-nighters but the longest was about 48 hours.
+Yes I am confident that I have the motivation and endurance to finish projects independently.
+Yes, I believe I have an adequate level oif endurance compared to most of my peers. I think I can work for longs hours at a time.
+I think I have a good eye for observation and usually can adapt well to my surroundings.
+I'm usually a very tranquil person, and so I have never obsessed about changes in my surroundings.
+I was put in a new group for a project halfway through the semester, so I made sure to set aside extra time to get to know the other members.
+Very well, I think most people have unique personalities, after all it is what makes us... well us! Besides, I wouldn't be fit for this position if I weren't.
+I believe I am adaptable because I am ready to compromise and break patterns, to push myself when my circumstances change.
+There was hostility among team members as they felt that one member was not pulling their weight. So I privately consulted the member to discuss the situation with them.
+Yes, I am uniquely talented in understanding subtle facial expressions and thus, I can quickly react to any ongoing troubles.
+I make sure to write tests as soon as I write any method.What methods do you use to check for bugs in your code?
+I make sure to change my test cases as I go so any changes in my methods is reflected on my test cases, so I can always spot any minor errors.
+Yes I am, I like to be aware of my surroundings, and I can easy spot small changes in the environment in a moments notice.
+There was an altercation between two classmates, and I was able to connect with them and assist them in resolving their issues.
+Two teammates had a very huge argument, and so I talked to both individually to act as a middleman.
+I would try to show them prove and provide them with examples on why I think they are wrong
+I had to make a presentation infant of my class. I think it went well because I prepared and organised my work well and I got positive feedback from my lecturer and class-mates.
+Yes I think I am a good communicator as many of my peers have told me so.
 In my last position, I was responsible for reviewing, verifying and filing all customer records. This included using software systems to ensure all data information was correct for each customer. I was also responsible for notifying my supervisor if there were any discrepancies noted in a customer's record. My attention to detail skills helped reduce record discrepancies.
 Firstly, I would try to contact them. Then, I add a few of their responsibilities to each person working. This would ensure everyone helped contribute to completing the additional tasks and that there wasn't one person completing all the tasks. This would help maintain the productivity levels during the day and help prevent added stress on the team.
 When I was starting in my previous role, I was in charge of creating new customer accounts in the computer database. I wasn't familiar with the system yet and did not ask for help to open a new client account. I ended up opening the account with a few errors which setback the customer's ability to access their account. I quickly realized my mistake and asked my supervisor for help to fix the situation. They resolved the setback and I asked for clarification on the correct process to open customer accounts.
