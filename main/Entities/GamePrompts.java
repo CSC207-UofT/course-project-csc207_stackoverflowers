@@ -58,7 +58,7 @@ public class GamePrompts implements Serializable {
             "\nNumber of interns hired: ";
 
     public static final String TOO_MANY_HIRED = "\nSorry, you have already hired 6 interns. Please fire another intern " +
-            "or end the interviews now.\nType the name of the intern you would like to fire or type 'end interview' to " +
+            "or end the interviews now.\nPlease note that if you fire an intern you cannot hire them again and the recently interviewed intern will be hired.\nType the name of the intern you would like to fire or type 'end interview' to " +
             "end the interview process.\n";
 
     public static final String FIRING_PROMPT = "\n\nYou may fire an intern from the following list of interns you have hired:\n\n";
@@ -71,20 +71,16 @@ public class GamePrompts implements Serializable {
 
     public static final String NOT_HIRED_INTERN = "You have chosen not to hire this intern. ";
 
-    public static final String CHOSEN_INTERNS_TO_HIRE = "You have chosen to hire the following interns: \n";
+    public static final String CHOSEN_INTERNS_TO_HIRE = "\nYou have chosen to hire the following interns: \n";
 
     public static final String NEXT_INTERVIEW_INTERN_PROMPT = "It is now time to interview the next intern.\nPlease select the first question to ask. ";
 
     public static final String PLAYER_CHOICE = "Please type in the sentence you wish to ask";
 
-    public static final String INTERVIEWED_TO_HIRE = "\nThis is the name of the intern you have chosen to hire:\n";
+    public static final String INTERVIEWED_TO_HIRE = "\n\nThe most recently interviewed intern has now been hired.\nThis is the intern you have chosen to hire:\n";
 
 
-    public static final String CONFIRM_HIRING = "Are you sure you want to hire this intern?\n" +
-            "Type 'yes' to hire this intern or 'no' to hire another intern.\n\nIf you wish to hire another intern " +
-            "please select from the following list of interns you have fired.\n";
-
-
+    //todo: delete if not use
     public static final String NEXT_CANDIDATE = "Would you like to move on to the next candidate?";
 
     public static final String END_OF_INTERVIEW_PROMPT = "Congratulations! You have successfully completed interviewing all " +
