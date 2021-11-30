@@ -121,7 +121,7 @@ public class GameGenerators implements Serializable {
      * @return a HashMap of Skills and the score (0.00 - 1.00) of the skill
      */
 
-    public HashMap<String, Double> generateUniqueSkillMap(ArrayList<String> skillList){
+    private HashMap<String, Double> generateUniqueSkillMap(ArrayList<String> skillList){
         Random random = new Random();
         HashMap<String, Double> skillMap = new HashMap<>();
         double d = 100.00 * random.nextDouble();
