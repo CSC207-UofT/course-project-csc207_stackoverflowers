@@ -3,7 +3,6 @@ package ControllersPresenters;
 import Entities.Exceptions;
 import Entities.GamePrompts;
 import Entities.HiredIntern;
-import Entities.InterviewIntern;
 import UseCases.HRSystem;
 import UseCases.InterviewMaker;
 
