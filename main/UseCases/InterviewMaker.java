@@ -105,6 +105,11 @@ public class InterviewMaker {
         this.currentHRSystem.fireIntern(intern);
     }
 
+    //TODO: add javadoc
+    public String currentInterviewInternToString(){
+        return this.currentInterviewIntern.internToString();
+    }
+
     /**
      * This method returns the Entities.InterviewIntern name information from HRSystem.
      * @return a String representation of the interviewIntern info.
