@@ -124,9 +124,9 @@ public class GameGenerators implements Serializable {
     private HashMap<String, Double> generateUniqueSkillMap(ArrayList<String> skillList){
         Random random = new Random();
         HashMap<String, Double> skillMap = new HashMap<>();
-        double d = 100.00 * random.nextDouble();
-        BigDecimal bd = new BigDecimal(d).setScale(2, RoundingMode.UP);
         while (skillMap.size() < 3) {
+            double d = 100.00 * random.nextDouble();
+            BigDecimal bd = new BigDecimal(d).setScale(2, RoundingMode.UP);
             String skill = skillList.get(random.nextInt(skillList.size()));
             if (!skillMap.containsKey(skill)) {
                 skillMap.put(skill, bd.doubleValue());
@@ -134,5 +134,4 @@ public class GameGenerators implements Serializable {
         }
         return skillMap;
     }
-}
 }
