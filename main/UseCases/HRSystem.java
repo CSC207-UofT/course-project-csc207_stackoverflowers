@@ -157,27 +157,6 @@ public class HRSystem implements Serializable {
     }
 
     /**
-     * This method updates the players choice to hire an intern or not.
-     *
-     * @param res a String representation of the current Player's choice.
-     */
-    //todo: delete if not used
-    public void updatePlayerResponse(String res) {
-        this.playerResponse = res;
-    }
-
-    /**
-     * This method gets the Player's response to hire an intern.
-     *
-     * @return a String representation of the current Player's response.
-     */
-    //todo: delete if not used
-    public String getPlayerResponse() {
-        return this.playerResponse;
-    }
-
-
-    /**
      * This method hires an intern into the company.
      *
      * @param intern the Entities.Intern to be hired.
@@ -198,17 +177,6 @@ public class HRSystem implements Serializable {
         this.hiredInternList.remove(this.hiredInternList.get(internIndex));
     }
 
-    /**
-     * This method returns if an Entities.Intern has been hired to the company.
-     *
-     * @param intern the Entities.Intern to check hired status.
-     * @return true if the Entities.Intern has been hired or false otherwise.
-     */
-    public Boolean isHired(Intern intern) {
-        return this.hiredInternList.contains((HiredIntern) intern);
-    }
-
-
     public String choicesToString(InterviewIntern intern) {
         StringBuilder res = new StringBuilder();
         int optCount = 0;
@@ -228,7 +196,7 @@ public class HRSystem implements Serializable {
     }
 
     public String getInternChoiceResponse(String input, InterviewIntern intern) {
-        //TODO: Update this method, for each intern in interviewInternList the input based on that intern
+        //Updated this method, for each intern in interviewInternList the input based on that intern
         StringBuilder res = new StringBuilder();
             if (input.equals("A")){
                 ResponseTree<ArrayList<String>> child = intern.getResponseTree().getChildren().get(0);

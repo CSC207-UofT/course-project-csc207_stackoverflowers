@@ -79,16 +79,6 @@ public class InterviewMaker {
         return currentHRSystem.makeHiredInternsToString();
     }
 
-    //todo: remove if not used
-    public ArrayList<InterviewIntern> getInterviewInternList(){
-        return currentHRSystem.getInterviewInternList();
-    }
-
-    //TODO: remove if not used
-    public ArrayList<InterviewIntern> getInterviewInternString(){
-        return currentHRSystem.getInterviewInternList();
-    }
-
     //TODO: Add javadoc
     public ArrayList<HiredIntern> getHiredInternList(){
         return currentHRSystem.getHiredInternList();
