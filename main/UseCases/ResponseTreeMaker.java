@@ -147,7 +147,7 @@ public class ResponseTreeMaker {
         ArrayList<ResponseTree<ArrayList<String>>> questionList = new ArrayList<>();
         ArrayList<ArrayList<String>> possibleQuestions = questionMap.get(skill);
         while (questionList.size() < 5) {
-            ArrayList<String> randomQuestion = possibleQuestions.get(randomizer.nextInt(possibleQuestions.size()));
+            ArrayList<String> randomQuestion = possibleQuestions.remove(randomizer.nextInt(possibleQuestions.size()));
             ResponseTree<ArrayList<String>> node = new ResponseTree<>(randomQuestion);
             questionList.add(node);
         }

@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.io.*;
 import java.lang.reflect.Array;
 import java.util.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class GameGenerators implements Serializable {
     private final HRSystem currentHRSystem;
@@ -118,13 +120,16 @@ public class GameGenerators implements Serializable {
      * @param skillList an ArrayList of skills.
      * @return a HashMap of Skills and the score (0.00 - 1.00) of the skill
      */
+
     private HashMap<String, Double> generateUniqueSkillMap(ArrayList<String> skillList){
         Random random = new Random();
         HashMap<String, Double> skillMap = new HashMap<>();
         while (skillMap.size() < 3) {
+            double d = 100.00 * random.nextDouble();
+            BigDecimal bd = new BigDecimal(d).setScale(2, RoundingMode.UP);
             String skill = skillList.get(random.nextInt(skillList.size()));
             if (!skillMap.containsKey(skill)) {
-                skillMap.put(skill, 100.00 * random.nextDouble());
+                skillMap.put(skill, bd.doubleValue());
             }
         }
         return skillMap;
