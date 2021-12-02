@@ -37,28 +37,32 @@ public class InterviewLevel extends Level{
         if (Objects.equals(input, "A") || Objects.equals(input, "B") & (! input.isBlank())){
             // replace with choice 'a' or 'b'
             //if the current InterviewIntern has said their last response (i.e. at the end of the interview):
-            StringBuilder res = new StringBuilder();
-            String internsResponse = currentInterviewMaker.displayInternChoiceResponse(input);
-            res.append(GamePrompts.INTERN_RESPONSE_PROMPT);
-            res.append(internsResponse);
-            currentInterviewMaker.updateInternTree(0);
-            if (!this.currentInterviewMaker.checkInternsLastResponse()){
-                res.append(GamePrompts.NEXT_CHOICE_PROMPT);
-                res.append(currentInterviewMaker.getChoiceOptions());
-            }else{
-                res.append(GamePrompts.HIRE_INTERN);
-                res.append(GamePrompts.HOW_MANY_HIRED).append(this.currentInterviewMaker.getHiredInternList().size());
+            try {
+                StringBuilder res = new StringBuilder();
+                String internsResponse = currentInterviewMaker.displayInternChoiceResponse(input);
+                res.append(GamePrompts.INTERN_RESPONSE_PROMPT);
+                res.append(internsResponse);
+                currentInterviewMaker.updateInternTree(0);
+                if (!this.currentInterviewMaker.checkInternsLastResponse()) {
+                    res.append(GamePrompts.NEXT_CHOICE_PROMPT);
+                    res.append(currentInterviewMaker.getChoiceOptions());
+                } else {
+                    res.append(GamePrompts.HIRE_INTERN);
+                    res.append(GamePrompts.HOW_MANY_HIRED).append(this.currentInterviewMaker.getHiredInternList().size());
+                }
+                return res.toString();
             }
-            return res.toString();
+            catch (IndexOutOfBoundsException ex){
+                throw new Exception(Exceptions.INVALID_COMMAND);
+            }
         }
 
         if (Objects.equals(input, "yes") || (Objects.equals(input, "no")) & (! input.isBlank())){
             //hired the intern/ or not
             //return "successfully/ don't hired intern"
-            //TODO: testing with 2 -> change to 6 b4 submitting (still says 6 in the prompts tho)
             if (Objects.equals(input, "yes")){
                 StringBuilder res = new StringBuilder();
-                if (this.currentInterviewMaker.getHiredInternList().size() < 2){
+                if (this.currentInterviewMaker.getHiredInternList().size() < 6){
                     this.currentInterviewMaker.hireIntern();
                     res.append(GamePrompts.HOW_MANY_HIRED);
                     res.append(this.currentInterviewMaker.getHiredInternList().size());
@@ -74,7 +78,7 @@ public class InterviewLevel extends Level{
                                 this.currentInterviewMaker.getHiredInternString() + getEndOfInterviewPrompt();
                     }
                 }
-                if (this.currentInterviewMaker.getHiredInternList().size() == 2){
+                if (this.currentInterviewMaker.getHiredInternList().size() == 6){
                     res.append(GamePrompts.TOO_MANY_HIRED);
                     res.append(GamePrompts.FIRING_PROMPT);
                     res.append(currentInterviewMaker.getHiredInternString());
@@ -93,7 +97,7 @@ public class InterviewLevel extends Level{
                 if (this.currentInterviewMaker.haveInterviewsLeft()){
                     this.currentInterviewMaker.updateInterviewIntern();
                     return GamePrompts.NOT_HIRED_INTERN + GamePrompts.HOW_MANY_HIRED +
-                            this.currentInterviewMaker.getHiredInternList().size() +
+                            this.currentInterviewMaker.getHiredInternList().size() + "\n" +
                             GamePrompts.NEXT_INTERVIEW_INTERN_PROMPT +
                             this.currentInterviewMaker.getInterviewInternInfo();
                 }
