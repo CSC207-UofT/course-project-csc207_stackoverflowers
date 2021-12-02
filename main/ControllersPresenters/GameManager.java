@@ -32,7 +32,7 @@ public class GameManager {
         this.currentStatus = statusOfGame.Start;
         this.currentLevel = new StartLevel(currentGameMaker);
         //ask GameMaker to generate the Interns and Projects needed for the current game.
-        currentGameGenerators.generateInterns(3);
+        currentGameGenerators.generateInterns(10);
         currentGameGenerators.generateProjects(4);
         currentGameGenerators.generateFinalProject();
         isRunning = true;
