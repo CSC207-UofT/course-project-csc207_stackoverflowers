@@ -42,7 +42,6 @@ public class GamePrompts implements Serializable {
                                                          "Take a glance and let's start the interview! \n";
 
     public static final String START_INTERVIEW_PROMPT = "Let's start the interview with the first contestant. \n\n";
-    //see usage in firstPrompt
 
     public static final String INTERN_RESPONSE_PROMPT = "The current Intern under review has the following response for you to consider:\n\n";
 
@@ -112,7 +111,8 @@ public class GamePrompts implements Serializable {
                                                                   "assign intern to project <Intern Name> <Project Name>\n" +
                                                                   "remove intern from project <Intern Name> <Project Name>\n" +
                                                                   "check interns info\n" +
-                                                                  "check project info\n";
+                                                                  "check project info\n " +
+            "check assign\n";
 
 
     public static final String END_OF_FINAL_MONTH_PROMPT = "Now you have finished assigning your SUPER intern to the FINAL project." +

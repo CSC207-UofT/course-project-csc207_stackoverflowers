@@ -66,7 +66,7 @@ public class ReportLevel extends Level{
             return checkUpgradingInfo(currentMonth);
         }
         if (input.contains("assign intern to upgrade")) {
-            if (!input.startsWith("assign intern to upgrade")){
+            if (!input.startsWith("assign intern to upgrade ")){
                 throw new Exception(Exceptions.INVALID_COMMAND);
             }
             return assignInternToUpgrade(input);
