@@ -56,11 +56,17 @@ public class MonthLevel extends Level {
     }
 
     private String removeInternFromProject(String input) throws Exception {
+        if (!input.startsWith("remove intern from project")){
+            throw new Exception(Exceptions.INVALID_COMMAND);
+        }
         ArrayList<String> internAndProject = parseForAssigning(input);
         return currentMonthMaker.removeInternFromProject(internAndProject.get(0), internAndProject.get(1) );
     }
 
     private String assignInternToProject(String input) throws Exception {
+        if (!input.startsWith("assign intern to project")){
+            throw new Exception(Exceptions.INVALID_COMMAND);
+        }
         ArrayList<String> internAndProject = parseForAssigning(input);
         return currentMonthMaker.assignInternToProject(internAndProject.get(0), internAndProject.get(1));
     }
@@ -68,7 +74,7 @@ public class MonthLevel extends Level {
     private ArrayList<String> parseForAssigning(String input) throws Exception {
         //helper method that parses the string so that it returns the intern and project involved.
         List<String> inputs = Arrays.asList((input.split(" ")));
-        if (inputs.size()<= 4 || inputs.size() > 10){
+        if (inputs.size()< 6 || inputs.size() > 10){
             throw new Exception(Exceptions.INVALID_COMMAND);
         }
         String intern = inputs.get(4);
