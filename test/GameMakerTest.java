@@ -44,11 +44,11 @@ public class GameMakerTest {
     }
     @Test
     public void TestSaveGame() throws IOException {
-        gameMaker.save(gameMaker.getCurrentMonth());
+        gameMaker.save(1, "Month");
     }
     @Test
     public  void TestLoad() throws IOException, ClassNotFoundException {
-        gameMaker.save(3);
+        gameMaker.save(1, "FinalMonth");
         GameMaker copy = gameMaker.load(gameMaker.getCurrentHRSystem().getPlayerName());
         assertEquals(gameMaker.getCurrentHRSystem().getPlayerName(), copy.getCurrentHRSystem().getPlayerName());
         assertEquals(gameMaker.getCurrentHRSystem().getInterviewInternList(), copy.getCurrentHRSystem().getInterviewInternList());
