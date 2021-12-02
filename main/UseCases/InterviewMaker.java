@@ -5,7 +5,9 @@ import Entities.InterviewIntern;
 import Entities.HiredIntern;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 
 public class InterviewMaker {
@@ -77,13 +79,26 @@ public class InterviewMaker {
         return currentHRSystem.makeHiredInternsToString();
     }
 
-
+    //TODO: Add javadoc
+    public ArrayList<HiredIntern> getHiredInternList(){
+        return currentHRSystem.getHiredInternList();
+    }
     /**
      * If the player responds "yes" to hire this interviewIntern, make this interviewIntern a hiredIntern and add this
      * HiredIntern to the list of hired interns.
      */
     public void hireIntern(){
         this.currentHRSystem.hireIntern(this.currentInterviewIntern);
+    }
+
+    //TODO: add javadoc
+    public void fireIntern(String intern){
+        this.currentHRSystem.fireIntern(intern);
+    }
+
+    //TODO: add javadoc
+    public String currentInterviewInternToString(){
+        return this.currentInterviewIntern.internToString();
     }
 
     /**
@@ -95,12 +110,19 @@ public class InterviewMaker {
         ResponseTree<ArrayList<String>> responseTree = this.currentInterviewIntern.getResponseTree();
         res.append(responseTree.getData());
 
-        res.append("These are your options to ask the intern, please enter the question you wish to ask \n");
+        res.append("\n\nThese are your options to ask the intern, please enter either 'A' or 'B' to ask a question. \n");
+        int optCount = 0;
         for (ResponseTree<ArrayList<String>> response : responseTree.getChildren()){
             // if the response tree is a root, display the interns initial response(i.e. name, age & skill info).
-            res.append(" ");
+            optCount += 1;
             if (! response.isRoot()){
                 String qA = response.getData().get(0);
+                if (optCount == 1){
+                    res.append("A: ");
+                }
+                else{
+                    res.append("B: ");
+                }
                 res.append(qA);
                 res.append("\n");
             }
