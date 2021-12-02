@@ -41,17 +41,29 @@ public class GamePrompts implements Serializable {
                                                          "Your job is to hire some interns and then... Here is a brief view of the interviewee list. \n" +
                                                          "Take a glance and let's start the interview! \n";
 
-    public static final String START_INTERVIEW_PROMPT = "Let's start the interview with the first contestant. \n";
+    public static final String START_INTERVIEW_PROMPT = "Let's start the interview with the first contestant. \n\n";
     //see usage in firstPrompt
 
-    public static final String INTERN_RESPONSE_PROMPT = "The current Intern under review has the following response for you to consider:\n";
+    public static final String INTERN_RESPONSE_PROMPT = "The current Intern under review has the following response for you to consider:\n\n";
 
-    public static final String NEXT_CHOICE_PROMPT = "\n Please type in the next question to ask: \n";
+    public static final String NEXT_CHOICE_PROMPT = "\n Please type 'A' or 'B' to select the next question to ask:\n";
 
     public static final String INFORM_QUIT_GAME = "You have quit your game, and you progress has been saved to a file " +
             "with the player name you've used. Type anything to see credits and quit. Player name: ";
 
-    public static final String HIRE_INTERN = "\nWould you like to hire this intern? Type 'yes' or 'no'";
+    public static final String HIRE_INTERN = "\n\nWould you like to hire this intern? Type 'yes' or 'no'. You are allowed " +
+            "to hire a maximum of 6 interns.";
+
+    public static final String HOW_MANY_HIRED = "\nPlease note you have hired this number of interns so far:" +
+            "\nNumber of interns hired: ";
+
+    public static final String TOO_MANY_HIRED = "\nSorry, you have already hired 6 interns. Please fire another intern " +
+            "or end the interviews now.\nPlease note that if you fire an intern you cannot hire them again and the recently interviewed intern will be hired.\nType the name of the intern you would like to fire or type 'end interview' to " +
+            "end the interview process.\n";
+
+    public static final String FIRING_PROMPT = "\n\nYou may fire an intern from the following list of interns you have hired:\n\n";
+
+    public static final String CONFIRM_FIRING = "You have successfully fired this intern.";
 
     public static final String TO_HIRE_PROMPT = "Please type 'yes' if you would like to hire this intern and 'no' otherwise";
 
@@ -59,16 +71,16 @@ public class GamePrompts implements Serializable {
 
     public static final String NOT_HIRED_INTERN = "You have chosen not to hire this intern. ";
 
-    public static final String CHOSEN_INTERNS_TO_HIRE = "You have chosen to hire the following interns: \n";
+    public static final String CHOSEN_INTERNS_TO_HIRE = "\nYou have chosen to hire the following interns: \n";
 
-    public static final String NEXT_INTERVIEW_INTERN_PROMPT = "It is now time to interview the next intern. Please select the first question to ask. ";
+    public static final String NEXT_INTERVIEW_INTERN_PROMPT = "It is now time to interview the next intern.\nPlease select the first question to ask. ";
 
     public static final String PLAYER_CHOICE = "Please type in the sentence you wish to ask";
 
+    public static final String INTERVIEWED_TO_HIRE = "\n\nThe most recently interviewed intern has now been hired.\nThis is the intern you have chosen to hire:\n";
 
-    public static final String CONFIRM_HIRING = "Are you sure you want to hire this intern?";
 
-
+    //todo: delete if not use
     public static final String NEXT_CANDIDATE = "Would you like to move on to the next candidate?";
 
     public static final String END_OF_INTERVIEW_PROMPT = "Congratulations! You have successfully completed interviewing all " +
