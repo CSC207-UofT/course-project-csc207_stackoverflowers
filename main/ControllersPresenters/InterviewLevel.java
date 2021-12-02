@@ -97,7 +97,7 @@ public class InterviewLevel extends Level{
                 if (this.currentInterviewMaker.haveInterviewsLeft()){
                     this.currentInterviewMaker.updateInterviewIntern();
                     return GamePrompts.NOT_HIRED_INTERN + GamePrompts.HOW_MANY_HIRED +
-                            this.currentInterviewMaker.getHiredInternList().size() +
+                            this.currentInterviewMaker.getHiredInternList().size() + "\n" +
                             GamePrompts.NEXT_INTERVIEW_INTERN_PROMPT +
                             this.currentInterviewMaker.getInterviewInternInfo();
                 }
