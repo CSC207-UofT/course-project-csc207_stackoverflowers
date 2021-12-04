@@ -42,7 +42,6 @@ public class MonthReportMaker implements ReportMaker {
     @Override
     public String makeReportBody( int currentMonth) {
         ArrayList<HiredIntern> interns = currentHRSystem.getHiredInternList();
-
         List<Project> projList = currentPMSystem.getProjects(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();
         for (Project proj : projList) {
@@ -112,6 +111,7 @@ public class MonthReportMaker implements ReportMaker {
         else{return GamePrompts.END_OF_MONTH_REPORT_PROMPT;}
     }
 
+    //TODO: THIS IS NOT RIGHT! rn it's returning the assigning from monthLevel, not the skill upgrade thingy we want
     @Override
     public String confirmChoice(int currentMonth) {
         return GamePrompts.CONFIRM_ASSIGNING + currentPMSystem.makeAssignmentToString(currentMonth);
