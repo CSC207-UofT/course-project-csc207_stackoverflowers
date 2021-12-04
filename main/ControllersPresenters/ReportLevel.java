@@ -74,7 +74,6 @@ public class ReportLevel extends Level{
         else{throw new Exception(Exceptions.INVALID_COMMAND);}
     }
 
-
     /** getReport() asks the current ReportMaker to make a report,
      * which is then passed to ReportPresenter to return a formatted string representation of the report.
      */
