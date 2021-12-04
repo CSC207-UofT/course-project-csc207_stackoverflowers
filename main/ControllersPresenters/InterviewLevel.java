@@ -6,11 +6,12 @@ import Entities.HiredIntern;
 import UseCases.HRSystem;
 import UseCases.InterviewMaker;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class InterviewLevel extends Level{
 
-     private final InterviewMaker currentInterviewMaker;
+    private final InterviewMaker currentInterviewMaker;
 
     /**
      * The constructor makes a new InterviewLevel for the current phase, and stores an
@@ -34,7 +35,7 @@ public class InterviewLevel extends Level{
         if (levelEnded()){
             return getEndOfInterviewPrompt();
         }
-        if (Objects.equals(input, "A") || Objects.equals(input, "B") & (! input.isBlank())){
+        if (Objects.equals(input.toLowerCase(), "a") || Objects.equals(input.toLowerCase(), "b") & (! input.isBlank())){
             // replace with choice 'a' or 'b'
             //if the current InterviewIntern has said their last response (i.e. at the end of the interview):
             try {
