@@ -56,7 +56,7 @@ public class MonthLevel extends Level {
     }
 
     private String removeInternFromProject(String input) throws Exception {
-        if (!input.startsWith("remove intern from project")){
+        if (!input.startsWith("remove intern from project ")){
             throw new Exception(Exceptions.INVALID_COMMAND);
         }
         ArrayList<String> internAndProject = parseForAssigning(input);
@@ -64,7 +64,7 @@ public class MonthLevel extends Level {
     }
 
     private String assignInternToProject(String input) throws Exception {
-        if (!input.startsWith("assign intern to project")){
+        if (!input.startsWith("assign intern to project ")){
             throw new Exception(Exceptions.INVALID_COMMAND);
         }
         ArrayList<String> internAndProject = parseForAssigning(input);
