@@ -14,19 +14,17 @@ public class MonthReportMaker implements ReportMaker {
         this.prompts = new GamePrompts();
         this.currentHRSystem = hrSystem;
         this.currentPMSystem = pmSystem;
-
     }
+
     @Override
     public String makeReportHeader(int month) {
         return GamePrompts.REPORT_HEADER + month + "\n";
     }
 
-
     @Override
     public String makeReportIntro() {
         return "This is an intermediate report of this ongoing project." + "\n";
     }
-
 
     /* format for the reportBody
     Project name: xxx (need to access project.projectName)
@@ -42,7 +40,6 @@ public class MonthReportMaker implements ReportMaker {
     @Override
     public String makeReportBody( int currentMonth) {
         ArrayList<HiredIntern> interns = currentHRSystem.getHiredInternList();
-
         List<Project> projList = currentPMSystem.getProjects(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();
         for (Project proj : projList) {
@@ -114,7 +111,7 @@ public class MonthReportMaker implements ReportMaker {
 
     @Override
     public String confirmChoice(int currentMonth) {
-        return GamePrompts.CONFIRM_ASSIGNING + currentPMSystem.makeAssignmentToString(currentMonth);
+        return GamePrompts.CONFIRM_UPGRADE;
     }
 
     @Override
