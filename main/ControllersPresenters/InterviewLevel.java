@@ -115,7 +115,7 @@ public class InterviewLevel extends Level{
         // the next intern otherwise.
         StringBuilder res = new StringBuilder();
         for (HiredIntern internToParse : this.currentInterviewMaker.getHiredInternList()){
-            if (internToParse.getInternName().trim().contains(input)){
+            if (internToParse.getInternName().trim().equals(input) & (!input.isBlank())){
                 String internToFire = internToParse.getInternName();
                 this.currentInterviewMaker.hireIntern();
                 this.currentInterviewMaker.fireIntern(internToFire);
@@ -132,13 +132,13 @@ public class InterviewLevel extends Level{
                 }
                 if (this.currentInterviewMaker.haveInterviewsLeft()){
                     this.currentInterviewMaker.updateInterviewIntern();
-                    return GamePrompts.NEXT_INTERVIEW_INTERN_PROMPT +
+                    return res + "\n" + GamePrompts.NEXT_INTERVIEW_INTERN_PROMPT +
                             this.currentInterviewMaker.getInterviewInternInfo();
                 }
             }
         }
         // end the level if the player has already hired 6 interns and decides not to fire any other intern.
-        if (Objects.equals(input, "end interview")){
+        if (Objects.equals(input, "end interview") & (!input.isBlank())){
             updateLevelStatus();
             return GamePrompts.CHOSEN_INTERNS_TO_HIRE +
                     this.currentInterviewMaker.getHiredInternString() + getEndOfInterviewPrompt();
