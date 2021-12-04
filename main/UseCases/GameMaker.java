@@ -8,6 +8,7 @@ import java.util.*;
 public class GameMaker implements Serializable {
     private final HRSystem currentHRSystem;
     private final PMSystem currentPMSystem;
+    private String currentStatus;
     private int currentMonth;
     private static ArrayList<String> universalCommands = null;
     /*
@@ -115,14 +116,23 @@ public class GameMaker implements Serializable {
         return (GameMaker) in.readObject();
     }
     
-    public String save(int currentMonth) throws IOException {
+    public String save(int currentMonth, String currentStatus) throws IOException {
+        setCurrentStatus(currentStatus);
         setCurrentMonth(currentMonth);
         saveGame(currentHRSystem.getPlayerName());
         return GamePrompts.GAME_SAVED_SUCCESSFUL + currentHRSystem.getPlayerName();
     }
-    
-    public String quit(int currentMonth) throws IOException{
+
+    private void setCurrentStatus(String currentStatus) {
+        this.currentStatus = currentStatus;
+    }
+    public String getCurrentStatus(){
+        return currentStatus;
+    }
+
+    public String quit(int currentMonth, String currentStatus) throws IOException{
         setCurrentMonth(currentMonth);
+        setCurrentStatus(currentStatus);
         quitGame();
         return GamePrompts.INFORM_QUIT_GAME + currentHRSystem.getPlayerName();
     }

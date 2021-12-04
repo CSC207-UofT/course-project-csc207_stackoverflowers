@@ -67,11 +67,12 @@ public class GameManager {
 
     private String universalCommand(String playerInput) throws Exception {
         if (Objects.equals(playerInput.strip(), "save")) {
-            return currentGameMaker.save(currentMonth);
+            return currentGameMaker.save(currentMonth, currentStatus.toString());
         }
         if (playerInput.strip().equals("quit")) {
+            statusOfGame formerStatus = currentStatus;
             currentStatus = statusOfGame.End;
-            return currentGameMaker.quit(currentMonth);
+            return currentGameMaker.quit(currentMonth, formerStatus.toString());
         }
         if (Objects.equals(playerInput.split(" ")[0], "load")) {
             if (currentStatus == statusOfGame.Start) {
@@ -82,6 +83,7 @@ public class GameManager {
                     throw new Exception("Can't find file to load");
                 }
                 currentMonth = currentGameMaker.getCurrentMonth();
+                currentStatus = statusOfGame.valueOf(currentGameMaker.getCurrentStatus());
                 return getOutput(currentGameMaker.getCurrentHRSystem().getPlayerName());
             } else {
                 throw new Exception("Load only permitted at start of the game");
