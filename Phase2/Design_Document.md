@@ -60,11 +60,14 @@ After selecting a specific Entities.InterviewIntern, the InterviewIntern's quest
 are outputted, allowing player to choose which question to ask the Entities.InterviewIntern. 
 
 ABOUT RESPONSETREEMAKER: Each InterviewIntern has its own unique ResponseTree, which stores all the possible dialogue during an interview.
-So it shows the questions the Player can ask, and the respective response from the intern. These ResponseTrees are
+It shows the questions the Player can ask, and the respective response from the intern. These ResponseTrees are
 generated in the ResponseTreeMaker class. The ResponseTreeMaker takes in an intern and generates a ResponseTree
-based on the intern's attributes. As of now, we've settled on a fixed number of questions and a fixed dialogue, however,
-with this ResponseTree structure, we can easily change the number of questions we can ask an intern during the interview,
-and we can easily add different questions so the dialogue is more diverse.
+based on the intern's skills. In Phase 1, we had settled on generating a tree with a fixed number of questions and a fixed dialogue, but now
+we can successfully generate a unique ResponseTree for every intern. We implemented ResponseTreeMaker so that each question pertains to
+an intern's skill, so now you can learn more about the intern's strengths and personality during the interview. The dialogue will now be
+much more diverse than it was before as since we've added more potential questions and answers. For our InterviewLevel, we're only
+asking three questions for every intern, but with our ResponseTree structure, we can easily change the number of questions we can ask an intern during the interview,
+and we can easily add even more questions so that you can get more in-depth information about the intern.
 
 The InterviewIntern responds by HRSystem obtaining
 the InterviewIntern's corresponding response for the question from the response tree in ResponseTreeMaker (which has been assigned to each intern in
