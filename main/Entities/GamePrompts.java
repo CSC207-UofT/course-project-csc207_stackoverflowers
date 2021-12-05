@@ -289,8 +289,8 @@ public class GamePrompts implements Serializable {
     public static final String INTERN_REMOVING_SUCCESS = "The intern was successfully removed from the project specified.";
     public static final String FIRST_PROMPT_AFTER_INTERNS = "Type anything to begin the interviewing process!";
 
-    public static final String END_OF_MONTH_REPORT_PROMPT = "That is the end of the report.";
-    public static final String END_OF_FINAL_MONTH_REPORT_PROMPT = "That's the end of the final month report.";
+    public static final String END_OF_MONTH_REPORT_PROMPT = "That is the end of the report. Type anything to continue.";
+    public static final String END_OF_FINAL_MONTH_REPORT_PROMPT = "That's the end of the final month report. Type anything to continue.";
 
     public final String REPORT_CONCLUSION = "That's all! Have a good day manager. :)";
 
