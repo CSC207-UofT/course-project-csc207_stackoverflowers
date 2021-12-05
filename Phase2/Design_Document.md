@@ -114,9 +114,9 @@ Most of our code structure was already implemented in phase 1, and so we did not
 
 1. FACTORY DESIGN PATTERN 
 
-We used the factory design pattern using GameManger to evaluate the player's response and the interface class ReportMaker that is implemented by the ProjectReportMaker, FinalReportMaker and MonthReportMaker subclasses. We created an interface class ReportMaker and let the concrete classes MonthReportMaker, 
+We used the factory design pattern using ReportLevel to evaluate the player's response and the interface class ReportMaker that is implemented by the ProjectReportMaker, FinalReportMaker and MonthReportMaker subclasses. We created an interface class ReportMaker and let the concrete classes MonthReportMaker, 
 FinalReportMaker and ProjectReportMaker implement this interface. The interface holds the virtual constructor that defines the general description of the methods needed in each subclass (makeReportHeader(), makeReportIntro() etc.) and the subclasses holds the other requirements needed for example MonthReportMaker show progress of each month in the game whereas ProjectReportMaker will show the outcome of the project in each level. GameManager then instantiates the concrete 
-classes, and it can get a report object by checking the player’s input. So if a player wanted to check the month report, GameManager simply outputs the month report it without having to reach into the specific MonthReportMaker class. This was implemented as soon as Phase 0 was over, when DQ1 was due. 
+classes, and it can get a report object by checking the player’s input. So if a player wanted to check the month report, ReportLevel simply outputs the month report it without having to reach into the specific MonthReportMaker class. This was implemented as soon as Phase 0 was over, when DQ1 was due. 
 
 
 2. BUILDER PATTERN DESIGN 
