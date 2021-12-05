@@ -89,7 +89,7 @@ public class GamePrompts implements Serializable {
     // not all the project prompts will be used, the projectGenerator will output a list and choose 4 projects
     // for the game from all the prompts here
 
-    public static final String START_OF_MONTH_PROMPT_BEFORE_NAME = "Welcome to the start of the month. \n " +
+    public static final String START_OF_MONTH_PROMPT_BEFORE_NAME = "Welcome to the start of this month!\n " +
             "Your job for this month, " ;
 
     public static final String START_OF_MONTH_PROMPT_AFTER_NAME = " , is to manage some new projects. Assign the interns you see fit to the project!\n ";
@@ -112,7 +112,7 @@ public class GamePrompts implements Serializable {
                                                                   "remove intern from project <Intern Name> <Project Name>\n" +
                                                                   "check interns info\n" +
                                                                   "check project info\n " +
-            "check assign\n";
+                                                                  "check assign";
 
 
     public static final String END_OF_FINAL_MONTH_PROMPT = "Now you have finished assigning your SUPER intern to the FINAL project." +
@@ -179,14 +179,14 @@ public class GamePrompts implements Serializable {
             "In this project, the interns will work with the cybersecurity department within the company to ensure the " +
             "safe storage of customer information. They will work on how to recognize and prevent common cyber threats " +
             "such as malware, phishing, SQL injection, and DNS tunneling. They will also help ensuring that our company's" +
-            " encryption practices are up-to-date and adhere to the General Data Protection Regulation. ";
+            " encryption practices are up-to-date and adhere to the General Data Protection Regulation.";
 
     public static final String PROJECT6_DESCRIPTION = "Computer programming for kids has many benefits that stretch far" +
             " beyond the computer screen: critical thinking, creativity, and persistence, etc. That's why our company " +
             "values teaching coding to children. Interns in this project will introduce k1-9 students to coding through " +
             "the virtual classroom. They will work together to come up with activities, worksheets, games, homework, and" +
             " simple interactive apps that pique children's interests meanwhile convey meaningful coding concepts. " +
-            "In addition, regular communications and accommodations to children's special needs will be crucial. ";
+            "In addition, regular communications and accommodations to children's special needs will be crucial.";
 
     public static final String PROJECT7_DESCRIPTION = "In this project, interns will be required to create and publish " +
             "contents on the company's Facebook, Instagram, and Twitter pages to promote the company's products and services." +
@@ -217,7 +217,7 @@ public class GamePrompts implements Serializable {
             " coding duties, but may help the programmers test or debug their code. He/she will also work with algorithms" +
             " and the mathematical aspects of artificial intelligence. Additionally, certain project logistics will be a" +
             " part of the assistant's responsibilities. The intern will receive step-by-step guidance from industry experts," +
-            " and through intensive immersion, they will develop specialized, highly valued skills regarding Machine Learning & AI. ";
+            " and through intensive immersion, they will develop specialized, highly valued skills regarding Machine Learning & AI.";
 
     public static final String FINAL_PROJECT3_DESCRIPTION = "Our company's COVID-19 Tracking System needs a huge update! Before we were only\n" +
                                                             "able to do a survey to ensure employees were not feeling any of the COVID symptoms, however now we are able to ask for\n" +
@@ -229,66 +229,65 @@ public class GamePrompts implements Serializable {
 
     public static final String PROJECT1_PROMPT = "Project Name:" + PROJECT1_NAME + "\n" +
                                                  "Project Description:" + PROJECT1_DESCRIPTION + "\n" +
-                                                 "\n" +
                                                  "Length of Project: 2 months \n" +
                                                  "Team Size: 3\n" +
-                                                 "Skills Required: Creativity, Observant, Artistic";
+                                                 "Skills Required: Creativity, Observant, Artistic" + "\n";
 
     public static final String PROJECT2_PROMPT = "Project Name:" + PROJECT2_NAME + "\n" +
-            "Project Description:" + PROJECT2_DESCRIPTION + "\n" +
-            "\n" + "Length of Project: 2 months \n" + "Team Size: 3 \n" + "Skills Required: Teamwork, Flexibility, Efficiency";
+            "Project Description:" + PROJECT2_DESCRIPTION + "\n" + "Length of Project: 2 months \n" + "Team Size: 3 \n" +
+            "Skills Required: Teamwork, Flexibility, Efficiency" + "\n";
 
     public static final String PROJECT3_PROMPT = "Project Name:" + PROJECT3_NAME + "\n" +
-            "Project Description:" + PROJECT3_DESCRIPTION + "\n" +
-            "\n" + "Length of Project: 2 months \n" + "Team Size: 3 \n" + "Skills: Creativity, Confidence, Artistic";
+            "Project Description:" + PROJECT3_DESCRIPTION +
+            "\n" + "Length of Project: 2 months \n" + "Team Size: 3 \n" + "Skills: Creativity, Confidence, Artistic" + "\n";
 
     public static final String PROJECT4_PROMPT = "Project Name:" + PROJECT4_NAME + "\n" +
-                                                 "Project Description: " + PROJECT4_DESCRIPTION + "\n" + "\n" +
+                                                 "Project Description: " + PROJECT4_DESCRIPTION + "\n" +
                                                  "Length of Project: 2 months \n" +
                                                  "Team Size: 3 \n" +
-                                                 "Skills Required: Leadership, Confidence, Responsible";
+                                                 "Skills Required: Leadership, Confidence, Responsible" + "\n";
 
     public static final String PROJECT5_PROMPT = "Project Name:" + PROJECT5_NAME + "\n" +
-                                                 "Project Description: " + PROJECT5_DESCRIPTION + "\n" + "\n" +
+                                                 "Project Description: " + PROJECT5_DESCRIPTION + "\n" +
                                                  "Length of Project: 2 months \n" +
                                                  "Team Size: 3 \n" +
-                                                 "Skills Required: Teamwork, Creativity, Efficiency";
+                                                 "Skills Required: Teamwork, Creativity, Efficiency" + "\n";
 
     public static final String PROJECT6_PROMPT = "Project Name:" + PROJECT6_NAME + "\n" +
-                                                 "Project Description: " + PROJECT6_DESCRIPTION + "\n" + "\n" +
+                                                 "Project Description: " + PROJECT6_DESCRIPTION + "\n" +
                                                  "Length of Project: 2 months \n" +
                                                  "Team Size: 3 \n" +
-                                                 "Skills Required: Patience, Creativity, Responsible";
+                                                 "Skills Required: Patience, Creativity, Responsible" + "\n";
 
     public static final String PROJECT7_PROMPT = "Project Name:" + PROJECT7_NAME + "\n" +
-                                                 "Project Description: " + PROJECT7_DESCRIPTION + "\n" + "\n" +
+                                                 "Project Description: " + PROJECT7_DESCRIPTION + "\n" +
                                                   "Length of Project: 2 months \n" +
                                                  "Team Size: 3 \n" +
-                                                 "Skills Required: Efficiency, Teamwork, Endurance";
+                                                 "Skills Required: Efficiency, Teamwork, Endurance" + "\n";
 
     public static final String PROJECT8_PROMPT = "Project Name:" + PROJECT8_NAME + "\n" +
-                                                 "Project Description: " + PROJECT8_DESCRIPTION + "\n" + "\n" +
+                                                 "Project Description: " + PROJECT8_DESCRIPTION + "\n" +
                                                  "Length of Project: 2 months \n" +
                                                  "Team Size: 3 \n" +
-                                                 "Skills Required: Leadership, Communication, Responsible";
+                                                 "Skills Required: Leadership, Communication, Responsible" + "\n";
 
     public static final String FINAL_PROJECT1_PROMPT = "Project Name:" + FINAL_PROJECT1_NAME + "\n" +
-                                                       "Project Description: " + FINAL_PROJECT1_DESCRIPTION + "\n" + "\n" +
+                                                       "Project Description: " + FINAL_PROJECT1_DESCRIPTION + "\n" +
                                                        "Length of Project: 2 months \n" +
                                                        "Team Size: 1 \n" +
-                                                       "Skills Required: Teamwork, Endurance, Creativity";
+                                                       "Skills Required: Teamwork, Endurance, Creativity" + "\n";
 
     public static final String FINAL_PROJECT2_PROMPT = "Project Name:" + FINAL_PROJECT2_NAME + "\n" +
-                                                       "Project Description: " + FINAL_PROJECT2_DESCRIPTION + "\n" + "\n" +
+                                                       "Project Description: " + FINAL_PROJECT2_DESCRIPTION + "\n" +
                                                        "Length of Project: 2 months \n" +
                                                        "Team Size: 1 \n" +
-                                                       "Skills Required: Efficiency, Communication, Analytical";
+                                                       "Skills Required: Efficiency, Communication, Analytical" + "\n";
 
     public static final String FINAL_PROJECT3_PROMPT = "Project Name:" + FINAL_PROJECT3_NAME + "\n" +
-                                                       "Project Description: " + FINAL_PROJECT3_DESCRIPTION + "\n" + "\n" +
+                                                       "Project Description: " + FINAL_PROJECT3_DESCRIPTION + "\n" +
                                                        "Length of Project: 2 months \n" +
                                                        "Team Size: 1 \n" +
-                                                       "Skills Required: Efficiency, Patience, Responsible";
+                                                       "Skills Required: Efficiency, Patience, Responsible" + "\n";
 
     //See usage in MonthMaker
     public static final String INTERN_ASSIGNING_SUCCESS = "The intern was successfully assigned to the project specified.";
