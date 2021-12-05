@@ -52,7 +52,9 @@ public class ResponseTreeMaker {
         return respTree;
     }
 
-    // ==================== BELOW ARE THE HELPER METHODS FOR generateInternResponses ====================
+
+    // ==================== BELOW ARE ALL THE HELPER METHODS FOR generateInternResponses ====================
+
 
     /**
      * HELPER FOR generateInternResponses
@@ -73,7 +75,7 @@ public class ResponseTreeMaker {
      * HELPER FOR generateInternResponses
      * This method will generate an Arraylist of Strings from the given text file
      * This will be used to generate a list of all possible questions, answers, and its corresponding skill
-     * (see method pairSkillToQuestion)
+     * (see method pairSkillToResponse)
      *
      * @return an Arraylist of Strings containing each question
      */
@@ -90,10 +92,11 @@ public class ResponseTreeMaker {
     /**
      * HELPER FOR generateInternResponses
      * This method will pair the given list of questions to the given list of answers.
+     * (see method pairSkillToResponse)
      *
      * @return an Arraylist in the format of [[Question1, Answer1], [Question2, Answer2], ...]
      */
-    private ArrayList<ArrayList<String>> generateTreeDataList(ArrayList<String> questions, ArrayList<String> answers) {
+    private ArrayList<ArrayList<String>> pairQuestionToAnswer(ArrayList<String> questions, ArrayList<String> answers) {
         ArrayList<ArrayList<String>> treeData = new ArrayList<>();
         for (int i = 0; i < questions.size(); i++) {
             ArrayList<String> innerList = new ArrayList<>();
@@ -108,21 +111,22 @@ public class ResponseTreeMaker {
      * HELPER FOR generateInternResponses
      * This method creates a hashmap that pairs all skills to all of its corresponding questions and answers
      * from the text files.
-     * corresponding_skills.txt is a text file of skills that corresponds to the questions and answers in the respective
-     * text files. It then creates a hashmap with the keys as skills and the values are a list of all questions and
-     * answers that correspond to the skill
-     * This map contains ALL the possible questions and answers (not just the questions and answers for the intern).
+     * Each line in corresponding_skills.txt, questions.txt and answers.txt correspond to each other; the question and
+     * answer are related to the given skill.
+     * This method then creates a hashmap where the keys are skills and the values are a nested ArrayList of all
+     * questions and answers that correspond to that skill.
+     * This map contains ALL the possible questions and answers (not just the responses  for the intern's tree).
      *
      * @return a hashmap with the format {skill1: [[q1, a1], [q2, a2], ...], skill2: [[q6, a6], ...], ...}
      */
-    private HashMap<String, ArrayList<ArrayList<String>>> pairSkillToQuestion() throws FileNotFoundException {
+    private HashMap<String, ArrayList<ArrayList<String>>> pairSkillToResponses() throws FileNotFoundException {
         // creating the list of questions, answers, and their corresponding skills
         ArrayList<String> questions = generateDialogueList("Resources/questions.txt");
         ArrayList<String> answers = generateDialogueList("Resources/answers.txt");
         ArrayList<String> skillList = generateDialogueList("Resources/corresponding_skills.txt");
 
         // pairing the questions and answers together
-        ArrayList<ArrayList<String>> responseList = generateTreeDataList(questions, answers);
+        ArrayList<ArrayList<String>> responseList = pairQuestionToAnswer(questions, answers);
 
         // now pairing the skills with the respective questions and answers
         HashMap<String, ArrayList<ArrayList<String>>> output = new HashMap<>();
@@ -142,40 +146,43 @@ public class ResponseTreeMaker {
     }
 
     /**
-     * HELPER METHOD FOR generateInternResponses; used in convertToNested method
-     * This is a helper method for generateInternResponses. Chooses the questions based on the intern's skills and
+     * HELPER METHOD FOR generateInternResponses; used in getNestedNodes method
+     * This is a helper method for generateInternResponses. It chooses the questions based on the intern's skills and
      * creates an ArrayList of all nodes we need for our ResponseTree.
      *
      * @return an ArrayList of all the nodes we need for our tree.
      */
-    private ArrayList<ResponseTree<ArrayList<String>>> chooseQuestions() throws FileNotFoundException{
-        ArrayList<ResponseTree<ArrayList<String>>> output = new ArrayList<>();
+    private ArrayList<ResponseTree<ArrayList<String>>> chooseResponses() throws FileNotFoundException{
+        ArrayList<ResponseTree<ArrayList<String>>> chosenResponses = new ArrayList<>();
+
+        // getting the set of the Intern's skills
         Set<String> internSkills = this.intern.getInternSkills().keySet();
 
-        // randomly choosing the questions based on the intern's skills; check chooseQuestionsHelper
+        // randomly choosing the questions based on the intern's skills; check chooseResponsesHelper
         for (String skill : internSkills) {
-            ArrayList<ResponseTree<ArrayList<String>>> questionList = chooseQuestionsHelper(skill);
-            output.addAll(questionList);
+            ArrayList<ResponseTree<ArrayList<String>>> questionList = chooseResponsesHelper(skill);
+            chosenResponses.addAll(questionList);
         }
 
         // removing the last element since we only need 14 nodes
-        output.remove(output.size() - 1);
-        return output;
+        chosenResponses.remove(chosenResponses.size() - 1);
+        return chosenResponses;
     }
 
     /**
-     * HELPER METHOD FOR chooseQuestions
-     * This method takes in an intern's skill and creates an arraylist of ResponseTree nodes which contain the
-     * question and answer that correspond to the given skill.
+     * HELPER METHOD FOR chooseResponses.
+     * This method takes in an intern's skill and chooses random questions and answers that pertain to the given skill.
+     * It creates an arraylist of ResponseTree nodes that contain the chosen questions/answers.
      *
      * @param skill this is the intern's skill
-     * @return an Arraylist in the format of [node1, node2, ...] where all the nodes pertain to the skill
+     * @return an Arraylist in the format of [node1, node2, ...] where all the nodes contain responses which pertain to
+     * the given skill.
      */
-    private ArrayList<ResponseTree<ArrayList<String>>> chooseQuestionsHelper(String skill) throws FileNotFoundException{
+    private ArrayList<ResponseTree<ArrayList<String>>> chooseResponsesHelper(String skill) throws FileNotFoundException{
         Random randomizer = new Random();
 
         // getting the map of all skills with all its corresponding responses
-        HashMap<String, ArrayList<ArrayList<String>>> questionMap = pairSkillToQuestion();
+        HashMap<String, ArrayList<ArrayList<String>>> questionMap = pairSkillToResponses();
 
         ArrayList<ResponseTree<ArrayList<String>>> questionList = new ArrayList<>();
 
@@ -194,19 +201,21 @@ public class ResponseTreeMaker {
     /**
      * HELPER METHOD for generateInternResponse
      * Creates a nested list of nodes, where each sublist corresponds to the depth in our tree and so it is ordered
-     * For example the first sublist will be the list = [child1, child2] where child1 and child2 are both nodes and
-     * the second sublist will be the list = [child3, child4...] and so on.
+     * For example the first sublist will be the list = [child1, child2] where child1 and child2 are the first options
+     * in the interview and the second sublist will be the list = [child3, child4...] where child3, child4, ...
+     * are the second options in the interview and so on.
      *
-     * @return this method returns an arraylist of arraylists of nodes
+     * @return An arraylist of arraylists of nodes which contain the Intern's responses
      */
     private ArrayList<ArrayList<ResponseTree<ArrayList<String>>>> getNestedNodes() throws FileNotFoundException {
-        ArrayList<ResponseTree<ArrayList<String>>> chosenQs = chooseQuestions();
+        // getting the list of chosen responses
+        ArrayList<ResponseTree<ArrayList<String>>> chosenResponses = chooseResponses();
         ArrayList<ArrayList<ResponseTree<ArrayList<String>>>> nested = new ArrayList<>();
 
         // creating the inner lists
-        ArrayList<ResponseTree<ArrayList<String>>> sublist1 = new ArrayList<>(chosenQs.subList(0, 2));
-        ArrayList<ResponseTree<ArrayList<String>>> sublist2 = new ArrayList<>(chosenQs.subList(2, 6));
-        ArrayList<ResponseTree<ArrayList<String>>> sublist3 = new ArrayList<>(chosenQs.subList(6, 14));
+        ArrayList<ResponseTree<ArrayList<String>>> sublist1 = new ArrayList<>(chosenResponses.subList(0, 2));
+        ArrayList<ResponseTree<ArrayList<String>>> sublist2 = new ArrayList<>(chosenResponses.subList(2, 6));
+        ArrayList<ResponseTree<ArrayList<String>>> sublist3 = new ArrayList<>(chosenResponses.subList(6, 14));
 
         // adding inner lists to the array
         nested.add(sublist1);
