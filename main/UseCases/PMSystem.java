@@ -121,6 +121,7 @@ public class PMSystem implements Serializable {
         StringBuilder res = new StringBuilder();
         for (Project proj : monthlyProjList) {
             res.append(proj.getName());
+            res.append("|");
         }
         return res.toString();
 
@@ -283,6 +284,17 @@ public class PMSystem implements Serializable {
         }
         return true;
     }
+    public HashMap<Project, ArrayList<HiredIntern>> getProjectToInterns(){
+        return this.projectToInterns;
+    }
 
+    public String getInternNamesProject(Project project) {
+        StringBuilder res = new StringBuilder();
+        for (Intern i : this.projectToInterns.get(project)) {
+            res.append(i.getInternName());
+            res.append("|");
+        }
+        return res.toString();
+    }
 
 }
