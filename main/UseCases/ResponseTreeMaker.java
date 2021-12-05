@@ -50,7 +50,9 @@ public class ResponseTreeMaker {
 
     /**
      * HELPER METHOD for generateInternResponse
-     * @return
+     * @return this method returns an arraylist of arraylists of nodes , where each sublist is a depth in our tree and
+     * so it is ordered. For example the first sublist will be the list = [child1, child2] where child1 and child2 are
+     * both nodes and the second sublist will be the list = [child3, child4...] and so on.
      * @throws FileNotFoundException
      */
     private ArrayList<ArrayList<ResponseTree<ArrayList<String>>>> getNestedNodes() throws FileNotFoundException {
@@ -119,7 +121,7 @@ public class ResponseTreeMaker {
      * HELPER METHOD FOR convertToNested method
      * This is a helper method for generateInternResponses. Creates an arraylist of all nodes we need for our dialogue
      * tree.
-     * @return
+     * @return an arraylist of all the nodes we need for our tree where each node is the list = [questionX, answerX].
      * @throws FileNotFoundException
      */
     private ArrayList<ResponseTree<ArrayList<String>>> chooseQuestions() throws FileNotFoundException{
@@ -138,7 +140,7 @@ public class ResponseTreeMaker {
      * HELPER METHOD FOR chooseQuestions
      * This method takes in an intern's skill and creates an arraylist of arraylists where each sublist is a question
      * and answer corresponding to an intern's skill
-     * @param skill
+     * @param skill this is the intern's skill
      * @return an Arraylist in the format of [[Question1, Answer1], [Question2, Answer2], ...]
      */
     private ArrayList<ResponseTree<ArrayList<String>>> chooseQuestionsHelper(String skill) throws FileNotFoundException{
