@@ -1,3 +1,4 @@
+
 ## Name of game: HR manager simulator 
 
 This project will imitate a game that allows the player to interview interns, assign interns to projects, assess the intern's performance and more. It is comprised 
@@ -17,17 +18,14 @@ Then, it will prompt the player to start the interview Level.
     
 ## First Level of the Game = Interview Level     
 
-In the Interview level, the player will be able to interview the list of InterviewInterns, the interns will have automated responses to the interview question 
-and the player will also be able to pick their own responses which will determine how the interview level progresses. The player will be able to choose if they 
-will hire the intern after each interview is over. The hired interns will be put in the company HR system. Therefore, the ‘hired’ list in the UseCases.HRSystem 
-will be updated to reflect the player’s choices.
+In the Interview level, the player will be able to interview the list of InterviewInterns, the interns will have automated responses to the interview question based off of their skills and the player will also be able to pick their own responses which will determine how the interview level progresses. The player will be able to choose if they will hire the intern after each interview is over. The hired interns will be put in the company HR system. Therefore, the ‘hired’ list in the UseCases.HRSystem will be updated to reflect the player’s choices.
 
 ## Second Level of the Game = Project Level 
 
 In the second level of the game, after the player has hired 6 interns from the list of 10 provided, the player will then be able to assign interns to projects 
 based off of the intern's skills and the skills required to complete the projects. 
 
-Each project runs for 2 months in our game, and note that month therefore is just a unit of time we are using.
+Each project runs for approximately 2 months in our game, and note that month therefore is just a unit of time we are using.
 Level two will run for a total of 4 months with a total of 4 projects in which 2 projects will be shown to player in the beginning of month 1 and 
 2 more projects will be shown to player at the beginning of month 3.
 At those times, the player will be able to assign, remove a certain intern from the project, check their assignments so far, and also check interns and projects info.
@@ -53,5 +51,7 @@ that stores prompts that are exception that will be displayed to the player. Als
 distinguish between interns the player will interview, Entities.InterviewIntern, and interns that the player will hire, Entities.HiredIntern, after the 
 interview/ first level of the game. Finally, we have Entities.Project which is the class for the 'projects' the player will be able to assign the HiredInterns to
 for the second and final level of the game.
+
+
 
 
