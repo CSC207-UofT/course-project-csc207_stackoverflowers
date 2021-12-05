@@ -13,6 +13,11 @@ public class ResponseTreeMaker {
 
     private final InterviewIntern intern;
 
+    /**
+     * The constructor for a ResponseTreeMaker.
+     *
+     * @param intern the intern that needs a ResponseTree.
+     */
     public ResponseTreeMaker(InterviewIntern intern) {
         this.intern = intern;
     }
@@ -52,9 +57,7 @@ public class ResponseTreeMaker {
         return respTree;
     }
 
-
     // ==================== BELOW ARE ALL THE HELPER METHODS FOR generateInternResponses ====================
-
 
     /**
      * HELPER FOR generateInternResponses
