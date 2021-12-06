@@ -91,7 +91,6 @@ public class MonthReportMaker implements ReportMaker {
     @Override
     public int calculateInternPerformance(HashMap<String, Double> internSkills,
                                           HashMap<String, Float> projectSkill) {
-
         int result = 0;
         ArrayList<Double> effectiveSkills = new ArrayList<Double>();
         for (String key : internSkills.keySet()) {
