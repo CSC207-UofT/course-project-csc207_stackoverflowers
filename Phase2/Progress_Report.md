@@ -1,4 +1,4 @@
-# Farzana: 
+ # Farzana: 
 My role during Phase 2 was to work on ResponseTreeMaker with Camille and Maggie. We talked through the structure, wrote up new text files for the tree, and created a new algorithm together which helped Camille 
 in implementing the code. I also worked on editing our code as the week went by, for example I changed the code so that classes InterviewLevel, InterviewMaker and HRSystem would recognize both 
 uppercase and lowercase A or B input from player. I also worked on editing minor issues we had in the code for ResponseTreeMaker. I also wrote up most of the aspects for our Design Document and Specification 
@@ -18,8 +18,16 @@ Significant pull request: My significant pull request is pull request #79, where
 
 
 # Maggie:
+During Phase 2, I worked on completing ResponseTreeMaker with Camille and Farzana. ResponseTreeMaker is the class that's 
+in charge of player's (interviewer) question choice and the interviewee's response during the interview process. This class 
+makes the interview process interactive. Together, we came up with the data structure, algorithm, methods, and text files
+for this class. In addition, I worked on polishing formats of certain game prompts.
 
-Significant pull request:
+Significant pull request: My significant pull request is linked right here: https://github.com/CSC207-UofT/course-project-csc207_stackoverflowers/pull/9 
+and https://github.com/CSC207-UofT/course-project-csc207_stackoverflowers/pull/15.
+In these two pull requests, I finished and further improved the implementation for class Project, which is an essential 
+entity class that represents a project in the game.
+
 
 # Camille:
 During Phase 2, I mainly worked on fixing ResponseTreeMaker with Maggie and Farzana. We created new questions and answers, and assigned corresponding skills for them
