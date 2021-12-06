@@ -21,7 +21,7 @@ public class GamePrompts implements Serializable {
 
     public static final String INTERN_INFO_HEADER = "Here is the list of interns that you have hired:";
 
-    public static final String PROJECT_INFO_HEADER = "Here are the projects that you are responsible for:";
+    public static final String PROJECT_INFO_HEADER = "Here are the projects that you are responsible for: \n";
 
     public static final String INTERN_UPGRADING_SUCCESS = "The skill was successfully assigned to the intern.";
 
@@ -31,7 +31,8 @@ public class GamePrompts implements Serializable {
 
     public static final String MAKE_UPGRADE_PROMPT_FINAL_MONTH = "This is the final month, no upgrade available.";
 
-    public static final String MAKE_UPGRADE_PROMPT_MONTH = " is the skill you can upgrade this month, who do you want to give this skill to? type 'assign intern to upgrade <internName>' to use.";
+    public static final String MAKE_UPGRADE_PROMPT_MONTH = " is the skill you can upgrade this month, which intern do you think deserves this skill upgrade?\n" +
+            "Type 'assign intern to upgrade <internName>' to use.";
 
     public static final String FIRST_PROMPT_BEFORE_NAME = "Welcome! My friend ";
 
@@ -45,7 +46,7 @@ public class GamePrompts implements Serializable {
 
     public static final String INTERN_RESPONSE_PROMPT = "The current Intern under review has the following response for you to consider:\n\n";
 
-    public static final String NEXT_CHOICE_PROMPT = "\n Please type 'a' or 'b' to select the next question to ask:\n";
+    public static final String NEXT_CHOICE_PROMPT = "\nPlease type 'a' or 'b' to select the next question to ask:\n";
 
     public static final String INFORM_QUIT_GAME = "You have quit your game, and you progress has been saved to a file " +
             "with the player name you've used. Type anything to see credits and quit. Player name: ";
@@ -56,7 +57,7 @@ public class GamePrompts implements Serializable {
     public static final String HOW_MANY_HIRED = "\nPlease note you have hired this number of interns so far:" +
             "\nNumber of interns hired: ";
 
-    public static final String TOO_MANY_HIRED = "\nSorry, you have already hired 6 interns. Please fire another intern " +
+    public static final String TOO_MANY_HIRED = "\nSorry, you have already hired 6 interns. Please fire one intern " +
             "or end the interviews now.\nPlease note that if you fire an intern you cannot hire them again and the recently interviewed intern will be hired.\nType the name of the intern you would like to fire or type 'end interview' to " +
             "end the interview process.\n";
 
@@ -84,7 +85,7 @@ public class GamePrompts implements Serializable {
     public static final String START_OF_MONTH_PROMPT_BEFORE_NAME = "Welcome to the start of the month. \n " +
             "Your job for this month, " ;
 
-    public static final String START_OF_MONTH_PROMPT_AFTER_NAME = " , is to manage some new projects. Assign the interns you see fit to the project!\n ";
+    public static final String START_OF_MONTH_PROMPT_AFTER_NAME = ", is to manage some new projects. Assign the interns you see fit to the project!\n ";
 
     public static final String CONFIRM_UPGRADE = "Now you have successfully chosen your intern to upgrade. Type 'confirm all decisions' if your sure of your choice and want to proceed to the next phase!";
     public static final String CONFIRM_ASSIGNING = "All interns have been assigned to a project, and here is the entire assignment you made so far. If you are sure with your decisions, type 'confirm all decisions'.\n" +
@@ -173,7 +174,7 @@ public class GamePrompts implements Serializable {
             "encryption practices are up-to-date and adhere to the General Data Protection Regulation. ";
 
     public static final String PROJECT6_DESCRIPTION =
-            "Computer programming for kids has many benefits that stretch far beyond the computer screen: critical thinking,\n" +
+                    "Computer programming for kids has many benefits that stretch far beyond the computer screen: critical thinking,\n" +
                     "creativity, and persistence, etc. That's why our company values teaching coding to children. Interns in this\n" +
                     "project will introduce k1-9 students to coding through the virtual classroom. They will work together to come\n" +
                     "up with activities, worksheets, games, homework, and simple interactive apps that pique children's interests\n" +
@@ -222,11 +223,11 @@ public class GamePrompts implements Serializable {
                     "The intern assigned to this project must be efficient in their coding and responsible enough to take on this project by themselves.";
 
     public static final String PROJECT1_PROMPT = "Project Name: " + PROJECT1_NAME + "\n" +
-            "Project Description: " + PROJECT1_DESCRIPTION + "\n" +
-            "\n" +
-            "Length of Project: 2 months \n" +
-            "Team Size: 3\n" +
-            "Skills Required: Creativity, Observant, Artistic" + "\n";
+                                                 "Project Description: " + PROJECT1_DESCRIPTION + "\n" +
+                                                 "\n" +
+                                                 "Length of Project: 2 months \n" +
+                                                 "Team Size: 3\n" +
+                                                 "Skills Required: Creativity, Observant, Artistic" + "\n";
 
     public static final String PROJECT2_PROMPT = "Project Name: " + PROJECT2_NAME + "\n" +
             "Project Description: " + PROJECT2_DESCRIPTION + "\n" +
