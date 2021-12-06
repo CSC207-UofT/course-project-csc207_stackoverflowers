@@ -110,7 +110,7 @@ public class GamePrompts implements Serializable {
             "Must feel good huh? Sit back and relax as we return to you the report on how the chosen one has done" +
             "after the month has finished. \n "+
             "type anything to continue and view the report that has been generated... ";
-    
+
 
     public static final String PROJECT1_NAME = "Logo Design";
     public static final String PROJECT2_NAME = "A Bug's Life";
