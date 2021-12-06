@@ -154,8 +154,7 @@ were quite unbalanced, so we encouraged members to try to balance their commits 
 
 
 ## Testing
-We tried to cover more bases in Phase 2 by testing some of our controllers/presenters for phase 2. We also tested our new UseCase class PMSystem to ensure it was working 
-effectively. 
+From Phase 1 , we tested most of our UseCases and for phase 2 we tried to cover more basesby testing some of our controllers/presenters for phase 2. We also tested our new UseCase class PMSystem to ensure it was working effectively.
 
 ## Refactoring
 At the beginning of our project in phase 0, HRSystem was initially a Entity class as it stored information. As we were coding, we realised that HRSystem was manipulating entities \
