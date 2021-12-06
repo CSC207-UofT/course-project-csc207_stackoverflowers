@@ -31,7 +31,7 @@ public class GamePrompts implements Serializable {
 
     public static final String MAKE_UPGRADE_PROMPT_FINAL_MONTH = "This is the final month, no upgrade available.";
 
-    public static final String MAKE_UPGRADE_PROMPT_MONTH = " is the skill you can upgrade this month, who do you want to give this skill to?";
+    public static final String MAKE_UPGRADE_PROMPT_MONTH = " is the skill you can upgrade this month, who do you want to give this skill to? type 'assign intern to upgrade <internName>' to use.";
 
     public static final String FIRST_PROMPT_BEFORE_NAME = "Welcome! My friend ";
 
@@ -78,10 +78,6 @@ public class GamePrompts implements Serializable {
 
     public static final String INTERVIEWED_TO_HIRE = "\n\nThe most recently interviewed intern has now been hired.\nThis is the intern you have chosen to hire:\n";
 
-
-    //todo: delete if not use
-    public static final String NEXT_CANDIDATE = "Would you like to move on to the next candidate?";
-
     public static final String END_OF_INTERVIEW_PROMPT = "Congratulations! You have successfully completed interviewing all " +
             "interns. Type anything to proceed to the next level of the game.";
 
@@ -94,7 +90,7 @@ public class GamePrompts implements Serializable {
 
     public static final String START_OF_MONTH_PROMPT_AFTER_NAME = " , is to manage some new projects. Assign the interns you see fit to the project!\n ";
 
-
+    public static final String CONFIRM_UPGRADE = "Now you have successfully chosen your intern to upgrade. Type 'confirm all decisions' if your sure of your choice and want to proceed to the next phase!";
     public static final String CONFIRM_ASSIGNING = "All interns have been assigned to a project, and here is the entire assignment you made so far. If you are sure with your decisions, type 'confirm all decisions'.\n" +
                                                    "If not, feel free to use the same given commands to modify your decisions.\n";
 
@@ -105,14 +101,13 @@ public class GamePrompts implements Serializable {
 
 
     public static final String FINAL_MONTH_PROMPT_BEFORE_PROJECT = "Ah, welcome to the last month where you get to assign interns to projects.\n" +
-                                                                   "Your final task is to assign one intern you think has performed well whowill be able to accomplish a bigger project on their own. Here's the project:\n";
+                                                                   "Your final task is to assign one intern you think has performed well who will be able to accomplish a bigger project on their own. Here's the project:\n";
   
     public static final String AVAILABLE_COMMANDS_IN_MONTH = "\n=====\n" + "Here are a list of commands you can do:\n" +
                                                                   "assign intern to project <Intern Name> <Project Name>\n" +
                                                                   "remove intern from project <Intern Name> <Project Name>\n" +
                                                                   "check interns info\n" +
-                                                                  "check project info\n " +
-            "check assign\n";
+                                                                  "check project info\n" + "check assign\n";
 
 
     public static final String END_OF_FINAL_MONTH_PROMPT = "Now you have finished assigning your SUPER intern to the FINAL project." +
@@ -290,15 +285,12 @@ public class GamePrompts implements Serializable {
                                                        "Team Size: 1 \n" +
                                                        "Skills Required: Efficiency, Patience, Responsible";
 
-    //See usage in MonthMaker
     public static final String INTERN_ASSIGNING_SUCCESS = "The intern was successfully assigned to the project specified.";
-
-    //See usage in MonthMaker
     public static final String INTERN_REMOVING_SUCCESS = "The intern was successfully removed from the project specified.";
     public static final String FIRST_PROMPT_AFTER_INTERNS = "Type anything to begin the interviewing process!";
 
-    public static final String END_OF_MONTH_REPORT_PROMPT = "That is the end of the report.";
-    public static final String END_OF_FINAL_MONTH_REPORT_PROMPT = "That's the end of the final month report.";
+    public static final String END_OF_MONTH_REPORT_PROMPT = "That is the end of the report. Type anything to continue.";
+    public static final String END_OF_FINAL_MONTH_REPORT_PROMPT = "That's the end of the final month report. Type anything to continue.";
 
     public final String REPORT_CONCLUSION = "That's all! Have a good day manager. :)";
 

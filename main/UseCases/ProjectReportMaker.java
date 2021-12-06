@@ -1,24 +1,21 @@
 package UseCases;
-import Entities.Exceptions;
-import Entities.GamePrompts;
-import Entities.HiredIntern;
-import Entities.Intern;
-import Entities.Project;
+import Entities.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ProjectReportMaker implements ReportMaker{
+public class ProjectReportMaker implements ReportMaker {
     private final GamePrompts prompts;
     private final HRSystem currentHRSystem;
     private final PMSystem currentPMSystem;
 
-    public ProjectReportMaker(HRSystem currentHRSystem, PMSystem currentPMSystem){
+    public ProjectReportMaker(HRSystem hrSystem, PMSystem pmSystem){
         this.prompts = new GamePrompts();
-        this.currentHRSystem = currentHRSystem;
-        this.currentPMSystem = currentPMSystem;
+        this.currentHRSystem = hrSystem;
+        this.currentPMSystem = pmSystem;
     }
+
     @Override
     public String makeReportHeader(int month) {
         return GamePrompts.REPORT_HEADER + month + "\n";
@@ -29,35 +26,33 @@ public class ProjectReportMaker implements ReportMaker{
         return "This is an end report of this completed project." + "\n";
     }
 
-
-    /*
-    project reportBody format
+    /* format for the reportBody
     Project name: xxx (need to access project.projectName)
-    Project overall result rating: 8/10 (randomly generated)
-
+    Project progress: excellent/fair/mediocre (average of internPerformance)
     Assigned interns: hhh, yyy, zzz (how do we know who are working on this project? Class Project needs an instance variable
                                      that stores the assigned interns, which first refers to None and later gets updated
                                      to refer to the list of assigned interns?)
-    Interns ratings and evaluations (comments need to be related to their performances in the monthly report & their ratings):
-        - hhh: 10/10: excellent leadership, great teamwork skills
-        - yyy: 7/10: a diligent worker, needs to improve on efficiency
-        - zzz: 3/10: poor attendance, bad teamwork
-    */
+    Interns performances (calculated by the skills * projectCompatability(A Dictionary)):
+        - hhh: excellent, exhibits great leadership skills
+        - yyy: great, but needs to be more efficient
+        - zzz: poor, could be potentially fired
+     */
     @Override
     public String makeReportBody( int currentMonth) {
         ArrayList<HiredIntern> interns = currentHRSystem.getHiredInternList();
-
         List<Project> projList = currentPMSystem.getProjects(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();
         for (Project proj : projList) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
         ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
-        return bakeProjectName(currentPMSystem.getProjectNames(currentMonth)) + "\n" +
-                bakeInterns(currentHRSystem.getHiredInternsNames()) + "\n" +
-                bakeInternsPerformances(interns, projectCompatibilityList);
+        return bakeProjectName(currentPMSystem.getProjectNames(currentMonth).split("\\|")[0]) + "\n" +
+                bakeInterns(currentPMSystem.getInternNamesProject(projList.get(0))) + "\n" +
+                bakeInternsPerformances(currentPMSystem.getProjectToInterns().get(projList.get(0)), projectCompatibilityList) + "\n" +
+                bakeProjectName(currentPMSystem.getProjectNames(currentMonth).split("\\|")[1]) + "\n" +
+                bakeInterns(currentPMSystem.getInternNamesProject(projList.get(1))) + "\n" +
+                bakeInternsPerformances(currentPMSystem.getProjectToInterns().get(projList.get(1)), projectCompatibilityList);
     }
-
 
     private ArrayList<HashMap<String, Double>> getHiredInternsSkills(ArrayList<HiredIntern> hiredInternList) {
         //Makes an arrayList full of internSkills.
@@ -77,11 +72,16 @@ public class ProjectReportMaker implements ReportMaker{
     public String bakeInterns(String internNames) {
         return internNames;
     }
+
     @Override
     public String bakeInternsPerformances (ArrayList<HiredIntern> interns, HashMap<String, Float> projectSkill) {
-        StringBuilder returnLine = new StringBuilder(GamePrompts.INTERN_PERFORMANCE_HEADER +
-                currentHRSystem.getHiredInternsNames() + "\n");
-        String[] internNamesList = currentHRSystem.getHiredInternsNames().split("|");
+        StringBuilder res = new StringBuilder();
+        for (Intern i : interns) {
+            res.append(i.getInternName());
+            res.append("|");
+        }
+        StringBuilder returnLine = new StringBuilder(GamePrompts.INTERN_PERFORMANCE_HEADER + res + "\n");
+        String[] internNamesList = res.toString().split("\\|");
         for (int i = 0; i != interns.size(); i+=1) {
             returnLine.append("     - ").append(internNamesList[i]).append(": ").append(calculateInternPerformance(interns.get(i).getInternSkills(), projectSkill)).append("\n");
         }
@@ -89,7 +89,9 @@ public class ProjectReportMaker implements ReportMaker{
     }
 
     @Override
-    public int calculateInternPerformance(HashMap<String, Double> internSkills, HashMap<String, Float> projectSkill) {
+    public int calculateInternPerformance(HashMap<String, Double> internSkills,
+                                          HashMap<String, Float> projectSkill) {
+
         int result = 0;
         ArrayList<Double> effectiveSkills = new ArrayList<Double>();
         for (String key : internSkills.keySet()) {
@@ -108,14 +110,16 @@ public class ProjectReportMaker implements ReportMaker{
         return prompts.REPORT_CONCLUSION;
     }
 
+
     @Override
     public String endOfMonthPrompt( int currentMonth) {
         if (currentMonth == HRSystem.FINAL_MONTH){return GamePrompts.END_OF_FINAL_MONTH_REPORT_PROMPT;}
         else{return GamePrompts.END_OF_MONTH_REPORT_PROMPT;}
     }
 
+    @Override
     public String confirmChoice(int currentMonth) {
-        return GamePrompts.CONFIRM_ASSIGNING + currentPMSystem.makeAssignmentToString(currentMonth);
+        return GamePrompts.CONFIRM_UPGRADE;
     }
 
     @Override
@@ -125,10 +129,9 @@ public class ProjectReportMaker implements ReportMaker{
 
     @Override
     public String getProjectInfo(int currentMonth) {
-        return GamePrompts.PROJECT_PROGRESS_HEADER + currentPMSystem.makeProjectsToString(currentMonth);
+        return GamePrompts.PROJECT_NAME_HEADER + currentPMSystem.makeProjectsToString(currentMonth);
     }
 
-    @Override
     public String upgradeIntern(String internName, int currentMonth, String randomSkillThisMonth) throws Exception {
         boolean success = currentHRSystem.upgradeInternSkill(internName, currentMonth,randomSkillThisMonth);
         if (!success){throw new Exception(Exceptions.INTERN_UPGRADING_FAILURE);}

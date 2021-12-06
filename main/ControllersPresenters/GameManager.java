@@ -111,7 +111,14 @@ public class GameManager {
                     break;
                 case Report:
                     currentMonth++;
-                    if (currentMonth < 4) {
+                    if (currentMonth == 2 | currentMonth == 4) {
+                        //if the current month is now 2 or 4, we now will display the projectReport,
+                        // with no monthLevel in between
+                        currentLevel = new ReportLevel(currentMonth, currentGameMaker.getCurrentHRSystem(),
+                                currentGameMaker.getCurrentPMSystem());
+                        break;
+                    }
+                    if (currentMonth == 3){
                         currentStatus = statusOfGame.Month;
                     } else {
                         currentStatus = statusOfGame.FinalMonth;
@@ -121,6 +128,8 @@ public class GameManager {
                     break;
                 case FinalMonth:
                     currentStatus = statusOfGame.FinalReport;
+                    currentLevel = new ReportLevel(currentMonth, currentGameMaker.getCurrentHRSystem(),
+                            currentGameMaker.getCurrentPMSystem());
                     break;
                 case FinalReport:
                     currentStatus = statusOfGame.End;
