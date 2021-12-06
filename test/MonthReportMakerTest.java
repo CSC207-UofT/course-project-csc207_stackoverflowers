@@ -1,4 +1,3 @@
-import ControllersPresenters.ReportLevel;
 import Entities.*;
 import UseCases.HRSystem;
 import UseCases.PMSystem;
@@ -13,7 +12,6 @@ import java.util.HashMap;
 
 public class MonthReportMakerTest {
 
-    ReportLevel reportLevel;
     HRSystem hrSystem;
     PMSystem pmSystem;
     MonthReportMaker reportMaker;

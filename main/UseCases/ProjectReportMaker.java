@@ -39,28 +39,17 @@ public class ProjectReportMaker implements ReportMaker {
      */
     @Override
     public String makeReportBody( int currentMonth) {
-        ArrayList<HiredIntern> interns = currentHRSystem.getHiredInternList();
         List<Project> projList = currentPMSystem.getProjects(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();
         for (Project proj : projList) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
-        ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
         return bakeProjectName(currentPMSystem.getProjectNames(currentMonth).split("\\|")[0]) + "\n" +
                 bakeInterns(currentPMSystem.getInternNamesProject(projList.get(0))) + "\n" +
                 bakeInternsPerformances(currentPMSystem.getProjectToInterns().get(projList.get(0)), projectCompatibilityList) + "\n" +
                 bakeProjectName(currentPMSystem.getProjectNames(currentMonth).split("\\|")[1]) + "\n" +
                 bakeInterns(currentPMSystem.getInternNamesProject(projList.get(1))) + "\n" +
                 bakeInternsPerformances(currentPMSystem.getProjectToInterns().get(projList.get(1)), projectCompatibilityList);
-    }
-
-    private ArrayList<HashMap<String, Double>> getHiredInternsSkills(ArrayList<HiredIntern> hiredInternList) {
-        //Makes an arrayList full of internSkills.
-        ArrayList<HashMap<String, Double>> internCompatabilityList  = new ArrayList<>();
-        for (Intern i : hiredInternList){
-            internCompatabilityList.add(i.getInternSkills());
-        }
-        return internCompatabilityList;
     }
 
     @Override
@@ -93,7 +82,7 @@ public class ProjectReportMaker implements ReportMaker {
                                           HashMap<String, Float> projectSkill) {
 
         int result = 0;
-        ArrayList<Double> effectiveSkills = new ArrayList<Double>();
+        ArrayList<Double> effectiveSkills = new ArrayList<>();
         for (String key : internSkills.keySet()) {
             double internSkill = internSkills.get(key);
             double compatibility = projectSkill.get(key);
