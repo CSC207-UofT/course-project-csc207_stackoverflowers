@@ -71,14 +71,19 @@ public class PMSystem implements Serializable {
         makeProjectToIntern(); //Fills the projectToIntern with keys but no values yet.
     }
 
-    //TODO: Add javadoc
+    /**
+     * This method initializes the private variable, hashmap ProjectToIntern.
+     */
     private void makeProjectToIntern(){
         for (Project p: projectList){
             projectToInterns.put(p, new ArrayList<>());
         }
     }
 
-    //TODO: Add javadoc
+    /**
+     * This method initializes and populates the private variable hashmap MonthToProject based on the projects
+     * from the ArrayList projectList.
+     */
     private void makeMonthToProject() {
         HashMap<Integer, ArrayList<Project>> monthToProject = new HashMap<>();
         ArrayList<Project> month1and2 = new ArrayList<>(projectList.subList(0, 2));
@@ -198,8 +203,10 @@ public class PMSystem implements Serializable {
         return false;
     }
 
-    /*
-    This method is a helper method that checks if a certain intern has already been assigned to a project.
+    /**
+     * This is a helper method that checks if a certain intern has already been assigned to a project.
+     * @param beingAssigned
+     * @return
      */
     private boolean checkAlreadyAssigned(HiredIntern beingAssigned) {
         for (Project proj: getProjects(currentMonth)){
@@ -284,6 +291,7 @@ public class PMSystem implements Serializable {
         }
         return true;
     }
+
     public HashMap<Project, ArrayList<HiredIntern>> getProjectToInterns(){
         return this.projectToInterns;
     }
