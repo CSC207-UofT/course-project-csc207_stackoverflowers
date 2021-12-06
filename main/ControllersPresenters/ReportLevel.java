@@ -7,6 +7,7 @@ import UseCases.FinalReportMaker;
 import UseCases.MonthReportMaker;
 import UseCases.ProjectReportMaker;
 import UseCases.ReportMaker;
+import UseCases.ReportMakerFinal;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -15,6 +16,7 @@ import java.util.Random;
 public class ReportLevel extends Level{
 
     private ReportMaker currentReportMaker;
+    private FinalReportMaker currentReportMakerFinal;
     private ReportPresenter currentReportPresenter;
     private int currentMonth;
     String randomSkillThisMonth = generateRandomSkill();
@@ -36,7 +38,7 @@ public class ReportLevel extends Level{
             currentReportMaker = new ProjectReportMaker(hrSystem, pmSystem);
         } if (month == 6) {
             //this is for the end of month 6
-            currentReportMaker = new FinalReportMaker(hrSystem, pmSystem);
+            currentReportMakerFinal = new FinalReportMaker(hrSystem, pmSystem);
         }
         currentMonth = month;
         upgradePrompt = currentReportMaker.makeUpgradePrompt(randomSkillThisMonth);
@@ -141,5 +143,8 @@ public class ReportLevel extends Level{
 
     public ReportMaker getCurrentReportMaker(){
         return currentReportMaker;
+    }
+    public ReportMakerFinal getCurrentReportMakerFinal(){
+        return currentReportMakerFinal;
     }
 }

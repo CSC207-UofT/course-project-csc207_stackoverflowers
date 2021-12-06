@@ -23,7 +23,7 @@ public class ReportLevelTest {
             } else if (num == 2 || num == 4) {
                 assertTrue( reportLevel.getCurrentReportMaker() instanceof ProjectReportMaker);
             } else {
-                assertTrue(reportLevel.getCurrentReportMaker() instanceof FinalReportMaker);
+                assertTrue(reportLevel.getCurrentReportMakerFinal() instanceof FinalReportMaker);
             }
         }
     }
