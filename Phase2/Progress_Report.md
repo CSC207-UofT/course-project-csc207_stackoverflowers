@@ -14,7 +14,7 @@ well as the Use Cases it relies on, i.e. HR System, PM System and Game prompts. 
 By deciding to split up HR System into PM System as well,
 we ensured the single use principle was kept as responsibilities related to interns and project were split. In interviewing, I added the limit on
 the number of interns a player could hire i.e. 6 and added functionality to fire an intern after the threshold has been reached or end it early as well as adding an
-option to type 'a or 'b' instead of the full question, allowing better player usability.
+option to type 'a or 'b' instead of the full question, allowing better player usability. Also edited minor changes like javadocs and testing.
 
 Significant pull request: My significant pull request was where the usability features mentioned above were added to interview level. (Pull request #101) which 
 can be seen here: https://github.com/CSC207-UofT/course-project-csc207_stackoverflowers/pull/101
