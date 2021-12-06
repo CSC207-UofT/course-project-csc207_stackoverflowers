@@ -14,19 +14,17 @@ public class MonthReportMaker implements ReportMaker {
         this.prompts = new GamePrompts();
         this.currentHRSystem = hrSystem;
         this.currentPMSystem = pmSystem;
-
     }
+
     @Override
     public String makeReportHeader(int month) {
         return GamePrompts.REPORT_HEADER + month + "\n";
     }
 
-
     @Override
     public String makeReportIntro() {
         return "This is an intermediate report of this ongoing project." + "\n";
     }
-
 
     /* format for the reportBody
     Project name: xxx (need to access project.projectName)
@@ -42,16 +40,18 @@ public class MonthReportMaker implements ReportMaker {
     @Override
     public String makeReportBody( int currentMonth) {
         ArrayList<HiredIntern> interns = currentHRSystem.getHiredInternList();
-
         List<Project> projList = currentPMSystem.getProjects(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();
         for (Project proj : projList) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
         ArrayList<HashMap<String, Double>> internsSkills = getHiredInternsSkills(currentHRSystem.getHiredInternList());
-        return bakeProjectName(currentPMSystem.getProjectNames(currentMonth)) + "\n" +
-                bakeInterns(currentHRSystem.getHiredInternsNames()) + "\n" +
-                bakeInternsPerformances(interns, projectCompatibilityList);
+        return bakeProjectName(currentPMSystem.getProjectNames(currentMonth).split("\\|")[0]) + "\n" +
+                bakeInterns(currentPMSystem.getInternNamesProject(projList.get(0))) + "\n" +
+                bakeInternsPerformances(currentPMSystem.getProjectToInterns().get(projList.get(0)), projectCompatibilityList) + "\n" +
+                bakeProjectName(currentPMSystem.getProjectNames(currentMonth).split("\\|")[1]) + "\n" +
+                bakeInterns(currentPMSystem.getInternNamesProject(projList.get(1))) + "\n" +
+                bakeInternsPerformances(currentPMSystem.getProjectToInterns().get(projList.get(1)), projectCompatibilityList);
     }
 
     private ArrayList<HashMap<String, Double>> getHiredInternsSkills(ArrayList<HiredIntern> hiredInternList) {
@@ -75,8 +75,13 @@ public class MonthReportMaker implements ReportMaker {
 
     @Override
     public String bakeInternsPerformances (ArrayList<HiredIntern> interns, HashMap<String, Float> projectSkill) {
-        StringBuilder returnLine = new StringBuilder(GamePrompts.INTERN_PERFORMANCE_HEADER + currentHRSystem.getHiredInternsNames() + "\n");
-        String[] internNamesList = currentHRSystem.getHiredInternsNames().split("\\|");
+        StringBuilder res = new StringBuilder();
+        for (Intern i : interns) {
+            res.append(i.getInternName());
+            res.append("|");
+        }
+        StringBuilder returnLine = new StringBuilder(GamePrompts.INTERN_PERFORMANCE_HEADER + res + "\n");
+        String[] internNamesList = res.toString().split("\\|");
         for (int i = 0; i != interns.size(); i+=1) {
             returnLine.append("     - ").append(internNamesList[i]).append(": ").append(calculateInternPerformance(interns.get(i).getInternSkills(), projectSkill)).append("\n");
         }
@@ -114,7 +119,7 @@ public class MonthReportMaker implements ReportMaker {
 
     @Override
     public String confirmChoice(int currentMonth) {
-        return GamePrompts.CONFIRM_ASSIGNING + currentPMSystem.makeAssignmentToString(currentMonth);
+        return GamePrompts.CONFIRM_UPGRADE;
     }
 
     @Override

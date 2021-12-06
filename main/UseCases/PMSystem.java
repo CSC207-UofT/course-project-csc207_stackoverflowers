@@ -41,6 +41,8 @@ public class PMSystem implements Serializable {
 
     private final HashMap<Project, ArrayList<HiredIntern>> projectToInterns;
 
+    private int currentMonth;
+
     // stores a project as a key and a list of HiredInterns assigned to that project as a value
 
     /**
@@ -54,6 +56,9 @@ public class PMSystem implements Serializable {
         this.projectToInterns = new HashMap<>();
     }
 
+    public void setCurrentMonth(int currentMonth) {
+        this.currentMonth = currentMonth;
+    }
 
     /**
      * This method updates the list of Entities.Project
@@ -62,8 +67,8 @@ public class PMSystem implements Serializable {
      */
     public void updateProjectList(ArrayList<Project> projects) {
         projectList = projects;
-        makeMonthToProject();//Fills monthToProject with the values needed.
-        makeProjectToIntern();//Fills the projectToIntern with keys but no values yet.
+        makeMonthToProject(); //Fills monthToProject with the values needed.
+        makeProjectToIntern(); //Fills the projectToIntern with keys but no values yet.
     }
 
     //TODO: Add javadoc
@@ -76,7 +81,7 @@ public class PMSystem implements Serializable {
     //TODO: Add javadoc
     private void makeMonthToProject() {
         HashMap<Integer, ArrayList<Project>> monthToProject = new HashMap<>();
-        ArrayList<Project> month1and2 = new ArrayList<>(projectList.subList(0, 1));
+        ArrayList<Project> month1and2 = new ArrayList<>(projectList.subList(0, 2));
         ArrayList<Project> month3and4 = new ArrayList<>(projectList.subList(2, 4));
         ArrayList<Project> month5and6 = new ArrayList<>(projectList.subList(4, 4));
         monthToProject.put(1, month1and2);
@@ -88,7 +93,6 @@ public class PMSystem implements Serializable {
         this.monthToProject = monthToProject;
     }
 
-
     /**
      * This method creates a String representation of all projects in Entities.Project per a given month level.
      *
@@ -96,6 +100,7 @@ public class PMSystem implements Serializable {
      * @return a String of project information for all projects done in the given month.
      */
     public String makeProjectsToString(int currentMonth) {
+        setCurrentMonth(currentMonth);
         List<Project> monthlyProjList = this.monthToProject.get(currentMonth);
         StringBuilder res = new StringBuilder();
         for (Project proj : monthlyProjList) {
@@ -116,6 +121,7 @@ public class PMSystem implements Serializable {
         StringBuilder res = new StringBuilder();
         for (Project proj : monthlyProjList) {
             res.append(proj.getName());
+            res.append("|");
         }
         return res.toString();
 
@@ -166,24 +172,38 @@ public class PMSystem implements Serializable {
      */
     public boolean assignInternToProject(String internName, String projectName) {
         //Should return true if assignment was successful.
-        //Else, should poi return false if Intern is already been assigned to another project, or if they are not hired.
         HiredIntern beingAssigned = null;
+
         for (HiredIntern i : this.currentHRSystem.getHiredInternList()){
             if (i.getInternName().equals(internName)){
                 beingAssigned = i;
             }
         }
         if (beingAssigned == null){
-            return false;
+            return false;//if the intern is not hired, return false
+        }
+        if (checkAlreadyAssigned(beingAssigned)){
+            return false;//If the intern has already been assigned to another project, return false
         }
 
         for (Project p : this.projectList) {
-
             // check if the interns in projectsToInterns is full according to each project's size
             if ((p.getName().equals(projectName)) & (this.projectToInterns.get(p).size() != p.getTeamSize()) ) {
                 ArrayList<HiredIntern> internsBefore = projectToInterns.get(p);
                 internsBefore.add(beingAssigned);
                 this.projectToInterns.put(p, internsBefore);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*
+    This method is a helper method that checks if a certain intern has already been assigned to a project.
+     */
+    private boolean checkAlreadyAssigned(HiredIntern beingAssigned) {
+        for (Project proj: getProjects(currentMonth)){
+            if (projectToInterns.get(proj).contains(beingAssigned)){
                 return true;
             }
         }
@@ -264,6 +284,17 @@ public class PMSystem implements Serializable {
         }
         return true;
     }
+    public HashMap<Project, ArrayList<HiredIntern>> getProjectToInterns(){
+        return this.projectToInterns;
+    }
 
+    public String getInternNamesProject(Project project) {
+        StringBuilder res = new StringBuilder();
+        for (Intern i : this.projectToInterns.get(project)) {
+            res.append(i.getInternName());
+            res.append("|");
+        }
+        return res.toString();
+    }
 
 }
