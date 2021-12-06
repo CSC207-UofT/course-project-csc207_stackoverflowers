@@ -16,7 +16,7 @@ public class InterviewLevel extends Level{
     /**
      * The constructor makes a new InterviewLevel for the current phase, and stores an
      * InterviewMaker to use it when needed.
-     * @param currentHRSystem the HRsystem being used by InterviewMaker.
+     * @param currentHRSystem the HRSystem being used by InterviewMaker.
      */
     public InterviewLevel(HRSystem currentHRSystem){
         this.currentInterviewMaker = new InterviewMaker(currentHRSystem);
