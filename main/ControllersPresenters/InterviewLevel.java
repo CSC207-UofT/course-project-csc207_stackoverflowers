@@ -155,16 +155,6 @@ public class InterviewLevel extends Level{
         return currentInterviewMaker.startOfInterviewPrompt();
     }
 
-
-    /**
-     * Get the player's choice to hire this intern as well as the hiring prompts
-     * from internToHire in UseCases.InterviewMaker
-     */
-    public String getHiringResponse(String input){
-        return currentInterviewMaker.internToHire(input);
-    }
-
-
     /**
      * This returns a prompt from InterviewMaker indicating the end of the interview level.
      * @return a String representation of the ending prompt.
@@ -172,7 +162,6 @@ public class InterviewLevel extends Level{
     public String getEndOfInterviewPrompt() {
         return currentInterviewMaker.endOfInterviewPrompt();
     }
-
 
     /**
      * This method updates the inherited private instance levelEnded to check when the interview level has ended.

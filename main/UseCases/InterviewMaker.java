@@ -56,16 +56,6 @@ public class InterviewMaker {
         return this.currentHRSystem.getInternChoiceResponse(input, currentInterviewIntern);
     }
 
-
-    /**
-     * This method prompts the player if they would like to hire this intern and stores the response
-     * @param playerInput the player's response to the Hiring Prompt.
-     */
-    public String internToHire(String playerInput){
-        return  GamePrompts.TO_HIRE_PROMPT ;
-    }
-
-
     /**
      * Get the string representation of hiredInterns from HRSystem.
      * @return a string of hired interns.
