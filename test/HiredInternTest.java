@@ -12,6 +12,6 @@ public class HiredInternTest {
         internSkills.put("Smart", 10.0);
         HiredIntern hiredIntern = new HiredIntern("Mar", 21, internSkills);
         hiredIntern.updateInternSkills("hi");
-        assertEquals(java.util.Optional.ofNullable(hiredIntern.getInternSkills().get("hi")), 5);
+        assert hiredIntern.getInternSkills().containsKey("hi");
     }
 }

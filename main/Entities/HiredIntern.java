@@ -19,6 +19,9 @@ public class  HiredIntern extends Intern implements Serializable {
     }
 
     public void updateInternSkills(String skillToUpgrade) {
-        internSkills.put(skillToUpgrade, internSkills.get(skillToUpgrade) + 5);
+        try{
+        internSkills.put(skillToUpgrade, internSkills.get(skillToUpgrade) + 5);}
+        catch(Exception e){
+            internSkills.put(skillToUpgrade, 5.0);}
+        }
     }
-}
