@@ -49,6 +49,15 @@ text files. ResponseTreeMaker had a lot of issues in Phase 1 since all the inter
 the dialogue during the interviews are now much more diverse. Here is the link: https://github.com/CSC207-UofT/course-project-csc207_stackoverflowers/pull/97
 
 # Jacob: 
-For Phase 2, my job was to test and debug the project with Mary. I wrote the code for reports, hence I raised issues and fixed problems related to parts of our code related to reports. I participated in the writing of accessibility report. I also raised several issues inregard to IDE settings for our project. Me and Mary worked together to refactor alot of inccorect text displays, missing exccpetion displays. On top of that we also worked on several parts of our code that had inccorect acceptnce towards invalid commands. We started our debugging process by following the comments made on our phase 1. Later we started doing our own tests on our code and found quite a few "program breaking" issues.
+For Phase 2, my job was to test and debug the project with Mary. I wrote the code for reports, hence I raised issues and
+fixed problems related to part of our code related to report. I participated in the writing of accessibility report. 
+I also raised several issues regarding IDE settings for our project. Me and Mary worked together to refactor alot of 
+incorrect text displays, missing exception displays. On top of that we also worked on several parts of our code that 
+had incorrect acceptance towards invalid commands. We started our debugging process by following the comments made on our
+phase 1. Later we started doing our own tests on our code and found quite a few "program breaking" issues.
 
-Significant pull request:  My pull request and changes are more spread out, but I think #123 describes my debugging process well. 
+Significant pull request:  My pull request and changes are more spread out, but I think #123 
+(https://github.com/CSC207-UofT/course-project-csc207_stackoverflowers/pull/123) describes my debugging 
+process well. The reportMakers I coded didn't display the 2 projects with interns in them properly. I added the method
+getInternNamesProject, which allowed the program to properly retrieve the properly formatted string formed by a list of 
+projects.
