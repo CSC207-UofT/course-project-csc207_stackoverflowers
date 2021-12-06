@@ -167,6 +167,11 @@ public class HRSystem implements Serializable {
         this.hiredInternList.add(hiredVersion);
     }
 
+    /**
+     * If the player wishes to fire a HiredIntern and hire another one, fireIntern removes the previously HiredIntern
+     * from the list of HiredInterns.
+     * @param intern a string representation of the name of the intern the player wishes to fire.
+     */
     public void fireIntern(String intern){
         int internIndex = -1;
         for (HiredIntern i : this.getHiredInternList()){
@@ -177,6 +182,12 @@ public class HRSystem implements Serializable {
         this.hiredInternList.remove(this.hiredInternList.get(internIndex));
     }
 
+    /**
+     * This method takes in an InterviewIntern and traversing its response tree, displaying the intern's question options
+     * in the form 'A' or 'B'.
+     * @param intern The desired InterviewIntern to display question choices.
+     * @return a string Representation of the InterviewIntern's choices in form 'A' or 'B'.
+     */
     public String choicesToString(InterviewIntern intern) {
         StringBuilder res = new StringBuilder();
         int optCount = 0;
@@ -195,6 +206,13 @@ public class HRSystem implements Serializable {
         return res.toString();
     }
 
+    /**
+     * Depending on the player's input of choice 'a' or 'b', this method takes in that choice and the current Interview
+     * Intern, displaying the associated response from the intern's responseTree.
+     * @param input a string representation of the player's choice of question 'a' or 'b'.
+     * @param intern the desired InterviewIntern to display a response for.
+     * @return a String representation of the response associated to the intern's chosen question.
+     */
     public String getInternChoiceResponse(String input, InterviewIntern intern) {
         //Updated this method, for each intern in interviewInternList the input based on that intern
         StringBuilder res = new StringBuilder();
@@ -213,17 +231,14 @@ public class HRSystem implements Serializable {
 
     }
 
-    //TODO: Ask Jacob for javadoc.
-
     /**
-     * Please finish javadoc
+     * This method upgrades an Entities.HiredIntern's Skill based on their name and month.
      *
-     * @param internName   doc
-     * @param currentMonth doc
-     * @return doc
+     * @param internName   the desired HiredIntern to upgrade.
+     * @param currentMonth the desired month to upgrade the HiredIntern for.
+     * @return true if the skill has been upgraded or false if the intern does not exist.
      */
     public boolean upgradeInternSkill(String internName, int currentMonth, String skillToUpgrade) {
-        //Now only returns false if an intern doesn't exist.
         for (HiredIntern i : this.hiredInternList) {
             if (i.getInternName().equals(internName)) {
                 if (!checkSkillSpace(skillToUpgrade, internName)) {
@@ -237,11 +252,10 @@ public class HRSystem implements Serializable {
         return false;
     }
 
-    //TODO: ask jacob for javadoc
     /**
-     * please finish javadoc
-     * @param currentMonth doc
-     * @return doc
+     * This method returns a boolean representing whether an Entities.HiredIntern has been upgraded already.
+     * @param currentMonth the desired month to check if the HiredIntern has been upgraded.
+     * @return true if the HiredIntern has been upgraded for the current month and false otherwise.
      */
     public boolean internUpgraded(int currentMonth) {
         for(HiredIntern i: hiredInternList){
@@ -249,12 +263,17 @@ public class HRSystem implements Serializable {
                 return true;
             }
         }
-        //a method that checks if an intern have been upgraded for this current month.
-        // returns true when a intern has been upgraded for this month.
         return false;
     }
 
-
+    /**
+     * This method checks if a chosen HiredIntern's skill can be upgraded depending on whether the max skill value has
+     * been reached or not.
+     * @param skillToUpgrade The skill desired to be upgraded.
+     * @param internName A string representation of the name of the intern, that is being checked.
+     * @return return false if this HiredIntern's skill value surpasses the maximum threshold and thus does not have any
+     * more space to upgrade with and true otherwise.
+     */
     private boolean checkSkillSpace(String skillToUpgrade, String internName) {
         for (HiredIntern i : this.hiredInternList) {
             if (i.getInternName().equals(internName) & i.getInternSkills().containsKey(skillToUpgrade)) {

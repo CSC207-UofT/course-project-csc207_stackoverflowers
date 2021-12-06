@@ -18,7 +18,19 @@ Then, it will prompt the player to start the interview Level.
     
 ## First Level of the Game = Interview Level     
 
-In the Interview level, the player will be able to interview the list of InterviewInterns, the interns will have automated responses to the interview question based off of their skills and the player will also be able to pick their own responses which will determine how the interview level progresses. The player will be able to choose if they will hire the intern after each interview is over. The hired interns will be put in the company HR system. Therefore, the ‘hired’ list in the UseCases.HRSystem will be updated to reflect the player’s choices.
+In the Interview level, the player will be able to interview the list of 10 InterviewInterns, the interns will have automated responses to the interview question and the player will also be able to pick their own responses which will determine how the interview level progresses. The player will be able to choose if they will hire the intern after each interview is over and must hire a maximum of 6 interns. The hired interns will be put in the company HR system. Therefore, the ‘hired’ list in the UseCases.HRSystem will be updated to reflect the player’s choices.
+
+The player is prompted to select from two choices-- a or b-- which question they wish to ask the intern first, providing 
+a different possible flow of interview when the game is played multiple times. Choosing an option yields a different response
+from the intern, letting the player consider whether they would like to hire the intern. At the end of 3 rounds of questioning,
+the player is prompted to input commands 'yes' or 'no' depending on their choice to hire the intern. This flow of interview
+happens for all 10 interns, unless the player decides to end the round of interviews early. 
+
+The interview level allows the user versatility in choosing which interns they would like to hire. The intern is promted
+at the start of the game that they only have a maximum of 6 interns to hire although
+they interview 10 interns. When an intern has hired 6 interns, they are able to end the level and procede to project level
+or hire the next intern and in doing so, fire the previously hired intern, allowing them to make changes to the hried interns
+if they wish to. 
 
 ## Second Level of the Game = Projects Level 
 

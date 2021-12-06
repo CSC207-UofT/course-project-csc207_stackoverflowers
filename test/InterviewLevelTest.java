@@ -67,13 +67,6 @@ public class InterviewLevelTest {
     }
 
     @Test(timeout = 1000)
-    public void TestGetHiringResponse(){
-        Object actual = lev.getHiringResponse("yes");
-        Object expected = make.internToHire("yes");
-        assertEquals(expected, actual);
-    }
-
-    @Test(timeout = 1000)
     public void TestGetEndOfInterviewPrompt(){
         String actual = lev.getEndOfInterviewPrompt();
         String expected = GamePrompts.END_OF_INTERVIEW_PROMPT;

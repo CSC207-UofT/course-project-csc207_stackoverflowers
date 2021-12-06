@@ -55,9 +55,8 @@ STEP 2: Interview level
 During the Interview portion of the game, a UseCases.InterviewMaker is created which initializes an HRSystem as well as an
 Entities.InterviewIntern needed to run the Interview. ControllersPresenters.InterviewLevel oversees the creation of the initial InterviewMaker,
 ensuring that no part of CLEAN architecture is violated. The interview level begins by ControllersPresenters.InterviewLevel
-displaying a prompt asking Player to choose who they would like to interview initially, indicating the start of an interview. The Player's response is then recorded and updated in the HRSystem created by UseCases.InterviewMaker.
-After selecting a specific Entities.InterviewIntern, the InterviewIntern's questions associated with their unique response tree from ResponseTreeMaker
-are outputted, allowing player to choose which question to ask the Entities.InterviewIntern. 
+displaying the first Entities.InterviewIntern to interview initially from the list of Entities.InterviewIntern, indicating the start of an interview. ControllersPresenters.InterviewLevel then displays options 'a' or 'b' of two possible responses the player could ask and the player's choice of input determines what response is given by the Entities.InterviewIntern.
+These possible choices and responses are gotten from the UseCases.ResponseTreeMaker associated with an intern.
 
 ABOUT RESPONSETREEMAKER: Each InterviewIntern has its own unique ResponseTree, which stores all the possible dialogue during an interview.
 It shows the questions the Player can ask, and the respective response from the intern. These ResponseTrees are
@@ -73,7 +72,12 @@ The InterviewIntern responds by HRSystem obtaining
 the InterviewIntern's corresponding response for the question from the response tree in ResponseTreeMaker (which has been assigned to each intern in
 Entities.Intern). The player is then prompted to input "yes" if they wish to hire the InterviewIntern or "no" otherwise. This is recorded
 and upon hiring, HRSystem updates the list of HiredInterns by adding the newly hired intern. After confirming a Player's decision to hire an intern,
-the Player now interviews the next intern from the InterviewInternList until all interns have been interviewed. Then, Entities.GamePrompts signifies the end
+the Player now interviews the next intern from the InterviewInternList until all interns have been interviewed. This regular flow of interview occurs when we have hired
+less than 6 interns. Since the maximum number of interns to be hired is 6, ControllersPresenters.InterviewLevel prompts the player
+if they would like to end the level early once tha maximum has been reached. If not, the currentHRSystem initialized in InterviewMaker fires the most recently interviewed intern from the list of HiredIntern and 
+hires the new intern that the player wishes to hire. This goes on until all 10 InterviewInterns have been interviewed unless 
+the player inputs the prompt 'end interview'. At either the end of round of interviews or at the stage where the player decides
+to end an interview early, Entities.GamePrompts signifies the end
 of an interview by outputting an end of interview prompt. 
 
 

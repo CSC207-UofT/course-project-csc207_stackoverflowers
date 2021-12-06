@@ -10,26 +10,6 @@ import java.util.*;
 /**
  * A manager class managing all methods pertaining to project, as well as project assignment
  */
-
-// Add classes containing project information -> done
-
-// Specifically check uses of now changed PMSystem classes where used in HRSystem -> done
-
-//Check uses of HRSystem and change to PMSystem where necessary (imports and related problems) -> done
-// Issues found so far:
-        /*
-        - MonthMaker, MonthReportMaker, reportLevel might have to take in PMSystem as a parameter as well now
-        - Also then have to change the MonthMaker, MonthReportMaker, reportLevel setup in MonthMaker test
-         */
-
-// Add a currentHRSystem to PMSystem and get internlist info from there as opposed to creating a private one
-// in this class. -> done
-
-// Check assign intern to project condition if we check whether a project is full b4 assigning ->done
-
-// Mary and Jacob should go over the changed test suites bc of added PMSystem when they debug. ->done
-
-
 public class PMSystem implements Serializable {
 
     private final HRSystem currentHRSystem;
@@ -42,7 +22,6 @@ public class PMSystem implements Serializable {
     private final HashMap<Project, ArrayList<HiredIntern>> projectToInterns;
 
     private int currentMonth;
-
     // stores a project as a key and a list of HiredInterns assigned to that project as a value
 
     /**
@@ -71,14 +50,19 @@ public class PMSystem implements Serializable {
         makeProjectToIntern(); //Fills the projectToIntern with keys but no values yet.
     }
 
-    //TODO: Add javadoc
+    /**
+     * This method initializes the private variable, hashmap ProjectToIntern.
+     */
     private void makeProjectToIntern(){
         for (Project p: projectList){
             projectToInterns.put(p, new ArrayList<>());
         }
     }
 
-    //TODO: Add javadoc
+    /**
+     * This method initializes and populates the private variable hashmap MonthToProject based on the projects
+     * from the ArrayList projectList.
+     */
     private void makeMonthToProject() {
         HashMap<Integer, ArrayList<Project>> monthToProject = new HashMap<>();
         ArrayList<Project> month1and2 = new ArrayList<>(projectList.subList(0, 2));
@@ -135,6 +119,14 @@ public class PMSystem implements Serializable {
      */
     public List<Project> getProjects(int currentMonth) {
         return this.monthToProject.get(currentMonth);
+    }
+
+    /**
+     * This method returns the HashMap projectToInterns and the values stored in it.
+     * @return the HashMap of the private variable projectToInterns.
+     */
+    public HashMap<Project, ArrayList<HiredIntern>> getProjectToInterns(){
+        return this.projectToInterns;
     }
 
     /**
@@ -198,8 +190,10 @@ public class PMSystem implements Serializable {
         return false;
     }
 
-    /*
-    This method is a helper method that checks if a certain intern has already been assigned to a project.
+    /**
+     * This is a helper method that checks if a certain intern has already been assigned to a project.
+     * @param beingAssigned the HiredIntern that is being checked for assigning status.
+     * @return true if this HiredIntern has been assigned from the hashmap projectToInterns and false otherwise.
      */
     private boolean checkAlreadyAssigned(HiredIntern beingAssigned) {
         for (Project proj: getProjects(currentMonth)){
@@ -209,7 +203,6 @@ public class PMSystem implements Serializable {
         }
         return false;
     }
-
 
     /**
      * This method removes a given Entities.HiredIntern from an assigned Entities.Project.
@@ -233,8 +226,6 @@ public class PMSystem implements Serializable {
         return false;
     }
 
-
-
     /**
      * This method adds the chosen final project to the current game's Entities.Project list.
      *
@@ -243,8 +234,6 @@ public class PMSystem implements Serializable {
     public void updateFinalProject(ArrayList<Project> finalProjForGame) {
         this.projectList.addAll(finalProjForGame);
     }
-
-
 
     /**
      * This method displays the Entities.Intern current skill point in String format.
@@ -267,7 +256,6 @@ public class PMSystem implements Serializable {
         return result.toString();
     }
 
-
     /**
      * This method checks if all Entities.HiredIntern have been assigned to an Entities.Project per a
      * given month.
@@ -284,10 +272,12 @@ public class PMSystem implements Serializable {
         }
         return true;
     }
-    public HashMap<Project, ArrayList<HiredIntern>> getProjectToInterns(){
-        return this.projectToInterns;
-    }
 
+    /**
+     * This method returns a string representation of Entities.HiredInterns associated to a given project, Project.
+     * @param project the desired project to obtain the names of HiredInterns from.
+     * @return a string representation of the HiredInterns associated to the given project.
+     */
     public String getInternNamesProject(Project project) {
         StringBuilder res = new StringBuilder();
         for (Intern i : this.projectToInterns.get(project)) {

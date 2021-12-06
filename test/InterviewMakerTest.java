@@ -1,10 +1,14 @@
 import Entities.GamePrompts;
+import Entities.HiredIntern;
+import Entities.InterviewIntern;
 import UseCases.HRSystem;
 
 import UseCases.InterviewMaker;
 import org.junit.Before;
 import org.junit.Test;
 
+
+import java.util.HashMap;
 
 import static org.junit.Assert.*;
 
@@ -25,19 +29,41 @@ public class InterviewMakerTest {
             assertEquals(expected, actual);
         }
 
-//        @Test(timeout = 1000)
-//        public void TestGetChoiceOptions(){
-//            String expected = make.getChoiceOptions();
-//            HRSystem sys = new HRSystem();
-//            String actual = sys.choicesToString();
-//            assertEquals(expected, actual);
-//        }
+        @Test(timeout = 1000)
+        public void TestGetChoiceOptions(){
+            String expected = make.getChoiceOptions();
+            HRSystem sys = new HRSystem();
+            InterviewIntern choiceIntern = new InterviewIntern("", 0, new HashMap<>());
+            for (InterviewIntern inter : sys.getInterviewInternList()){
+                if (make.currentInterviewInternToString().equals(inter.getInternName())){
+                    choiceIntern = inter;
+                }
+            }
+            String actual = sys.choicesToString(choiceIntern);
+            assertEquals(expected, actual);
+        }
 
         @Test(timeout = 1000)
-        public void TestChoicePrompt(){
-            String playerInput = "yes";
-            String expected = make.choicePrompt("That's great. Why don't you tell me a little about yourself?");
-            String actual = GamePrompts.PLAYER_CHOICE;
+        public void TestGetHiredInternString(){
+            String expected = make.getHiredInternString();
+            HRSystem sys = new HRSystem();
+            String actual = sys.makeHiredInternsToString();
+            assertEquals(expected, actual);
+        }
+
+        @Test(timeout = 1000)
+        public void TestFireIntern(){
+            HRSystem sys = new HRSystem();
+            sys.fireIntern(make.currentInterviewInternToString());
+            make.fireIntern(make.currentInterviewInternToString());
+            assertEquals(make.getHiredInternList(), sys.getHiredInternList());
+        }
+
+        @Test(timeout = 1000)
+        public void TestHaveInterviewsLeft(){
+            HRSystem sys = new HRSystem();
+            boolean expected = make.haveInterviewsLeft();
+            boolean actual = sys.getInterviewInternList().size() != make.getInterviewedInterns().size();
             assertEquals(expected, actual);
         }
 
