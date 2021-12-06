@@ -25,10 +25,6 @@ public class GamePrompts implements Serializable {
 
     public static final String INTERN_UPGRADING_SUCCESS = "The skill was successfully assigned to the intern.";
 
-    public static final String ASK_FOR_NAME = "Welcome to HRSimulator! To start the game, " +
-            "please enter your name.\n" +
-            "To load an already existing game under your name, please type 'load <name>'.";
-
     public static final String MAKE_UPGRADE_PROMPT_FINAL_MONTH = "This is the final month, no upgrade available.";
 
     public static final String MAKE_UPGRADE_PROMPT_MONTH = " is the skill you can upgrade this month, which intern do you think deserves this skill upgrade?\n" +

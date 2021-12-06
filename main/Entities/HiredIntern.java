@@ -19,15 +19,9 @@ public class  HiredIntern extends Intern implements Serializable {
     }
 
     public void updateInternSkills(String skillToUpgrade) {
-        //for now, it updates the first skills of the intern.
-        Set<String> keys = internSkills.keySet();
-        for (String k : keys){
-            if (Objects.equals(k, skillToUpgrade)){
-                //Setting the first skill in the internSkills to be upgraded.
-                getInternSkills().put(k, internSkills.get(k)+ 0.5);
-            }
+        try{
+        internSkills.put(skillToUpgrade, internSkills.get(skillToUpgrade) + 5);}
+        catch(Exception e){
+            internSkills.put(skillToUpgrade, 5.0);}
         }
     }
-
-
-}

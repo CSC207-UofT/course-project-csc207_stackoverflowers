@@ -40,7 +40,6 @@ public class ReportLevel extends Level{
         }
         currentMonth = month;
         upgradePrompt = currentReportMaker.makeUpgradePrompt(randomSkillThisMonth);
-        randomSkillThisMonth = generateRandomSkill();
         currentReportPresenter = new ReportPresenter();
     }
 

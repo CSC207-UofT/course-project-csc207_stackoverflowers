@@ -19,7 +19,9 @@ public class SPhase {
             System.out.println(e.getMessage());
         }
         Scanner in = new Scanner(System.in);
-        System.out.println(GamePrompts.ASK_FOR_NAME);
+        System.out.println("Welcome to HRSimulator! To start the game, " +
+                "please enter your name.\n" +
+                "To load an already existing game under your name, please type 'load <name>'.");
         while (GameManager.isRunning()) {
             String playerInput = in.nextLine();
             try {
@@ -31,7 +33,9 @@ public class SPhase {
                 if (e.getMessage().contains(Exceptions.INVALID_NAME_CONTENT)||
                         e.getMessage().contains(Exceptions.INVALID_NAME_EMPTY) ||
                         e.getMessage().contains(Exceptions.INVALID_NAME_SPACE)){
-                    System.out.println(GamePrompts.ASK_FOR_NAME);
+                    System.out.println("Welcome to HRSimulator! To start the game, " +
+                            "please enter your name.\n" +
+                            "To load an already existing game under your name, please type 'load <name>'.");
                 }
                 System.out.println(e.toString());
             }
