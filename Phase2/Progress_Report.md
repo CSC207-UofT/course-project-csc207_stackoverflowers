@@ -32,5 +32,6 @@ text files. ResponseTreeMaker had a lot of issues in Phase 1 since all the inter
 the dialogue during the interviews are now much more diverse. Here is the link: https://github.com/CSC207-UofT/course-project-csc207_stackoverflowers/pull/97
 
 # Jacob: 
+For Phase 2, my job was to test and debug the project with Mary. I wrote the code for reports, hence I raised issues and fixed problems related to parts of our code related to reports. I participated in the writing of accessibility report. I also raised several issues inregard to IDE settings for our project.
 
 Significant pull request: 
