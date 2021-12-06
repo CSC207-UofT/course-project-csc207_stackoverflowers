@@ -182,9 +182,9 @@ moving all required text files to resources folder.
 
 ## Code Smells We Fixed From Phase 1
 - For phase 2, we split up GameManager by creating class StartLevel. And GameMaker was also split to GameGenerators. Therefore, both classes are not as bloated as they used to be in phase 1.
-- We were worried about class HRSystem violating the Single Responsibility Principle, however, after we split HRSystem to PMSystem, this problem is solved.  
+- We also split HRSystem to PMSystem. Before we were worried that class HRSystem is violating the Single Responsibility Principle, however, after the split, this problem was solved.  
 - We removed any unused methods.
-- In phase 1, SPhase was reliant on GamePrompts which was an entity, but now it only depends on the Controller GameManager.
+- In phase 1, SPhase was reliant on GamePrompts which was an entity, but now it only depends on the Controller GameManager. This adheres to the CLEAN Architecture.
 
 
 ## Code Organization
@@ -196,11 +196,11 @@ to access and edit them.
 
 
 ## Functionality
-Our code tries the best to match the description and walk-through that we've first settled on. 
-I believe that the functionality of our code is sufficient, since we decided to implement variations of Levels (Final months and Final reports), and also have an interactive conversation tree. Although our player's choice of input may be limited compared to others, our group's aim is to follow CLEAN architecture and find means to collaborate well to make what we have written not only work, but also presentable. We focused on the structure, and also focused on the ability to extend and present a non-intimidating structure.
+We tries the best to match the description and walk-through that we've first settled on. 
+I believe that the functionality of our code is sufficient, since we decided to implement variations of Levels (Final months and Final reports), and also have an interactive conversation tree. Although our player's choice of input may be limited compared to others, our group's aim is to follow CLEAN architecture and find means to collaborate well to make what we have written not only work, but also presentable. We focused on the structure and the ability to extend and present a non-intimidating program.
 Our code has implemented the save and load function. We also have the command quit, and since now we don't ask for confirmation to quit, we are basically saving and quitting at the same time for quit.
 
-Our load function is able to now save player with duplicate name. Another aspect of our code is that during interview level in phase 1, player would have to type out word-for-word the question 
+Our load function is able to now save player with duplicate name, which is an improvement from Phase 1. Another aspect of our code is that during interview level in phase 1, player would have to type out word-for-word the question 
 player wishes to ask the intern, however now in phase 2, player can simply type in 'a' or 'b' which is much more user-friendly. We have also made it so that player can either type in 
 capital A/B or lowercase a/b and both will work during the interview.
 
