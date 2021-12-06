@@ -22,8 +22,14 @@ Significant pull request: My significant pull request is pull request #79, where
 Significant pull request:
 
 # Camille:
+During Phase 2, I mainly worked on fixing ResponseTreeMaker with Maggie and Farzana. We created new questions and answers, and assigned corresponding skills for them
+so that each intern would have a unique ResponseTree generated based on their skills. I implemented the helper methods in the class, and we all worked on figuring
+out how to generate the ResponseTrees together. I also wrote up a few tests for the helper methods in ResponseTreeMakerTest, but I commented
+them out since they are private methods. I also worked on our Design document.
 
-Significant pull request:
+Significant pull request: My significant pull request was adding all the new changes to ResponseTreeMaker, along with the 
+text files. ResponseTreeMaker had a lot of issues in Phase 1 since all the intern's response trees were exactly the same, and the nodes were constructed manually. After these changes were added,
+the dialogue during the interviews are now much more diverse. Here is the link: https://github.com/CSC207-UofT/course-project-csc207_stackoverflowers/pull/97
 
 # Jacob: 
 
