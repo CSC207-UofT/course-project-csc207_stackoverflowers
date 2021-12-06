@@ -30,7 +30,7 @@ Significant pull request: My significant pull request is pull request #79, where
 During Phase 2, I worked on completing ResponseTreeMaker with Camille and Farzana. ResponseTreeMaker is the class that's 
 in charge of player's (interviewer) question choice and the interviewee's response during the interview process. This class 
 makes the interview process interactive. Together, we came up with the data structure, algorithm, methods, and text files
-for this class. In addition, I worked on polishing formats of certain game prompts.
+for this class. In addition, I proofread game prompts and the design document.
 
 Significant pull request: My significant pull request is linked right here: https://github.com/CSC207-UofT/course-project-csc207_stackoverflowers/pull/9 
 and https://github.com/CSC207-UofT/course-project-csc207_stackoverflowers/pull/15.

@@ -1,4 +1,4 @@
-#Design Document for group StackOverflowers
+#Design Document for StackOverflowers
 
 ## SOLID
 
@@ -8,23 +8,23 @@ If you found that something in your design wasn't good, tell us about that too!
 Pretending part of your design is good — when you know it isn't — can potentially hurt your mark significantly!
 Acknowledging bad design can earn you marks and demonstrates understanding — especially if you discuss how you could fix it if you had more time!
 
-- Abstract class Level and its subclasses (InterviewLevel, MonthLevel, ReportLevel) adhere to the OPEN/CLOSED Principle. InterviewLevel, MonthLevel and ReportLevel all extend Level.
-  GameManager has an instance attribute that stores the current level, and its methods will work regardless of whether its an InterviewLevel, MonthLevel or a ReportLevel.
-  Following the OPEN/CLOSED Principle for abstract class level has allowed us to easily add a new level subclass named StartLevel that was able to easily extend the abstract class.
+- Abstract class Level and its subclasses (InterviewLevel, MonthLevel, ReportLevel) all adhere to the Open/Closed Principle. InterviewLevel, MonthLevel and ReportLevel all extend Level.
+  GameManager has an instance attribute that stores the current level, and its methods will work regardless of whether it's an InterviewLevel, MonthLevel or a ReportLevel.
+  Following the Open/Closed Principle for abstract class level has allowed us to easily add a new level subclass named StartLevel that was able to easily extend the abstract class.
 
-- Classes FinalReportMaker, ProjectReportMaker and MonthReportMaker all implement the ReportMaker interface and adhere to the OPEN/CLOSED and LISKOV SUBSTITUTION Principle.
+- Classes FinalReportMaker, ProjectReportMaker and MonthReportMaker all implement the ReportMaker interface and adhere to the Open/Closed and Liskov Substitution Principle.
   The ReportMaker Interface ensures that all necessary methods are implemented in each of the different ReportMakers. The ReportMakers all behave in the same way (or similarly enough) that
   the methods in ReportLevel work regardless of the type of ReportMaker being used. It also adheres to the Open/Closed Principle since it is extended by the LSP.
 
-- We have created new classes PMSystem, StartLevel and GameGenerators so that our code could follow the SINGLE RESPONSIBILITY PRINCIPLE. Previously, HRSystem was in charge of many methods,
-  however by splitting the HRSystem class by making a new class PMSystem, we were able to ensure each class had only one responsibility. GameMaker was split to GameGenerators so that
+- We have created new classes PMSystem, StartLevel and GameGenerators so that our code could follow the Single Responsibility Principle. Previously, HRSystem was in charge of many methods,
+  however, by splitting the HRSystem class to PMSystem, we were able to ensure each class had only one responsibility. GameMaker was split to GameGenerators so that
   GameGenerator's only responsibility was to generate anything that would be required for the game. StartLevel class was also created so that we could take some burden off of class GameManager
-  thus our code now adheres to the SINGLE RESPONSIBILITY PRINCIPLE.
+  thus our code now adheres to the Single Responsibility Principle.
 
-- We have ensured that our code has not violated the INTERFACE SEGREGATION Principle, for example, every method in the abstract class ReportMaker is used in all of its
+- We have ensured that our code has not violated the Interface Segregation Principle; for example, every method in the abstract class ReportMaker is used in all of its
   subclasses.
 
-- Finally, for the DEPENDENCY INVERSION PRINCIPLE, we have tried our best to also follow this principle. For example, GameManager only asks abstract class Level for details
+- Finally, we have tried our best to also follow Dependency Inversion Principle. For example, GameManager only asks abstract class Level for details
   instead of its subclasses, therefore, GameManager relies on the abstraction instead of concrete details.
 
 ## Clean Architecture
@@ -35,7 +35,7 @@ Describe a scenario walk-through and highlight how it demonstrates Clean Archite
 
 Mary will show UML diagram produced from intelliJ in lab. 
 
-## SCENARIO WALKTHROUGH: 
+## Scenario Walkthrough: 
 
 Starting the game -> Interview Level -> Assign interns to projects
 
@@ -58,7 +58,7 @@ ensuring that no part of CLEAN architecture is violated. The interview level beg
 displaying the first Entities.InterviewIntern to interview initially from the list of Entities.InterviewIntern, indicating the start of an interview. ControllersPresenters.InterviewLevel then displays options 'a' or 'b' of two possible responses the player could ask and the player's choice of input determines what response is given by the Entities.InterviewIntern.
 These possible choices and responses are gotten from the UseCases.ResponseTreeMaker associated with an intern.
 
-ABOUT RESPONSETREEMAKER: Each InterviewIntern has its own unique ResponseTree, which stores all the possible dialogue during an interview.
+About ResponseTreeMaker: Each InterviewIntern has its own unique ResponseTree, which stores all the possible dialogue during an interview.
 It shows the questions the Player can ask, and the respective response from the intern. These ResponseTrees are
 generated in the ResponseTreeMaker class. The ResponseTreeMaker takes in an intern and generates a ResponseTree
 based on the intern's skills. In Phase 1, we had settled on generating a tree with a fixed number of questions and a fixed dialogue, but now
@@ -92,9 +92,12 @@ compatability with this project (so the higher the percentage associated with a 
 requires this skill)
 
 STEP 4: Check monthly report
-- There is a report for every month in game. MonthlyReportMaker is used as the reportMaker when the currentMonth is 1,3 or 5. This is determined by the java logic (month < 6 & month % 2 == 1). ProjectReportMaker is used as the reportMaker when the currentMonth is 2 or 4. This is determined by java logic (month < 4 & month % 2 == 0).  FinallReportMaker is used as the reportMaker when the currentMonth is 6. All versions of reportMakers helps ReportLevel generate Strings and other variables in different situations. ReportLevel's getOutPutString is called in getOutPut in GameManager. The report is shown when function is called, and upon seeing the report, player's next input until finishedUpgrading(currentMonth) is true are considered as commands to ReportLevel. 
-- The report format:
-  Here is your report for the end of " + month 
+
+There is a report for every month in game. MonthlyReportMaker is used as the reportMaker when the currentMonth is 1,3 or 5. This is determined by the java logic (month < 6 & month % 2 == 1). ProjectReportMaker is used as the reportMaker when the currentMonth is 2 or 4. This is determined by java logic (month < 4 & month % 2 == 0).  FinallReportMaker is used as the reportMaker when the currentMonth is 6. All versions of reportMakers helps ReportLevel generate Strings and other variables in different situations. ReportLevel's getOutPutString is called in getOutPut in GameManager. The report is shown when function is called, and upon seeing the report, player's next input until finishedUpgrading(currentMonth) is true are considered as commands to ReportLevel. 
+
+The report format:
+
+  Here is your report for the end of x month 
 
   Project name: xxx 
 
@@ -107,11 +110,12 @@ STEP 4: Check monthly report
     - yyy: (int)
     - zzz: (int)
   That's all! Have a good day manager. :)
+
   After the report has been displayed, the player is able to choose a HiredIntern to upgrade a skill. The skill that is given is randomly generated by the reportMaker, and can be assigned to any intern wanted. After that, the player can confirm their decisions to move onto the next part of the game.
-  After this reportLevel has ended, the 
   
-STEP 5: Project Report
-  - This report comes right after the monthly report. Supposedly another month passed, so this time the entire project is finished. The ProjectReportMaker will be in charge of making all neccessary parts of the report and then reportLevel will output it.The formatting of the report will be very similar to the monthly report. It's just that after this report is displayed, the game will go to the next month, which requires assigning again!
+STEP 5: Project report
+
+This report comes right after the monthly report. Supposedly another month passed, so this time the entire project is finished. The ProjectReportMaker will be in charge of making all necessary parts of the report and then reportLevel will output it.The formatting of the report will be very similar to the monthly report. It's just that after this report is displayed, the game will go to the next month, which requires assigning again!
 
 
 
@@ -121,24 +125,25 @@ Most of our code structure was already implemented in phase 1, and so we did not
 
 1. FACTORY DESIGN PATTERN 
 
-We used the factory design pattern using ReportLevel to evaluate the player's response and the interface class ReportMaker that is implemented by the ProjectReportMaker, FinalReportMaker and MonthReportMaker subclasses. We created an interface class ReportMaker and let the concrete classes MonthReportMaker, 
-FinalReportMaker and ProjectReportMaker implement this interface. The interface holds the virtual constructor that defines the general description of the methods needed in each subclass (makeReportHeader(), makeReportIntro() etc.) and the subclasses holds the other requirements needed for example MonthReportMaker show progress of each month in the game whereas ProjectReportMaker will show the outcome of the project in each level. GameManager then instantiates the concrete 
-classes, and it can get a report object by checking the player’s input. So if a player wanted to check the month report, ReportLevel simply outputs the month report it without having to reach into the specific MonthReportMaker class. This was implemented as soon as Phase 0 was over, when DQ1 was due. 
+We used the factory design pattern using ReportLevel to evaluate the player's response, and the interface class ReportMaker that is implemented by the ProjectReportMaker, FinalReportMaker and MonthReportMaker subclasses. We created an interface class ReportMaker and let the concrete classes MonthReportMaker, 
+FinalReportMaker and ProjectReportMaker implement this interface. The interface holds the virtual constructor that defines the general description of the methods needed in each subclass (makeReportHeader(), makeReportIntro() etc.) and the subclasses hold other needed requirements. For example, MonthReportMaker shows progress of each month in the game whereas ProjectReportMaker shows the outcome of the project in each level. GameManager then instantiates the concrete 
+classes, and it can get a report object by checking the player’s input. So if a player wants to check the month report, ReportLevel simply outputs the month report without having to reach into the specific MonthReportMaker class. This was implemented as soon as Phase 0 was over, when DQ1 was due. 
 
 
 2. BUILDER PATTERN DESIGN 
 
-- Also for ReportMaker's, we used the design pattern Builder, as they are three different builders(ReportMakers) that have build a report using the same structure. Using The Builder pattern, we are able to assemble each component of the Report in ReportMaker, so that the ReportLevel only needs to generally ask the currentReportMaker for a report, instead of using a bunch of if- statements each time. 
+For ReportMaker's, we used the design pattern Builder, as they are three different builders (ReportMakers) that have build a report using the same structure. Using The Builder pattern, we are able to assemble each component of the Report in ReportMaker, so that the ReportLevel only needs to generally ask the currentReportMaker for a report, instead of using a bunch of if-statements each time. 
 
 3. OBSERVER DESIGN PATTERN 
-- We also kind of got inspiration from the Observer Design pattern, as our Abstract Class Level will change statuses, and those statuses need to be reported to GameManager. Right now we are making GameManager check each time if the status of the currentLevel has changed, so that it fits more into the Observer design pattern. 
+
+We also kind of got inspiration from the Observer Design pattern, as our Abstract Class Level changes statuses, and those statuses need to be reported to GameManager. Right now, we are making GameManager check each time if the status of the currentLevel has changed, so that it fits more into the Observer design pattern. 
 
 
 4. TEMPLATE DESIGN PATTERN 
 
-We incorporated a template design pattern when creating an abstraction for our Entities.Intern class which was formerly a single class. 
+We incorporated a template design pattern when creating an abstraction for our Entities.Intern class, which was formerly a single class. 
 With our current project, we initially created an entity for an Intern (which is a character in our HR System Simulator that is assigned projects after being interviewed). 
-Upon design of the code, we realized there is a need for distinction between two types of Intern, i.e. a HiredIntern (an intern who has passed the interview process and can be assigned projects) and an InterviewIntern (which engages in the Interview Phase of the project). 
+Upon design of the code, we realized there is a need for distinction between two types of Intern, i.e. a HiredIntern (an intern who has passed the interview process and can be assigned with projects) and an InterviewIntern (which engages in the Interview Phase of the project). 
 Thus, Intern was abstracted, implementing the invariant methods, leaving variant methods to be implemented by the unique characteristics of the subclasses HiredIntern and InterviewIntern. 
 In this way, Intern is our template that can be extended in the instance where a new type of Intern needs to be defined with its own unique behaviours.
 This was implemented after completion of Phase 0, during planning for new classes to be implemented in Phase 1.
@@ -147,7 +152,7 @@ This was implemented after completion of Phase 0, during planning for new classe
 ## Use of GitHub Features, Code Style and Documentation
 
 For Phase 2, we were much more careful about our pull requests by ensuring that everyone had properly updated their main. We also utilised git issues 
-by posting as many as we could, even minor ones, due to this we were able to use git issues as a reminder board for the whole team. In phase 1, we noticed our commits 
+by posting as many as we could, even minor ones. Due to this, we were able to use git issues as a reminder board for the whole team. In phase 1, we noticed our commits 
 were quite unbalanced, so we encouraged members to try to balance their commits with one another and this helped in getting everyone more involved in the code. 
 
 
@@ -161,7 +166,7 @@ rather than acting as one. So, to keep our design follow CLEAN, we did a refacto
 
 During coding there were also small refactors here and there to change method names, parameters, and also extract helper methods to make code more readable. See pull request #3 for GameMaker,  #19 for three ReportMakers, and #21 for MonthLevel.
 
-For Phase 2, a major refactoring we did was to create a new UseCase class PMSystem and Controller/Presenter class StartLevel. We created PMSystem to follow the SINGLE RESPONSIBILITY Principle 
+For Phase 2, a major refactoring we did was to create a new UseCase class PMSystem and Controller/Presenter class StartLevel. We created PMSystem to follow the Single Responsibility Principle 
 so that UseCase HRSystem is now only responsible for handling interns and PMSystem is responsible for handling anything related to project in our game. StartLevel was also 
 created to take some burden off of class GameManager. 
 
@@ -177,12 +182,12 @@ set up according to the intern's skill so the interview feels a lot more immersi
 Some minor changes include: changing code so that intern's skill now shows only 2 decimal places so it is easier to read and deleting text files from our main code and 
 moving all required text files to resources folder. 
 
-## Are there any obvious code smells still in your code that you missed fixing?
-- For phase 2, we split up GameManager by creating class StartLevel and GameMaker was also split to GameGenerators, therefore, both classes are not as bloated as they used to be in phase 1.
-- We were also worried about HRSystem but after creating class PMSystem we have dealt with the problem of HRSystem violating the SINGLE RESPONSIBILITY Principle.
-- We also removed any unused methods. 
-- In phase 1, SPhase was reliant on GamePrompts which was an entity, but now it only depends on the Controller GameManager. 
 
+## Code Smells We Fixed From Phase 1
+- For phase 2, we split up GameManager by creating class StartLevel. And GameMaker was also split to GameGenerators. Therefore, both classes are not as bloated as they used to be in phase 1.
+- We were worried about class HRSystem violating the Single Responsibility Principle, however, after we split HRSystem to PMSystem, this problem is solved.  
+- We removed any unused methods.
+- In phase 1, SPhase was reliant on GamePrompts which was an entity, but now it only depends on the Controller GameManager.
 
 
 ## Code Organization
@@ -198,7 +203,7 @@ Our code tries the best to match the description and walk-through that we've fir
 I believe that the functionality of our code is sufficient, since we decided to implement variations of Levels (Final months and Final reports), and also have an interactive conversation tree. Although our player's choice of input may be limited compared to others, our group's aim is to follow CLEAN architecture and find means to collaborate well to make what we have written not only work, but also presentable. We focused on the structure, and also focused on the ability to extend and present a non-intimidating structure.
 Our code has implemented the save and load function. We also have the command quit, and since now we don't ask for confirmation to quit, we are basically saving and quitting at the same time for quit.
 
-Our load function is able to now save player with duplicate name. Another aspect of our code is that during interview level, in phase 1, player would have to type out word-for-word the question 
+Our load function is able to now save player with duplicate name. Another aspect of our code is that during interview level in phase 1, player would have to type out word-for-word the question 
 player wishes to ask the intern, however now in phase 2, player can simply type in 'a' or 'b' which is much more user-friendly. We have also made it so that player can either type in 
 capital A/B or lowercase a/b and both will work during the interview.
 
