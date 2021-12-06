@@ -43,7 +43,29 @@ public class InterviewMakerTest {
             assertEquals(expected, actual);
         }
 
+        @Test(timeout = 1000)
+        public void TestGetHiredInternString(){
+            String expected = make.getHiredInternString();
+            HRSystem sys = new HRSystem();
+            String actual = sys.makeHiredInternsToString();
+            assertEquals(expected, actual);
+        }
 
+        @Test(timeout = 1000)
+        public void TestFireIntern(){
+            HRSystem sys = new HRSystem();
+            sys.fireIntern(make.currentInterviewInternToString());
+            make.fireIntern(make.currentInterviewInternToString());
+            assertEquals(make.getHiredInternList(), sys.getHiredInternList());
+        }
+
+        @Test(timeout = 1000)
+        public void TestHaveInterviewsLeft(){
+            HRSystem sys = new HRSystem();
+            boolean expected = make.haveInterviewsLeft();
+            boolean actual = sys.getInterviewInternList().size() != make.getInterviewedInterns().size();
+            assertEquals(expected, actual);
+        }
 
         @Test(timeout = 1000)
         public void TestEndOfInterviewPrompt(){

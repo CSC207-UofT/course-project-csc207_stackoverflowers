@@ -64,8 +64,6 @@ public class GamePrompts implements Serializable {
 
     public static final String CONFIRM_FIRING = "You have successfully fired this intern.";
 
-    public static final String TO_HIRE_PROMPT = "Please type 'yes' if you would like to hire this intern and 'no' otherwise";
-
     public static final String HIRED_INTERN = "Congratulations! You have hired this intern! ";
 
     public static final String NOT_HIRED_INTERN = "You have chosen not to hire this intern. ";
@@ -73,8 +71,6 @@ public class GamePrompts implements Serializable {
     public static final String CHOSEN_INTERNS_TO_HIRE = "\nYou have chosen to hire the following interns: \n";
 
     public static final String NEXT_INTERVIEW_INTERN_PROMPT = "It is now time to interview the next intern.\nPlease select the first question to ask. ";
-
-    public static final String PLAYER_CHOICE = "Please type in the sentence you wish to ask";
 
     public static final String INTERVIEWED_TO_HIRE = "\n\nThe most recently interviewed intern has now been hired.\nThis is the intern you have chosen to hire:\n";
 
@@ -176,9 +172,9 @@ public class GamePrompts implements Serializable {
             "such as malware, phishing, SQL injection, and DNS tunneling. They will also help ensuring that our company's\n" +
             "encryption practices are up-to-date and adhere to the General Data Protection Regulation. ";
 
+
     public static final String PROJECT6_DESCRIPTION =
-            """
-                    Computer programming for kids has many benefits that stretch far beyond the computer screen: critical thinking,
+            """       Computer programming for kids has many benefits that stretch far beyond the computer screen: critical thinking,
                     creativity, and persistence, etc. That's why our company values teaching coding to children. Interns in this
                     project will introduce k1-9 students to coding through the virtual classroom. They will work together to come\040
                     up with activities, worksheets, games, homework, and simple interactive apps that pique children's interests\040
@@ -225,6 +221,7 @@ public class GamePrompts implements Serializable {
              able to upload their 'vaccine passports' without any hassle. The company also would like to add a new feature to the
              Tracking System that allows employees to request work from home whenever they feel any symptoms of a fever or cold.
              The intern assigned to this project must be efficient in their coding and responsible enough to take on this project by themselves.""";
+
 
     public static final String PROJECT1_PROMPT = "Project Name:" + PROJECT1_NAME + "\n" +
                                                  "Project Description:" + PROJECT1_DESCRIPTION + "\n" +
