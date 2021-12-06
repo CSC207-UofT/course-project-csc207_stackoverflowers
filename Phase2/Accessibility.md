@@ -22,8 +22,7 @@
       To make our code more accountable for lowering physical effort in the future, we could try to make a user interface with button interactions instead of keyboard input. That way the physical effort of choosing and pressing a key, is far less than the physical effort of typing in a given command.
    
    7. Size and Space for Approach and Use
-      The size and space for approach and use is not that relevant to our project. That is because our project is a software, so we have no say in which hardware it will be used in. However, from our end, to play our game, you simply need to download our git repo and run SPhase. (???)
-   Also, the size of our game does not exceed 10 MB. So it requires very less storage space to be able to run.
+      The size and space for approach and use is not that relevant to our project. That is because our project is a software, so we have no say in which hardware it will be used in. However, from our end, to play our game, you simply need to download our git repo and run SPhase on intellij with jdk Amazon Corretto version 11.0.12 installed. Also, the size of our game does not exceed 10 MB. So it requires very little storage space to run.
 
 3. Write a paragraph about who you would market your program towards, if you were to sell or license your program to customers. This could be a specific category such as "students" or more vague, such as "people who like games". Try to give a bit more detail along with the category.
    Since our project is a game, we would promote our program towards the game market. Also, we might see that our HRSimulator might be useful for an HR training system as well: it has potential to simulate real life situations and give feedback as to how one's decision might decide a companies' fate. 
