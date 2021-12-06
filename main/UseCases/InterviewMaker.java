@@ -47,10 +47,6 @@ public class InterviewMaker {
         return this.currentHRSystem.choicesToString(currentInterviewIntern);
     }
 
-    public String choicePrompt(String playerInput){
-        return GamePrompts.PLAYER_CHOICE;
-    }
-
 
     /**
      * This method takes in the Player's choice from method playerChoice and returns the interviewIntern's
@@ -59,7 +55,6 @@ public class InterviewMaker {
     public String displayInternChoiceResponse(String input){
         return this.currentHRSystem.getInternChoiceResponse(input, currentInterviewIntern);
     }
-
 
 
     /**
@@ -79,7 +74,11 @@ public class InterviewMaker {
         return currentHRSystem.makeHiredInternsToString();
     }
 
-    //TODO: Add javadoc
+    /**
+     * This method obtains the arraylist storing HiredInterns from HRSystem.
+     * @return an ArrayList of HiredInterns stored in HRSystem.
+     */
+
     public ArrayList<HiredIntern> getHiredInternList(){
         return currentHRSystem.getHiredInternList();
     }
@@ -91,12 +90,19 @@ public class InterviewMaker {
         this.currentHRSystem.hireIntern(this.currentInterviewIntern);
     }
 
-    //TODO: add javadoc
+    /**
+     * If the player wishes to remove a HiredIntern and hire another one, fireIntern removes the previously HiredIntern
+     * from the list of HiredInterns in HRSystem.
+     * @param intern the name of the intern they wish to fire.
+     */
     public void fireIntern(String intern){
         this.currentHRSystem.fireIntern(intern);
     }
 
-    //TODO: add javadoc
+    /**
+     * This method provides a string representation of the InterviewIntern that is currently being interviewed.
+     * @return a string representation of the current InterviewIntern being interviewed.
+     */
     public String currentInterviewInternToString(){
         return this.currentInterviewIntern.internToString();
     }
@@ -130,6 +136,11 @@ public class InterviewMaker {
         return res.toString();
     }
 
+    /**
+     * This method returns the final prompt signifying the end of the interview, allowing player to procede to the next
+     * level of the game.
+     * @return a String representation of the endOfInterviewPrompt in Entities.GamePrompts
+     */
     public String endOfInterviewPrompt(){
         return GamePrompts.END_OF_INTERVIEW_PROMPT;
     }
@@ -143,7 +154,6 @@ public class InterviewMaker {
                 this.currentInterviewIntern = intern;
         }
     }
-
 
     /**
      * This method checks if the intern's current response is the last response on their response tree
@@ -168,6 +178,11 @@ public class InterviewMaker {
         return this.currentHRSystem.getInterviewInternList().size() != this.interviewedInterns.size();
     }
 
+    /**
+     * This method updates the intern tree to the next tree, to obtain that Entities.InterviewIntern's next choices
+     * and responses.
+     * @param theWanted an integer value of the intended branch in the tree to traverse.
+     */
     public void updateInternTree(int theWanted) {
         currentInterviewIntern.setResponseTree(currentInterviewIntern.getResponseTree().getChildren().get(theWanted));
     }
