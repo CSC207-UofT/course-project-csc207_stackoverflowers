@@ -106,7 +106,7 @@ public class InterviewMaker {
         ResponseTree<ArrayList<String>> responseTree = this.currentInterviewIntern.getResponseTree();
         res.append(responseTree.getData());
 
-        res.append("\n\nThese are your options to ask the intern, please enter either 'A' or 'B' to ask a question. \n");
+        res.append("\n\nThese are your options to ask the intern, please enter either 'A' or 'B' to ask a question.\nType 'no' to automatically end the interview if you do not wish to hire this intern\nHowever, note that you will not be able to hire this intern again if you pass!\n\n");
         int optCount = 0;
         for (ResponseTree<ArrayList<String>> response : responseTree.getChildren()){
             // if the response tree is a root, display the interns initial response(i.e. name, age & skill info).
