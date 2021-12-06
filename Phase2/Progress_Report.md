@@ -9,7 +9,16 @@ Significant pull request: I was responsible for creating UseCase class GameGener
 
 # Enam: 
 
-Significant pull request:
+My role in Phase 2 was primarily to carry out the changes in the flow of interviewing through changing interview Level and interview Maker as
+well as the Use Cases it relies on, i.e. HR System, PM System and Game prompts. I also refactored HR System to both HR System and PM System.
+By deciding to split up HR System into PM System as well,
+we ensured the single use principle was kept as responsibilities related to interns and project were split. In interviewing, I added the limit on
+the number of interns a player could hire i.e. 6 and added functionality to fire an intern after the threshold has been reached or end it early as well as adding an
+option to type 'a or 'b' instead of the full question, allowing better player usability.
+
+Significant pull request: My significant pull request was where the usability features mentioned above were added to interview level. (Pull request #101) which 
+can be seen here: https://github.com/CSC207-UofT/course-project-csc207_stackoverflowers/pull/101
+
 
 # Mary(Yijia): 
 My role during Phase 2 was to work on general debugging and testing. Since I wrote code related to loading and saving, I mainly changed stuff according to TA's feedback, and also raised issues as soon as I found issues in SPhase. I was also in charge of writing the accessibility report with Jacob.
