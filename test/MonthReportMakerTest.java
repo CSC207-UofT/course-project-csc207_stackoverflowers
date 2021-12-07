@@ -25,16 +25,14 @@ public class MonthReportMakerTest {
     }
 
     @Test
-    public void testMakeReportHeader() throws FileNotFoundException {
-        setup();
+    public void testMakeReportHeader(){
         String actual = reportMaker.makeReportHeader(1);
         String expected = GamePrompts.REPORT_HEADER + 1 + '\n';
         assertEquals(actual, expected);
     }
 
     @Test
-    public void testBakeProjectName() throws FileNotFoundException {
-        setup();
+    public void testBakeProjectName(){
         String actual = reportMaker.bakeProjectName("a name");
         String expected = GamePrompts.PROJECT_NAME_HEADER + "a name";
         assertEquals(actual, expected);
@@ -51,37 +49,31 @@ public class MonthReportMakerTest {
      */
 
     @Test
-    public void testEndOfMonthPromptNotFinal() throws FileNotFoundException {
-        setup();
+    public void testEndOfMonthPromptNotFinal() {
         String actual = reportMaker.endOfMonthPrompt(1);
         String expected = GamePrompts.END_OF_MONTH_REPORT_PROMPT;
         assertEquals(actual, expected);
     }
 
     @Test
-    public void testEndOfMonthPromptFinal() throws FileNotFoundException {
-        setup();
+    public void testEndOfMonthPromptFinal(){
+
         String actual = reportMaker.endOfMonthPrompt(6);
         String expected = GamePrompts.END_OF_MONTH_REPORT_PROMPT;
         assertEquals(actual, expected);
     }
 
-    class TestDuringProject {
-        @Before
-        public void setUp() throws Exception {
-            //Set tup the hrSystem so that it has some interns and projects in it.
-            HRSystem hrSystem = new HRSystem();
-            hrSystem.updateHiredInternList(makeInterns());
-            pmSystem.updateProjectList(makeProjects());
-            reportMaker = new MonthReportMaker(hrSystem, pmSystem);
-        }
-
-        @Test
-        public void testCheckUpgradedTrue() {
-            boolean actual = reportMaker.checkUpgraded(1);
-            boolean expected = hrSystem.internUpgraded(1);
-            assertEquals(actual, expected);
-        }
+    @Test
+    public void testCheckUpgradedFalse() throws Exception {
+        setup();
+        pmSystem.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
+        pmSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
+        pmSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
+        reportMaker.upgradeIntern("Mary", 1, "Confidence");
+        boolean actual = reportMaker.checkUpgraded(1);
+        boolean expected = hrSystem.internUpgraded(1);
+        assertEquals(actual, expected);
+    }
 
 //        @Test(timeout = 100)
 //        public void testGetUpgradingInfo() throws Exception {
@@ -130,7 +122,6 @@ public class MonthReportMakerTest {
 //            String expected = GamePrompts.REPORT_HEADER + 1 + '\n';
 //            Assertions.assertEquals(actual, expected);
 //        }
-    }
 
     private ArrayList<Project> makeProjects() throws FileNotFoundException {
         //A helper function that sets up the Projects in HRSystem for the test.
