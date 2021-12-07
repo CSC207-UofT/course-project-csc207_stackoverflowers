@@ -169,6 +169,7 @@ public class PMSystem implements Serializable {
         for (HiredIntern i : this.currentHRSystem.getHiredInternList()){
             if (i.getInternName().equals(internName)){
                 beingAssigned = i;
+                break;
             }
         }
         if (beingAssigned == null){
