@@ -108,7 +108,7 @@ public class MonthLevelTest {
         try {
             monthLevel.getOutputString("assign intern to project Mary ");
         } catch (Exception e) {
-            assertTrue(e.toString().contains(Exceptions.INTERN_ASSIGNING_FAILURE));
+            assertTrue(e.toString().contains(Exceptions.INVALID_COMMAND));
         }
     }
 
