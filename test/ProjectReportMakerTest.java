@@ -1,8 +1,7 @@
 import Entities.*;
 import UseCases.HRSystem;
 import UseCases.PMSystem;
-import UseCases.MonthReportMaker;
-
+import UseCases.ProjectReportMaker;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
@@ -10,11 +9,12 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MonthReportMakerTest {
+public class ProjectReportMakerTest {
 
     HRSystem hrSystem;
     PMSystem pmSystem;
-    MonthReportMaker reportMaker;
+    ProjectReportMaker reportMaker;
+
     @Before
     public void setup() throws FileNotFoundException {
         hrSystem = new HRSystem();
@@ -22,18 +22,18 @@ public class MonthReportMakerTest {
         pmSystem.setCurrentMonth(1);
         hrSystem.updateHiredInternList(makeInterns());
         pmSystem.updateProjectList(makeProjects());
-        reportMaker = new MonthReportMaker(hrSystem, pmSystem);
+        reportMaker = new ProjectReportMaker(hrSystem, pmSystem);
     }
 
     @Test
-    public void makeReportHeader(){
+    public void makeReportHeader() {
         String actual = reportMaker.makeReportHeader(1);
         String expected = GamePrompts.REPORT_HEADER + 1 + '\n';
         assertEquals(actual, expected);
     }
 
     @Test
-    public void bakeProjectName(){
+    public void bakeProjectName() {
         String actual = reportMaker.bakeProjectName("a name");
         String expected = GamePrompts.PROJECT_NAME_HEADER + "a name";
         assertEquals(actual, expected);
@@ -47,7 +47,7 @@ public class MonthReportMakerTest {
     }
 
     @Test
-    public void endOfMonthPromptFinal(){
+    public void endOfMonthPromptFinal() {
 
         String actual = reportMaker.endOfMonthPrompt(6);
         String expected = GamePrompts.END_OF_MONTH_REPORT_PROMPT;
@@ -60,8 +60,8 @@ public class MonthReportMakerTest {
         pmSystem.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
         pmSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
         pmSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
-        reportMaker.upgradeIntern("Mary", 1, "Confidence");
-        boolean result = reportMaker.checkUpgraded(1);
+        reportMaker.upgradeIntern("Mary", 2, "Confidence");
+        boolean result = reportMaker.checkUpgraded(2);
         assertEquals(result, true);
     }
 
@@ -71,7 +71,7 @@ public class MonthReportMakerTest {
         pmSystem.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
         pmSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
         pmSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
-        boolean result = reportMaker.checkUpgraded(1);
+        boolean result = reportMaker.checkUpgraded(2);
         assertEquals(result, false);
     }
 
@@ -81,9 +81,9 @@ public class MonthReportMakerTest {
         pmSystem.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
         pmSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
         pmSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
-        reportMaker.upgradeIntern("Mary", 1, "Confidence");
-        String result = reportMaker.getUpgradingInfo(1);
-        String expected = pmSystem.makeUpgradeToString(1);
+        reportMaker.upgradeIntern("Mary", 2, "Confidence");
+        String result = reportMaker.getUpgradingInfo(2);
+        String expected = pmSystem.makeUpgradeToString(2);
         assertEquals(result, expected);
     }
 
@@ -94,20 +94,18 @@ public class MonthReportMakerTest {
         pmSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
         pmSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();
-        for (Project proj : pmSystem.getProjects(1)) {
+        for (Project proj : pmSystem.getProjects(2)) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
-        String result = reportMaker.bakeInternsPerformances(pmSystem.getProjectToInterns().get(pmSystem.getProjects(1).get(0)), projectCompatibilityList);
+        String result = reportMaker.bakeInternsPerformances(pmSystem.getProjectToInterns().get(pmSystem.getProjects(2).get(0)), projectCompatibilityList);
         StringBuilder returnLine = new StringBuilder(GamePrompts.INTERN_PERFORMANCE_HEADER + "Mary|Maggie|Ruby|" + "\n");
         String[] internNamesList = "Mary|Maggie|Ruby|".split("\\|");
-        for (int i = 0; i != 3; i+=1) {
+        for (int i = 0; i != 3; i += 1) {
             returnLine.append("     - ").append(internNamesList[i]).append(": ").append(reportMaker.calculateInternPerformance(pmSystem.getProjectToInterns().get(pmSystem.getProjects(1).get(0)).get(i).getInternSkills(), projectCompatibilityList)).append("\n");
         }
         String expected = returnLine.toString();
         assertEquals(result, expected);
     }
-
-
 
 
     private ArrayList<Project> makeProjects() throws FileNotFoundException {
@@ -126,6 +124,7 @@ public class MonthReportMakerTest {
         projects.add(project5);
         return projects;
     }
+
     private ArrayList<HiredIntern> makeInterns() {
         //A helper function that sets up the interns in HRSystem for the test.
         //Setting up two Hired interns
@@ -152,5 +151,45 @@ public class MonthReportMakerTest {
         interns.add(Ruby);
         interns.add(Bob);
         return interns;
+    }
+
+    @Test
+    public void makeReportConclusion() {
+        String result = reportMaker.makeReportConclusion();
+        assertEquals(result, GamePrompts.REPORT_CONCLUSION);
+    }
+
+    @Test
+    public void confirmChoice() {
+        String result = reportMaker.confirmChoice(2);
+        assertEquals(result, GamePrompts.CONFIRM_UPGRADE);
+    }
+
+    @Test
+    public void makeReportIntro() {
+        String result = reportMaker.makeReportIntro();
+        assertEquals(result, GamePrompts.PROJECT_REPORT_MAKER_INTRO);
+    }
+
+    @Test
+    public void getInternsInfo() throws FileNotFoundException {
+        setup();
+        pmSystem.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
+        pmSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
+        pmSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
+        String result = reportMaker.getInternsInfo();
+        String expected = GamePrompts.INTERN_INFO_HEADER + hrSystem.getHiredInternsNames();
+        assertEquals(result,expected);
+    }
+
+    @Test
+    public void getProjectInfo() throws FileNotFoundException {
+        setup();
+        pmSystem.assignInternToProject("Mary", GamePrompts.PROJECT1_NAME);
+        pmSystem.assignInternToProject("Maggie", GamePrompts.PROJECT1_NAME);
+        pmSystem.assignInternToProject("Ruby", GamePrompts.PROJECT1_NAME);
+        String result = reportMaker.getProjectInfo(2);
+        String expected = GamePrompts.PROJECT_NAME_HEADER + pmSystem.makeProjectsToString(2);
+        assertEquals(result,expected);
     }
 }

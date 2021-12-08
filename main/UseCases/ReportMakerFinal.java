@@ -40,16 +40,8 @@ public interface ReportMakerFinal {
 
     String bakeProjectName (String projectName);
 
-
-
-    String bakeInterns (String internNames);
-
-
-
     int calculateInternPerformance(HashMap<String, Double> internSkills,
                                    HashMap<String, Float> projectSkill);
-
-
 
     String bakeInternsPerformances (ArrayList<HiredIntern> interns, HashMap<String, Float> projectSkill);
 
