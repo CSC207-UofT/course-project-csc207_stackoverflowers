@@ -16,7 +16,7 @@ import java.util.Random;
 public class ReportLevel extends Level{
 
     private ReportMaker currentReportMaker;
-    private FinalReportMaker currentReportMakerFinal;
+    private ReportMakerFinal currentReportMakerFinal;
     private ReportPresenter currentReportPresenter;
     private int currentMonth;
     String randomSkillThisMonth = generateRandomSkill();
@@ -32,16 +32,18 @@ public class ReportLevel extends Level{
     public ReportLevel(int month, HRSystem hrSystem, PMSystem pmSystem) {
         if (month == 1 | month == 3 | month == 5) {
             currentReportMaker = new MonthReportMaker(hrSystem, pmSystem);
+            upgradePrompt = currentReportMaker.makeUpgradePrompt(randomSkillThisMonth);
         }
         if (month == 2 | month == 4) {
             //this is for the end of month 2, 4
             currentReportMaker = new ProjectReportMaker(hrSystem, pmSystem);
+            upgradePrompt = currentReportMaker.makeUpgradePrompt(randomSkillThisMonth);
         } if (month == 6) {
             //this is for the end of month 6
             currentReportMakerFinal = new FinalReportMaker(hrSystem, pmSystem);
         }
         currentMonth = month;
-        upgradePrompt = currentReportMaker.makeUpgradePrompt(randomSkillThisMonth);
+
         currentReportPresenter = new ReportPresenter();
     }
 

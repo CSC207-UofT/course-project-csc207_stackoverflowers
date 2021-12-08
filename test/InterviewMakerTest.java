@@ -101,7 +101,7 @@ public class InterviewMakerTest {
         }
 
         @Test(timeout = 1000)
-        public void TestEndOfInterviewPrompt(){
+        public void endOfInterviewPrompt(){
             String expected = interviewMaker.endOfInterviewPrompt();
             String actual = GamePrompts.END_OF_INTERVIEW_PROMPT;
             assertEquals(expected, actual);

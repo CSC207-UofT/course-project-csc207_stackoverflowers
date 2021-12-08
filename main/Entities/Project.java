@@ -119,13 +119,6 @@ public class Project implements Serializable {
         return name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public int getLength() {
-        return length;
-    }
 
     public int getTeamSize() {
         return teamSize;

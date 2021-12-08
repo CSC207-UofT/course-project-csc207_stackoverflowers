@@ -91,7 +91,7 @@ public class GamePrompts implements Serializable {
                                                      "The month went by quickly, and now you can view this month's progress! \n" +
                                                      "type anything to continue and view the report that has been generated... ";
 
-
+    public static final String PROJECT_REPORT_MAKER_INTRO ="This is an end report of this completed project." + "\n";
 
     public static final String FINAL_MONTH_PROMPT_BEFORE_PROJECT = "Ah, welcome to the last month where you get to assign interns to projects.\n" +
                                                                    "Your final task is to assign one intern you think has performed well who will be able to accomplish a bigger project on their own. Here's the project:\n";
@@ -288,7 +288,7 @@ public class GamePrompts implements Serializable {
     public static final String END_OF_MONTH_REPORT_PROMPT = "That is the end of the report. Type anything to continue.";
     public static final String END_OF_FINAL_MONTH_REPORT_PROMPT = "That's the end of the final month report. Type anything to continue.";
 
-    public final String REPORT_CONCLUSION = "That's all! Have a good day manager. :)";
+    public static final String REPORT_CONCLUSION = "That's all! Have a good day manager. :)";
 
     public static final String END_PROMPT = "Thank you so much for playing our game.\n" +
             "Creators:" + "\n" + "Mary Yijia Li\n" +

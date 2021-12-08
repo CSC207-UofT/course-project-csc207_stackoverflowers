@@ -35,7 +35,7 @@ public class FinalReportMaker implements ReportMakerFinal {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
         return bakeProjectName(currentPMSystem.getProjectNames(currentMonth).split("\\|")[0]) + "\n" +
-                bakeInterns(currentPMSystem.getInternNamesProject(projList.get(0))) + "\n" +
+                currentPMSystem.getInternNamesProject(projList.get(0)) + "\n" +
                 bakeInternsPerformances(currentPMSystem.getProjectToInterns().get(projList.get(0)),
                         projectCompatibilityList) + "\n" ;
     }
@@ -43,11 +43,6 @@ public class FinalReportMaker implements ReportMakerFinal {
     @Override
     public String bakeProjectName(String projectName) {
         return GamePrompts.PROJECT_NAME_HEADER + projectName;
-    }
-
-    @Override
-    public String bakeInterns(String internNames) {
-        return internNames;
     }
 
     @Override

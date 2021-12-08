@@ -39,27 +39,23 @@ public class MonthReportMaker implements ReportMaker {
      */
     @Override
     public String makeReportBody( int currentMonth) {
-        List<Project> projList = currentPMSystem.getProjects(currentMonth);
+        List<Project> projList;
+        projList = currentPMSystem.getProjects(currentMonth);
         HashMap<String, Float> projectCompatibilityList = new HashMap<>();
         for (Project proj : projList) {
             projectCompatibilityList.putAll(proj.getSkillsCompatibilities());
         }
         return bakeProjectName(currentPMSystem.getProjectNames(currentMonth).split("\\|")[0]) + "\n" +
-                bakeInterns(currentPMSystem.getInternNamesProject(projList.get(0))) + "\n" +
+                currentPMSystem.getInternNamesProject(projList.get(0)) + "\n" +
                 bakeInternsPerformances(currentPMSystem.getProjectToInterns().get(projList.get(0)), projectCompatibilityList) + "\n" +
                 bakeProjectName(currentPMSystem.getProjectNames(currentMonth).split("\\|")[1]) + "\n" +
-                bakeInterns(currentPMSystem.getInternNamesProject(projList.get(1))) + "\n" +
+                currentPMSystem.getInternNamesProject(projList.get(1))+ "\n" +
                 bakeInternsPerformances(currentPMSystem.getProjectToInterns().get(projList.get(1)), projectCompatibilityList);
     }
 
     @Override
     public String bakeProjectName(String projectName) {
         return GamePrompts.PROJECT_NAME_HEADER + projectName;
-    }
-
-    @Override
-    public String bakeInterns(String internNames) {
-        return internNames;
     }
 
     @Override
@@ -81,7 +77,7 @@ public class MonthReportMaker implements ReportMaker {
     public int calculateInternPerformance(HashMap<String, Double> internSkills,
                                           HashMap<String, Float> projectSkill) {
         int result = 0;
-        ArrayList<Double> effectiveSkills = new ArrayList<Double>();
+        ArrayList<Double> effectiveSkills = new ArrayList<>();
         for (String key : internSkills.keySet()) {
             double internSkill = internSkills.get(key);
             double compatibility = projectSkill.get(key);
