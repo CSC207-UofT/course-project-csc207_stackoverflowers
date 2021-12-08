@@ -16,20 +16,20 @@ import static org.junit.Assert.*;
 
 public class InterviewLevelTest {
 
-    InterviewLevel lev;
-    HRSystem sys;
-    InterviewMaker make;
+    InterviewLevel interviewLevel;
+    HRSystem hrSystem;
+    InterviewMaker interviewMaker;
 
     @Before
     public void setUp(){
-        sys = new HRSystem();
+        hrSystem = new HRSystem();
         try {
-            sys.updateInterviewInternList(makeInterns());
+            hrSystem.updateInterviewInternList(makeInterns());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        lev = new InterviewLevel(sys);
-        make = new InterviewMaker(sys);
+        interviewLevel = new InterviewLevel(hrSystem);
+        interviewMaker = new InterviewMaker(hrSystem);
     }
     private ArrayList<InterviewIntern> makeInterns() throws FileNotFoundException {
         //A helper function that sets up the interns in HRSystem for the test.
@@ -67,14 +67,14 @@ public class InterviewLevelTest {
 
     @Test(timeout = 1000)
     public void TestGetStartOfInterviewPrompt(){
-        String actual = lev.getStartOfInterviewPrompt();
+        String actual = interviewLevel.getStartOfInterviewPrompt();
         String expected = GamePrompts.START_INTERVIEW_PROMPT;
         assertEquals(expected, actual);
     }
 
     @Test(timeout = 1000)
     public void TestGetEndOfInterviewPrompt(){
-        String actual = lev.getEndOfInterviewPrompt();
+        String actual = interviewLevel.getEndOfInterviewPrompt();
         String expected = GamePrompts.END_OF_INTERVIEW_PROMPT;
         assertEquals(expected,actual);
 
@@ -82,9 +82,9 @@ public class InterviewLevelTest {
 
     @Test(timeout = 1000)
     public void TestUpdateLevelStatus(){
-        lev.levelStarted();
-        lev.endLevel();
-        Boolean actual = lev.levelEnded();
+        interviewLevel.levelStarted();
+        interviewLevel.endLevel();
+        Boolean actual = interviewLevel.levelEnded();
         Boolean expected = true;
         assertEquals(expected, actual);
     }

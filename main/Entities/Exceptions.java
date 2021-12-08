@@ -17,4 +17,5 @@ public class Exceptions {
     public static final String INVALID_NAME_EMPTY = "Sorry, you entered a empty name. Please try again.";
     public static final String INVALID_NAME_SPACE = "Sorry, you entered a name with spaces. Please try again.";
     public static final String INVALID_NAME_CONTENT = "Sorry, you entered a name with invalid contents. Please try again.";
+    public static final String NOT_LOADING_AT_START = "Load only permitted at start of the game";
 }

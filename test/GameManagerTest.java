@@ -14,24 +14,25 @@ public class GameManagerTest {
     @Before
     public void setUp() throws Exception {
         gameManager = new GameManager();
-
     }
 
     @Test
-    public void testLoad() throws Exception{
-        gameManager.getOutput("load haha");
+    public void testLoad() throws Exception {
+        try {
+            gameManager.getOutput("load haha");
+        } catch (Exception e) {
+            assert (e.getMessage().contains("Can't find file to load"));
+        }
     }
 
-//    @Test
-//    public void testStartToInterview(){
-//        assertTrue(gameManager.currentLevel instanceof InterviewLevel);
-//    }
-
-//    @Test
-//    public void testInterviewToMonth() throws Exception {
-//        gameManager.currentLevel.endLevel();
-//        gameManager.getOutput("ha");
-//        gameManager.getOutput("now");
-//        assertTrue(gameManager.currentLevel instanceof MonthLevel);
-//    }
+    @Test
+    public void testLoadingFail1() throws Exception {
+        gameManager.getOutput("Maggie");
+        gameManager.getOutput("haha");
+        try {
+            gameManager.getOutput("load Maggie_0");
+        } catch (Exception e) {
+            assert (e.getMessage().contains(Exceptions.NOT_LOADING_AT_START));
+        }
+    }
 }
