@@ -86,7 +86,7 @@ public class GameManager {
                 currentStatus = statusOfGame.valueOf(currentGameMaker.getCurrentStatus());
                 return getOutput(currentGameMaker.getCurrentHRSystem().getPlayerName());
             } else {
-                throw new Exception("Load only permitted at start of the game");
+                throw new Exception(Exceptions.NOT_LOADING_AT_START);
             }
         }
         throw new Exception(Exceptions.UNIVERSAL_COMMAND_NOT_FOUND);

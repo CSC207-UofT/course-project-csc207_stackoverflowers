@@ -85,7 +85,7 @@ public class InterviewMaker {
      * from the list of HiredInterns in HRSystem.
      * @param intern the name of the intern they wish to fire.
      */
-    public void fireIntern(String intern){
+    public void fireIntern(String intern) throws Exception {
         this.currentHRSystem.fireIntern(intern);
     }
 
@@ -166,14 +166,6 @@ public class InterviewMaker {
      */
     public boolean haveInterviewsLeft() {
         return this.currentHRSystem.getInterviewInternList().size() != this.interviewedInterns.size();
-    }
-
-    /**
-     * This method returns a list representation of the Entities.InterviewIntern's that have already been interviewed.
-     * @return an ArrayList of the names of InterviewIntern's that have already been interviewed.
-     */
-    public ArrayList<String> getInterviewedInterns(){
-        return this.interviewedInterns;
     }
 
     /**
