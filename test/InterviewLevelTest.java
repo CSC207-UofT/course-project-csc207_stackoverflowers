@@ -36,18 +36,24 @@ public class InterviewLevelTest {
         //Setting up two Hired interns
         HashMap<String, Double> marySkills = new HashMap<>();
         marySkills.put("Efficiency", 85.0);
+        marySkills.put("Responsible", 85.0);
+        marySkills.put("Confidence", 85.0);
         InterviewIntern Mary = new InterviewIntern("Mary", 19, marySkills);
         ResponseTreeMaker forMary = new ResponseTreeMaker(Mary);
         forMary.assignResponseToIntern();
 
         HashMap<String, Double> maggieSkills = new HashMap<>();
         maggieSkills.put("Responsible", 87.0);
+        maggieSkills.put("Creativity", 87.0);
+        maggieSkills.put("Artistic", 87.0);
         InterviewIntern Maggie = new InterviewIntern("Maggie", 20, maggieSkills);
         ResponseTreeMaker forMaggie = new ResponseTreeMaker(Maggie);
         forMaggie.assignResponseToIntern();
 
         HashMap<String, Double> rubySkills = new HashMap<>();
         rubySkills.put("Communication", 66.0);
+        rubySkills.put("Efficiency", 66.0);
+        rubySkills.put("Creativity", 66.0);
         InterviewIntern Ruby = new InterviewIntern("Ruby", 21, rubySkills);
         ResponseTreeMaker forRuby = new ResponseTreeMaker(Ruby);
         forRuby.assignResponseToIntern();
