@@ -55,6 +55,19 @@ public class InterviewMakerTest {
 //            assertEquals(expected, actual);
 //        }
 
+        @Test
+        public void TestCheckInternsLastResponseFail(){
+            boolean actual = interviewMaker.checkInternsLastResponse();
+            assertTrue(!actual);
+        }
+
+        @Test
+        public void TestUpdateInterviewIntern(){
+            interviewMaker.updateInterviewIntern();
+            //Since we are traversing the interviewedIntern list backwards, we need to check if the last intern in interview is the current interviewed intern
+            assertEquals(hrSystem.getInterviewInternList().get(2).internToString(),interviewMaker.currentInterviewInternToString());
+        }
+
         @Test(timeout = 1000)
         public void TestGetHiredInternString(){
             String expected = interviewMaker.getHiredInternString();

@@ -169,14 +169,6 @@ public class InterviewMaker {
     }
 
     /**
-     * This method returns a list representation of the Entities.InterviewIntern's that have already been interviewed.
-     * @return an ArrayList of the names of InterviewIntern's that have already been interviewed.
-     */
-    public ArrayList<String> getInterviewedInterns(){
-        return this.interviewedInterns;
-    }
-
-    /**
      * This method updates the intern tree to the next tree, to obtain that Entities.InterviewIntern's next choices
      * and responses.
      * @param theWanted an integer value of the intended branch in the tree to traverse.
