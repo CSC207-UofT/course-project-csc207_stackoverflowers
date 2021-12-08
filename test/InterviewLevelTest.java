@@ -69,7 +69,7 @@ public class InterviewLevelTest {
     public void TestGetStartOfInterviewPrompt(){
         String actual = interviewLevel.getStartOfInterviewPrompt();
         String expected = GamePrompts.START_INTERVIEW_PROMPT;
-        assertEquals(expected, actual);
+        assertTrue(actual.contains(expected));
     }
 
     @Test(timeout = 1000)

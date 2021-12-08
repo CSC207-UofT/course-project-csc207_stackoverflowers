@@ -85,7 +85,7 @@ public class InterviewMaker {
      * from the list of HiredInterns in HRSystem.
      * @param intern the name of the intern they wish to fire.
      */
-    public void fireIntern(String intern){
+    public void fireIntern(String intern) throws Exception {
         this.currentHRSystem.fireIntern(intern);
     }
 
