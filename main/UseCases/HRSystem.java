@@ -172,14 +172,19 @@ public class HRSystem implements Serializable {
      * from the list of HiredInterns.
      * @param intern a string representation of the name of the intern the player wishes to fire.
      */
-    public void fireIntern(String intern){
+    public void fireIntern(String intern) throws Exception {
         int internIndex = -1;
         for (HiredIntern i : this.getHiredInternList()){
             if (i.getInternName().equals(intern)){
                 internIndex = this.getHiredInternList().indexOf(i);
             }
         }
+        try{
         this.hiredInternList.remove(this.hiredInternList.get(internIndex));
+        }catch (Exception e){
+            throw new Exception(Exceptions.INTERN_FIRING_FAILURE);
+        }
+
     }
 
     /**

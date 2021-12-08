@@ -151,7 +151,7 @@ public class InterviewLevel extends Level{
      * This returns a prompt from InterviewMaker indicating the start of the interview level.
      * @return a String representation of the starting prompt.
      */
-    public String getStartOfInterviewPrompt(){
+    private String getStartOfInterviewPrompt(){
         return currentInterviewMaker.startOfInterviewPrompt();
     }
 
@@ -159,7 +159,7 @@ public class InterviewLevel extends Level{
      * This returns a prompt from InterviewMaker indicating the end of the interview level.
      * @return a String representation of the ending prompt.
      */
-    public String getEndOfInterviewPrompt() {
+    private String getEndOfInterviewPrompt() {
         return currentInterviewMaker.endOfInterviewPrompt();
     }
 

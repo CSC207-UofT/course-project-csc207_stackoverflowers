@@ -66,15 +66,17 @@ public class InterviewLevelTest {
     }
 
     @Test(timeout = 1000)
-    public void TestGetStartOfInterviewPrompt(){
-        String actual = interviewLevel.getStartOfInterviewPrompt();
+    public void TestGetStartOfInterviewPrompt() throws Exception {
+        assert interviewLevel.levelStarted();
+        String actual = interviewLevel.getOutputString("ha");
         String expected = GamePrompts.START_INTERVIEW_PROMPT;
-        assertEquals(expected, actual);
+        assertTrue(actual.contains(expected));
     }
 
     @Test(timeout = 1000)
-    public void TestGetEndOfInterviewPrompt(){
-        String actual = interviewLevel.getEndOfInterviewPrompt();
+    public void TestGetEndOfInterviewPrompt() throws Exception {
+        interviewLevel.endLevel();
+        String actual = interviewLevel.getOutputString("ha");
         String expected = GamePrompts.END_OF_INTERVIEW_PROMPT;
         assertEquals(expected,actual);
 
@@ -87,5 +89,30 @@ public class InterviewLevelTest {
         Boolean actual = interviewLevel.levelEnded();
         Boolean expected = true;
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void TestGetOutput() throws Exception {
+        interviewLevel.getIntoLevel();
+        interviewLevel.getOutputString("a");
+    }
+
+    @Test
+    public void TestGetOutput2() throws Exception {
+        interviewLevel.getIntoLevel();
+        String actual = interviewLevel.getOutputString("end interview");
+        String expected = interviewMaker.getHiredInternString() + GamePrompts.END_OF_INTERVIEW_PROMPT;
+
+    }
+
+
+    @Test
+    public void TestGetOutputFail(){
+        interviewLevel.getIntoLevel();
+        try{
+        interviewLevel.getOutputString("");
+        }catch (Exception e){
+            assert (e.getMessage().contains(Exceptions.INVALID_COMMAND));
+        }
     }
 }
